@@ -1,0 +1,68 @@
+<!--Esto va despues de importar el header-->
+<div class="container-fluid">
+  <div class="row">
+    <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-md-4">
+      <div class="pt-3 pb-2 mb-3 border-bottom">
+        <nav aria-label="breadcrumb ">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Consulta de Información</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Acuíferos</li>
+          </ol>
+        </nav>
+      </div>
+      <!--Aquí temina la seccion del encabezado-->
+      <div class="col-sm">
+        <div class="row">
+          <div class="col-sm">
+            <!--Aqui va el contenido de la pagina-->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<!--Despues de aqui sige la importacion del futer y de las librerias-->
+
+<!--
+    *****************************************************************************************************************************************************************
+    Cosas que faltan por arreglas a nivel Interfaz
+    -Solo falta el modulo de la adminstracion de la bd, deje como ejemplo la parte de admistracion de acuiferos para que te guies en la estructura y en los estilos
+    *****************************************************************************************************************************************************************
+    El estilo que debe llevar las tablas 
+    <table id="EL ID DE LA TABLA" cellpadding="0" cellspacing="0" border="0" class="table table-bordered responsive nowrap"  width="100%">
+    
+    El estilo de los bonotes primarios
+    btn-gob
+
+    El estilo de los botones secundarios
+    btn-gob2 text-ligth
+
+    Formato para aplicar un titulo general 
+    <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+    <h1>TITULO</h1>
+    </div>
+
+    Con calma hay que ir cambiando los SweerAlerts ya que salio la version 2 y deja hacer mas cosas, ya esta implementados en todos los demas modulos menos en el de administracion
+    de la base de datos, checa la documentacion aqui https://sweetalert2.github.io/ , ahorita estan las dos librerias la 1 y la dos para no quitar la funcionalidad de las alertas
+    que no se han cambiado, de todas formas te dejo un ejemplo de una alerta con la accion de continuar o cancelar con los botones con el estilo del gobierno de mexico
+
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Una vez cancelado el registro, no podrá recuperar la información.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#621132',
+        cancelButtonColor: '#6f7271',
+        confirmButtonText: 'Si, continuar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.value) {
+           EVENTO SI SE DA EN CONTINUAR
+        }
+    });
+
+
+    De todos modos dale una calada a todos los demas modulos para que veas como quedo la interfaz
+
+
+-->
