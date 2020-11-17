@@ -2590,7 +2590,7 @@ async function distribucion3Est(query) {
 
 async function distribucion3Mun(query) {
   $("#nav-04").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Municipio Organismo de Cuenca Sólidos Suspendidos Totales</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Municipio Sólidos Suspendidos Totales</h3></div>'
   );
   /**
   * Tabla Muni
@@ -2691,7 +2691,7 @@ async function distribucion3Mun(query) {
             {
               extend: "excelHtml5",
               title:
-                "Distribución porcentual por Municipio Organismo de Cuenca Sólidos Suspendidos Totales",
+                "Distribución porcentual por Municipio Sólidos Suspendidos Totales",
               className: "btn btn-gob btn-sm",
               text: "Exportar Excel",
             },
@@ -2732,7 +2732,7 @@ async function distribucion3Mun(query) {
                         alignment: "left",
                         //italics: true,
                         text:
-                          "Distribución porcentual por Municipio Organismo de Cuenca Sólidos Suspendidos Totales",
+                          "Distribución porcentual por Municipio Sólidos Suspendidos Totales",
                         fontSize: 12.5,
                         margin: [10, 5],
                       },
@@ -2799,7 +2799,7 @@ async function distribucion3Mun(query) {
 
 async function distribucion3Estacion(query) {
   $("#nav-02").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estaciones de monitoreo Organismo de Cuenca Sólidos Suspendidos Totales</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estaciones de monitoreo Sólidos Suspendidos Totales</h3></div>'
   );
   /**
    * Tabla Estaciones
@@ -2907,14 +2907,14 @@ async function distribucion3Estacion(query) {
             {
               extend: "excelHtml5",
               title:
-                "Estaciones de monitoreo Organismo de Cuenca Sólidos Suspendidos Totales",
+                "Estaciones de monitoreo Sólidos Suspendidos Totales",
               className: "btn btn-gob btn-sm",
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
-                "Estaciones de monitoreo Organismo de Cuenca Sólidos Suspendidos Totales",
+                "Estaciones de monitoreo Sólidos Suspendidos Totales",
               className: "btn btn-gob btn-sm",
               text: "Exportar PDF",
               //messageBottom: citas,
@@ -2948,7 +2948,7 @@ async function distribucion3Estacion(query) {
                         alignment: "left",
                         //italics: true,
                         text:
-                          "Estaciones de monitoreo Organismo de Cuenca Sólidos Suspendidos Totales",
+                          "Estaciones de monitoreo Sólidos Suspendidos Totales",
                         fontSize: 12.5,
                         margin: [10, 5],
                       },
@@ -3225,7 +3225,7 @@ async function distribucion4(query) {
 
 async function distribucion4Est(query) {
   $("#nav-03").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Estado Organismo de Cuenca Coliformes fecales</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Estado Coliformes fecales</h3></div>'
   );
   /**
    * Tabla Estado
@@ -3324,7 +3324,7 @@ async function distribucion4Est(query) {
             {
               extend: "excelHtml5",
               title:
-                "Distribución porcentual por Estado Organismo de Cuenca Coliformes fecales",
+                "Distribución porcentual por Estado Coliformes fecales",
               className: "btn btn-gob btn-sm",
               text: "Exportar Excel",
             },
@@ -3365,7 +3365,7 @@ async function distribucion4Est(query) {
                         alignment: "left",
                         //italics: true,
                         text:
-                          "Distribución porcentual por Estado Organismo de Cuenca Coliformes fecales",
+                          "Distribución porcentual por Estado Coliformes fecales",
                         fontSize: 12.5,
                         margin: [10, 5],
                       },
@@ -3432,7 +3432,7 @@ async function distribucion4Est(query) {
 
 async function distribucion4Mun(query) {
   $("#nav-04").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Municipio Organismo de Cuenca Coliformes fecales</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Municipio Coliformes fecales</h3></div>'
   );
   /**
   * Tabla Muni
@@ -3533,7 +3533,7 @@ async function distribucion4Mun(query) {
             {
               extend: "excelHtml5",
               title:
-                "Distribución porcentual por Municipio Organismo de Cuenca Coliformes fecales",
+                "Distribución porcentual por Municipio Coliformes fecales",
               className: "btn btn-gob btn-sm",
               text: "Exportar Excel",
             },
@@ -3574,7 +3574,7 @@ async function distribucion4Mun(query) {
                         alignment: "left",
                         //italics: true,
                         text:
-                          "Distribución porcentual por Municipio Organismo de Cuenca Coliformes fecales",
+                          "Distribución porcentual por Municipio Coliformes fecales",
                         fontSize: 12.5,
                         margin: [10, 5],
                       },
@@ -3641,7 +3641,7 @@ async function distribucion4Mun(query) {
 
 async function distribucion4Estacion(query) {
   $("#nav-02").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estaciones de monitoreo Organismo de Cuenca Coliformes fecales</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estaciones de monitoreo Coliformes fecales</h3></div>'
   );
   /**
    * Tabla Estaciones
@@ -3749,14 +3749,14 @@ async function distribucion4Estacion(query) {
             {
               extend: "excelHtml5",
               title:
-                "Estaciones de monitoreo Organismo de Cuenca Coliformes fecales",
+                "Estaciones de monitoreo Coliformes fecales",
               className: "btn btn-gob btn-sm",
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
-                "Estaciones de monitoreo Organismo de Cuenca Coliformes fecales",
+                "Estaciones de monitoreo Coliformes fecales",
               className: "btn btn-gob btn-sm",
               text: "Exportar PDF",
               //messageBottom: citas,
@@ -3790,7 +3790,7 @@ async function distribucion4Estacion(query) {
                         alignment: "left",
                         //italics: true,
                         text:
-                          "Estaciones de monitoreo Organismo de Cuenca Coliformes fecales",
+                          "Estaciones de monitoreo Coliformes fecales",
                         fontSize: 12.5,
                         margin: [10, 5],
                       },
