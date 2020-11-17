@@ -114,7 +114,7 @@ class Municipio {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT * FROM municipio');
+            $select = $db->prepare('SELECT * FROM municipio ORDER BY nombre ASC');
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;
@@ -138,7 +138,7 @@ class Municipio {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT * FROM municipio WHERE estado_id=:estado_id AND nombre=:nombre');
+            $select = $db->prepare('SELECT * FROM municipio WHERE estado_id=:estado_id AND nombre=:nombre ORDER BY nombre ASC');
             $select->bindValue('estado_id', $id, PDO::PARAM_INT);
             $select->bindValue('nombre', $Municipio, PDO::PARAM_STR);
             $select->execute();
@@ -176,7 +176,7 @@ class Municipio {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT * FROM municipio WHERE estado_id=:estado_id AND local=:local');
+            $select = $db->prepare('SELECT * FROM municipio WHERE estado_id=:estado_id AND local=:local ORDER BY nombre ASC');
             $select->bindValue('estado_id', $id, PDO::PARAM_INT);
             $select->bindValue('local', $Municipio, PDO::PARAM_INT);
             $select->execute();
