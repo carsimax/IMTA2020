@@ -1485,7 +1485,7 @@ async function desgloce3() {
                                 title: "Superficie cosechada (ha)",
                             },
                             {
-                                title: "Producción)",
+                                title: "Producción (ton)",
                             },
                             {
                                 title: "Valor de la cosecha (miles $)",
