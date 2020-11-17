@@ -80,6 +80,7 @@ $Anios = $registros->getAniosUR();
         <br>
     </div>
 </div>
-
+<!-- Funciones globales de los selects -->
+<script src="/../sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->
 <script src="/aplicacion/vista/agricola/agricola7/agricola7.js"></script>

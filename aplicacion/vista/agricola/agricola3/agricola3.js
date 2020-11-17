@@ -12,81 +12,14 @@
  *
  */
 
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
-$("#Organismos").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Organismo de Cuenca",
-    search: "Buscar Organismos de Cuenca",
-  },
-});
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Estado",
-    search: "Buscar Estado",
-  },
-});
-/**
- * Se aplica el estilo al select de los Distritos
- */
-$("#Distritos").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Distrito",
-    search: "Buscar Distrito",
-  },
-});
-
-/**
- * Se aplica el estilo al select de Tenencias
- */
-$("#Tenencias").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione una Tenencia",
-    search: "Buscar Tenencia",
-  },
-});
-
-/**
- * Se aplica el estilo al select de Fuentes
- */
-$("#Fuentes").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione una Fuente",
-    search: "Buscar Fuente",
-  },
-});
-/**
- * Se aplica el estilo al select de Anios
- */
-$("#Anios").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un rango de años",
-    search: "Buscar Año",
-  },
-});
-
+ // Se aplica el estilo a los selects
+ setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
+ setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+ setEstiloSelect('#Distritos', 'Distritos de Riego', 'Buscar Distrito');
+ setEstiloSelect('#Tenencias', 'Tenencias', 'Buscar Tenencia');
+ setEstiloSelect('#Fuentes', 'Fuentes', 'Buscar Fuente');
+ setEstiloSelect('#Anios', 'Años', 'Buscar Años');
+ 
 /**
  * Funcion para guardar la consulta en el historial
  * @returns {Promise<void>}

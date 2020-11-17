@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -13,109 +14,107 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 //LLamamos la cabezera con todos los ccs y scripts del sistema
-if (!defined(__DIR__ . '/plantillas/header.php')) {
-    require(__DIR__ . '/plantillas/header.php');
-    define(__DIR__ . '/plantillas/header.php', 1);
+if (!defined(__DIR__ . '/Plantillas/header.php')) {
+    require(__DIR__ . '/Plantillas/header.php');
+    define(__DIR__ . '/Plantillas/header.php', 1);
 }
 ?>
 <div class="container-fluid">
     <div class="row">
         <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-md-4">
             <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
-                <h3>Bienvenido <small>Plataforma Web Informativa Sobre Usos del Agua en la Agricultura Nacional</small>
-                </h3>
+                <h4><small>Bienvenido </small>Plataforma Web Informativa Sobre Usos del Agua en la Agricultura Nacional</h4>
             </div>
 
-            <?php if (isset($_SESSION['loggedin'])) {?>
+            <?php if (isset($_SESSION['loggedin'])) { ?>
                 <div class="col-sm">
                     <p>En este sitio podrás consultar la siguiente información.</p>
                 </div>
-                <div class="card-deck mb-3 col-sm">
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a></h5>
-                        </div>
-                        <a href="/aplicacion/vista/acuifero/acuiferos.php"><img class="card-img-top" src="/imagenes/acuifero.jpg" alt="Card image"></a>
-                        <div class="card-body text-justify">
-                            <p>Consulta los valores de Disponibilidad Media Anual de Agua Subterránea, Descarga Natural Comprometida, Recarga Media Anual, Volumen de Extracción de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
-                        </div>
-                    </div>
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/presa/presas.php">Presas</a></h5>
-                        </div>
-                        <a href="/aplicacion/vista/presa/presas.php"><img class="card-img-top" src="/imagenes/presa.jpg" alt="Card image"></a>
-                        <div class="card-body text-justify">
-                            <p>Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
-                        </div>
-                    </div>
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/pozo/pozos.php">Pozos</a></h5>
-                        </div>
-                        <a href="/aplicacion/vista/pozo/pozos.php"><img class="card-img-top" src="/imagenes/pozo.jpg" alt="Card image"></a>
-                        <div class="card-body text-justify">
-                            <p>Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
-                        </div>
-                    </div> 
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/agricola/agricola.php">Estadística Agrícola</a></h5>
-                        </div>
-                        <a href="/aplicacion/vista/agricola/agricola.php"><img class="card-img-top" src="/imagenes/agricultura.jpg" alt="Card image"></a>
-                        <div class="card-body text-justify">
-                            <p>Consulta los Informes Estadísticos de Producción Agrícola, Superficies Regadas y Volúmenes de Agua Distribuidos en los Distritos de Riego y Temporal Tecnificado, así como sus históricos.</p>
-                        </div>
-                    </div>
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad del Agua</a></h5>
-                        </div>
-                        <a href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php"><img class="card-img-top" src="/imagenes/calidad_agua.jpg" alt="Card image"></a>
-                        <div class="card-body text-justify">
-                            <p>Consulta los diferentes indicadores de la calidad del agua como lo son: Demanda Bioquímica de Oxígeno a cinco días (DBO5), Demanda Química de Oxígeno (DQO), Sólidos Suspendidos Totales (SST), Coliformes Fecales (CF) recabados por los sitios de monitoreo operados por la Conagua en todo el país.</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="container-fluid">
+                    <div class="mx-auto contenedor-cards">
 
-                <div class="card-deck mb-3 col-sm">
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones Climatológicas</a></h5>
+                        <div class="modulo card">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/acuifero/acuiferos.php"><img class="card-img-top" src="/imagenes/acuifero.jpg" alt="Card image"></a>
+                            <div class="card-body text-justify">
+                                <p>Consulta los valores de Disponibilidad Media Anual de Agua Subterránea, Descarga Natural Comprometida, Recarga Media Anual, Volumen de Extracción de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+                            </div>
                         </div>
-                        <a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php"><img class="card-img-top" src="/imagenes/climatologica.jpg" alt="Card image"></a>
-                        <div class="card-body text-justify">
-                            <p>Consulta las diferentes estaciones climatológicas distribuidas en todo el país.</p>
+                        <div class="card modulo">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/presa/presas.php">Presas</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/presa/presas.php"><img class="card-img-top" src="/imagenes/presa.jpg" alt="Card image"></a>
+                            <div class="card-body text-justify">
+                                <p>Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones Hidrométricas</a></h5>
+                        <div class="card modulo">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/pozo/pozos.php">Pozos</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/pozo/pozos.php"><img class="card-img-top" src="/imagenes/pozo.jpg" alt="Card image"></a>
+                            <div class="card-body text-justify">
+                                <p>Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+                            </div>
                         </div>
-                        <a href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php"><img class="card-img-top" src="/imagenes/hidrometrica.jpg" alt="Card image"></a>
-                        <div class="card-body text-justify">
-                            <p>Consulta las diferentes estaciones hidrométricas distribuidas en todo el país.</p>
+                        <div class="card modulo">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/agricola/agricola.php">Estadística Agrícola</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/agricola/agricola.php"><img class="card-img-top" src="/imagenes/agricultura.jpg" alt="Card image"></a>
+                            <div class="card-body text-justify">
+                                <p>Consulta los Informes Estadísticos de Producción Agrícola, Superficies Regadas y Volúmenes de Agua Distribuidos en los Distritos de Riego y Temporal Tecnificado, así como sus históricos.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/inventario/inventario.php"><small>Inventario de Obras de los Distritos de Riego</small></a></h5>
+                        <div class="card modulo">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad del Agua</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php"><img class="card-img-top" src="/imagenes/calidad_agua.jpg" alt="Card image"></a>
+                            <div class="card-body text-justify">
+                                <p>Consulta los diferentes indicadores de la calidad del agua como lo son: Demanda Bioquímica de Oxígeno a cinco días (DBO5), Demanda Química de Oxígeno (DQO), Sólidos Suspendidos Totales (SST), Coliformes Fecales (CF) recabados por los sitios de monitoreo operados por la Conagua en todo el país.</p>
+                            </div>
                         </div>
-                        <a href="/aplicacion/vista/inventario/inventario.php"><img class="card-img-top" src="/imagenes/inventario.jpg" alt="Card image"></a>
-                        <div class="card-body text-justify">
-                            <p>Consulta el inventario de obras de infraestructura, obras de cabeza y sociedades de responsabilidad limitada de Distritos de Riego.</p>
+
+                        <div class="card modulo">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones Climatológicas</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php"><img class="card-img-top" src="/imagenes/climatologica.jpg" alt="Card image"></a>
+                            <div class="card-body text-justify">
+                                <p>Consulta las diferentes estaciones climatológicas distribuidas en todo el país.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-header">
-                            <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de Marginación</a></h5>
+                        <div class="card modulo">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones Hidrométricas</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php"><img class="card-img-top" src="/imagenes/hidrometrica.jpg" alt="Card image"></a>
+                            <div class="card-body text-justify">
+                                <p>Consulta las diferentes estaciones hidrométricas distribuidas en todo el país.</p>
+                            </div>
                         </div>
-                        <a href="/aplicacion/vista/indice_marginacion/indice_marginacion.php"><img class="card-img-top" src="/imagenes/marginacion.png" alt="Card image"></a>
-                        <div class="card-body text-justify">
-                            <p>Consulta el índice de marginación estatal y municipal de todo el país.</p>
+                        <div class="card modulo">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/inventario/inventario.php"><small>Inventario de Obras de los Distritos de Riego</small></a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/inventario/inventario.php"><img class="card-img-top" src="/imagenes/inventario.jpg" alt="Card image"></a>
+                            <div class="card-body text-justify">
+                                <p>Consulta el inventario de obras de infraestructura, obras de cabeza y sociedades de responsabilidad limitada de Distritos de Riego.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card mb-4">
+                        <div class="card modulo">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de Marginación</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/indice_marginacion/indice_marginacion.php"><img class="card-img-top" src="/imagenes/marginacion.png" alt="Card image"></a>
+                            <div class="card-body text-justify">
+                                <p>Consulta el índice de marginación estatal y municipal de todo el país.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <?php } else { ?>
@@ -172,8 +171,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                             </p>
                         </div>
                         <div class="col-sm">
-                            <img class="img-responsive"
-                                 src="https://www.gob.mx/cms/uploads/document/main_image/38839/1.jpg">
+                            <img class="img-responsive" src="https://www.gob.mx/cms/uploads/document/main_image/38839/1.jpg">
                             <img class="img-responsive" src="/imagenes/logo_sisuar2.png" width="100%">
                         </div>
                     </div>
@@ -186,8 +184,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
 
 
 <!-- Modal Login-->
-<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -197,15 +194,14 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                 </button>
             </div>
             <div class="modal-body">
-                <?php require(__DIR__ . '/login/login.php'); ?>
+                <?php require(__DIR__ . '/Login/Login.php'); ?>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Modal Registro-->
-<div class="modal fade" id="RegistroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div class="modal fade" id="RegistroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -216,7 +212,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                 </button>
             </div>
             <div class="modal-body">
-                <?php require(__DIR__ . '/login/registro.php'); ?>
+                <?php require(__DIR__ . '/Login/Registro.php'); ?>
             </div>
         </div>
     </div>
@@ -225,8 +221,8 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
 <!--Footer de la pagina-->
 <?php
 //LLamamos la cabezera con todos los ccs y scripts del sistema
-if (!defined(__DIR__ . '/plantillas/footer.php')) {
-    require(__DIR__ . '/plantillas/footer.php');
-    define(__DIR__ . '/plantillas/footer.php', 1);
+if (!defined(__DIR__ . '/Plantillas/footer.php')) {
+    require(__DIR__ . '/Plantillas/footer.php');
+    define(__DIR__ . '/Plantillas/footer.php', 1);
 }
 ?>

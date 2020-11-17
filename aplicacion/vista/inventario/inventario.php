@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -30,7 +31,7 @@ $filtros = $registros->getFiltrosInventario(); ?>
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="#">Consulta de Información</a>
+                            <a href="/">Consulta de Información</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Inventario de Obras de los Distritos de Riego</li>
                     </ol>
@@ -41,11 +42,10 @@ $filtros = $registros->getFiltrosInventario(); ?>
             <div class="col-sm" id="filtros">
                 <h6>Seleccione un filtro</h6>
                 <?php foreach ($filtros as $filtro) { ?>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="filtro"
-                        value="<?php echo $filtro['id_filtro'] ?>">
-                    <label class="form-check-label" for="inlineRadio1"><?php echo $filtro['filtro'];?></label>
-                </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filtro" id="<?php echo $filtro['id_filtro'] ?>" value="<?php echo $filtro['id_filtro'] ?>">
+                        <label class="form-check-label" for="<?php echo $filtro['id_filtro'] ?>"><?php echo $filtro['filtro'] ?></label>
+                    </div>
                 <?php } ?>
             </div>
             <hr>
@@ -83,10 +83,8 @@ $filtros = $registros->getFiltrosInventario(); ?>
 </div>
 <br>
 <!-- Modal -->
-<a href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i
-        class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<a href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">

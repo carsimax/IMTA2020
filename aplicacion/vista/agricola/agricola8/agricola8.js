@@ -12,80 +12,14 @@
  *  específicamente el Informe estadístico de producción agrícola
  */
 
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
-$("#Organismos").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Organismo de Cuenca",
-    search: "Buscar Organismos de Cuenca",
-  },
-});
+ //Se aplica estilos a los selects
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipio');
+setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
+setEstiloSelect('#Anios', 'Anios', 'Buscar Año');
 
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Estado",
-    search: "Buscar Estado",
-  },
-});
-/**
- * Se aplica el estilo al select de los Distritos
- */
-$("#Municipios").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Municipio",
-    search: "Buscar Municipio",
-  },
-});
 
-/**
- * Se inicializa el multiselect  Cultivos
- */
-$("#Cultivos").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Cultivo",
-    search: "Buscar Cultivo",
-  },
-});
-/**
- * Se inicializa el multiselect  Tenencias
- */
-$("#Tenencias").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione una Tenencia",
-    search: "Buscar Tenencia",
-  },
-});
-/**
- * Se aplica el estilo al select de Anios
- */
-$("#Anios").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un rango de años",
-    search: "Buscar Año",
-  },
-});
 citas = "";
 query = "";
 

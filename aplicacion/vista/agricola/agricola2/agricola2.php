@@ -97,6 +97,7 @@ $Fuentes = $registros->getFuentes();
         <br>
     </div>
 </div>
-
+<!-- Funciones globales de los selects -->
+<script src="/../sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->
 <script src="/aplicacion/vista/agricola/agricola2/agricola2.js"></script>

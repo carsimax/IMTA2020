@@ -67,6 +67,7 @@ if (!isset($_SESSION)) {
     <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     <!--Scripts Personales-->
     <!--<link rel="stylesheet" href="/estilo/css/sticky-footer.css">-->
+    <link rel="stylesheet" href="/Estilo/css/gridCards.css">
     <link rel="stylesheet" href="/estilo/css/multiselect.css">
     <script src="/estilo/js/jquery.multiselect.js"></script>
     <script src="/estilo/js/5320a8a9f1.js"></script>

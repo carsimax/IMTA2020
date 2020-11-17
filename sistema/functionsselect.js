@@ -1,6 +1,6 @@
 
 //Asinga el estilo buscando por el id del select
-async function setEstiloSelect(idSelect, placeholder, search) {
+function setEstiloSelect(idSelect, placeholder, search) {
     $(idSelect).multiselect({
         columns: 1,
         search: true,

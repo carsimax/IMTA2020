@@ -12,70 +12,15 @@
  *
  */
 
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
 $("#map").show();
-$("#Organismos").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Organismo de Cuenca",
-    search: "Buscar Organismos de Cuenca",
-  },
-});
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Estado",
-    search: "Buscar Estado",
-  },
-});
-/**
- * Se aplica el estilo al select de los Distritos
- */
-$("#Distritos").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Distrito",
-    search: "Buscar Distrito",
-  },
-});
 
-/**
- * Se aplica el estilo al select de Tenencias
- */
-$("#Tenencias").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione una Tenencia",
-    search: "Buscar Tenencia",
-  },
-});
-
-/**
- * Se aplica el estilo al select de Fuentes
- */
-$("#Fuentes").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione una Fuente",
-    search: "Buscar Fuente",
-  },
-});
-
+ // Se aplica el estilo a los selects
+ setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
+ setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+ setEstiloSelect('#Tenencias', 'Tenencias', 'Buscar Modalidad');
+ setEstiloSelect('#Fuentes', 'Fuentes', 'Buscar Cultivo');
+ setEstiloSelect('#Distritos', 'Distritos de Riego', 'Buscar Distrito');
+ 
 
 async function Anios() {
   await limpiarOrganismos();

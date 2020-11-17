@@ -1,55 +1,13 @@
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
+
 citas = "";
 query = "";
-$("#Organismos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Organismo de Cuenca",
-        search: "Buscar Organismos de Cuenca",
-    },
-});
 
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Estado",
-        search: "Buscar Estado",
-    },
-});
-/**
- * Se aplica el estilo al select de los Distritos
- */
-$("#Municipios").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Municipio",
-        search: "Buscar Municipio",
-    },
-});
+// Se aplica el estilo a los selects
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipio');
+setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
 
-/**
- * Se inicializa el multiselect  Cultivos
- */
-$("#Cultivos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Cultivo",
-        search: "Buscar Cultivo",
-    },
-});
 
 
 async function Anios() {

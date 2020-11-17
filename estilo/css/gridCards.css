@@ -1,0 +1,20 @@
+
+
+.contenedor-cards{
+    display: flex;
+    flex-wrap: wrap; /*EL WRAP HACE QUE SI NO CABE UN ELEMENTO SE PONE ABAJO*/
+    justify-content: space-evenly;    
+     /* justify-content: flex-start; */    
+}
+
+.modulo{
+    width: 19%;
+    margin-bottom: 20px;
+    /* margin-left: 20px; */
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.articulo:hover{
+    box-shadow: 0px 4px 10px rgba(17, 29, 48, .26)
+}

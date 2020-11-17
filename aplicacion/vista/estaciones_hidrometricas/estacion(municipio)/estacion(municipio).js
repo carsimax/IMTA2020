@@ -1,9 +1,9 @@
 //Se aplica el estilo para los selects de la vista
-setEstiloSelect('#RegHidrologicas', 'Seleccione Regiones Hidrológicas', 'Buscar Región');
-setEstiloSelect('#Estados', 'Seleccione Estados', 'Buscar Estado');
-setEstiloSelect('#Municipios', 'Seleccione Municipios', 'Buscar Municipios');
-setEstiloSelect('#Cuencas', 'Seleccione Cuencas', 'Buscar Cuencas');
-setEstiloSelect('#EstacionHidrometrica', 'Seleccione Estaciones', 'Buscar Estación');
+setEstiloSelect('#RegHidrologicas', 'Regiones Hidrológicas', 'Buscar Región');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipios');
+setEstiloSelect('#Cuencas', 'Cuencas', 'Buscar Cuencas');
+setEstiloSelect('#EstacionHidrometrica', 'Estaciones', 'Buscar Estación');
 
 
 //Controla la información del select de estados dependiendo de los valores seleccionados en el select de Regiones

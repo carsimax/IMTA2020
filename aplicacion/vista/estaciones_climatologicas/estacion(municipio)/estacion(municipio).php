@@ -81,6 +81,6 @@ $Organismos = $registros->getTodos();
         <br>
     </div>
 </div>
-
+<!-- Funciones globales de los selects -->
 <script src="/sistema/functionsselect.js"></script>
 <script src="/aplicacion/vista/estaciones_climatologicas/estacion(municipio)/estacion(municipio).js"></script>

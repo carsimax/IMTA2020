@@ -104,6 +104,7 @@ $Anios = $registros->getAnioSiembraDistrito();
         <br>
     </div>
 </div>
-
+<!-- Funciones globales de los selects -->
+<script src="/../sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->
 <script src="/aplicacion/vista/agricola/agricola1/agricola1.js"></script>

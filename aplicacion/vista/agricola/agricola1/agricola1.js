@@ -12,99 +12,14 @@
  *  específicamente el Informe estadístico de producción agrícola
  */
 
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
-citas = "";
-query = '';
-$("#Organismos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Organismo de Cuenca",
-        search: "Buscar Organismos de Cuenca",
-    },
-});
-
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Estado",
-        search: "Buscar Estado",
-    },
-});
-
-/**
- * Se aplica el estilo al select de los Distritos
- */
-$("#Distritos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Distrito",
-        search: "Buscar Distrito",
-    },
-});
-
-/**
- *Se inicializa el multiselect  Ciclos agricolas
- */
-$("#Ciclos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Ciclo Agrícola",
-        search: "Buscar Ciclo",
-    },
-});
-
-/**
- * Se inicializa el multiselect  Modalidades
- */
-$("#Modalidades").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione una Modalidad",
-        search: "Buscar Modalidad",
-    },
-});
-
-/**
- * Se inicializa el multiselect  Cultivos
- */
-$("#Cultivos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Cultivo",
-        search: "Buscar Cultivo",
-    },
-});
-
-/**
- * Se inicializa el multiselect  Tenencias
- */
-$("#Tenencias").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione una Tenencia",
-        search: "Buscar Tenencia",
-    },
-});
-
+// Se aplica el estilo a los selects
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Distritos', 'Distritos de Riego', 'Buscar Distrito');
+setEstiloSelect('#Ciclos', 'Ciclos Agrícolas', 'Buscar Ciclo');
+setEstiloSelect('#Modalidades', 'Modalidades', 'Buscar Modalidad');
+setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
+setEstiloSelect('#Tenencias', 'Tenencias', 'Buscar Tenencia');
 
 async function Anios() {
     await limpiarOrganismos();

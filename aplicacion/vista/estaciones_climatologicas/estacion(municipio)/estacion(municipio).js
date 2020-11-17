@@ -1,11 +1,11 @@
-
 //Se aplica el estilo para los selects de la vista
-setEstiloSelect('#Organismos', 'Seleccione Organismo de Cuenca', 'Buscar Organismos de Cuenca');
-setEstiloSelect('#Estados', 'Seleccione Estados', 'Buscar Estado');
-setEstiloSelect('#Municipios', 'Seleccione Municipios', 'Buscar Municipios');
-setEstiloSelect('#Cuencas', 'Seleccione Cuencas', 'Buscar Cuencas');
-setEstiloSelect('#TipoEstacion', 'Seleccione el Tipo', 'Buscar Tipo');
-setEstiloSelect('#EstacionClimatologica', 'Seleccione Estaciones', 'Buscar Estación');
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipios');
+setEstiloSelect('#Cuencas', 'Cuencas', 'Buscar Cuencas');
+setEstiloSelect('#TipoEstacion', 'Tipos', 'Buscar Tipo');
+setEstiloSelect('#EstacionClimatologica', 'Estaciones', 'Buscar Estación');
+
 
 
 
