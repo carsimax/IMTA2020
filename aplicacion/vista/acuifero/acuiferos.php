@@ -82,9 +82,9 @@ $filtros = $registros->getTodos();
             <div class="col-sm" id="pantalla2">
                 <hr>
                 <div class="row">
-                    <div class="col-sm">
+                    <div class="col-sm ml-2">
                         <h4>Glosario</h4>
-                        <ul>
+                        <ul class="ml-4">
                             <li><b>DOF: </b>Diario Oficial de la Federación de México.</li>
                             <li><b>REPDA: </b>Registro Público de Derechos de Agua.</li>
                             <li><b>R: </b>Recarga Media Anual.</li>
@@ -102,11 +102,7 @@ $filtros = $registros->getTodos();
                             <li><b>DMA: </b>Disponibilidad media anual de agua del subsuelo.</li>
                         </ul>
                     </div>
-                    <div class="col-sm" id='referencias'>
-                        <h3>Referencias</h3>
-                        <ul id='lista'>
-                        </ul>
-                    </div>
+                    <?php require_once(__DIR__ . "/../plantillas/referencias.html");?>
                 </div>
             </div>
         </main>

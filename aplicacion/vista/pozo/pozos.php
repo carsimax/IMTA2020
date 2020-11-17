@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -39,10 +40,10 @@ $filtros = $registros->getPozos();
             <div class="col-sm" id="filtros">
                 <h6>Seleccione un filtro</h6>
                 <?php foreach ($filtros as $filtro) { ?>
-                <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="filtro" id="<?php echo $filtro['id_filtro'] ?>" value="<?php echo $filtro['id_filtro'] ?>">
-                    <label class="form-check-label" for="<?php echo $filtro['id_filtro'] ?>"><?php echo $filtro['filtro'] ?></label>
-                </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="filtro" id="<?php echo $filtro['id_filtro'] ?>" value="<?php echo $filtro['id_filtro'] ?>">
+                        <label class="form-check-label" for="<?php echo $filtro['id_filtro'] ?>"><?php echo $filtro['filtro'] ?></label>
+                    </div>
                 <?php } ?>
             </div>
             <hr>
@@ -57,8 +58,7 @@ $filtros = $registros->getPozos();
                     <h4>Prioridad de Vizualización</h4>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <input id="Prioridad" type="checkbox" data-toggle="toggle" data-on="Tabular" data-off="Geoespacial"
-                        checked>
+                    <input id="Prioridad" type="checkbox" data-toggle="toggle" data-on="Tabular" data-off="Geoespacial" checked>
                 </div>
                 <br>
             </div>
@@ -86,21 +86,15 @@ $filtros = $registros->getPozos();
             </div>
             <div class="col-sm" id="pantalla2">
                 <hr>
-            <div class="col-sm" id='referencias'>
-                        <h3>Referencias</h3>
-                        <ul id='lista'>
-                        </ul>
-                    </div>
+                <?php require_once(__DIR__ . "/../plantillas/referencias.html");?>
             </div>
         </main>
     </div>
 </div>
 <br>
 <!-- Modal -->
-<a href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i
-        class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<a href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">

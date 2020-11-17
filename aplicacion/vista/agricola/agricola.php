@@ -68,16 +68,7 @@ $filtros = $registros->getAgricola(); ?>
             <div class="col-sm" id="pantalla">
 
             </div>
-            <div class="col-sm" id="referencias">
-                <hr>
-                <div class="row">
-                    <div class="col-sm" id='referencias'>
-                        <h3>Referencias</h3>
-                        <ul id='lista'>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
         </main>
     </div>
 </div>

@@ -270,6 +270,8 @@ async function Consultar() {
      */
     if (OC !== "" && Est !== "" && DR !== "") {
         //AJAX que se encarga de extraer las citas de la información seleccionda
+        getCitaConsulta();
+
         query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ")";
         await desgloce1(query);
         await habilitar();

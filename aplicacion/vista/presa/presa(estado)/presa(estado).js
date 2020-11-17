@@ -16,7 +16,7 @@ $("#Organismos").multiselect({
     search: true,
     selectAll: true,
     texts: {
-        placeholder: "Seleccione un Organismo de Cuenca",
+        placeholder: "Organismos de Cuenca",
         search: "Buscar Organismos de Cuenca",
     },
 });
@@ -28,7 +28,7 @@ $("#Estados").multiselect({
     search: true,
     selectAll: true,
     texts: {
-        placeholder: "Seleccione un Estado",
+        placeholder: "Estados",
         search: "Buscar Estado",
     },
 });
@@ -40,7 +40,7 @@ $("#Presas").multiselect({
     search: true,
     selectAll: true,
     texts: {
-        placeholder: "Seleccione una Presa",
+        placeholder: "Presas",
         search: "Buscar Presa",
     },
 });
@@ -292,7 +292,7 @@ async function Consultar() {
      */
     if (Pres !== "" && OC !== "" && Est !== "") {
         //Se obtiene la cita con la información de las presas
-        cadena = "Accion=ConsultaPresa&modulo_id=2";
+        cadena = "Accion=getCitaConsulta&modulo_id=2";
         citas = "\n ";
         $.ajax({
             type: "GET",

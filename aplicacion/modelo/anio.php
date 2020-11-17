@@ -105,6 +105,24 @@ class Anio {
             return null;
         }
     }
+
+    public function getAll()
+    {
+        $pdo = new DBConnection();
+        $db = $pdo->DBConnect();
+        try {
+            $db->beginTransaction();
+            $select = $db->prepare('SELECT * FROM anio order by anio desc;');
+            $select->execute();
+            $registros = $select->fetchAll(PDO::FETCH_ASSOC);
+            return $registros;
+        } catch (PDOException $exc) {
+            $db->rollback();
+            $db = null;
+            echo $exc->getMessage();
+            return null;
+        }
+    }
     public function getAnioSiembraDistrito()
     {
         $pdo = new DBConnection();

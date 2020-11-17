@@ -74,11 +74,11 @@ $filtros = $registros->getFiltrosMarginacion(); ?>
                     </div>
                 </div>
             </div>
-            <div class="col-sm" id='referencias'>
+            <div class="col-sm ml-2" id='referencias'>
                 <h5>Glosario</h5>
-                <ul id='glosario'></ul>
+                <ul class="ml-4" id='glosario'></ul>
                 <h5>Referencias</h5>
-                <ul id='lista'></ul>
+                <ul class="ml-4" id='lista'>
             </div>
         </main>
     </div>

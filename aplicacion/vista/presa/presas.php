@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -37,7 +38,7 @@ $filtros = $registros->getPresas();
             </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
-                <div id="divFiltro">   
+                <div id="divFiltro">
                 </div>
             </div>
             <div id="divPrioridad">
@@ -51,39 +52,33 @@ $filtros = $registros->getPresas();
             </div>
             <!--Resultado-->
             <div class="col-sm" id="pantalla">
-            <div class="col-sm" id="tabla">
-                <div class="row">
-                    <div class="col-sm">
-                        <table id="tablaPresa" class="table table-bordered responsive nowrap" style="width:100%"></table> 
+                <div class="col-sm" id="tabla">
+                    <div class="row">
+                        <div class="col-sm">
+                            <table id="tablaPresa" class="table table-bordered responsive nowrap" style="width:100%"></table>
+                        </div>
                     </div>
-                </div>
-                <div id="divVolumen" class="row"> 
-                    <div id="tituloV" class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
-                        <h3 class="panel-title">Volumen Presa</h3>
+                    <div id="divVolumen" class="row">
+                        <div id="tituloV" class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+                            <h3 class="panel-title">Volumen Presa</h3>
+                        </div>
+                        <div class="col-sm">
+                            <table id="tablaVolumen" class="table table-bordered responsive nowrap" style="width:100%"></table>
+                        </div>
                     </div>
-                    <div class="col-sm">
-                    <table id="tablaVolumen" class="table table-bordered responsive nowrap" style="width:100%"></table>
-                    </div>
-                </div>
                 </div>
             </div>
             <div class="col-sm" id="pantalla2">
-            <hr>
-                <div class="col-sm" id='referencias'>
-                    <h3>Referencias</h3>
-                    <ul id='lista'>                    
-                    </ul>
-                </div>
+                <hr>
+                <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
             </div>
         </main>
     </div>
 </div>
 <br>
 <!-- Modal -->
-<a href="#" id="botonMapa"  onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i
-        class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<a href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">

@@ -44,7 +44,7 @@ class Modulo {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT * FROM modulo');
+            $select = $db->prepare('SELECT * FROM modulo ORDER BY nombre');
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;

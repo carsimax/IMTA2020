@@ -17,7 +17,7 @@ setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cue
 setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
 setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipio');
 setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
-setEstiloSelect('#Anios', 'Anios', 'Buscar Año');
+setEstiloSelect('#Anios', 'Años', 'Buscar Año');
 
 
 citas = "";

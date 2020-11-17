@@ -309,7 +309,7 @@ async function generarTablaEstacionClimatologica(data) {
                 title: 'Fecha de Termino'
             },
             {
-                title: 'Situacion'
+                title: 'Situación'
             }
         ],
         buttons: [

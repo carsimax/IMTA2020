@@ -45,7 +45,7 @@ $(document).on("change", "input[type=radio]", async function () {
          */
         document.getElementById("divFiltro").innerHTML = "";
         document.getElementById("pantalla").innerHTML = "";
-        await $("#referencias").hide();
+        $("#referencias").hide();
         document.getElementById("lista").innerHTML = "";
     }
     /**
@@ -62,7 +62,7 @@ $(document).on("change", "input[type=radio]", async function () {
     /**
      * Se carga la sección de código HTML correspondiente al filtro seleccionado.
      */
-    await $("#divFiltro").load($val.toLowerCase() + "/" + $val.toLowerCase()+ ".php");
+    await $("#divFiltro").load($val.toLowerCase() + "/" + $val.toLowerCase() + ".php");
     await $("#pantalla").load($val.toLowerCase() + "/" + $val.toLowerCase() + "s.php");
     /**
      * Se crea nuevamente el mapa
@@ -129,11 +129,12 @@ async function habilitar() {
     $("#pantalla").show();
     $("#divPrioridad").show();
     $("#botonMapa").show();
+    $("#referencias").show();
 }
 
 async function cargarMapa() {
     var x = $('#Prioridad').prop('checked');
-    if (x==true) {
+    if (x == true) {
         if (!map.hasLayer(OCSelect)) {
             await loadShape();
             var callBack = async function () {

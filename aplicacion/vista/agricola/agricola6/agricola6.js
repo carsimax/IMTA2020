@@ -15,7 +15,7 @@
 // Se aplica el estilo a los selects
 setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
 setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
-setEstiloSelect('#Distritos', 'Distritos de Riego', 'Buscar Distrito');
+setEstiloSelect('#Distritos', 'Distritos de Temporal', 'Buscar Distrito');
 setEstiloSelect('#Ciclos', 'Ciclos', 'Buscar Ciclo');
 setEstiloSelect('#Modalidades', 'Modalidades', 'Buscar Modalidad');
 setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');

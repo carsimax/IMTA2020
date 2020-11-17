@@ -147,7 +147,7 @@ class Catalogo {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT * FROM tabla_registro');
+            $select = $db->prepare('SELECT id_registro, fuente, modulo.nombre, anio.anio, fecha FROM tabla_registro, modulo, anio WHERE tabla_registro.anio_id = anio.id_anio AND tabla_registro.modulo_id = modulo.id_modulo;');
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;
@@ -164,7 +164,7 @@ class Catalogo {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('select cita from tabla_registro where modulo_id=:modulo_id ORDER BY anio_id DESC LIMIT 1');
+            $select = $db->prepare('SELECT cita from tabla_registro where modulo_id=:modulo_id ORDER BY anio_id DESC LIMIT 1');
             $select->bindValue('modulo_id', $this->getModulo_id(), PDO::PARAM_INT);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -182,7 +182,7 @@ class Catalogo {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('select cita from tabla_registro where modulo_id=:modulo_id');
+            $select = $db->prepare('SELECT cita from tabla_registro where modulo_id=:modulo_id');
             $select->bindValue('modulo_id', $this->getModulo_id(), PDO::PARAM_INT);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -200,7 +200,7 @@ public function getCitaConsultaAgricola($query) {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('select cita from tabla_registro where (modulo_id=:modulo_id) AND ('.$query.') OR (id_registro=9)');
+            $select = $db->prepare('SELECT cita from tabla_registro where (modulo_id=:modulo_id) AND ('.$query.') OR (id_registro=9)');
             $select->bindValue('modulo_id', $this->getModulo_id(), PDO::PARAM_INT);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -213,12 +213,12 @@ public function getCitaConsultaAgricola($query) {
         }
     }
     
-    public function getCitaConsultaAgricolaDTT($query) {
+    public function getCitaConsultaAnio($query) {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('select cita from tabla_registro where (modulo_id=:modulo_id) AND ('.$query.')');
+            $select = $db->prepare('SELECT cita from tabla_registro where (modulo_id=:modulo_id) AND ('.$query.')');
             $select->bindValue('modulo_id', $this->getModulo_id(), PDO::PARAM_INT);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -235,7 +235,7 @@ public function getCitaConsultaAgricola($query) {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('select cita from tabla_registro,anio where (modulo_id=:modulo_id) AND ('.$query.') AND (tabla_registro.anio_id=anio.id_anio) ORDER BY anio.anio DESC');
+            $select = $db->prepare('SELECT cita from tabla_registro,anio where (modulo_id=:modulo_id) AND ('.$query.') AND (tabla_registro.anio_id=anio.id_anio) ORDER BY anio.anio DESC');
             $select->bindValue('modulo_id', $this->getModulo_id(), PDO::PARAM_INT);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);

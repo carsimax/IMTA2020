@@ -426,17 +426,22 @@ async function Consultar() {
   const Anio = await selectAnio();
   const Clave = await selectClave();
   if (OC !== "" && Est !== "" && Mun !== "" && Anio !== "" && Clave !== "") {
-    query = "(" +
-      OC +
-      ") AND (" +
-      Est +
-      ") AND (" +
-      Mun +
-      ") AND (" +
-      Anio +
-      ") AND (" +
-      Clave +
-      ")";
+    //Se obtiene la cita con la información de calidad del agua
+    cadena = "Accion=getCitaConsultaAnio&modulo_id=10&anios=anio_id=" + $( "#Anios" ).val();
+    citas = "\n ";
+    $.ajax({
+      type: "GET",
+      url: "/aplicacion/controlador/catalogo.php",
+      data: cadena,
+      success: function (resp) {
+        document.getElementById("lista").innerHTML = "";
+        $.each(JSON.parse(resp), function (index, item) {
+          citas += item.cita + " \n";
+          $("#lista").append("<li class='text-left'>" + item.cita + "</li>");
+        });
+      },
+    });
+    query = "(" + OC + ") AND (" + Est + ") AND (" + Mun + ") AND (" + Anio + ") AND (" + Clave + ")";
     var indicador = $("#indicador :selected").val();
     switch (indicador) {
       case 'DBO_TOT':

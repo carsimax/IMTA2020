@@ -83,9 +83,10 @@ switch ($accion) {
             echo $exc->getTraceAsString();
         }
         break;
-    case 'ConsultaAgricolaDTT':
+    case 'getCitaConsultaAnio':
+        //Se extrae la cita de un modulo y un año nada más.
         try {
-            getCitaConsultaAgricolaDTT();
+            getCitaConsultaAnio();
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
@@ -104,9 +105,9 @@ switch ($accion) {
             echo $exc->getTraceAsString();
         }
         break;
-    case 'ConsultaPresa':
+    case 'getCitaConsulta':
         try {
-            getCitaConsultaPresa();
+            getCitaConsulta();
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
@@ -198,9 +199,6 @@ function Actualizar()
     }
 }
 
-/**
- * Funcion para Eliminar un ciclo
- */
 function Eliminar()
 {
     /**
@@ -243,11 +241,11 @@ function getCitaConsultaAgricola()
     $Catalogo->setModulo_id(filter_input(INPUT_GET, "modulo_id"));
     echo json_encode($Catalogo->getCitaConsultaAgricola(filter_input(INPUT_GET, "anios")));
 }
-function getCitaConsultaAgricolaDTT()
+function getCitaConsultaAnio()
 {
     $Catalogo = new Catalogo();
     $Catalogo->setModulo_id(filter_input(INPUT_GET, "modulo_id"));
-    echo json_encode($Catalogo->getCitaConsultaAgricolaDTT(filter_input(INPUT_GET, "anios")));
+    echo json_encode($Catalogo->getCitaConsultaAnio(filter_input(INPUT_GET, "anios")));
 }
 
 
@@ -260,7 +258,7 @@ function getCitaConsultaPozo()
 
 
 
-function getCitaConsultaPresa()
+function getCitaConsulta()
 {
     $Catalogo = new Catalogo();
     $Catalogo->setModulo_id(filter_input(INPUT_GET, "modulo_id"));

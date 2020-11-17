@@ -7,7 +7,7 @@ query = "";
 // Se aplica el estilo a los selects
 setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
 setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
-setEstiloSelect('#Distritos', 'Distritos de Riego', 'Buscar Distrito');
+setEstiloSelect('#Distritos', 'Distritos de Temporal', 'Buscar Distrito');
 setEstiloSelect('#Ciclos', 'Ciclos', 'Buscar Ciclo');
 setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
 
@@ -321,8 +321,8 @@ async function Consultar() {
      * * Se verifica que el query de Organismos ese vacio
      * */
     if (OC !== "" && Est !== "" && DR !== "" && Ciclo !== "" && Cultivo !== "" && Anio !== "") {
-        //Se obtiene la cita con la información de los acuiferos
-        cadena = "Accion=ConsultaAgricolaDTT&modulo_id=9&anios=anio_id=" + $( "#Anios" ).val();
+        //Se obtiene la cita
+        cadena = "Accion=getCitaConsultaAnio&modulo_id=9&anios=anio_id=" + $( "#Anios" ).val();
         citas = "\n ";
         $.ajax({
             type: "GET",

@@ -214,3 +214,21 @@ async function loadShape() {
     });
 }
 
+function getCitaConsulta() {
+    //Se obtiene la cita con la información de calidad del agua
+    cadena = "Accion=getCitaConsulta&modulo_id=11";
+    citas = "\n ";
+    $.ajax({
+        type: "GET",
+        url: "/aplicacion/controlador/catalogo.php",
+        data: cadena,
+        success: function (resp) {
+            document.getElementById("lista").innerHTML = "";
+            $.each(JSON.parse(resp), function (index, item) {
+                citas += item.cita + " \n";
+                $("#lista").append("<li class='text-left'>" + item.cita + "</li>");
+            });
+        },
+    });
+
+}

@@ -47,11 +47,7 @@ require_once(__DIR__ . "/../plantillas/header.php");
                     </div>
                 </div>
             </div>
-            <div class="col-sm" id='referencias'>
-                <h5>Referencias</h5>
-                <ul id='lista'>
-                </ul>
-            </div>
+            <?php require_once(__DIR__ . "/../plantillas/referencias.html");?>
 
         </main>
     </div>
