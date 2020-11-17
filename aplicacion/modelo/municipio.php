@@ -158,7 +158,7 @@ class Municipio {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT  municipio.nombre as municipio, estado.nombre AS estado from municipio, estado where id_municipio=:id_municipio and estado.id_estado=municipio.estado_id');
+            $select = $db->prepare('SELECT  municipio.nombre as municipio, estado.nombre AS estado from municipio, estado where id_municipio=:id_municipio and estado.id_estado=municipio.estado_id ORDER BY municipio ASC');
             $select->bindValue('id_municipio', $id, PDO::PARAM_INT);
             $select->execute();
             return $select->fetch();

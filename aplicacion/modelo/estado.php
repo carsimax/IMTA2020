@@ -189,7 +189,7 @@ class Estado {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('Select id_municipio, nombre from municipio where estado_id=:estado_id');
+            $select = $db->prepare('Select id_municipio, nombre from municipio where estado_id=:estado_id ORDER BY nombre ASC');
             $select->bindValue('estado_id', $this->getIdEstado(), PDO::PARAM_INT);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
