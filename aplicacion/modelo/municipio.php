@@ -199,7 +199,7 @@ class Municipio {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $sql = 'SELECT * FROM municipio WHERE ' . $query;
+            $sql = 'SELECT * FROM municipio WHERE ' . $query. 'ORDER BY nombre ASC';
             $select = $db->prepare($sql);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);

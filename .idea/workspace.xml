@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5193060c-1c68-4d13-9b70-20c5f086c29c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/acuifero/acuifero(estado)/acuifero(estado)t.php" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/acuifero/acuifero(estado)/acuifero(estado)t.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/acuifero/acuifero(municipio)/acuifero(municipio)t.php" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/acuifero/acuifero(municipio)/acuifero(municipio)t.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/acuifero/acuifero.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/acuifero/acuifero.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola1/agricola1.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola1/agricola1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola2/agricola2.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola2/agricola2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola3/agricola3.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola3/agricola3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola4/agricola4.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola4/agricola4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola5/agricola5.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola5/agricola5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola6/agricola6.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola6/agricola6.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola7/agricola7.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola7/agricola7.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola8/agricola8.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola8/agricola8.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial(anual)/calidad_agua_superficial(anual).js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial(anual)/calidad_agua_superficial(anual).js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/crud/dtts/editsiembra.php" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/crud/dtts/editsiembra.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/estaciones_climatologicas/estacion.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/estaciones_climatologicas/estacion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/estaciones_hidrometricas/estacion.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/estaciones_hidrometricas/estacion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/indice_marginacion/indice(estado)/indice(estado).js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/indice_marginacion/indice(estado)/indice(estado).js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/indice_marginacion/indice(municipio)/indice(municipio).js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/indice_marginacion/indice(municipio)/indice(municipio).js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/indice_marginacion/indice.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/indice_marginacion/indice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/inventario/inventario1/inventario1.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/inventario/inventario1/inventario1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/inventario/inventario2/inventario2.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/inventario/inventario2/inventario2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/plantillas/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/plantillas/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/pozo/pozo.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/pozo/pozo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/presa/presa(estado)/presa(estado).js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/presa/presa(estado)/presa(estado).js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/presa/presa.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/presa/presa.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estilo/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/estilo/css/bootstrap.css" afterDir="false" />
-    </list>
+    <list default="true" id="5193060c-1c68-4d13-9b70-20c5f086c29c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +31,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605624823820</updated>
-      <workItem from="1605624826011" duration="2128000" />
+      <workItem from="1605624826011" duration="2625000" />
     </task>
     <servers />
   </component>
