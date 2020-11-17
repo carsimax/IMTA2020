@@ -1171,7 +1171,7 @@ async function distribucion1Estacion(query) {
               title: "Clasificación",
             },
             {
-              title: "Valor",
+              title: "Valor (mg/l)",
             },
             {
               title: "Indicador de calidad",
@@ -2013,7 +2013,7 @@ async function distribucion2Estacion(query) {
               title: "Clasificación",
             },
             {
-              title: "Valor",
+              title: "Valor (mg/l)",
             },
             {
               title: "Indicador de calidad",
@@ -2855,7 +2855,7 @@ async function distribucion3Estacion(query) {
               title: "Clasificación",
             },
             {
-              title: "Valor",
+              title: "Valor (mg/l)",
             },
             {
               title: "Indicador de calidad",
@@ -3697,7 +3697,7 @@ async function distribucion4Estacion(query) {
               title: "Clasificación",
             },
             {
-              title: "Valor",
+              title: "Valor (NMP/100ml)",
             },
             {
               title: "Indicador de calidad",
