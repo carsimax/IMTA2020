@@ -31,7 +31,7 @@ $(document).ready(async function () {
 
 //Tabla Presas
 table = $("#tablaPresa").DataTable({
-    columnDefs: [{className: "text-right", targets: [5]}],
+    columnDefs: [{className: 'dt-body-right', targets: [5]}],
     dom: "Bfrtip",
     columns: [
         {
@@ -157,7 +157,7 @@ table = $("#tablaPresa").DataTable({
 
 //Tabla para Presa Volumen
 tableV = $("#tablaVolumen").DataTable({
-    columnDefs: [{className: "text-right", targets: [3, 4, 5, 6]}],
+    columnDefs: [{className: 'dt-body-right', targets: [3, 4, 5, 6]}],
     dom: "Bfrtip",
     columns: [
         {
@@ -377,7 +377,7 @@ $("#tablaPresa").on("click", "button", async function () {
             tableV = $("#tablaVolumen").DataTable({
                 data: data,
                 columnDefs: [
-                    {className: "text-right", targets: [3, 4, 5, 6]},
+                    {className: 'dt-body-right', targets: [3, 4, 5, 6]},
                     {
                         targets: 0,
                         data: null,

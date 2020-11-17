@@ -1164,7 +1164,7 @@ async function Consultar() {
           paging: false,
           searching: false,
           scrollY: "450px",
-          columnDefs: [{ className: "text-right", targets: [1, 2] }],
+          columnDefs: [{ className: 'dt-body-right', targets: [1, 2] }],
           language: {
             url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
           },
@@ -1196,7 +1196,7 @@ async function Consultar() {
           searching: false,
           paging: false,
           scrollY: "450px",
-          columnDefs: [{ className: "text-right", targets: [1] }],
+          columnDefs: [{ className: 'dt-body-right', targets: [1] }],
           language: {
             url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
           },
@@ -1228,7 +1228,7 @@ async function Consultar() {
           searching: false,
           paging: false,
           scrollY: "450px",
-          columnDefs: [{ className: "text-right", targets: [1] }],
+          columnDefs: [{ className: 'dt-body-right', targets: [1] }],
           language: {
             url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
           },
@@ -1260,7 +1260,7 @@ async function Consultar() {
           searching: false,
           paging: false,
           scrollY: "450px",
-          columnDefs: [{ className: "text-right", targets: [1] }],
+          columnDefs: [{ className: 'dt-body-right', targets: [1] }],
           language: {
             url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
           },
@@ -1292,7 +1292,7 @@ async function Consultar() {
           searching: false,
           paging: false,
           scrollY: "450px",
-          columnDefs: [{ className: "text-right", targets: [1] }],
+          columnDefs: [{ className: 'dt-body-right', targets: [1] }],
           language: {
             url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
           },

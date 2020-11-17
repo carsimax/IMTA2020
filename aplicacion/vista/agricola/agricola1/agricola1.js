@@ -828,7 +828,7 @@ async function desgloce1(query) {
                         },
                     ],
                     columnDefs: [
-                        {className: "text-right", targets: [1, 2, 3, 4, 5, 6]},
+                        {className: 'dt-body-right', targets: [1, 2, 3, 4, 5, 6]},
                     ],
                     /**
                      * Se colocan los datos obenidos
@@ -1192,7 +1192,7 @@ async function desgloce2() {
                                      */
                                     columnDefs: [
                                         {
-                                            className: "text-right",
+                                            className: 'dt-body-right',
                                             targets: [1, 2, 3, 4, 5, 6],
                                         },
                                     ],
@@ -1506,7 +1506,7 @@ async function desgloce3() {
                          */
 
                         columnDefs: [
-                            { className: "text-right", targets: [1, 2, 3, 4, 5, 6] },
+                            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5, 6] },
                         ],
                         searching: false,
                         paging: false,
@@ -1973,7 +1973,7 @@ async function desgloce4() {
                                     columnDefs: [
                                         {targets: [0], visible: false},
                                         {
-                                            className: "text-right",
+                                            className: 'dt-body-right',
                                             targets: [3, 4, 5, 6, 7, 8],
                                         },
                                     ],
@@ -2430,7 +2430,7 @@ async function desgloce5() {
                                     columnDefs: [
                                         {targets: [0], visible: false},
                                         {
-                                            className: "text-right",
+                                            className: 'dt-body-right',
                                             targets: [2, 3, 4, 5, 6, 7],
                                         },
                                     ],

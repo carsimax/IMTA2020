@@ -11138,3 +11138,7 @@ table.dataTable tbody td {
   background-color:#e9ecef;
 }
 /***************/
+th {text-align:center}
+.numericCol{
+  float:right;
+}

@@ -76,7 +76,7 @@ require_once(__DIR__ . "/../../../controlador/modulosadmin.php");
                 language: {
                     url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 },
-                columnDefs: [{ className: "text-right", targets: [3, 4, 5, 6, 7, 8,9] },
+                columnDefs: [{ className: 'dt-body-right', targets: [3, 4, 5, 6, 7, 8,9] },
                     {
                         targets: 8,
                         data: null,

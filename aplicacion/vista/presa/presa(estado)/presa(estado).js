@@ -329,7 +329,7 @@ async function Consultar() {
                     table = $("#tablaPresa").DataTable({
                         data: data,
                         columnDefs: [
-                            {className: "text-right", targets: [5]},
+                            {className: 'dt-body-right', targets: [5]},
                             {
                                 targets: 0,
                                 data: null,

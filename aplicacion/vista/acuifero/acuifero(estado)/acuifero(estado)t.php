@@ -29,7 +29,7 @@
 //Tabla de Organismos de cuenca
 tablaOC = $('#OC').DataTable({
     columnDefs: [{
-            className: "text-right",
+            className: 'dt-body-right',
             targets: [2, 3, 4, 5, 6, 7, 8]
         },
         {
@@ -164,7 +164,7 @@ tablaOC = $('#OC').DataTable({
 //Tablas de Estados
 tablaEst = $('#Est').DataTable({
     columnDefs: [{
-            className: "text-right",
+            className: 'dt-body-right',
             targets: [2, 3, 4, 5, 6, 7, 8]
         },
         {
@@ -299,7 +299,7 @@ tablaEst = $('#Est').DataTable({
 //Tabla acuiferos
 tablaAcu = $('#Acu').DataTable({
     columnDefs: [{
-            className: "text-right",
+            className: 'dt-body-right',
             targets: [2, 3, 4, 5, 6, 7, 8]
         },
         {

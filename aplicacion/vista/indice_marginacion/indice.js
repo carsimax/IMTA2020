@@ -12,7 +12,7 @@ $(document).ready(async function () {
   $("#referencias").hide();
   crearMapa();
   table = $("#tablaIndiceMarginacion").DataTable({
-    columnDefs: [{ className: "text-right", targets: [10] }],
+    columnDefs: [{ className: 'dt-body-right', targets: [10] }],
     dom: "Bfrtip",
     columns: [
       {

@@ -301,7 +301,7 @@ async function generarTablaIndiceMarginacion(data) {
         language: {
             url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         },
-        columnDefs: [{ className: "text-right", targets: [1, 2, 3, 4, 5, 6, 7, 8] }]
+        columnDefs: [{ className: 'dt-body-right', targets: [1, 2, 3, 4, 5, 6, 7, 8] }]
 
     });
 

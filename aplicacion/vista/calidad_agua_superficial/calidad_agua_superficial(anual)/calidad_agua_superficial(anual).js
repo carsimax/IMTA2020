@@ -570,7 +570,7 @@ async function distribucion1(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [1, 2, 3, 4, 5] },
+            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -777,7 +777,7 @@ async function distribucion1Est(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [1, 2, 3, 4, 5] },
+            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -987,7 +987,7 @@ async function distribucion1Mun(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [2, 3, 4, 5, 6] },
+            { className: 'dt-body-right', targets: [2, 3, 4, 5, 6] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -1181,7 +1181,7 @@ async function distribucion1Estacion(query) {
             },
           ],
           columnDefs: [
-            { className: "text-right", targets: [5] },
+            { className: 'dt-body-right', targets: [5] },
             {
               targets: 4,
               render: function (data, type, row) {
@@ -1412,7 +1412,7 @@ async function distribucion2(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [1, 2, 3, 4, 5] },
+            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -1619,7 +1619,7 @@ async function distribucion2Est(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [1, 2, 3, 4, 5] },
+            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -1829,7 +1829,7 @@ async function distribucion2Mun(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [2, 3, 4, 5, 6] },
+            { className: 'dt-body-right', targets: [2, 3, 4, 5, 6] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -2023,7 +2023,7 @@ async function distribucion2Estacion(query) {
             },
           ],
           columnDefs: [
-            { className: "text-right", targets: [5] },
+            { className: 'dt-body-right', targets: [5] },
             {
               targets: 4,
               render: function (data, type, row) {
@@ -2254,7 +2254,7 @@ async function distribucion3(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [1, 2, 3, 4, 5] },
+            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -2461,7 +2461,7 @@ async function distribucion3Est(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [1, 2, 3, 4, 5] },
+            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -2671,7 +2671,7 @@ async function distribucion3Mun(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [2, 3, 4, 5, 6] },
+            { className: 'dt-body-right', targets: [2, 3, 4, 5, 6] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -2865,7 +2865,7 @@ async function distribucion3Estacion(query) {
             },
           ],
           columnDefs: [
-            { className: "text-right", targets: [5] },
+            { className: 'dt-body-right', targets: [5] },
             {
               targets: 4,
               render: function (data, type, row) {
@@ -3096,7 +3096,7 @@ async function distribucion4(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [1, 2, 3, 4, 5] },
+            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -3303,7 +3303,7 @@ async function distribucion4Est(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [1, 2, 3, 4, 5] },
+            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -3513,7 +3513,7 @@ async function distribucion4Mun(query) {
            *
            */
           columnDefs: [
-            { className: "text-right", targets: [2, 3, 4, 5, 6] },
+            { className: 'dt-body-right', targets: [2, 3, 4, 5, 6] },
           ],
           /**
            * Se colocan los datos obenidos
@@ -3707,7 +3707,7 @@ async function distribucion4Estacion(query) {
             },
           ],
           columnDefs: [
-            { className: "text-right", targets: [5] },
+            { className: 'dt-body-right', targets: [5] },
             {
               targets: 4,
               render: function (data, type, row) {

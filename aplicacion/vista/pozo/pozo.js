@@ -512,7 +512,7 @@ $("#example").on("click", "button", async function () {
                     tablaPozo = $("#tablaPozo").DataTable({
                         data: data,
                         scrollX: true,
-                        columnDefs: [{className: "text-right", targets: [6, 7, 8, 9]}],
+                        columnDefs: [{className: 'dt-body-right', targets: [6, 7, 8, 9]}],
                         dom: "Bfrtip",
                         columns: [
                             {
@@ -716,7 +716,7 @@ $("#example").on("click", "button", async function () {
                         data: data,
                         scrollX: true,
                         dom: "Bfrtip",
-                        columnDefs: [{className: "text-right", targets: [5, 6, 9, 10]}],
+                        columnDefs: [{className: 'dt-body-right', targets: [5, 6, 9, 10]}],
                         columns: [
                             {
                                 title: "Anexo",
@@ -926,7 +926,7 @@ $("#example").on("click", "button", async function () {
                         data: data,
                         scrollX: true,
                         columnDefs: [
-                            {className: "text-right", targets: [5, 6, 7, 13, 14]},
+                            {className: 'dt-body-right', targets: [5, 6, 7, 13, 14]},
                         ],
                         dom: "Bfrtip",
                         columns: [
@@ -1144,7 +1144,7 @@ $("#example").on("click", "button", async function () {
                     tablaPozo = $("#tablaPozo").DataTable({
                         data: data,
                         scrollX: true,
-                        columnDefs: [{className: "text-right", targets: [5, 6, 8, 9]}],
+                        columnDefs: [{className: 'dt-body-right', targets: [5, 6, 8, 9]}],
                         dom: "Bfrtip",
                         columns: [
                             {
@@ -1392,7 +1392,7 @@ async function Consultar() {
                 data: data,
                 scrollX: true,
                 columnDefs: [
-                    {className: "text-right", targets: [4, 5, 6, 7, 8, 9, 10, 11, 12]},
+                    {className: 'dt-body-right', targets: [4, 5, 6, 7, 8, 9, 10, 11, 12]},
                     {
                         targets: 0,
                         data: null,

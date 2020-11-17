@@ -31,7 +31,7 @@ $(document).ready(async function () {
 
 //Tabla Presas
 table = $("#tablaPresa").DataTable({
-    columnDefs: [{ className: "text-right", targets: [5] }],
+    columnDefs: [{ className: 'dt-body-right', targets: [5] }],
     dom: "Bfrtip",
     columns: [
         {

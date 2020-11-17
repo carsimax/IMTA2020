@@ -689,7 +689,7 @@ async function desgloce3(query) {
             },
           ],
           columnDefs: [
-            {className: "text-right", targets: [2, 3, 4, 5]},
+            {className: 'dt-body-right', targets: [2, 3, 4, 5]},
           ],
           /**
            * Se colocan los datos obenidos
@@ -901,7 +901,7 @@ async function desgloce4(query) {
             },
           ],
           columnDefs: [
-            {className: "text-right", targets: [2, 3, 4, 5]},
+            {className: 'dt-body-right', targets: [2, 3, 4, 5]},
           ],
           /**
            * Se colocan los datos obenidos

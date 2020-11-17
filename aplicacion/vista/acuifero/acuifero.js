@@ -330,7 +330,7 @@ async function mostrarDOrganismo(data) {
   tablaOC = $("#OC").DataTable({
     data: data,
     columnDefs: [
-      { className: "text-right", targets: [2, 3, 4, 5, 6, 7, 8] },
+      { className: 'dt-body-right', targets: [2, 3, 4, 5, 6, 7, 8] },
       {
         targets: 0,
         data: null,
@@ -613,7 +613,7 @@ async function mostrarDEstado() {
           tablaEst = $("#Est").DataTable({
             data: data,
             columnDefs: [
-              { className: "text-right", targets: [2, 3, 4, 5, 6, 7, 8] },
+              { className: 'dt-body-right', targets: [2, 3, 4, 5, 6, 7, 8] },
               {
                 targets: 0,
                 data: null,
@@ -902,7 +902,7 @@ async function mostrarDAcuifero() {
             data: data,
 
             columnDefs: [
-              { className: "text-right", targets: [2, 3, 4, 5, 6, 7, 8] },
+              { className: 'dt-body-right', targets: [2, 3, 4, 5, 6, 7, 8] },
               {
                 targets: 0,
                 data: null,
@@ -1154,7 +1154,7 @@ async function mostrarMunicipio() {
           tablaMun = $("#Mun").DataTable({
             data: data,
             columnDefs: [
-              { className: "text-right", targets: [3, 4, 5, 6, 7, 8, 9] },
+              { className: 'dt-body-right', targets: [3, 4, 5, 6, 7, 8, 9] },
               {
                 targets: 0,
                 data: null,
