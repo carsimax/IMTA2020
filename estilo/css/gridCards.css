@@ -8,7 +8,7 @@
 }
 
 .modulo{
-    width: 19%;
+     width: 24%; 
     margin-bottom: 20px;
     /* margin-left: 20px; */
     border-radius: 10px;
@@ -18,3 +18,34 @@
 .articulo:hover{
     box-shadow: 0px 4px 10px rgba(17, 29, 48, .26)
 }
+
+
+@media screen and (min-width:1200px) {
+    .modulo{
+        width: 24%;
+        /* background: green; */
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .modulo{
+        width: 30%;
+        /* background: yellow; */
+    }
+}
+
+@media (min-width: 768px) { }
+
+
+@media (max-width: 576px) { 
+    .modulo{
+        width: 45%;
+        /* background: blue; */
+    }
+ }
+
+
+
+
+
+

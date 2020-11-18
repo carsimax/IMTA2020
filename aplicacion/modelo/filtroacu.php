@@ -164,7 +164,7 @@ class FiltroAcu {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT * FROM filtro where id_filtro like \'%Indice%\' ORDER BY filtro asc;');
+            $select = $db->prepare('SELECT * FROM filtro where id_filtro like \'%Indice%\' ORDER BY filtro ASC LIMIT 1');
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;
