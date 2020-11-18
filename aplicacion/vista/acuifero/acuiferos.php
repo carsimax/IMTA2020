@@ -87,19 +87,19 @@ $filtros = $registros->getTodos();
                         <ul class="ml-4">
                             <li><b>DOF: </b>Diario Oficial de la Federación de México.</li>
                             <li><b>REPDA: </b>Registro Público de Derechos de Agua.</li>
-                            <li><b>R: </b>Recarga Media Anual.</li>
-                            <li><b>DNC: </b>Descarga Natural Comprometida.</li>
-                            <li><b>VCAS: </b>Volumen concesionado/Asignado de aguas subterráneas.</li>
+                            <li><b>R: </b>Recarga Media Anual (hm<sup>3</sup>).</li>
+                            <li><b>DNC: </b>Descarga Natural Comprometida (hm<sup>3</sup>).</li>
+                            <li><b>VCAS: </b>Volumen concesionado/Asignado de aguas subterráneas (hm<sup>3</sup>).</li>
                             <li><b>VEALA: </b>Volumen de extracción de agua en las zonas de suspensión provisional
-                                de libre alumbramiento y los inscritos en el Registro Nacional Permanente.
+                                de libre alumbramiento y los inscritos en el Registro Nacional Permanente (hm<sup>3</sup>).
                             </li>
                             <li><b>VAPTYR: </b>Volumen de extracción de agua pendiente de titulación y/o registro en
-                                el REPDA.
+                                el REPDA (hm<sup>3</sup>).
                             </li>
                             <li><b>VAPRH: </b>Volumen de agua correspondiente a reservas, reglamentos y programación
-                                hídrica.
+                                hídrica (hm<sup>3</sup>).
                             </li>
-                            <li><b>DMA: </b>Disponibilidad media anual de agua del subsuelo.</li>
+                            <li><b>DMA: </b>Disponibilidad media anual de agua del subsuelo (hm<sup>3</sup>).</li>
                         </ul>
                     </div>
                     <?php require_once(__DIR__ . "/../plantillas/referencias.html");?>

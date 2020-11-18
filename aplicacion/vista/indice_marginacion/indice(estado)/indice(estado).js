@@ -73,7 +73,7 @@ async function Consultar() {
                     $.each(JSON.parse(resp), function (index, item) {
                         data.push([
                             item.nombre,
-                            item.pob_tot,
+                            numeral(Number.parseFloat(item.pob_tot)).format("0,0"),
                             item.analf,
                             item.sprim,
                             item.ovsde,

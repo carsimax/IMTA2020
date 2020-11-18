@@ -103,11 +103,10 @@ async function Consultar() {
                 //Si el controlador devuelve una respuesta
                 success: function (resp) {
                     $.each(JSON.parse(resp), function (index, item) {
-
                         data.push([
                             item.municipio,
                             item.estado,
-                            item.pob_tot,
+                            numeral(Number.parseFloat(item.pob_tot)).format("0,0"),
                             item.analf,
                             item.sprim,
                             item.ovsde,
@@ -325,20 +324,20 @@ function crearGlosario() {
 
 //Carga los shapes al mapa
 async function loadShape() {
-    
+
     Swal.fire({
-      title: "Por favor espere",
-      html: "Cargando Mapa Geoespacial",
-      allowOutsideClick: false,
-      onBeforeOpen: () => {
-        Swal.showLoading();
-      },
+        title: "Por favor espere",
+        html: "Cargando Mapa Geoespacial",
+        allowOutsideClick: false,
+        onBeforeOpen: () => {
+            Swal.showLoading();
+        },
     });
-    
+
     getEst_SIG(function () {
         getMunicipioMarginacion_SIG(function () {
             var overlays = {
-                
+
                 "Estados": GroupoEstSelect,
                 "Municipios": GroupoMunSelect
             }
@@ -347,5 +346,4 @@ async function loadShape() {
             Swal.close();
         });
     });
-  }
-  
+}
