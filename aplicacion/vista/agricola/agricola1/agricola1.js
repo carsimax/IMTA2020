@@ -613,7 +613,7 @@ async function desgloce1(query) {
      * Se coloca el encabezado
      */
     $("#nav-01").append(
-        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado de producción agrícola de los Distritos de Riego por Organismo de Cuenca, año agrícola: '+Anio+'</h3></div>'
+        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado de producción agrícola de los distritos de riego por organismo de cuenca, año agrícola: '+Anio+'</h3></div>'
     );
     /**
      * Funcion de ajax que se encarga de obtener la informacion
@@ -1261,7 +1261,7 @@ async function desgloce3() {
          */
         document.getElementById("nav-03").innerHTML = "";
         $("#nav-03").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Concentrado Agrícola por Entidad Federativa, año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por entidad federativa, año agrícola: '+Anio+'</h3></div>'
         );
         /*
          *
@@ -1439,14 +1439,14 @@ async function desgloce3() {
                             {
                                 extend: "excelHtml5",
                                 title:
-                                    "Concentrado Concentrado Agrícola por Entidad Federativa",
+                                    "Concentrado agrícola por entidad federativa",
                                 className: "btn btn-gob btn-sm",
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title:
-                                    "Concentrado Concentrado Agrícola por Entidad Federativa",
+                                    "Concentrado agrícola por entidad federativa",
                                 className: "btn btn-gob btn-sm",
                                 text: "Exportar PDF",
                                 messageBottom: citas,
@@ -1480,7 +1480,7 @@ async function desgloce3() {
                                                     alignment: "left",
                                                     //italics: true,
                                                     text:
-                                                        "Concentrado Concentrado Agrícola por Entidad Federativa",
+                                                        "Concentrado agrícola por entidad federativa",
                                                     fontSize: 12.5,
                                                     margin: [10, 5],
                                                 },

@@ -555,7 +555,7 @@ async function desgloce3(query) {
   var cadena = "query=" + query + "&Accion=DistritosVol";
   document.getElementById("nav-03").innerHTML = "";
   $("#nav-03").append(
-      '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Hidrométrico por Organismo de Cuenca, año agrícola: '+Anio+'</h3></div>'
+      '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado hidrométrico por organismo de cuenca, año agrícola: '+Anio+'</h3></div>'
   );
   $.ajax({
     type: "POST",
@@ -767,7 +767,7 @@ async function desgloce4(query) {
   var cadena = "query=" + query + "&Accion=DistritosVol";
   document.getElementById("nav-04").innerHTML = "";
   $("#nav-04").append(
-      '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Hidrométrico por Entidad Federativa, año agrícola: '+Anio+'</h3></div>'
+      '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado hidrométrico por entidad federativa, año agrícola: '+Anio+'</h3></div>'
   );
   $.ajax({
     type: "POST",
@@ -4615,7 +4615,7 @@ async function grafica7(query) {
   var cadena = "query=" + query + "&Accion=DistritosVol";
   $("#nav-01").innerHTML = "";
   $("#nav-01").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Análisis de Superficies Físicas Regadas y Volúmenes Distribuidos, año agrícola: '+Anio+'</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Análisis de superficies físicas regadas y volúmenes distribuidos, año agrícola: '+Anio+'</h3></div>'
   );
   /**
    * Ajax para obtener los datos

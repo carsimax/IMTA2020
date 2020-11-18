@@ -3,9 +3,9 @@
         <h3>Índice</h3>
     </div>
     <ul>
-        <li>1.1. Concentrado Agrícola por Organismo de Cuenca.</li>
-        <li>1.2. Concentrado Agrícola por Entidad Federativa.</li>
-        <li>1.3. Estadística agrícola por Municipio</li>
+        <li>1.1. Concentrado agrícola por organismo de cuenca.</li>
+        <li>1.2. Concentrado agrícola por entidad federativa.</li>
+        <li>1.3. Estadística agrícola por municipio</li>
         <li>1.4. Distribución de la superficie cosechada</li>
         <li>1.5. Concentrado nacional por cultivo</li>
     </ul>
