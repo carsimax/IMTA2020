@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5193060c-1c68-4d13-9b70-20c5f086c29c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola1/agricola1.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola1/agricola1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola2/agricola2.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola2/agricola2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola5/agricola5.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola5/agricola5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola7/agricola7.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/agricola/agricola7/agricola7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicacion/vista/inventario/inventario.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/inventario/inventario.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605723905204</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Se resalto los encabezados en Estadisticas">
+      <created>1605728598818</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605728598818</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,17 +107,18 @@
     <MESSAGE value="Arreglos" />
     <MESSAGE value="Arreglo bug Pozos" />
     <MESSAGE value="AsE QUITO LA IMAGEN DE LOS LOGOTIPOS EN principal.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="AsE QUITO LA IMAGEN DE LOS LOGOTIPOS EN principal.php" />
+    <MESSAGE value="Se resalto los encabezados en Estadisticas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se resalto los encabezados en Estadisticas" />
   </component>
   <component name="WindowStateProjectService">
     <state x="480" y="170" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1605637317159">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="480" y="170" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.870/1600.-78.1536.834@0.0.1600.870" timestamp="1605637317159" />
-    <state x="392" y="167" key="Vcs.Push.Dialog.v2" timestamp="1605723908297">
+    <state x="392" y="167" key="Vcs.Push.Dialog.v2" timestamp="1605728648728">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="392" y="167" key="Vcs.Push.Dialog.v2/0.0.1600.870/1600.-78.1536.834@0.0.1600.870" timestamp="1605723908297" />
+    <state x="392" y="167" key="Vcs.Push.Dialog.v2/0.0.1600.870/1600.-78.1536.834@0.0.1600.870" timestamp="1605728648728" />
     <state x="617" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605626802770">
       <screen x="0" y="0" width="1600" height="870" />
     </state>

@@ -162,54 +162,16 @@ async function loadShape() {
          * Cargamos Estados
          */
         getEst_SIG(function () {
-            let val = $('[name="filtro"]:checked').val();
-            switch (val) {
-                case "agricola1":
-                    /**
-                     * Cargamos DR
-                     */
-                    getDR_SIG(function () {
-                        var overlays = {
-                            "Organismos de Cuenca": GroupoOCSelect,
-                            "Estados": GroupoEstSelect,
-                            "Distritos de Riego": GroupoDRSelect,
-                        }
-                        var lc = L.control.layers(null, overlays);
-                        lc.addTo(map);
-                        Swal.close();
-                    });
-                    break;
-                case "agricola2":
-                    /**
-                     * Cargamos DR
-                     */
-                    getDR_SIG(function () {
-                        var overlays = {
-                            "Organismos de Cuenca": GroupoOCSelect,
-                            "Estados": GroupoEstSelect,
-                            "Distritos de Riego": GroupoDRSelect,
-                        }
-                        var lc = L.control.layers(null, overlays);
-                        lc.addTo(map);
-                        Swal.close();
-                    });
-                    break;
-                case "agricola5":
-                    /**
-                     * Cargamos DR
-                     */
-                    getDTT_SIG(function () {
-                        var overlays = {
-                            "Organismos de Cuenca": GroupoOCSelect,
-                            "Estados": GroupoEstSelect,
-                            "Distritos de Temporal Tecnificado": GroupoDRSelect,
-                        }
-                        var lc = L.control.layers(null, overlays);
-                        lc.addTo(map);
-                        Swal.close();
-                    });
-                    break;
-            }
+            getDR_SIG(function () {
+                var overlays = {
+                    "Organismos de Cuenca": GroupoOCSelect,
+                    "Estados": GroupoEstSelect,
+                    "Distritos de Riego": GroupoDRSelect,
+                }
+                var lc = L.control.layers(null, overlays);
+                lc.addTo(map);
+                Swal.close();
+            });
         });
     });
 }
