@@ -1779,7 +1779,7 @@ function CambioTipo() {
     } else {
         $("#divAcuifero").hide();
     }
-    getTitulo();
+    limpiarOrganismos();
 }
 
 async function getTitulo() {

@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5193060c-1c68-4d13-9b70-20c5f086c29c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicacion/vista/principal.php" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/principal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicacion/vista/pozo/pozo.js" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/pozo/pozo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +54,37 @@
       <updated>1605624823820</updated>
       <workItem from="1605624826011" duration="4304000" />
       <workItem from="1605639088308" duration="252000" />
-      <workItem from="1605662711179" duration="859000" />
+      <workItem from="1605662711179" duration="882000" />
+      <workItem from="1605723134007" duration="270000" />
     </task>
+    <task id="LOCAL-00001" summary="Arreglos">
+      <created>1605663590844</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605663590844</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Arreglos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arreglos" />
   </component>
   <component name="WindowStateProjectService">
     <state x="480" y="170" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1605637317159">
