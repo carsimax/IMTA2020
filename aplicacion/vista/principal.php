@@ -172,7 +172,6 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                         </div>
                         <div class="col-sm">
                             <img class="img-responsive" src="https://www.gob.mx/cms/uploads/document/main_image/38839/1.jpg">
-                            <img class="img-responsive" src="/imagenes/logo_sisuar2.png" width="100%">
                         </div>
                     </div>
                 </div>
