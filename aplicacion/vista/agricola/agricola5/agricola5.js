@@ -48,7 +48,7 @@ async function Anios() {
                      * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
                      */
                     data.push({
-                        name: item.OC,
+                        name: item.numero+'. '+item.OC,
                         value: item.id_organismo,
                         checked: false,
                     });
@@ -1339,7 +1339,7 @@ async function desgloce3() {
                                  * Se cocola en encabezado y la tabla del respectivo OC
                                  */
                                 $("#body").append(
-                                    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' +
+                                    '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' +
                                     OC +' '+Anio+
                                     "</h4></div>" +
                                     '<div style="overflow-x:auto;">' +
@@ -1739,7 +1739,7 @@ async function desgloce5() {
                                          */
                                         if (data.length > 0) {
                                             $("#body4-" + anio + "").append(
-                                                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' +
+                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' +
                                                 DRS +' '+Anio+
                                                 "</h4></div>" +
                                                 /*
@@ -2280,7 +2280,7 @@ async function desgloce6() {
                                              * Se coloca el encabezado
                                              */
                                             $("#body5-" + anio + "").append(
-                                                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>' +
+                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>' +
                                                 JSON.parse(respC) + ' '+Anio+
                                                 "</h3></div>"
                                             );
@@ -2622,20 +2622,20 @@ async function grafica1(query2) {
                 '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada '+Anio+'</h3></div>' +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Ciclo agrícola '+Anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Ciclo agrícola '+Anio+'</h4></div>' +
                 '<canvas id="G-1"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca '+Anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca '+Anio+'</h4></div>' +
                 '<canvas id="G-4"></canvas>' +
                 '<canvas id="G-4-1"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución de la superficie cosechada por organismo de cuenca y ciclo agrícola '+Anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución de la superficie cosechada por organismo de cuenca y ciclo agrícola '+Anio+'</h4></div>' +
                 '<canvas id="G-7"></canvas>' +
                 "</div>" +
                 "</div>"

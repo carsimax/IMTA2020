@@ -4634,11 +4634,11 @@ async function grafica7(query) {
        */
       $("#nav-01").append('<div class="row">' +
         '<div class="col-sm">' +
-          "<h5>Distribución de la superficie física regada por tipo de aprovechamiento '+Anio+'</h5>" +
+          '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h5>Distribución de la superficie física regada por tipo de aprovechamiento '+ Anio +'</h5></div>' +
           '<canvas id="G-7"></canvas>' +
-          "</div>" +
+          '</div>' +
           '<div class="col-sm">' +
-          "<h5>Distribución porcentual de la intensidad en el uso de la tierra para la superficie física regada '+Anio+'</h5>" +
+          '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h5>Distribución porcentual de la intensidad en el uso de la tierra para la superficie física regada '+Anio+'</h5></div>' +
           '<canvas id="G-7-3"></canvas>' +
           '</div></div>'
       );

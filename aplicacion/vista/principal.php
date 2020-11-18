@@ -170,6 +170,9 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                                 información.
                             </p>
                         </div>
+                        <div class="col-sm">
+                            <img class="img-responsive" src="https://www.gob.mx/cms/uploads/document/main_image/38839/1.jpg">
+                        </div>
                     </div>
                 </div>
             <?php } ?>
