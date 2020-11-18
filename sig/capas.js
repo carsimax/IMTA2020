@@ -539,23 +539,23 @@ function getAcu_SIG(callback) {
                                     //REPDA
                                     '<tr><th scope="row">Fecha REPDA</th><td>' + item.fecha_repda + '</td></tr>' +
                                     //Latitud
-                                    '<tr><th scope="row">Latitud</th><td>' + item.latitud + '</td></tr>' +
+                                    '<tr><th scope="row">Latitud</th><td>' + Number.parseFloat(item.latitud).toFixed(2) + '</td></tr>' +
                                     //longitud
-                                    '<tr><th scope="row">Longitud</th><td>' + item.longitud + '</td></tr>' +
+                                    '<tr><th scope="row">Longitud</th><td>' + Number.parseFloat(item.longitud).toFixed(2) + '</td></tr>' +
                                     //R
-                                    '<tr><th scope="row">R (hm³)</th><td>' + item.r + '</td></tr>' +
+                                    '<tr><th scope="row">R (hm³)</th><td>' + Number.parseFloat(item.r).toFixed(2) + '</td></tr>' +
                                     //DNC
-                                    '<tr><th scope="row">DNC (hm³)</th><td>' + item.dnc + '</td></tr>' +
+                                    '<tr><th scope="row">DNC (hm³)</th><td>' + Number.parseFloat(item.dnc).toFixed(2) + '</td></tr>' +
                                     //vcas
-                                    '<tr><th scope="row">VCAS (hm³)</th><td>' + item.vcas + '</td></tr>' +
+                                    '<tr><th scope="row">VCAS (hm³)</th><td>' + Number.parseFloat(item.vcas).toFixed(2) + '</td></tr>' +
                                     //veala
-                                    '<tr><th scope="row">VEALA (hm³)</th><td>' + item.veala + '</td></tr>' +
+                                    '<tr><th scope="row">VEALA (hm³)</th><td>' + Number.parseFloat(item.veala).toFixed(2) + '</td></tr>' +
                                     //vaptyr
-                                    '<tr><th scope="row">VAPTYR (hm³)</th><td>' + item.vaptyr + '</td></tr>' +
+                                    '<tr><th scope="row">VAPTYR (hm³)</th><td>' + Number.parseFloat(item.vaptyr).toFixed(2) + '</td></tr>' +
                                     //vaprh
-                                    '<tr><th scope="row">VAPRH (hm³)</th><td>' + item.vaprh + '</td></tr>' +
+                                    '<tr><th scope="row">VAPRH (hm³)</th><td>' + Number.parseFloat(item.vaprh).toFixed(2) + '</td></tr>' +
                                     //dma
-                                    '<tr><th scope="row">DMA (hm³)</th><td>' + item.dma + '</td></tr>' +
+                                    '<tr><th scope="row">DMA (hm³)</th><td>' + Number.parseFloat(item.dma).toFixed(2) + '</td></tr>' +
                                     //dma
                                     '<tr><th scope="row">Disponibilidad</th><td>' + f.properties.dispon + '</td></tr>' +
                                     '</tbody></table>';
@@ -1702,12 +1702,6 @@ function getEstadoMarginacion_SIG(callback) {
                     }).always(function () {
                         l.bindPopup(contenido);
 
-                        l.on("mouseover", function () {
-                            this.setStyle({
-                                weight: 2,
-                                fillOpacity: 0.5,
-                            });
-                        });
                         l.on("click", function () {
                             map.fitBounds(this.getBounds());
                         });
@@ -1777,16 +1771,10 @@ function getMunicipioMarginacion_SIG(callback) {
                                 '<tr><th scope="row">IM.</th><td>' + item.im + '</td></tr>' +
                                 '<tr><th scope="row">GM.</th><td>' + item.gm + '</td></tr>' +
                                 '</tbody></table>';
-                                setColorMarginacion(l, item.gm);
+                            setColorMarginacion(l, item.gm);
                         }
                     }).always(function () {
                         l.bindPopup(contenido);
-                        l.on("mouseover", function () {
-                            this.setStyle({
-                                weight: 2,
-                                fillOpacity: 0.5,
-                            });
-                        });
                         l.on("click", function () {
                             map.fitBounds(this.getBounds());
                         });
