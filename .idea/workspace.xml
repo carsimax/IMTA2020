@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5193060c-1c68-4d13-9b70-20c5f086c29c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicacion/vista/principal.php" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/vista/principal.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +34,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605624823820</updated>
-      <workItem from="1605624826011" duration="3489000" />
+      <workItem from="1605624826011" duration="4304000" />
+      <workItem from="1605639088308" duration="252000" />
+      <workItem from="1605662711179" duration="449000" />
     </task>
     <servers />
   </component>
@@ -41,6 +44,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="480" y="170" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1605637317159">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="480" y="170" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.870/1600.-78.1536.834@0.0.1600.870" timestamp="1605637317159" />
     <state x="617" y="348" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605626802770">
       <screen x="0" y="0" width="1600" height="870" />
     </state>

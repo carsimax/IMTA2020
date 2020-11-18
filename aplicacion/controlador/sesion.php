@@ -31,7 +31,7 @@ if (isset($_SESSION['olvidada']) && $_SESSION['olvidada'] == 1)
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <!--Estilo General de la pagina-->
+        <!--estilo General de la pagina-->
         <link href=\"https://framework-gb.cdn.gob.mx/qa/assets/styles/main.css\" rel=\"stylesheet\">
         <!--Fin de los estilos de la pagina-->
     </head>
@@ -60,7 +60,7 @@ else
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <!--Estilo General de la pagina-->
+        <!--estilo General de la pagina-->
         <link href=\"https://framework-gb.cdn.gob.mx/qa/assets/styles/main.css\" rel=\"stylesheet\">
         <!--Fin de los estilos de la pagina-->
     </head>

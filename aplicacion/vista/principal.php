@@ -14,9 +14,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 //LLamamos la cabezera con todos los ccs y scripts del sistema
-if (!defined(__DIR__ . '/Plantillas/header.php')) {
-    require(__DIR__ . '/Plantillas/header.php');
-    define(__DIR__ . '/Plantillas/header.php', 1);
+if (!defined(__DIR__ . '/plantillas/header.php')) {
+    require(__DIR__ . '/plantillas/header.php');
+    define(__DIR__ . '/plantillas/header.php', 1);
 }
 ?>
 <div class="container-fluid">
@@ -194,7 +194,7 @@ if (!defined(__DIR__ . '/Plantillas/header.php')) {
                 </button>
             </div>
             <div class="modal-body">
-                <?php require(__DIR__ . '/Login/Login.php'); ?>
+                <?php require(__DIR__ . '/login/login.php'); ?>
             </div>
         </div>
     </div>
@@ -221,8 +221,8 @@ if (!defined(__DIR__ . '/Plantillas/header.php')) {
 <!--Footer de la pagina-->
 <?php
 //LLamamos la cabezera con todos los ccs y scripts del sistema
-if (!defined(__DIR__ . '/Plantillas/footer.php')) {
-    require(__DIR__ . '/Plantillas/footer.php');
-    define(__DIR__ . '/Plantillas/footer.php', 1);
+if (!defined(__DIR__ . '/plantillas/footer.php')) {
+    require(__DIR__ . '/plantillas/footer.php');
+    define(__DIR__ . '/plantillas/footer.php', 1);
 }
 ?>

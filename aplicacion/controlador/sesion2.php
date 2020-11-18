@@ -38,7 +38,7 @@ else
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <!--Estilo General de la pagina-->
+        <!--estilo General de la pagina-->
         <link href='../../estilo/css/bootstrap.css' rel='stylesheet'>
         <!--Fin de los estilos de la pagina-->
     </head>
@@ -70,7 +70,7 @@ if ($now > $_SESSION['expire'])
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <!--Estilo General de la pagina-->
+        <!--estilo General de la pagina-->
         <link href='../../estilo/css/bootstrap.css' rel='stylesheet'>
         <!--Fin de los estilos de la pagina-->
     </head>
