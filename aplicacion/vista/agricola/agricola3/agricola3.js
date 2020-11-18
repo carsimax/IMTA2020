@@ -77,7 +77,7 @@ async function Anios() {
              * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
              */
             data.push({
-              name: item.organismo,
+              name: item.numero+'. '+item.organismo,
               value: item.id_organismo,
               checked: false,
             });

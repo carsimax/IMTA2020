@@ -59,7 +59,7 @@ async function Anios() {
            * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
            */
           data.push({
-            name: item.organismo,
+            name: item.numero+'. '+item.organismo,
             value: item.id_organismo,
             checked: false,
           });
@@ -555,7 +555,7 @@ async function desgloce3(query) {
   var cadena = "query=" + query + "&Accion=DistritosVol";
   document.getElementById("nav-03").innerHTML = "";
   $("#nav-03").append(
-      '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Hidrométrico por Organismo de Cuenca '+Anio+'</h3></div>'
+      '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Hidrométrico por Organismo de Cuenca, año agrícola: '+Anio+'</h3></div>'
   );
   $.ajax({
     type: "POST",
@@ -767,7 +767,7 @@ async function desgloce4(query) {
   var cadena = "query=" + query + "&Accion=DistritosVol";
   document.getElementById("nav-04").innerHTML = "";
   $("#nav-04").append(
-      '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Hidrométrico por Entidad Federativa '+Anio+'</h3></div>'
+      '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Hidrométrico por Entidad Federativa, año agrícola: '+Anio+'</h3></div>'
   );
   $.ajax({
     type: "POST",
@@ -987,7 +987,7 @@ async function desgloce1(query) {
    */
   $("#nav-02").innerHTML = "";
   $("#nav-02").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Superficies físicas regadas y volúmenes distribuidos por distrito de riego '+Anio+'</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Superficies físicas regadas y volúmenes distribuidos por distrito de riego, año agrícola: '+Anio+'</h3></div>'
   );
   /*
    * ajax para obtener la consulta
@@ -4615,7 +4615,7 @@ async function grafica7(query) {
   var cadena = "query=" + query + "&Accion=DistritosVol";
   $("#nav-01").innerHTML = "";
   $("#nav-01").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Análisis de Superficies Físicas Regadas y Volúmenes Distribuidos '+Anio+'</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Análisis de Superficies Físicas Regadas y Volúmenes Distribuidos, año agrícola: '+Anio+'</h3></div>'
   );
   /**
    * Ajax para obtener los datos
@@ -4634,11 +4634,11 @@ async function grafica7(query) {
        */
       $("#nav-01").append('<div class="row">' +
         '<div class="col-sm">' +
-          '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h5>Distribución de la superficie física regada por tipo de aprovechamiento '+ Anio +'</h5></div>' +
+          '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h5>Distribución de la superficie física regada por tipo de aprovechamiento, año agrícola: '+ Anio +'</h5></div>' +
           '<canvas id="G-7"></canvas>' +
           '</div>' +
           '<div class="col-sm">' +
-          '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h5>Distribución porcentual de la intensidad en el uso de la tierra para la superficie física regada '+Anio+'</h5></div>' +
+          '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h5>Distribución porcentual de la intensidad en el uso de la tierra para la superficie física regada, año agrícola: '+Anio+'</h5></div>' +
           '<canvas id="G-7-3"></canvas>' +
           '</div></div>'
       );

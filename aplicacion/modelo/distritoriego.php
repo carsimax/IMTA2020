@@ -395,6 +395,7 @@ class DistritoRiego {
             $sql = 'SELECT
                     anio_id,
                     organismo.id_organismo,
+                    organismo.numero,
                     organismo.nombre as organismo,
                     estado.id_estado,
                     estado.nombre as estado
@@ -422,6 +423,7 @@ class DistritoRiego {
             $sql = 'SELECT
             anio_id,
             organismo.id_organismo,
+            organismo.numero,
             organismo.nombre as organismo,
             estado.id_estado,
             estado.nombre as estado

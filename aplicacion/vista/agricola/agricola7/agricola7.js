@@ -607,7 +607,7 @@ async function desgloce1(query) {
      * Se coloca el encabezado
      */
     $("#nav-01").append(
-        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Agrícola por Organismo de Cuenca '+ Anio +' </h3></div>'
+        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Agrícola por Organismo de Cuenca, año agrícola: '+ Anio +' </h3></div>'
     );
     /**
      * Funcion de ajax que se encarga de obtener la informacion
@@ -894,7 +894,7 @@ async function desgloce2() {
          */
         document.getElementById("nav-02").innerHTML = "";
         $("#nav-02").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Concentrado Agrícola por Entidad Federativa '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Concentrado Agrícola por Entidad Federativa, año agrícola: '+Anio+'</h3></div>'
         );
         /*
          *
@@ -1232,7 +1232,7 @@ async function desgloce5() {
          */
         document.getElementById("nav-05").innerHTML = "";
         $("#nav-05").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por Municipio '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por Municipio, año agrícola: '+Anio+'</h3></div>'
         );
         /*
          *
@@ -1367,7 +1367,7 @@ async function desgloce5() {
                                          */
                                         if (data.length > 0) {
                                             $("#body4-" + anio + "").append(
-                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' + Est +' '+Anio+'</h4></div>' +
+                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' + Est +', año agrícola: '+Anio+'</h4></div>' +
                                                 /*
                                                  * Se crea la tabla
                                                  */
@@ -1747,7 +1747,7 @@ async function desgloce6() {
          */
         $("#nav-06").innerHTML = "";
         $("#nav-06").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado nacional por cultivo '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado nacional por cultivo, año agrícola: '+Anio+'</h3></div>'
         );
         /*
          *
@@ -1906,7 +1906,7 @@ async function desgloce6() {
                                              * Se coloca el encabezado
                                              */
                                             $("#body5-" + anio + "").append(
-                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>' + JSON.parse(respC) +' '+Anio+'</h3></div>'
+                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>' + JSON.parse(respC) +', año agrícola: '+Anio+'</h3></div>'
                                             );
                                             /*
                                              * Se coloca la tabla
@@ -2229,10 +2229,10 @@ async function grafica1() {
     //var cadena = "query=" + query2 + "&Accion=DTTTabla";
     document.getElementById("nav-04").innerHTML = "";
     $("#nav-04").append(
-        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada '+Anio+'</h3></div>' +
+        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada, año agrícola: '+Anio+'</h3></div>' +
         '<div class="row">' +
         '<div class="col-sm">' +
-        '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca '+Anio+'</h4></div>' +
+        '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca, año agrícola: '+Anio+'</h4></div>' +
         '<canvas id="G-4"></canvas>' +
         '<canvas id="G-4-1"></canvas>' +
         "</div>" +
