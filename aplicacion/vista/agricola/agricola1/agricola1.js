@@ -1023,7 +1023,8 @@ async function desgloce2() {
                                  * Se cocola en encabezado y la tabla del respectivo OC
                                  */
                                 $("#body2").append(
-                                    '<h4> <b>Organismo de cuenca: </b>' + OC + ' '+Anio+'</h4>' +
+                                    '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom">'+
+                                    '<h4> <b>Organismo de cuenca: </b>' + OC + ' '+Anio+'</h4></div>' +
                                     '<div style="overflow-x:auto;">'+
                                     '<table id="T2-' + rha + '" class="table table-bordered nowrap" style="width:100%">' +
                                     "<tfoot><tr>" +
@@ -1573,7 +1574,7 @@ async function desgloce4() {
          */
         document.getElementById("nav-05").innerHTML = "";
         $("#nav-05").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por distrito de riego'+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por distrito de riego '+Anio+'</h3></div>'
         );
         /*
          *
@@ -1690,7 +1691,7 @@ async function desgloce4() {
                              */
                             if (data.length > 0) {
                                 $("#body4").append(
-                                    '<h4>' + DRS +' '+Anio+'</h4>' +
+                                    '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' + DRS +' '+Anio+'</h4></div>' +
                                     /*
                                      * Se crea la tabla
                                      */
@@ -2043,7 +2044,7 @@ async function desgloce5() {
          */
         $("#nav-06").innerHTML = "";
         $("#nav-06").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado nacional por cultivo'+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado nacional por cultivo '+Anio+'</h3></div>'
         );
         /*
          *
@@ -2182,7 +2183,9 @@ async function desgloce5() {
                                  * Se coloca el encabezado
                                  */
                                 $("#body5").append(
-                                    '<h4>' + JSON.parse(respC)+' '+Anio+'</h4>'
+                                    '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom">'+
+                                    '<h4>' + JSON.parse(respC)+' '+Anio+'</h4>'+
+                                    '</div>'
                                 );
                                 /*
                                  * Se coloca la tabla
@@ -2503,48 +2506,48 @@ async function grafica1(query2) {
                 '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada '+anio+'</h3></div>' +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Ciclo agrícola / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Ciclo agrícola / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
                 '<canvas id="G-1"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div class="col-sm-6 pt-3 pb-2 mb-3 border-bottom"><h4>Tenencia de la tierra / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-6 pt-3 pb-2 mb-3 border-bottom"><h4>Tenencia de la tierra / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
                 '<canvas id="G-2"></canvas>' +
                 "</div>" +
                 '<div class="col-sm">' +
-                '<div class="col-sm-6 pt-3 pb-2 mb-3 border-bottom"><h4>Modalidad de agricultura / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-6 pt-3 pb-2 mb-3 border-bottom"><h4>Modalidad de agricultura / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
                 '<canvas id="G-3"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
                 '<canvas id="G-4"></canvas>' +
                 '<canvas id="G-4-1"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución de la superficie cosechada por organismo de cuenca, según la tenencia de tierra / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución de la superficie cosechada por organismo de cuenca, según la tenencia de tierra / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
                 '<canvas id="G-5"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada por modalidad de agricultura (riego o temporal) / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada por modalidad de agricultura (riego o temporal) / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
                 '<canvas id="G-6"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución de la superficie cosechada por organismo de cuenca y ciclo agrícola / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución de la superficie cosechada por organismo de cuenca y ciclo agrícola / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
                 '<canvas id="G-7"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución por entidad federativa de la superficie cosechada por modalidad de agricultura / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución por entidad federativa de la superficie cosechada por modalidad de agricultura / <b>Año Agrícola: </b>'+anio+'</h4></div>' +
                 '<canvas id="G-8"></canvas>' +
                 "</div>" +
                 "</div>"

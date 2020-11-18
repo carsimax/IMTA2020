@@ -1367,7 +1367,7 @@ async function desgloce5() {
                                          */
                                         if (data.length > 0) {
                                             $("#body4-" + anio + "").append(
-                                                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' + Est +' '+Anio+'</h4></div>' +
+                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' + Est +' '+Anio+'</h4></div>' +
                                                 /*
                                                  * Se crea la tabla
                                                  */
@@ -1906,7 +1906,7 @@ async function desgloce6() {
                                              * Se coloca el encabezado
                                              */
                                             $("#body5-" + anio + "").append(
-                                                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>' + JSON.parse(respC) +' '+Anio+'</h3></div>'
+                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>' + JSON.parse(respC) +' '+Anio+'</h3></div>'
                                             );
                                             /*
                                              * Se coloca la tabla
@@ -2232,7 +2232,7 @@ async function grafica1() {
         '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada '+Anio+'</h3></div>' +
         '<div class="row">' +
         '<div class="col-sm">' +
-        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca '+Anio+'</h4></div>' +
+        '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca '+Anio+'</h4></div>' +
         '<canvas id="G-4"></canvas>' +
         '<canvas id="G-4-1"></canvas>' +
         "</div>" +
