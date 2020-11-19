@@ -1649,6 +1649,7 @@ function getSitioCF_SIG(callback) {
  * Funcion Para cargar los Estados por marginacion
  * @param callback
  */
+var legend = L.control({ position: 'bottomright' });
 function getEstadoMarginacion_SIG(callback) {
     let Est = '';
     $("#Estados option:selected").each(function () {
@@ -1660,10 +1661,6 @@ function getEstadoMarginacion_SIG(callback) {
     var EstadosSHP = {
         type: "FeatureCollection",
         name: "EstadosSHP",
-        crs: {
-            type: "name",
-            properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" },
-        },
         features: [],
     };
     var sig = "query=" + Est + "&Accion=jsonEST";
@@ -1675,7 +1672,7 @@ function getEstadoMarginacion_SIG(callback) {
             $.each(JSON.parse(resp), function (index, item) {
                 EstadosSHP.features.push(JSON.parse(item.json));
             });
-        },
+        }
     }).always(function () {
         EstSelect = L.geoJson(EstadosSHP, {
             onEachFeature: function popUp(f, l) {
@@ -1701,7 +1698,6 @@ function getEstadoMarginacion_SIG(callback) {
                         }
                     }).always(function () {
                         l.bindPopup(contenido);
-
                         l.on("click", function () {
                             map.fitBounds(this.getBounds());
                         });
@@ -1711,11 +1707,25 @@ function getEstadoMarginacion_SIG(callback) {
         });
         GroupoEstSelect.addTo(map);
         GroupoEstSelect.addLayer(EstSelect);
+        legend.addTo(map);
 
     }).done(function () {
         callback();
     });
 }
+
+
+legend.onAdd = function () {
+    var div = L.DomUtil.create('div', 'info legend');
+        div.innerHTML=  '<i style="background:#751230"></i> Muy alto<br>' + 
+                        '<i style="background:#EAB314"></i> Alto<br>' +
+                        '<i style="background:#E0EA14"></i> Medio<br>' +
+                        '<i style="background:#ACEA14"></i> Bajo<br>' +
+                        '<i style="background:#72EA14"></i> Muy Bajo<br>';
+    return div;
+};
+
+
 
 /**
  * Funcion para cargar Municipios
@@ -1789,7 +1799,6 @@ function getMunicipioMarginacion_SIG(callback) {
         callback();
     });
 }
-
 
 // Se elige el color del shape dependiendo del grado de marginacion
 function setColorMarginacion(l, gm) {
