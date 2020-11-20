@@ -11,7 +11,8 @@ $(document).ready(async function () {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando modulo",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -116,7 +117,8 @@ async function loadShape() {
     Swal.fire({
         title: "Por favor espere",
         html: "Cargando Mapa Geoespacial",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },

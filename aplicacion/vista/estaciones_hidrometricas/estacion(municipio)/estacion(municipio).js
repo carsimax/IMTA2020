@@ -183,7 +183,8 @@ async function Consultar() {
     Swal.fire({
         title: "Por favor espere",
         html: "Realizando consulta", // add html attribute if you want or remove
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         }

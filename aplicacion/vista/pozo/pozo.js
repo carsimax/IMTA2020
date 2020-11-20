@@ -341,7 +341,8 @@ $(document).on("change", "input[type=radio]", async function () {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando modulo",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -397,7 +398,8 @@ $("#example").on("click", "button", async function () {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando contenido",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -1297,7 +1299,8 @@ async function Consultar() {
     Swal.fire({
         title: "Por favor espere",
         html: "Cargando Realizando Consulta", // add html attribute if you want or remove
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -1796,7 +1799,8 @@ async function getTitulo() {
         Swal.fire({
             title: "Por favor espere",
             html: "Cargando Datos", // add html attribute if you want or remove
-            allowOutsideClick: false,
+            allowEscapeKey: false,
+    allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },

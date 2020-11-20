@@ -67,7 +67,8 @@ async function Estados() {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Datos",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -128,7 +129,8 @@ async function Municipios() {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Datos",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -189,7 +191,8 @@ async function loadShape() {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Mapa Geoespacial",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -238,7 +241,8 @@ async function Consultar() {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Realizando consulta",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },

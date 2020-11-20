@@ -17,7 +17,8 @@ async function Anios() {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Datos",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -75,7 +76,8 @@ async function Organismos() {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Datos",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -161,7 +163,8 @@ async function Estados() {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Datos",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -244,7 +247,8 @@ async function getCultivos() {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Datos",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -308,7 +312,8 @@ async function Consultar() {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Realizando la consulta",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -876,7 +881,8 @@ async function desgloce2() {
         Swal.fire({
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
-            allowOutsideClick: false,
+            allowEscapeKey: false,
+    allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1187,7 +1193,8 @@ async function desgloce4() {
         Swal.fire({
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
-            allowOutsideClick: false,
+            allowEscapeKey: false,
+    allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1215,7 +1222,8 @@ async function desgloce5() {
         Swal.fire({
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
-            allowOutsideClick: false,
+            allowEscapeKey: false,
+    allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1729,7 +1737,8 @@ async function desgloce6() {
         Swal.fire({
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
-            allowOutsideClick: false,
+            allowEscapeKey: false,
+    allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },

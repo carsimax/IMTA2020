@@ -32,7 +32,8 @@
             if (validaForm()) {
                 Swal.fire({
                     title: 'Iniciando Sesión', // add html attribute if you want or remove
-                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+    allowOutsideClick: false,
                     onBeforeOpen: () => {
                         Swal.showLoading();
                     }

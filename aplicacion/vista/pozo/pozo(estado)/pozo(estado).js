@@ -48,7 +48,8 @@ async function Organismos() {
     Swal.fire({
         title: "Por favor espere",
         html: "Cargando Datos", // add html attribute if you want or remove
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -116,7 +117,8 @@ async function Estados() {
     Swal.fire({
         title: "Por favor espere",
         html: "Cargando Datos", // add html attribute if you want or remove
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -274,7 +276,8 @@ async function loadShape() {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Mapa Geoespacial",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },

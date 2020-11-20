@@ -28,6 +28,7 @@ async function Anios() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando Datos",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -87,6 +88,7 @@ async function Organismos() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando Datos",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -178,6 +180,7 @@ async function Fuentes() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando Datos",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -251,6 +254,7 @@ async function Consultar() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Realizando la consulta",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();

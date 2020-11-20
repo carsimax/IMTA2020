@@ -11,7 +11,8 @@ $(document).ready(async function () {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando modulo",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -334,7 +335,8 @@ function cambio() {
 $("#tablaPresa").on("click", "button", async function () {
     Swal.fire({
         title: "Cargando Contenido",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },

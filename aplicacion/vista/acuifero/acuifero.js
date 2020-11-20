@@ -29,6 +29,7 @@ $(document).on("change", "input[type=radio]", async function () {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando modulo",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -236,6 +237,7 @@ async function Organismos() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando Datos",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -485,7 +487,8 @@ async function mostrarDEstado() {
     Swal.fire({
       title: "Por favor espere", // add html attribute if you want or remove
       html: "Cargando contenido",
-      allowOutsideClick: false,
+      allowEscapeKey: false,
+    allowOutsideClick: false,
       onBeforeOpen: () => {
         Swal.showLoading();
       },
@@ -774,7 +777,8 @@ async function mostrarDAcuifero() {
     Swal.fire({
       title: "Por favor espere", // add html attribute if you want or remove
       html: "Cargando contenido",
-      allowOutsideClick: false,
+      allowEscapeKey: false,
+    allowOutsideClick: false,
       onBeforeOpen: () => {
         Swal.showLoading();
       },
@@ -1064,7 +1068,8 @@ async function mostrarMunicipio() {
     Swal.fire({
       title: "Por favor espere", // add html attribute if you want or remove
       html: "Cargando contenido",
-      allowOutsideClick: false,
+      allowEscapeKey: false,
+    allowOutsideClick: false,
       onBeforeOpen: () => {
         Swal.showLoading();
       },
@@ -1311,6 +1316,7 @@ async function Acuiferos() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando selección",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();

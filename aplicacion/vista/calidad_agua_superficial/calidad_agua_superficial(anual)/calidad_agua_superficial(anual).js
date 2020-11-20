@@ -72,6 +72,7 @@ async function Organismos() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando Datos",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -144,6 +145,7 @@ async function Estados() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando Datos",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -319,6 +321,7 @@ async function getPuntosMonitoreo() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando Datos",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -388,6 +391,7 @@ async function Consultar() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Realizando la consulta",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -3956,6 +3960,7 @@ async function loadShape() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando Mapa Geoespacial",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -4042,6 +4047,7 @@ async function mostrarDEstado() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando contenido",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -4076,6 +4082,7 @@ async function mostrarDMuni() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando contenido",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -4110,6 +4117,7 @@ async function mostrarDEstacion() {
   Swal.fire({
     title: "Por favor espere", // add html attribute if you want or remove
     html: "Cargando contenido",
+    allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
       Swal.showLoading();

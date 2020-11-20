@@ -29,7 +29,8 @@ $(document).on("change", "input[type=radio]", async function () {
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando modulo",
-        allowOutsideClick: false,
+        allowEscapeKey: false,
+    allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
