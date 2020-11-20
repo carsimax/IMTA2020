@@ -101,7 +101,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                             <div class="card-header">
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/inventario/inventario.php"><small>Inventario de Obras de los Distritos de Riego</small></a></h5>
                             </div>
-                            <a href="/aplicacion/vista/inventario/inventario.php"><img class="card-img-top" src="/imagenes/inventario.jpg" alt="Card image"></a>
+                            <a href="/aplicacion/vista/inventario/inventario.php"><img class="card-img-top" src="/imagenes/Inventario.jpg" alt="Card image"></a>
                             <div class="card-body text-justify">
                                 <p class='font-weight-normal'>Consulta el inventario de obras de infraestructura, obras de cabeza y sociedades de responsabilidad limitada de Distritos de Riego.</p>
                             </div>
