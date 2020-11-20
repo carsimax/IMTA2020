@@ -634,7 +634,7 @@ async function desgloce3(query) {
               title: "Volumen distribuido (miles de m3)",
             },
             {
-              title: "Lámina (cm)",
+              title: "Lámina bruta (cm)",
             },
           ],
           columnDefs: [
@@ -846,7 +846,7 @@ async function desgloce4(query) {
               title: "Volumen distribuido (miles de m3)",
             },
             {
-              title: "Lámina (cm)",
+              title: "Lámina bruta (cm)",
             },
           ],
           columnDefs: [
@@ -1261,7 +1261,7 @@ async function desgloce1(query) {
                       '-VD_T_T"></td>' +
                       "</tr>" +
                       "<tr>" +
-                      "<td>Lámina bruto (cm)</td>" +
+                      "<td>Lámina bruta (cm)</td>" +
                       '<td align="right" id="' +
                       anio +
                       DR +
@@ -1474,7 +1474,7 @@ async function desgloce1(query) {
                       '-VD2_T_T"></td>' +
                       "</tr>" +
                       "<tr>" +
-                      "<td>Lámina bruto (cm)</td>" +
+                      "<td>Lámina bruta (cm)</td>" +
                       '<td align="right" id="' +
                       anio +
                       DR +
@@ -1687,7 +1687,7 @@ async function desgloce1(query) {
                       '-VD3_T_T"></td>' +
                       "</tr>" +
                       "<tr>" +
-                      "<td>Lámina bruto (cm)</td>" +
+                      "<td>Lámina bruta (cm)</td>" +
                       '<td align="right" id="' +
                       anio +
                       DR +
