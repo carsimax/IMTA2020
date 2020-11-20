@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5193060c-1c68-4d13-9b70-20c5f086c29c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aplicacion/modelo/filtroacu.php" beforeDir="false" afterPath="$PROJECT_DIR$/aplicacion/modelo/filtroacu.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
