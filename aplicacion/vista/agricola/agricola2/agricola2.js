@@ -1077,7 +1077,7 @@ async function desgloce1(query) {
                       DR +
                       '" class="display compact nowrap" style="width:100%" border="1">' +
                       "<thead>" +
-                      '<tr><td colspan="13">Concetrado Distrital.</td><td colspan="3" align="right">Año agrícola : ' +
+                      '<tr><td colspan="13">Concentrado Distrital.</td><td colspan="3" align="right">Año agrícola : ' +
                       (parseInt(JSON.parse(resp)) - 1) +
                       "/" +
                       JSON.parse(resp) +
