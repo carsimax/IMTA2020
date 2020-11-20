@@ -211,7 +211,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                 </button>
             </div>
             <div class="modal-body">
-                <?php require(__DIR__ . '/Login/Registro.php'); ?>
+                <?php require(__DIR__ . '/login/registro.php'); ?>
             </div>
         </div>
     </div>
