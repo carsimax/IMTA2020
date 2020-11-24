@@ -31,7 +31,7 @@ $Estados = $registros->getEstados();
     <!--Select del los AÑo-->
     <div class="col-sm">
         <label>Año:</label>
-        <select class="form-control" id="Anios" multiple onchange="Anios()">
+        <select class="form-control green" id="Anios"  onchange="Anios()">
             <?php
             foreach ($Anios as $Anio) {
             ?>

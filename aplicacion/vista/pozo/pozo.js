@@ -342,7 +342,7 @@ $(document).on("change", "input[type=radio]", async function () {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando modulo",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -399,7 +399,7 @@ $("#example").on("click", "button", async function () {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando contenido",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -514,7 +514,7 @@ $("#example").on("click", "button", async function () {
                     tablaPozo = $("#tablaPozo").DataTable({
                         data: data,
                         scrollX: true,
-                        columnDefs: [{className: 'dt-body-right', targets: [6, 7, 8, 9]}],
+                        columnDefs: [{ className: 'dt-body-right', targets: [6, 7, 8, 9] }],
                         dom: "Bfrtip",
                         columns: [
                             {
@@ -718,7 +718,7 @@ $("#example").on("click", "button", async function () {
                         data: data,
                         scrollX: true,
                         dom: "Bfrtip",
-                        columnDefs: [{className: 'dt-body-right', targets: [5, 6, 9, 10]}],
+                        columnDefs: [{ className: 'dt-body-right', targets: [5, 6, 9, 10] }],
                         columns: [
                             {
                                 title: "Anexo",
@@ -928,7 +928,7 @@ $("#example").on("click", "button", async function () {
                         data: data,
                         scrollX: true,
                         columnDefs: [
-                            {className: 'dt-body-right', targets: [5, 6, 7, 13, 14]},
+                            { className: 'dt-body-right', targets: [5, 6, 7, 13, 14] },
                         ],
                         dom: "Bfrtip",
                         columns: [
@@ -1146,7 +1146,7 @@ $("#example").on("click", "button", async function () {
                     tablaPozo = $("#tablaPozo").DataTable({
                         data: data,
                         scrollX: true,
-                        columnDefs: [{className: 'dt-body-right', targets: [5, 6, 8, 9]}],
+                        columnDefs: [{ className: 'dt-body-right', targets: [5, 6, 8, 9] }],
                         dom: "Bfrtip",
                         columns: [
                             {
@@ -1298,15 +1298,15 @@ $("#example").on("click", "button", async function () {
 async function Consultar() {
     Swal.fire({
         title: "Por favor espere",
-        html: "Cargando Realizando Consulta", // add html attribute if you want or remove
+        html: "Realizando consulta", // add html attribute if you want or remove
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
     });
     $("#referencias").show();
-    await deshabilitar();
+    deshabilitar();
     /**
      * Limpiamos la parte de acuiferos
      */
@@ -1339,7 +1339,7 @@ async function Consultar() {
     //Se construyen las referencias
     data = "Accion=ConsultaPozo&modulo_id=4";
     citas = construirReferencias(data, false);
-    
+
     //--------------------------------------------------------------------------
     //--------------------------------------------------------------------------
     //-----------------------Busqueda TABULAR-----------------------------------
@@ -1384,7 +1384,7 @@ async function Consultar() {
                 data: data,
                 scrollX: true,
                 columnDefs: [
-                    {className: 'dt-body-right', targets: [4, 5, 6, 7, 8, 9, 10, 11, 12]},
+                    { className: 'dt-body-right', targets: [4, 5, 6, 7, 8, 9, 10, 11, 12] },
                     {
                         targets: 0,
                         data: null,
@@ -1775,21 +1775,21 @@ function CambioTipo() {
 }
 
 async function getTitulo() {
-    var S_acuifero=$("#Acuiferos option:selected").val();
+    var S_acuifero = $("#Acuiferos option:selected").val();
     $val = $("#Tipos").val();
-    if ($val == 1 && S_acuifero==0 ){
+    if ($val == 1 && S_acuifero == 0) {
         swal(
             "Error!",
             "Debe seleccionar al menos un Acuífero",
             "warning"
         );
         await Swal.close();
-    }else{
+    } else {
         Swal.fire({
             title: "Por favor espere",
             html: "Cargando Datos", // add html attribute if you want or remove
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },

@@ -131,6 +131,9 @@ async function Estados() {
     }
 }
 
+async function Presas() {
+    isFormCompleted('#Presas');
+}
 
 async function loadShape() {
     await map.off();
@@ -176,7 +179,7 @@ async function loadShape() {
 async function Consultar() {
     Swal.fire({
         title: "Por favor espere",
-        html: "Cargando realizando consulta", // add html attribute if you want or remove
+        html: "Realizando consulta", // add html attribute if you want or remove
         allowEscapeKey: false,
     allowOutsideClick: false,
         onBeforeOpen: () => {

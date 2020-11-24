@@ -6,33 +6,10 @@
  * Ingeniería en informática IIF – 10A.
  * Sistema de Información Sobre el Uso de Agua de Riego en la Agricultura Nacional.
  */
-$("#Acuiferos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Acuífero",
-        search: "Buscar Acuífero",
-    },
-});
-$("#Usos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione el uso del título",
-        search: "Buscar uso",
-    },
-});
-$("#Concesiones").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione una concesión",
-        search: "Buscar concesión",
-    },
-});
+
+setEstiloSelect('#Acuiferos', 'Acuíferos', 'Buscar Acuífero');
+setEstiloSelect('#Usos', 'Usos', 'Buscar Uso');
+setEstiloSelect('#Concesiones', 'Concesiones', 'Buscar Concesión');
 
 /**
  * Esta función controla todos los cambios del select de organismos de cuenca.
@@ -42,18 +19,7 @@ $("#Concesiones").multiselect({
  * @constructor
  */
 async function Organismos() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Cargando Datos", // add html attribute if you want or remove
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**;
-     * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-     */
+    $('#Organismos').addClass('green');
     await limpiarOrganismos();
     const query = await concatOrganismo();
     if (query !== "") {
@@ -111,15 +77,7 @@ async function Organismos() {
  * @constructor
  */
 async function Estados() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Cargando Datos", // add html attribute if you want or remove
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    $('#Estados').addClass('green');
     /**
      * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
      */
@@ -177,15 +135,13 @@ async function Estados() {
 }
 
 async function Municipios() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Cargando Datos", // add html attribute if you want or remove
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+
+
+    if ($('#Municipios').val() === null) {
+        $('#Municipios').removeClass('green');
+    } else {
+        $('#Municipios').addClass('green');
+    }
     /**
      * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
      */
@@ -234,6 +190,10 @@ async function Municipios() {
     }
 }
 
+async function Concesiones(){
+    isFormCompleted('#Concesiones');
+}
+
 /*
  * Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas
  */
@@ -253,6 +213,7 @@ async function limpiarEstados() {
      * Llamos a limpiar acuifero
      */
     $("#Municipios").multiselect("reset");
+    $('#Municipios option:eq(0)').prop('selected', true);
     await limpiarMunicipio();
 }
 
@@ -406,7 +367,7 @@ async function loadShape() {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Mapa Geoespacial",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },

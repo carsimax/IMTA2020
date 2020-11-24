@@ -36,7 +36,7 @@ $Usos = $registros->getTodos();
     <!--Select del Tipo de Pozo-->
     <div class="col-sm" id="divTipo">
         <label>Tipo de Título:</label>
-        <select class="form-control" onchange="CambioTipo()" id="Tipos">
+        <select class="form-control green" onchange="CambioTipo()" id="Tipos">
             <?php
             foreach ($Tipos as $Tipo) {
                 ?>
@@ -94,7 +94,7 @@ $Usos = $registros->getTodos();
     <!--Select del Titulos-->
     <div class="col-sm" id="divTitulo">
         <label>Titulo de Concesión:</label>
-        <select name="Concesiones[]" multiple id="Concesiones">
+        <select name="Concesiones[]" onchange="Concesiones()" multiple id="Concesiones">
         </select>
     </div>
 </div>
@@ -103,11 +103,12 @@ $Usos = $registros->getTodos();
     <!--Select del Acuiferos-->
     <div class="col-sm" id="divAcuifero">
         <br>
-        <button id="consultar" onclick="Consultar()" class="btn btn-gob text-light  btn-block">Consultar</button>
+        <button id="consultar" onclick="Consultar()" disabled class="btn btn-gob text-light  btn-block">Consultar</button>
         <br>
     </div>
 </div>
 
-
+<!-- Funciones globales de los selects -->
+<script src="/sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->
 <script src="/aplicacion/vista/pozo/pozo(municipio)/pozo(municipio).js"></script>

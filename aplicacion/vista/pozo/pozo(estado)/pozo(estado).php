@@ -35,7 +35,7 @@ $Usos = $registros->getTodos();
     <!--Select del Tipo de Pozo-->
     <div class="col-sm" id="divTipo">
         <label>Tipo de Título:</label>
-        <select class="form-control" onchange="CambioTipo()" id="Tipos">
+        <select class="form-control green" onchange="CambioTipo()" id="Tipos">
             <?php
             foreach ($Tipos as $Tipo) {
                 ?>
@@ -86,7 +86,7 @@ $Usos = $registros->getTodos();
     <!--Select del Titulos-->
     <div class="col-sm" id="divTitulo">
         <label>Titulo de Concesión:</label>
-        <select name="Concesiones[]" multiple id="Concesiones">
+        <select name="Concesiones[]" multiple onchange="Concesiones()" id="Concesiones">
         </select>
     </div>
 </div>
@@ -95,7 +95,7 @@ $Usos = $registros->getTodos();
 <div class="row">
     <div class="col-sm">
         <br>
-        <button id="consultar" onclick="Consultar()" class="btn btn-gob text-light btn-block">Consultar</button>
+        <button id="consultar" onclick="Consultar()" disabled class="btn btn-gob text-light btn-block">Consultar</button>
         <br>
     </div>
 </div>

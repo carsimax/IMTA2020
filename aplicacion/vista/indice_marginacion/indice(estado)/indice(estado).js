@@ -1,6 +1,6 @@
 //Se aplica el estilo para los selects de la vista
 
-setEstiloSelectOne('#Anios', 'Años', 'Buscar Año', false);
+// setEstiloSelectOne('#Anios', 'Años', 'Buscar Año', false);
 setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
 
 

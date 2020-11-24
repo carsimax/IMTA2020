@@ -33,7 +33,7 @@ $Organismos = $registros->getTodos();
     <!--Select del Presas-->
     <div class="col-sm">
         <label>Presa:</label>
-        <select name="Presas[]" multiple id="Presas">
+        <select name="Presas[]" onchange="Presas()" multiple id="Presas">
         </select>
     </div>
     <!--Fin del Select de los Estados-->
@@ -42,7 +42,7 @@ $Organismos = $registros->getTodos();
 <div class="row">
     <div class="col-sm">
         <br>
-        <button id="consultar" onclick="Consultar()" class="btn btn-gob text-light btn-fill  btn-block">Consultar</button>
+        <button id="consultar" onclick="Consultar()" disabled class="btn btn-gob text-light btn-fill  btn-block">Consultar</button>
         <br>
     </div>
 </div>

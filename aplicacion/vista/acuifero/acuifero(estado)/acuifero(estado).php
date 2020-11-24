@@ -58,7 +58,7 @@ $Organismos = $registros->getTodos();
 <div class="row">
     <div class="col-sm">
         <br>
-        <button id="consultar" onclick="Consultar()" class="btn btn-gob btn-fill btn-block">Consultar</button>
+        <button id="consultar" onclick="Consultar()" disabled class="btn btn-gob btn-fill btn-block">Consultar</button>
         <br>
     </div>
 </div>

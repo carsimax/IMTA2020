@@ -81,7 +81,6 @@ function concatValoresSelect(idSelect, foreingkey) {
 //Construye las referencias y retorna una cadena con las mismas para ponerlos en el reporte PDF.
 function construirReferencias(data, geoespacial) {
     citas = '\n';
-    alert('construyendo bibliografia');
     $.ajax({
         type: "GET",
         url: "/aplicacion/controlador/catalogo.php",

@@ -7,54 +7,13 @@
  * Sistema de Información Sobre el Uso de Agua de Riego en la Agricultura Nacional.
  */
 
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
-$("#Organismos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Organismo de Cuenca",
-        search: "Buscar Organismos de Cuenca",
-    },
-});
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Estado",
-        search: "Buscar Estado",
-    },
-});
-/**
- * Se aplica el estilo al select de los acuiferos
- */
-$("#Acuiferos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Acuífero",
-        search: "Buscar Acuífero",
-    },
-});
-/**
- * Se aplica el estilo al select de los municipio
- */
-$("#Municipios").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Municipio",
-        search: "Buscar Municipio",
-    },
-});
+// Se aplica estilo a los selectores
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismo');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Acuiferos', 'Acuífero', 'Buscar Acuífero');
+setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipio');
+
+
 
 /**
  * Esta función controla todos los cambios del select de estados.
@@ -183,6 +142,11 @@ async function Municipios() {
         Swal.close();
     }
 }
+
+async function Acuiferos() {
+    isFormCompleted('#Acuiferos');
+}
+
 
 async function loadShape() {
     await map.off();

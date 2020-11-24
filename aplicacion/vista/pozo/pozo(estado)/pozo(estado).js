@@ -20,18 +20,7 @@ setEstiloSelect('#Concesiones', 'Concesiones', 'Buscar Concesión');
  * @constructor
  */
 async function Organismos() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Cargando Datos", // add html attribute if you want or remove
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**;
-     * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-     */
+    $('#Organismos').addClass('green');
     await limpiarOrganismos();
     const query = await concatOrganismo();
     if (query !== "") {
@@ -89,18 +78,7 @@ async function Organismos() {
  * @constructor
  */
 async function Estados() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Cargando Datos", // add html attribute if you want or remove
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-     */
+    $('#Estados').addClass('green');
     await limpiarEstados();
     const query = await concatEstado();
     /**
@@ -176,7 +154,10 @@ async function limpiarEstados() {
     /**
      * Llamos a limpiar acuifero
      */
-    $("#Acuiferos").multiselect("reset");
+    
+    $("#Acuiferos").multiselect("reset"); 
+    $('#Acuiferos option:eq(0)').prop('selected', true)
+    
     await limpiarAcuifero();
 }
 
@@ -184,6 +165,13 @@ async function limpiarEstados() {
  * Funcion para limpiar la capa de acuiferos
  */
 async function limpiarAcuifero() {
+    //Se valida para asignarle el la clase green
+    if($('#Acuiferos').val() === null){
+        $('#Acuiferos').removeClass('green');
+    }else{
+        $('#Acuiferos').addClass('green');
+    }
+    
     /**
      * Limpia su porpia capa
      */
@@ -203,6 +191,12 @@ async function limpiarAcuifero() {
      * Se limpia la tabla de acuiferos
      */
 }
+
+//Se valida el valor del select de titulos para poder habilitar el boton de consulta
+async function Concesiones(){
+    isFormCompleted('#Concesiones');
+}
+
 
 /**
  * Funcion que concatena la cadena de los acuiferos seleccionadoss

@@ -80,6 +80,11 @@ async function Estados() {
     }
 }
 
+
+async function Acuiferos() {
+    isFormCompleted('#Acuiferos');
+}
+
 async function loadShape() {
     await map.off();
     await map.remove();
