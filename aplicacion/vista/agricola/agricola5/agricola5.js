@@ -326,21 +326,8 @@ async function Consultar() {
      * * Se verifica que el query de Organismos ese vacio
      * */
     if (OC !== "" && Est !== "" && DR !== "" && Ciclo !== "" && Cultivo !== "" && Anio !== "") {
-        //Se obtiene la cita
-        cadena = "Accion=getCitaConsultaAnio&modulo_id=9&anios=anio_id=" + $( "#Anios" ).val();
-        citas = "\n ";
-        $.ajax({
-            type: "GET",
-            url: "/aplicacion/controlador/catalogo.php",
-            data: cadena,
-            success: function (resp) {
-                document.getElementById("lista").innerHTML = "";
-                $.each(JSON.parse(resp), function (index, item) {
-                    citas += item.cita + " \n";
-                    $("#lista").append("<li>" + item.cita + "</li>");
-                });
-            },
-        });
+        data = "Accion=getCitaConsultaAnio&modulo_id=9&anios=anio_id=" + $( "#Anios" ).val();
+        citas = construirReferencias(data, true);
         query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ") AND (" + Anio + ")  AND (" + Ciclo + ") AND (" + Cultivo + ")";
         await desgloce1(query);
         //Verifica si el mapa es prioridad

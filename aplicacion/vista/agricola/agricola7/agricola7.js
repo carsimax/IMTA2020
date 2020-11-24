@@ -1,4 +1,4 @@
-
+// Variables globales
 citas = "";
 query = "";
 
@@ -169,7 +169,7 @@ async function Estados() {
             Swal.showLoading();
         },
     });
-    await limpiarEstados();
+    limpiarEstados();
     $("#Cultivos").multiselect("reset");
     var query = "(";
     /**
@@ -334,20 +334,8 @@ async function Consultar() {
      * */
     if (OC !== "" && Est !== "" && Mun !== "" && Cultivo !== "" && Anio !== "") {
         //Se obtiene la cita con la información de las unidades de riego
-        cadena = "Accion=ConsultaAgricolaDTT&modulo_id=8&anios=anio_id=" + $( "#Anios" ).val();
-        citas = "\n ";
-        $.ajax({
-            type: "GET",
-            url: "/aplicacion/controlador/catalogo.php",
-            data: cadena,
-            success: function (resp) {
-                document.getElementById("lista").innerHTML = "";
-                $.each(JSON.parse(resp), function (index, item) {
-                    citas += item.cita + " \n";
-                    $("#lista").append("<li>" + item.cita + "</li>");
-                });
-            },
-        });
+        data = "Accion=getCitaConsultaAnio&modulo_id=8&anios=anio_id=" + $( "#Anios" ).val();
+        citas = construirReferencias(data, false);
         query = "(" + OC + ") AND (" + Est + ") AND (" + Mun + ") AND (" + Anio + ") AND (" + Cultivo + ")";
         await desgloce1(query);
         //Verifica si el mapa es prioridad
@@ -365,25 +353,9 @@ async function Consultar() {
                 await loadShape();
             }
         }
-        /**
-         *
-         * @returns {Promise<void>}
-         * Esta funcion habilida el mapa y los elementos de la interfaz
-         */
         await habilitar();
-        /**
-         *
-         * @returns {Promise<void>}
-         * Una  vez realizada la ocnsulta , se guarda en el historial
-         */
         await Swal.close();
     } else {
-        /**
-         *
-         * @returns {Promise<void>}
-         * Si algun selector esta vacio, se muestra un mensaje de error.
-         *
-         */
         swal(
             "Algo está mal.",
             "Todos los filtros tienen que tener al menos un elemento seleccionado"

@@ -1336,21 +1336,10 @@ async function Consultar() {
         );
         await Swal.close();
     }
-    //Se obtiene la cita con la información de los pozos
-    cadena = "Accion=ConsultaPozo&modulo_id=4";
-    citas = "\n ";
-    $.ajax({
-        type: "GET",
-        url: "/aplicacion/controlador/catalogo.php",
-        data: cadena,
-        success: function (resp) {
-            document.getElementById("lista").innerHTML = "";
-            $.each(JSON.parse(resp), function (index, item) {
-                citas += item.cita + " \n";
-                $("#lista").append("<li>" + item.cita + "</li>");
-            });
-        },
-    });
+    //Se construyen las referencias
+    data = "Accion=ConsultaPozo&modulo_id=4";
+    citas = construirReferencias(data, false);
+    
     //--------------------------------------------------------------------------
     //--------------------------------------------------------------------------
     //-----------------------Busqueda TABULAR-----------------------------------

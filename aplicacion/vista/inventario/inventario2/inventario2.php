@@ -54,7 +54,7 @@ $Organismos= $registros->getDistritos();
     </div>
     <div class="col-sm">
         <label>Modulos:</label>
-        <select name="Modulos[]" multiple id="Modulos">
+        <select name="Modulos[]" onchange="Modulos()" multiple id="Modulos">
         </select>
     </div>
 </div>
@@ -62,10 +62,11 @@ $Organismos= $registros->getDistritos();
     <!--Select del Acuiferos-->
     <div class="col-sm">
         <br>
-        <button id="consultar" onclick="Consultar()" class="btn btn-gob btn-fill btn-block">Consultar</button>
+        <button id="consultar" onclick="Consultar()" disabled class="btn btn-gob btn-fill btn-block">Consultar</button>
         <br>
     </div>
-</div>
-
+</div> 
+<!-- Funciones globales del select -->
+<script src="/sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->
 <script src="/aplicacion/vista/inventario/inventario2/inventario2.js"></script>

@@ -12,173 +12,16 @@
  *  específicamente el Informe estadístico de producción agrícola
  */
 
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
+
 citas = "";
 query = '';
-$("#Organismos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: false,
-    texts: {
-        placeholder: "Seleccione un Organismo de Cuenca",
-        search: "Buscar Organismos de Cuenca",
-    },
-    onOptionClick: function( element, option ) {
-        var maxSelect = 1;
 
-        // too many selected, deselect this option
-        if( $(element).val().length > maxSelect ) {
-            if( $(option).is(':checked') ) {
-                var thisVals = $(element).val();
+//Se aplica el estilo a los selects
+setEstiloSelectOne('#Organismos', 'Organismos de Cuenca', 'Buscar Cuenca', true);
+setEstiloSelectOne('#Estados', 'Estados', 'Buscar Estado', true);
+setEstiloSelectOne('#Distritos', 'Distritos de Riego', 'Buscar Distrito', true);
+setEstiloSelect('#Modulos', 'Módulos', 'Buscar Módulo');
 
-                thisVals.splice(
-                    thisVals.indexOf( $(option).val() ), 1
-                );
-
-                $(element).val( thisVals );
-
-                $(option).prop( 'checked', false ).closest('li')
-                    .toggleClass('selected');
-            }
-        }
-        // max select reached, disable non-checked checkboxes
-        else if( $(element).val().length == maxSelect ) {
-            $(element).next('.ms-options-wrap')
-                .find('li:not(.selected)').addClass('disabled')
-                .find('input[type="checkbox"]')
-                .attr( 'disabled', 'disabled' );
-        }
-            // max select not reached, make sure any disabled
-        // checkboxes are available
-        else {
-            $(element).next('.ms-options-wrap')
-                .find('li.disabled').removeClass('disabled')
-                .find('input[type="checkbox"]')
-                .removeAttr( 'disabled' );
-        }
-    }
-});
-
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: false,
-    texts: {
-        placeholder: "Seleccione un Estado",
-        search: "Buscar Estado",
-    },
-    onOptionClick: function( element, option ) {
-        var maxSelect = 1;
-
-        // too many selected, deselect this option
-        if( $(element).val().length > maxSelect ) {
-            if( $(option).is(':checked') ) {
-                var thisVals = $(element).val();
-
-                thisVals.splice(
-                    thisVals.indexOf( $(option).val() ), 1
-                );
-
-                $(element).val( thisVals );
-
-                $(option).prop( 'checked', false ).closest('li')
-                    .toggleClass('selected');
-            }
-        }
-        // max select reached, disable non-checked checkboxes
-        else if( $(element).val().length == maxSelect ) {
-            $(element).next('.ms-options-wrap')
-                .find('li:not(.selected)').addClass('disabled')
-                .find('input[type="checkbox"]')
-                .attr( 'disabled', 'disabled' );
-        }
-            // max select not reached, make sure any disabled
-        // checkboxes are available
-        else {
-            $(element).next('.ms-options-wrap')
-                .find('li.disabled').removeClass('disabled')
-                .find('input[type="checkbox"]')
-                .removeAttr( 'disabled' );
-        }
-    }
-});
-
-/**
- * Se aplica el estilo al select de los Distritos
- */
-$("#Distritos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: false,
-    texts: {
-        placeholder: "Seleccione un Distrito",
-        search: "Buscar Distrito",
-    },
-    onOptionClick: function( element, option ) {
-        var maxSelect = 1;
-
-        // too many selected, deselect this option
-        if( $(element).val().length > maxSelect ) {
-            if( $(option).is(':checked') ) {
-                var thisVals = $(element).val();
-
-                thisVals.splice(
-                    thisVals.indexOf( $(option).val() ), 1
-                );
-
-                $(element).val( thisVals );
-
-                $(option).prop( 'checked', false ).closest('li')
-                    .toggleClass('selected');
-            }
-        }
-        // max select reached, disable non-checked checkboxes
-        else if( $(element).val().length == maxSelect ) {
-            $(element).next('.ms-options-wrap')
-                .find('li:not(.selected)').addClass('disabled')
-                .find('input[type="checkbox"]')
-                .attr( 'disabled', 'disabled' );
-        }
-            // max select not reached, make sure any disabled
-        // checkboxes are available
-        else {
-            $(element).next('.ms-options-wrap')
-                .find('li.disabled').removeClass('disabled')
-                .find('input[type="checkbox"]')
-                .removeAttr( 'disabled' );
-        }
-    }
-});
-
-/**
- *Se inicializa el multiselect  Ciclos agricolas
-$("#Fuentes").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione una Fuente",
-        search: "Buscar Fuente",
-    },
-});*/
-
-/**
- *Se inicializa el multiselect  Ciclos agricolas
- */
-$("#Modulos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Modulo",
-        search: "Buscar Modulos",
-    },
-});
 
 /**
  *
@@ -190,15 +33,6 @@ $("#Modulos").multiselect({
  *
  */
 async function Organismos() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
     $("#Modulos").multiselect("reset");
     /**
      * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
@@ -270,15 +104,6 @@ async function Organismos() {
  *
  */
 async function Estados() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
     await limpiarEstados();
     $("#Modulos").multiselect("reset");
     var query = "(";
@@ -341,8 +166,10 @@ async function Estados() {
     }
 }
 
-async function Distrito() {
-    await limpiarDR();
+
+
+async function Modulos() {
+    isFormCompleted('#Modulos');
 }
 
 /**
@@ -351,15 +178,7 @@ async function Distrito() {
  */
 async function getModulos() {
     $("#Modulos").multiselect("reset");
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    isFormCompleted('#Modulos');
     if ($("#Organismos option:selected").length != 0 &&
         $("#Estados option:selected").length != 0 &&
         $("#Distritos option:selected").length != 0) {
@@ -445,7 +264,8 @@ async function Consultar() {
      * Se verifica que el query de Organismos ese vacio
      */
     if (OC !== "" && Est !== "" && DR !== "" && Mod !== "") {
-        //AJAX que se encarga de extraer las citas de la información seleccionda
+        data = "Accion=getCitaConsulta&modulo_id=11";
+        citas = construirReferencias(data, true);
         query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ") AND (" + Mod + ")";
         await desgloce1(query);
         await habilitar();

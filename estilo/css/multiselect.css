@@ -10,11 +10,15 @@
 .ms-options-wrap,
 .ms-options-wrap * {
   box-sizing: border-box;
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* padding: 0.2rem; */
 }
 
-.ms-options-wrap > button:focus,
+
+
+
 .ms-options-wrap > button {
+  
   position: relative;
   width: 100%;
   text-align: left;
@@ -27,6 +31,7 @@
   color: #aaa;
   outline-offset: -2px;
   white-space: nowrap;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .ms-options-wrap > button > span {
@@ -53,6 +58,8 @@
 
 .ms-options-wrap.ms-has-selections > button {
   color: #333;
+  border: 1px solid #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
 .ms-options-wrap > .ms-options {

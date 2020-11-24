@@ -12,50 +12,21 @@
  *  específicamente el Informe estadístico de producción agrícola
  */
 
-  // Se aplica el estilo a los selects
-  setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
-  setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
-  setEstiloSelect('#Distritos', 'Distritos de Riego', 'Buscar Distrito');
-  setEstiloSelect('#Ciclos', 'Ciclos', 'Buscar Ciclo');
-  setEstiloSelect('#Modalidades', 'Modalidades', 'Buscar Modalidad');
-  setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
-  setEstiloSelect('#Tenencias', 'Tenencias', 'Buscar Tenencia');
-  setEstiloSelect('#Anios', 'Años', 'Buscar Año');
-  
- /**
- *
- * @returns {Promise<void>}
- * @constructor
- * Funcion para guardar la consulta en el historial
- */
-async function Historial() {
-  /**
-   *
-   * Guardamos en es historial
-   *
-   */
-  cadena = "Modulo=Estadística Agrícola" + "&Accion=Historial";
-  $.ajax({
-    type: "POST",
-    url: "/aplicacion/controlador/mapa.php",
-    data: cadena,
-    /**
-     *
-     * @param {type} resp
-     * @returns {Boolean}
-     * Si el controlador devuelve una respuesta
-     *
-     */
-    success: function (resp) {
-      return true;
-    },
-  });
-}
+// Se aplica el estilo a los selects
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Distritos', 'Distritos de Riego', 'Buscar Distrito');
+setEstiloSelect('#Ciclos', 'Ciclos', 'Buscar Ciclo');
+setEstiloSelect('#Modalidades', 'Modalidades', 'Buscar Modalidad');
+setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
+setEstiloSelect('#Tenencias', 'Tenencias', 'Buscar Tenencia');
+setEstiloSelect('#Anios', 'Años', 'Buscar Año');
+
 
 
 async function Anios() {
   await limpiarOrganismos();
-  if($("#Anios option:selected").length!=0) {
+  if ($("#Anios option:selected").length != 0) {
     $("#Organismos").multiselect("reset");
     Swal.fire({
       title: "Por favor espere", // add html attribute if you want or remove
@@ -92,7 +63,7 @@ async function Anios() {
              * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
              */
             data.push({
-              name: item.numero+'. '+item.organismo,
+              name: item.numero + '. ' + item.organismo,
               value: item.id_organismo,
               checked: false,
             });
@@ -105,7 +76,7 @@ async function Anios() {
     } else {
       Swal.close();
     }
-  }else{
+  } else {
     Swal.close();
   }
 }
@@ -221,10 +192,10 @@ async function Tenencias() {
     },
   });
   if ($("#Organismos option:selected").length != 0 &&
-      $("#Estados option:selected").length != 0 &&
-      $("#Ciclos option:selected").length != 0 &&
-      $("#Modalidades option:selected").length != 0 &&
-      $("#Tenencias option:selected").length != 0) {
+    $("#Estados option:selected").length != 0 &&
+    $("#Ciclos option:selected").length != 0 &&
+    $("#Modalidades option:selected").length != 0 &&
+    $("#Tenencias option:selected").length != 0) {
     var query = "(";
     /**
      * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
@@ -611,98 +582,21 @@ async function Consultar() {
    * Llmamos a deshabilitar y a limpiar los Distritos
    */
   await deshabilitar();
-  /**
-   *
-   * @type String|selectOrganismo.OC|Promise<string>
-   * Se carga los shapes de organismos de cuenca
-   */
+
   const OC = await selectOrganismo();
-  /**
-   *
-   * @type String|selectEst.Est|Promise<string>
-   * Se cargan los shapes de los estados.
-   */
   const Est = await selectEst();
-  /**
-   *
-   * @type String|selectDR.DR
-   * Se caragan los shapes de los distritos de riego
-   */
   const DR = await selectDR();
-  /**
-   *
-   * @type selectAnio.Anio|String
-   * Se obtienen los anios seleccionados
-   */
   const Anio = await selectAnio();
-  /**
-   *
-   * @type selectMod.Modalidades|String
-   * Se obtienen las modalidades seleccionadas
-   */
   const Mod = await selectMod();
-  /**
-   *
-   * @type selectCiclo.Ciclos|String
-   * Se obtienen los ciclos seleccionados
-   */
   const Ciclo = await selectCiclo();
-
-  /**
-   *
-   * @type selectTenencia.Tenencias|String
-   * Se obtieenen las tenencias seleccionadas
-   */
   const Tenencia = await selectTenencia();
-  /**
-   *
-   * @type selectCultivo.Cultivos|String
-   * Se obtienen los cultivos seleccionados
-   */
   const Cultivo = await selectCultivo();
-  /**
-   * Se verifica que el query de Organismos ese vacio
-   */
-  if (OC !== "" && Est !== "" && DR !== "" && Anio !== "") {
-    cadena = "Accion=ConsultaAgricolaHistorica&modulo_id=3&anios=" + Anio;
-    citas = "\n ";
-    $.ajax({
-      type: "GET",
-      url: "/aplicacion/controlador/catalogo.php",
-      data: cadena,
-      success: function (resp) {
-        document.getElementById("lista").innerHTML = "";
-        $.each(JSON.parse(resp), function (index, item) {
-          citas += item.cita + " \n";
-          $("#lista").append("<li>" + item.cita + "</li>");
-        });
-      },
-    });
 
-    /**
-     *
-     * @type String
-     * Se crea la variable con la sentencia que se va a mandar al controlador
-     *
-     */
-    var query =
-      "(" +
-      OC +
-      ") AND (" +
-      Est +
-      ") AND (" +
-      DR +
-      ") AND (" +
-      Anio +
-      ") AND (" +
-      Mod +
-      ") AND (" +
-      Ciclo +
-      ") AND (" +
-      Tenencia +
-      ") AND (" +
-      Cultivo +
-      ") GROUP by anio_id ORDER BY anio";
+  if (OC !== "" && Est !== "" && DR !== "" && Anio !== "") {
+    data = "Accion=ConsultaAgricolaHistorica&modulo_id=3&anios=" + Anio;
+    citas = construirReferencias(data, false);
+     //Se crea la variable con la sentencia que se va a mandar al controlador     
+    var query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ") AND (" + Anio + ") AND (" + Mod + ") AND (" + Ciclo + ") AND (" + Tenencia + ") AND (" + Cultivo + ") GROUP by anio_id ORDER BY anio";
     var cadena = "query=" + query + "&Accion=DistritosOC2";
     $.ajax({
       type: "POST",
@@ -718,81 +612,81 @@ async function Consultar() {
         document.getElementById("pantalla").innerHTML = "";
         $("#pantalla").append(
           '<div class="row">' +
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Informe estadístico histórico de producción agrícola</h3></div>' +
-            //Titulo1
-            '<div class="col-sm-12">' +
-            "<h5>Superficie sembrada y cosechada por año agrícola (ha)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica1
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica1"></canvas>' +
-            "</div>" +
-            //Tabla1
-            '<div class="col-sm-4">' +
-            '<div style="overflow-x:auto;">'+
-            '<table id="tabla1" class="table table-bordered  nowrap"  width="100%"></table>' +
-            "</div>" +
-            "</div>" +
-            //Titulo2
-            '<div class="col-sm-12">' +
-            "<h5>Producción por año agrícola (miles ton)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica2
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica2"></canvas>' +
-            "</div>" +
-            //Tabla2
-            '<div class="col-sm-4">' +
-            '<div style="overflow-x:auto;">'+
-            '<table id="tabla2" class="table table-bordered  nowrap"  width="100%"></table>' +
-            "</div>" +
-            "</div>" +
-            //Titulo3
-            '<div class="col-sm-12">' +
-            "<h5>Valor de la cosecha por año agrícola (millones $)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica3
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica3"></canvas>' +
-            "</div>" +
-            //Tabla3
-            '<div class="col-sm-4">' +
-            '<div style="overflow-x:auto;">'+
-            '<table id="tabla3" class="table table-bordered  nowrap"  width="100%"></table>' +
-            "</div>" +
-            "</div>" +
-            //Titulo 4
-            '<div class="col-sm-12">' +
-            "<h5>Rendimiento por año agrícola (ton/ha)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica4
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica4"></canvas>' +
-            "</div>" +
-            //Tabla4
-            '<div class="col-sm-4">' +
-            '<div style="overflow-x:auto;">'+
-            '<table id="tabla4" class="table table-bordered  nowrap"  width="100%"></table>' +
-            "</div>" +
-            "</div>" +
-            //Titulo 5
-            '<div class="col-sm-12">' +
-            "<h5>P.M.R por año agrícola ($/ton)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica5
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica5"></canvas>' +
-            "</div>" +
-            //Tabla5
-            '<div class="col-sm-4">' +
-            '<div style="overflow-x:auto;">'+
-            '<table id="tabla5" class="table table-bordered nowrap"  width="100%"></table>' +
-            "</div></div></div>"
+          '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Informe estadístico histórico de producción agrícola</h3></div>' +
+          //Titulo1
+          '<div class="col-sm-12">' +
+          "<h5>Superficie sembrada y cosechada por año agrícola (ha)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica1
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica1"></canvas>' +
+          "</div>" +
+          //Tabla1
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla1" class="table table-bordered  nowrap"  width="100%"></table>' +
+          "</div>" +
+          "</div>" +
+          //Titulo2
+          '<div class="col-sm-12">' +
+          "<h5>Producción por año agrícola (miles ton)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica2
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica2"></canvas>' +
+          "</div>" +
+          //Tabla2
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla2" class="table table-bordered  nowrap"  width="100%"></table>' +
+          "</div>" +
+          "</div>" +
+          //Titulo3
+          '<div class="col-sm-12">' +
+          "<h5>Valor de la cosecha por año agrícola (millones $)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica3
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica3"></canvas>' +
+          "</div>" +
+          //Tabla3
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla3" class="table table-bordered  nowrap"  width="100%"></table>' +
+          "</div>" +
+          "</div>" +
+          //Titulo 4
+          '<div class="col-sm-12">' +
+          "<h5>Rendimiento por año agrícola (ton/ha)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica4
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica4"></canvas>' +
+          "</div>" +
+          //Tabla4
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla4" class="table table-bordered  nowrap"  width="100%"></table>' +
+          "</div>" +
+          "</div>" +
+          //Titulo 5
+          '<div class="col-sm-12">' +
+          "<h5>P.M.R por año agrícola ($/ton)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica5
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica5"></canvas>' +
+          "</div>" +
+          //Tabla5
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla5" class="table table-bordered nowrap"  width="100%"></table>' +
+          "</div></div></div>"
         );
         var etiquetas = [];
         var sup_sem = [];
@@ -1251,4 +1145,22 @@ async function Consultar() {
     $("#divPrioridad").hide();
     $("#referencias").hide();
   }
+}
+
+/**
+*
+* @returns {Promise<void>}
+* @constructor
+* Funcion para guardar la consulta en el historial
+*/
+async function Historial() {
+  cadena = "Modulo=Estadística Agrícola" + "&Accion=Historial";
+  $.ajax({
+    type: "POST",
+    url: "/aplicacion/controlador/mapa.php",
+    data: cadena,
+    success: function (resp) {
+      return true;
+    },
+  });
 }

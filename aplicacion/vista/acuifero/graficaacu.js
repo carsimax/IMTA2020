@@ -26,7 +26,12 @@ function graficaOC(datos) {
             intersect: true
         },
         scales: {
-            yAxes: [{
+            yAxes: [
+                {
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Hectómetros cúbicos (hm³)'
+                    },
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                     display: true,
                     position: 'left',
@@ -95,19 +100,23 @@ function graficaEst(datos) {
         },
         scales: {
             yAxes: [{
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                scaleLabel: {
                     display: true,
-                    position: 'left',
-                    id: 'y-axis-1',
-                }, {
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
-                    position: 'right',
-                    id: 'y-axis-2',
-                    gridLines: {
-                        drawOnChartArea: false
-                    }
-                }],
+                    labelString: 'Hectómetros cúbicos (hm³)'
+                },
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'left',
+                id: 'y-axis-1',
+            }, {
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'right',
+                id: 'y-axis-2',
+                gridLines: {
+                    drawOnChartArea: false
+                }
+            }],
         }
     };
 
@@ -164,19 +173,23 @@ function graficaAcu(datos) {
         },
         scales: {
             yAxes: [{
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                scaleLabel: {
                     display: true,
-                    position: 'left',
-                    id: 'y-axis-1',
-                }, {
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
-                    position: 'right',
-                    id: 'y-axis-2',
-                    gridLines: {
-                        drawOnChartArea: false
-                    }
-                }],
+                    labelString: 'Hectómetros cúbicos (hm³)'
+                },
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'left',
+                id: 'y-axis-1',
+            }, {
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'right',
+                id: 'y-axis-2',
+                gridLines: {
+                    drawOnChartArea: false
+                }
+            }],
         }
     };
 
@@ -234,19 +247,23 @@ function graficaMun(datos) {
         },
         scales: {
             yAxes: [{
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                scaleLabel: {
                     display: true,
-                    position: 'left',
-                    id: 'y-axis-1',
-                }, {
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
-                    position: 'right',
-                    id: 'y-axis-2',
-                    gridLines: {
-                        drawOnChartArea: false
-                    }
-                }],
+                    labelString: 'Hectómetros cúbicos (hm³)'  
+                },
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'left',
+                id: 'y-axis-1',
+            }, {
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'right',
+                id: 'y-axis-2',
+                gridLines: {
+                    drawOnChartArea: false
+                }
+            }],
         }
     };
 

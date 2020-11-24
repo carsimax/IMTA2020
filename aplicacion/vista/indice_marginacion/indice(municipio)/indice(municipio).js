@@ -77,69 +77,57 @@ async function Consultar() {
     var valores = "(" + concatValoresSelect('#Municipios', 'municipio_id=') + ") AND (" + concatValoresSelect('#Anios', 'anio_id=') + ")";
     //Busqueda tabular
     if (valores !== "") {
-        //Se obtiene la cita con la información de las presas, para obtener el id del modulo, consultar en la bd
-        cadena = "Accion=ConsultaIndiceMarginacion&Filtro=Municipio&Anio=" + $("#Anios option:selected").val() + "&modulo_id=7";
-        citas = "\n ";
+        data = "Accion=ConsultaIndiceMarginacion&Filtro=Municipio&Anio=" + $("#Anios option:selected").val() + "&modulo_id=7";
+        citas = construirReferencias(data, true);
+        crearGlosario();
+        //Se extrae la información tabular de la base de datos
+        var cadena = "query=" + valores + "&Accion=consultaMunicipio";
+        var data = [];
         $.ajax({
-            type: "GET",
-            url: "/aplicacion/controlador/catalogo.php",
+            type: "POST",
+            url: "/aplicacion/controlador/municipiomarginacion.php",
             data: cadena,
+            //Si el controlador devuelve una respuesta
             success: function (resp) {
-                document.getElementById("lista").innerHTML = "";
                 $.each(JSON.parse(resp), function (index, item) {
-                    citas += item.cita + " \n";
-                    $("#lista").append("<li>" + item.cita + "</li>");
+                    data.push([
+                        item.municipio,
+                        item.estado,
+                        numeral(Number.parseFloat(item.pob_tot)).format("0,0"),
+                        item.analf,
+                        item.sprim,
+                        item.ovsde,
+                        item.ovsee,
+                        item.ovsae,
+                        item.vhac,
+                        item.ovpt,
+                        item.gm
+                    ]);
                 });
-                crearGlosario();
-                $("#referencias").show();
             }
-        }).always(function () {
-            //Se extrae la información tabular de la base de datos
-            var cadena = "query=" + valores + "&Accion=consultaMunicipio";
-            var data = [];
-            $.ajax({
-                type: "POST",
-                url: "/aplicacion/controlador/municipiomarginacion.php",
-                data: cadena,
-                //Si el controlador devuelve una respuesta
-                success: function (resp) {
-                    $.each(JSON.parse(resp), function (index, item) {
-                        data.push([
-                            item.municipio,
-                            item.estado,
-                            numeral(Number.parseFloat(item.pob_tot)).format("0,0"),
-                            item.analf,
-                            item.sprim,
-                            item.ovsde,
-                            item.ovsee,
-                            item.ovsae,
-                            item.vhac,
-                            item.ovpt,
-                            item.gm
-                        ]);
-                    });
+        }).always(async function () {
+            table.destroy();
+            await generarTablaIndiceMarginacion(data); //Se genera la tabla con la información obtenida del AJAX
+            habilitar();
+            var x = $('#Prioridad').prop('checked');
+            if (x == false) {
+                if (!map.hasLayer(EstSelect)) {
+                    //Recargamos el mapa
+                    var callBack = async function () {
+                        document.getElementById("map").style.display = "block";
+                        setTimeout(function () {
+                            map.invalidateSize();
+                        }, 100);
+                    };
+                    map.whenReady(callBack);
+                    await loadShape();
                 }
-            }).always(async function () {
-                table.destroy();
-                await generarTablaIndiceMarginacion(data); //Se genera la tabla con la información obtenida del AJAX
-                habilitar();
-                var x = $('#Prioridad').prop('checked');
-                if (x == false) {
-                    if (!map.hasLayer(EstSelect)) {
-                        //Recargamos el mapa
-                        var callBack = async function () {
-                            document.getElementById("map").style.display = "block";
-                            setTimeout(function () {
-                                map.invalidateSize();
-                            }, 100);
-                        };
-                        map.whenReady(callBack);
-                        await loadShape();
-                    }
-                }
-                await Swal.close();
-            });
+            }
+            await Swal.close();
         });
+
+
+
     } else {
         swal("¡Cuidado!", "Todos los filtros tienen que tener al menos un elemento seleccionado");
         await habilitar();

@@ -7,55 +7,13 @@
  * Sistema de Información Sobre el Uso de Agua de Riego en la Agricultura Nacional.
  */
 
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
-$("#Organismos").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Organismo de Cuenca",
-    search: "Buscar Organismos de Cuenca",
-  },
-});
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Estado",
-    search: "Buscar Estado",
-  },
-});
-/**
- * Se aplica el estilo al select de los acuiferos
- */
-$("#Sitios").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Monitoreo",
-    search: "Buscar Sitio de Monitoreo",
-  },
-});
-/**
- * Se aplica el estilo al select de los municipio
- */
-$("#Municipios").multiselect({
-  columns: 1,
-  search: true,
-  selectAll: true,
-  texts: {
-    placeholder: "Seleccione un Municipio",
-    search: "Buscar Municipio",
-  },
-});
+
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Sitios', 'Sitios', 'Buscar Sitio');
+setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipio');
 var query = '';
+var citas = '';
 
 async function Anios() {
   await limpiarOrganismos();
@@ -142,15 +100,6 @@ async function Organismos() {
 * @constructor
 */
 async function Estados() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
   /**
    * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
    */
@@ -229,6 +178,10 @@ async function limpiarMunicipio() {
   $("#Acuiferos").multiselect("reset");
   await limpiarAcuifero();
 }
+async function Sitios(){
+  isFormCompleted('#Sitios');
+}
+
 
 /**
  * Funcion para limpiar la capa de acuiferos
@@ -318,15 +271,6 @@ async function concatEstado() {
 }
 
 async function getPuntosMonitoreo() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
   var query = "(";
   /**
    * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
@@ -431,20 +375,8 @@ async function Consultar() {
   const Clave = await selectClave();
   if (OC !== "" && Est !== "" && Mun !== "" && Anio !== "" && Clave !== "") {
     //Se obtiene la cita con la información de calidad del agua
-    cadena = "Accion=getCitaConsultaAnio&modulo_id=10&anios=anio_id=" + $( "#Anios" ).val();
-    citas = "\n ";
-    $.ajax({
-      type: "GET",
-      url: "/aplicacion/controlador/catalogo.php",
-      data: cadena,
-      success: function (resp) {
-        document.getElementById("lista").innerHTML = "";
-        $.each(JSON.parse(resp), function (index, item) {
-          citas += item.cita + " \n";
-          $("#lista").append("<li class='text-left'>" + item.cita + "</li>");
-        });
-      },
-    });
+    data = "Accion=getCitaConsultaAnio&modulo_id=10&anios=anio_id=" + $("#Anios").val();
+    citas = construirReferencias(data, false);
     query = "(" + OC + ") AND (" + Est + ") AND (" + Mun + ") AND (" + Anio + ") AND (" + Clave + ")";
     var indicador = $("#indicador :selected").val();
     switch (indicador) {

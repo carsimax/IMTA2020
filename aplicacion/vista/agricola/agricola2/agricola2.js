@@ -276,21 +276,10 @@ async function Consultar() {
    * Se verifica que el query de Organismos ese vacio
    */
   if (DR !== "" && Anio !== "" && Tenencia !== "" && Fuente !== "") {
-    //AJAX que se encarga de extraer las citas de la información seleccionda
-    cadena = "Accion=ConsultaAgricola&modulo_id=3&anios=" + Anio;
-    citas = "\n ";
-    $.ajax({
-      type: "GET",
-      url: "/aplicacion/controlador/catalogo.php",
-      data: cadena,
-      success: function (resp) {
-        document.getElementById("lista").innerHTML = "";
-        $.each(JSON.parse(resp), function (index, item) {
-          citas += item.cita + " \n";
-          $("#lista").append("<li>" + item.cita + "</li>");
-        });
-      },
-    });
+    //Se construye las referencias 
+    data = "Accion=ConsultaAgricola&modulo_id=3&anios=" + Anio;
+    citas = construirReferencias(data, true);
+
     var query = '(' + OC + ') AND (' + Est + ') AND (' + DR + ') AND (' + Anio + ') AND (' + Tenencia + ') AND (' + Fuente + ') GROUP by distrito_riego_id,id_tenencia,fuente_id,anio_id ORDER BY fuente DESC,id_tenencia';
     /**
      * Funcion para el desgloce 1

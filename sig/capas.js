@@ -50,6 +50,14 @@ var GrupoEstClimaSelect = L.layerGroup();
 //Variables para la capa de las Estaciones Hidrometricas
 var EstacionesHidrometricasSelect = [];
 var GrupoEstHidroSelect = L.layerGroup();
+
+// Legends
+
+var legendAcuifero = L.control({ position: 'bottomright' }); //Acuiferos
+var legendMarginacion = L.control({ position: 'bottomright' }); //Marginacion
+var legendEstacionClimatologica = L.control({ position: 'bottomright' });//Estaciones Climatologicas
+
+
 /**
  * Variabler de las propiedades del color de la capa de Organismo de Cuenca
  */
@@ -588,6 +596,7 @@ function getAcu_SIG(callback) {
         });
         GroupoAcuSelect.addTo(map);
         GroupoAcuSelect.addLayer(AcuSelect);
+        legendAcuifero.addTo(map);
     }).done(function () {
         callback();
     });
@@ -1074,11 +1083,17 @@ function getEstacionesSIG(callback) {
             GrupoEstClimaSelect.addLayer(estacionesCLayer);
             GrupoEstClimaSelect.addTo(map);
 
+            legendEstacionClimatologica.addTo(map);
+
+
         }).done(function () {
             callback();
         });
     }
 }
+
+
+
 
 //Obtiene las coordenadas de las estaciones y crea el archivo json para añadirlo al mapa
 function getEstacionesHidroSIG(callback) {
@@ -1649,7 +1664,7 @@ function getSitioCF_SIG(callback) {
  * Funcion Para cargar los Estados por marginacion
  * @param callback
  */
-var legend = L.control({ position: 'bottomright' });
+
 function getEstadoMarginacion_SIG(callback) {
     let Est = '';
     $("#Estados option:selected").each(function () {
@@ -1707,23 +1722,13 @@ function getEstadoMarginacion_SIG(callback) {
         });
         GroupoEstSelect.addTo(map);
         GroupoEstSelect.addLayer(EstSelect);
-        legend.addTo(map);
+
+        legendMarginacion.addTo(map);
 
     }).done(function () {
         callback();
     });
 }
-
-
-legend.onAdd = function () {
-    var div = L.DomUtil.create('div', 'info legend');
-        div.innerHTML=  '<i style="background:#751230"></i> Muy alto<br>' + 
-                        '<i style="background:#EAB314"></i> Alto<br>' +
-                        '<i style="background:#E0EA14"></i> Medio<br>' +
-                        '<i style="background:#ACEA14"></i> Bajo<br>' +
-                        '<i style="background:#72EA14"></i> Muy Bajo<br>';
-    return div;
-};
 
 
 
@@ -1835,8 +1840,37 @@ function setColorMarginacion(l, gm) {
         fillColor: color,
         fillOpacity: 0.6,
     });
-
 }
+
+//Creacion de los legends 
+
+legendMarginacion.onAdd = function () {
+    var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML = "<div class='fila'><i class='columna' style='background:#751230'></i> Muy alto</div>" +
+        "<div class='fila'><i class='columna' style='background:#EAB314'></i> Alto</div>" +
+        "<div class='fila'><i class='columna' style='background:#E0EA14'></i> Medio</div>" +
+        "<div class='fila'><i class='columna' style='background:#ACEA14'></i> Bajo</div>" +
+        "<div class='fila'><i class='columna' style='background:#72EA14'></i> Muy Bajo</div>";
+    return div;
+};
+
+// Creacion HTML de los legends
+legendEstacionClimatologica.onAdd = function () {
+    var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML =
+        "<div class='fila'><i class='columna' style='background:#69E315;'></i> Operando</div>" +
+        "<div class='fila'><i class='columna' style='background:#FF0000;'></i> Suspendido</div>";
+    return div;
+};
+
+legendAcuifero.onAdd = function () {
+    var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML =
+        "<div class='fila'><i class='columna' style='background:#1fa17a;'></i> Con disponibilidad</div>" +
+        "<div class='fila'><i class='columna' style='background:#751230;'></i> Sin disponibilidad</div>";
+    return div;
+};
+
 
 /**
  * Funcion que hace zoom al punto de Leaflet

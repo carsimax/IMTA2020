@@ -25,7 +25,7 @@ $Organismos = $registros->getTodos();
 ?>
 
 <div class="row">
-    <div class="col-sm">
+    <div class="col-md-4">
         <!--Select del organismo de cuenca-->
         <label>Organismo de Cuenca:</label>
         <select class="form-control" onchange="Organismos()" multiple id="Organismos">
@@ -39,7 +39,7 @@ $Organismos = $registros->getTodos();
     </div>
     <!--Fin del Select de los OC-->
     <!--Select del Estados-->
-    <div class="col-sm" id="divEstado">
+    <div class="col-md-4" id="divEstado">
         <label>Estado:</label>
         <select class="form-control" onchange="Estados()" multiple id="Estados">
         </select>
@@ -47,37 +47,37 @@ $Organismos = $registros->getTodos();
     <!--Fin del Select de los Estados-->
 
     <!--Select del Municipios-->
-    <div class="col-sm" id="divMuni">
+    <div class="col-md-4" id="divMuni">
         <label>Municipio:</label>
         <select class="form-control" onchange="Municipios()" multiple id="Municipios">
         </select>
     </div>
     
-    <div class="col-sm">
+    <div class="col-md-4">
         <label>Cuenca:</label>
         <select onchange="Cuencas()"  multiple id="Cuencas">
         </select>
     </div>
 
-    <div class="col-sm">
+    <div class="col-md-4">
         <label>Tipo de Estación:</label>
-        <select onchange="Estaciones()"  multiple id="TipoEstacion">
+        <select onchange="TipoEstacion()"  multiple id="TipoEstacion">
             <option value="2">Climatológico</option>
             <option value="1">Obsertatorio</option>
         </select>
     </div>
     
     <!--Select del Titulos-->
-    <div class="col-sm">
+    <div class="col-md-4">
         <label>Estación Climatológica:</label>
-        <select name="EstacionClimatologica[]" multiple id="EstacionClimatologica">
+        <select name="EstacionClimatologica[]" onchange="Estaciones()" multiple id="EstacionClimatologica">
         </select>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm" id="divAcuifero">
+    <div class="col-md id="divAcuifero">
         <br>
-        <button id="consultar" onclick="Consultar()" class="btn btn-gob text-light  btn-block">Consultar</button>
+        <button id="consultar" onclick="Consultar()" class="btn btn-gob text-light  btn-block" disabled>Consultar</button>
         <br>
     </div>
 </div>

@@ -9,6 +9,10 @@ function graficarPresa(datos) {
             yAxes: [{
                     ticks: {
                         min: 0,
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Hectómetros cúbicos (hm³)'  
                     }
                 }]
         }
@@ -39,7 +43,8 @@ function graficarPresa(datos) {
     barChart = new Chart(densityCanvas, {
         type: 'bar',
         data: presaData,
-        options: chartOptions
+        options: chartOptions,
+
     });
 
 }

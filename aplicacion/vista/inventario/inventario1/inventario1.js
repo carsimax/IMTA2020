@@ -12,71 +12,12 @@
  *  específicamente el Informe estadístico de producción agrícola
  */
 
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
 citas = "";
 query = '';
-$("#Organismos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Organismo de Cuenca",
-        search: "Buscar Organismos de Cuenca",
-    },
-});
-
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Estado",
-        search: "Buscar Estado",
-    },
-});
-
-/**
- * Se aplica el estilo al select de los Distritos
- */
-$("#Distritos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Distrito",
-        search: "Buscar Distrito",
-    },
-});
-
-/**
- *Se inicializa el multiselect  Ciclos agricolas
-$("#Fuentes").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione una Fuente",
-        search: "Buscar Fuente",
-    },
-});*/
-
-/**
- *Se inicializa el multiselect  Ciclos agricolas
- */
-$("#Modulos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Modulo",
-        search: "Buscar Modulos",
-    },
-});
+//Se aplica el estilo a los selects
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Cuenca');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Distritos', 'Distritos de Riego', 'Buscar Distrito');
 
 /**
  *
@@ -88,16 +29,6 @@ $("#Modulos").multiselect({
  *
  */
 async function Organismos() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    $("#Modulos").multiselect("reset");
     /**
      * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
      */
@@ -168,15 +99,6 @@ async function Organismos() {
  *
  */
 async function Estados() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
     await limpiarEstados();
     $("#Modulos").multiselect("reset");
     var query = "(";
@@ -240,7 +162,8 @@ async function Estados() {
 }
 
 async function Distrito() {
-    await limpiarDR();
+    isFormCompleted('#Distritos');
+    limpiarDR();
 }
 
 /**
@@ -272,20 +195,15 @@ async function Consultar() {
      * Se verifica que el query de Organismos ese vacio
      */
     if (OC !== "" && Est !== "" && DR !== "") {
-        //AJAX que se encarga de extraer las citas de la información seleccionda
-        getCitaConsulta();
+        data = "Accion=getCitaConsulta&modulo_id=11";
+        citas = construirReferencias(data, true);
 
         query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ")";
         await desgloce1(query);
         await habilitar();
         await Historial();
     } else {
-        /**
-         *
-         * @returns {Promise<void>}
-         * Si algun selector esta vacio, se muestra un mensaje de error.
-         *
-         */
+        
         swal(
             "Algo está mal.",
             "Todos los filtros tienen que tener al menos un elemento seleccionado"
@@ -468,6 +386,31 @@ async function selectFuente() {
         });
     return Fuentes;
 }
+
+/**
+ *Se inicializa el multiselect  Ciclos agricolas
+$("#Fuentes").multiselect({
+    columns: 1,
+    search: true,
+    selectAll: true,
+    texts: {
+        placeholder: "Seleccione una Fuente",
+        search: "Buscar Fuente",
+    },
+});*/
+
+/**
+ *Se inicializa el multiselect  Ciclos agricolas
+ */
+// $("#Modulos").multiselect({
+//     columns: 1,
+//     search: true,
+//     selectAll: true,
+//     texts: {
+//         placeholder: "Seleccione un Modulo",
+//         search: "Buscar Modulos",
+//     },
+// });
 
 /**
  *

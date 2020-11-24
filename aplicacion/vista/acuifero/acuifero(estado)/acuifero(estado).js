@@ -7,45 +7,10 @@
  * Sistema de Información Sobre el Uso de Agua de Riego en la Agricultura Nacional.
  */
 
-/* global layerscontrol, capaOrganismo, capaEstado, capaAcuifero, tablaOC, moment, tablaEst, tablaAcu, shp, Pace */
-
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
-//Tabla de Organismos de cuenca
-$("#Organismos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Organismo de Cuenca",
-        search: "Buscar Organismos de Cuenca",
-    },
-});
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Estado",
-        search: "Buscar Estado",
-    },
-});
-/**
- * Se aplica el estilo al select de los acuiferos
- */
-$("#Acuiferos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione un Acuífero",
-        search: "Buscar Acuífero",
-    },
-});
+// Se aplica estilo a los selects
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismo');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Acuiferos', 'Acuífero', 'Buscar Acuífero');
 
 /**
  * Esta función controla todos los cambios del select de estados.
@@ -55,18 +20,16 @@ $("#Acuiferos").multiselect({
  * @constructor
  */
 async function Estados() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-     */
+    // Swal.fire({
+    //     title: "Por favor espere", // add html attribute if you want or remove
+    //     html: "Cargando Datos",
+    //     allowOutsideClick: false,
+    //     onBeforeOpen: () => {
+    //         Swal.showLoading();
+    //     },
+    // });
+    
+    
     await limpiarEstados();
     const query = await concatEstado();
     /**
@@ -341,6 +304,7 @@ async function Consultar() {
                 });
             },
         }).always(async function () {
+            
             cadena = "Accion=ConsultaAcuifero&modulo_id=1";
             citas = "\n ";
             $.ajax({
@@ -351,7 +315,7 @@ async function Consultar() {
                     document.getElementById("lista").innerHTML = "";
                     $.each(JSON.parse(resp), function (index, item) {
                         citas += item.cita + " \n";
-                        $("#lista").append("<li>" + item.cita + "</li>");
+                        $("#lista").append("<li class='text-left'>" + item.cita + "</li>");
                     });
                     await tablaOC.destroy();
                     await tablaEst.destroy();

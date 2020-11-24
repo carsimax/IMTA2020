@@ -7,35 +7,10 @@
  * Sistema de Información Sobre el Uso de Agua de Riego en la Agricultura Nacional.
  */
 
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
+//Se aplcia el estilo a los selects 
+setEstiloSelect('#Usos', 'Usos', 'Buscar Uso');
+setEstiloSelect('#Concesiones', 'Concesiones', 'Buscar Concesión');
 
-/**
- * Se aplica el estilo para el select de los estados
- */
-/**
- * Se aplica el estilo al select de los acuiferos
- */
-
-$("#Usos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione el uso del título",
-        search: "Buscar uso",
-    },
-});
-$("#Concesiones").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Seleccione una concesión",
-        search: "Buscar concesión",
-    },
-});
 
 /**
  * Esta función controla todos los cambios del select de organismos de cuenca.

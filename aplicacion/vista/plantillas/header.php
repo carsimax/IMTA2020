@@ -69,6 +69,7 @@ if (!isset($_SESSION)) {
     <!--<link rel="stylesheet" href="/estilo/css/sticky-footer.css">-->
     <link rel="stylesheet" href="/estilo/css/gridCards.css">
     <link rel="stylesheet" href="/estilo/css/multiselect.css">
+    <link rel="stylesheet" href="/estilo/css/legend.css">
     <script src="/estilo/js/jquery.multiselect.js"></script>
     <script src="/estilo/js/5320a8a9f1.js"></script>
     <script src="/estilo/js/animatescroll.js"></script>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -23,7 +24,7 @@ $registros = new FuenteModulo();
 $Fuentes = $registros->getFuentes();
 //Organismos de cuenca de los distritos de rego
 $registros = new InventarioDistrito();
-$Organismos= $registros->getDistritos();
+$Organismos = $registros->getDistritos();
 
 
 ?>
@@ -34,7 +35,7 @@ $Organismos= $registros->getDistritos();
         <select onchange="Organismos()" name="Organismos[]" multiple id="Organismos">
             <?php
             foreach ($Organismos as $Organismo) {
-                ?>
+            ?>
                 <option value="<?php echo $Organismo['id_organismo'] ?>"><?php echo $Organismo['numero'] ?>
                     .<?php echo $Organismo['organismo'] ?> </option>
             <?php } ?>
@@ -56,9 +57,8 @@ $Organismos= $registros->getDistritos();
         <label>Fuente:</label>
         <select name="Fuentes[]" multiple id="Fuentes">
             <?php
-            foreach ($Fuentes as $Fuente)
-            {
-                ?>
+            foreach ($Fuentes as $Fuente) {
+            ?>
                 <option value="<?php echo $Fuente['id_fuente'] ?>"><?php echo $Fuente['aprovechameinto'] ?> (<?php echo $Fuente['tipo'] ?>)</option>
             <?php } ?>
         </select>
@@ -74,13 +74,14 @@ $Organismos= $registros->getDistritos();
     -->
 </div>
 <div class="row">
-    <!--Select del Acuiferos-->
     <div class="col-sm">
         <br>
-        <button id="consultar" onclick="Consultar()" class="btn btn-gob btn-fill btn-block">Consultar</button>
+        <button id="consultar" onclick="Consultar()" class="btn btn-gob btn-fill btn-block" disabled>Consultar</button>
         <br>
     </div>
 </div>
 
+<!-- Funciones globales de los selects -->
+<script src="/sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->
 <script src="/aplicacion/vista/inventario/inventario1/inventario1.js"></script>

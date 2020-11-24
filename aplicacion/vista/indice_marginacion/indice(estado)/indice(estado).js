@@ -1,9 +1,11 @@
 //Se aplica el estilo para los selects de la vista
-setEstiloSelect('#Estados', 'Seleccione Estados', 'Buscar Estado');
+
+setEstiloSelectOne('#Anios', 'Años', 'Buscar Año', false);
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+
 
 //Funcion que se activa con el onchange del selectores de año.
 async function Anios() {
-    $("#Estados").multiselect("reset");
     map.off();
     map.remove();
     crearMapa();
@@ -13,11 +15,16 @@ async function Anios() {
     $("#referencias").hide();
 }
 
+async function Estados(){
+    isFormCompleted('#Estados');
+}
+
 async function deshabilitar() {
     $("#consultar").prop("disabled", true);
     $("#pantalla").hide();
     $("#botonMapa").hide();
     $("#referencias").hide();
+    $("#divglosario").hide();
 }
 
 async function habilitar() {
@@ -26,11 +33,13 @@ async function habilitar() {
     $("#divPrioridad").show();
     $("#botonMapa").show();
     $("#referencias").show();
+    $("#divglosario").show();
+    
 }
 
 
 async function Consultar() {
-    
+
     Swal.fire({
         title: "Por favor espere",
         html: "Realizando consulta", // add html attribute if you want or remove
@@ -40,81 +49,62 @@ async function Consultar() {
             Swal.showLoading();
         }
     });
-    
-    var valores = "("+concatValoresSelect('#Estados', 'estado_id=')+") AND ("+concatValoresSelect('#Anios', 'anio_id=')+")";
-    
+
+    var valores = "(" + concatValoresSelect('#Estados', 'estado_id=') + ") AND (" + concatValoresSelect('#Anios', 'anio_id=') + ")";
+
     //Busqueda tabular
-    if (valores !== "") {
-        //Se obtiene la cita con la información de las presas, para obtener el id del modulo, consultar en la bd
-        cadena = "Accion=ConsultaIndiceMarginacion&Filtro=Entidad&Anio=" + $("#Anios option:selected").val() + "&modulo_id=7";
-        citas = "\n ";
+    if (concatValoresSelect('#Estados', 'estado_id=')) {
+        data = "Accion=ConsultaIndiceMarginacion&Filtro=Entidad&Anio=" + $("#Anios option:selected").val() + "&modulo_id=7";
+        citas = construirReferencias(data, true);
+        crearGlosario();
+        //Se extrae la información tabular de la base de datos
+        var cadena = "query=" + valores + "&Accion=ConsultaEstado";
+        var data = [];
         $.ajax({
-            type: "GET",
-            url: "/aplicacion/controlador/catalogo.php",
+            type: "POST",
+            url: "/aplicacion/controlador/estadomarginacion.php",
             data: cadena,
+            //Si el controlador devuelve una respuesta
             success: function (resp) {
-                document.getElementById("lista").innerHTML = "";
                 $.each(JSON.parse(resp), function (index, item) {
-                    citas += item.cita + " \n";
-                    $("#lista").append("<li>" + item.cita + "</li>");
+                    data.push([
+                        item.nombre,
+                        numeral(Number.parseFloat(item.pob_tot)).format("0,0"),
+                        item.analf,
+                        item.sprim,
+                        item.ovsde,
+                        item.ovsee,
+                        item.ovsae,
+                        item.vhac,
+                        item.ovpt,
+                        item.im,
+                        item.gm
+                    ]);
                 });
-                crearGlosario();
-                $("#referencias").show();
             }
-        }).always(function () {
-            //Se extrae la información tabular de la base de datos
-            var cadena = "query=" + valores + "&Accion=ConsultaEstado";
-            var data = [];
-            $.ajax({
-                type: "POST",
-                url: "/aplicacion/controlador/estadomarginacion.php",
-                data: cadena,
-                //Si el controlador devuelve una respuesta
-                success: function (resp) {
-                    $.each(JSON.parse(resp), function (index, item) {
-                        data.push([
-                            item.nombre,
-                            numeral(Number.parseFloat(item.pob_tot)).format("0,0"),
-                            item.analf,
-                            item.sprim,
-                            item.ovsde,
-                            item.ovsee,
-                            item.ovsae,
-                            item.vhac,
-                            item.ovpt,
-                            item.im,
-                            item.gm
-                        ]);
-                    });
+        }).always(async function () {
+            table.destroy();
+            await generarTablaIndiceMarginacion(data); //Se genera la tabla con la información obtenida del AJAX
+            habilitar();
+            var x = $('#Prioridad').prop('checked');
+            if (x == false) {
+                if (!map.hasLayer(EstSelect)) {
+                    //Recargamos el mapa
+                    var callBack = async function () {
+                        document.getElementById("map").style.display = "block";
+                        setTimeout(function () {
+                            map.invalidateSize();
+                        }, 100);
+                    };
+                    map.whenReady(callBack);
+                    await loadShape();
                 }
-            }).always(async function () {
-                table.destroy();
-                await generarTablaIndiceMarginacion(data); //Se genera la tabla con la información obtenida del AJAX
-                habilitar();
-                var x = $('#Prioridad').prop('checked');
-                if (x == false) {
-                    if (!map.hasLayer(EstSelect)) {
-                        //Recargamos el mapa
-                        var callBack = async function () {
-                            document.getElementById("map").style.display = "block";
-                            setTimeout(function () {
-                                map.invalidateSize();
-                            }, 100);
-                        };
-                        map.whenReady(callBack);
-                        await loadShape();
-                    }
-                }
-                await Swal.close();
-            });
+            }
+            await Swal.close();
         });
     } else {
         swal("¡Cuidado!", "Todos los filtros tienen que tener al menos un elemento seleccionado");
-        await habilitar();
-        $("#pantalla").hide();
-        $("#botonMapa").hide();
-        $("#divPrioridad").hide();
-        $("#referencias").hide();
+        await deshabilitar();
         await Swal.close();
     }
     await Historial();
@@ -147,7 +137,7 @@ async function generarTablaIndiceMarginacion(data) {
             },
             {
                 title: "Analf.",
-                
+
             },
             {
                 title: "Sprim.",
@@ -182,7 +172,7 @@ async function generarTablaIndiceMarginacion(data) {
                 className: "btn btn-gob btn-sm",
                 text: "Exportar Excel",
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4,5,6,7,8,9,10]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                 }
             },
             {
@@ -269,15 +259,15 @@ async function generarTablaIndiceMarginacion(data) {
         language: {
             url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         },
-        columnDefs: [{ className: 'dt-body-right', targets: [1,2,3,4,5,6,7,8] }]
-        
+        columnDefs: [{ className: 'dt-body-right', targets: [1, 2, 3, 4, 5, 6, 7, 8] }]
+
     });
-    
+
 }
 
 
 
-function crearGlosario(){
+function crearGlosario() {
     document.getElementById("glosario").innerHTML = "";
     $("#glosario").append("<li><b>Pob. Tot. :</b> Población total.</li>");
     $("#glosario").append("<li><b>Analf. :</b> Porcentaje de población de 15 años o más analfabeta.</li>");
@@ -287,29 +277,28 @@ function crearGlosario(){
     $("#glosario").append("<li><b>Ovsae. :</b> Porcentaje de ocupantes en viviendas sin agua entubada.</li>");
     $("#glosario").append("<li><b>Vhac. :</b> Porcentaje de viviendas con algún nivel de hacinamiento.</li>");
     $("#glosario").append("<li><b>Ovpt. :</b> Porcentaje de ocupantes en viviendas con piso de tierra.</li>");
-    $("#glosario").append("<li><b>IM. :</b> Índice de marginación.</li>");   
-    $("#glosario").append("<li><b>GM. :</b> Grado de marginación.</li>");          
+    $("#glosario").append("<li><b>IM. :</b> Índice de marginación.</li>");
+    $("#glosario").append("<li><b>GM. :</b> Grado de marginación.</li>");
 }
 
 //Carga los shapes al mapa
 async function loadShape() {
     Swal.fire({
-      title: "Por favor espere",
-      html: "Cargando Mapa Geoespacial",
-      allowEscapeKey: false,
-    allowOutsideClick: false,
-      onBeforeOpen: () => {
-        Swal.showLoading();
-      },
+        title: "Por favor espere",
+        html: "Cargando Mapa Geoespacial",
+        allowOutsideClick: false,
+        onBeforeOpen: () => {
+            Swal.showLoading();
+        },
     });
     getEstadoMarginacion_SIG(function () {
-      var overlays = {
-        "Estados": GroupoEstSelect,
-      }
-      var lc = L.control.layers(null, overlays);
-      lc.addTo(map);
-      Swal.close();
+        var overlays = {
+            "Estados": GroupoEstSelect,
+        }
+        var lc = L.control.layers(null, overlays);
+        lc.addTo(map);
+        Swal.close();
     });
-  }
-  
+}
+
 

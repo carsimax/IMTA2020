@@ -74,12 +74,12 @@ $filtros = $registros->getFiltrosMarginacion(); ?>
                     </div>
                 </div>
             </div>
-            <div class="col-sm ml-2" id='referencias'>
+            <div class="col-sm ml-2" id="divglosario">
                 <h5>Glosario</h5>
                 <ul class="ml-4" id='glosario'></ul>
-                <h5>Referencias</h5>
-                <ul class="ml-4" id='lista'>
+
             </div>
+            <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
         </main>
     </div>
     <br>

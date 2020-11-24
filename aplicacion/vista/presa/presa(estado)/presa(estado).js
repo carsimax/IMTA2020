@@ -7,43 +7,14 @@
  * Sistema de Información Sobre el Uso de Agua de Riego en la Agricultura Nacional.
  */
 /* global layerscontrol, capaOrganismo, capaEstado, capaPresa, table, moment, tableV, map, shp */
+// alert(typeof($('#Organismos').val()));
 
-/**
- * Se aplica el estilo al select de organismo de cuenca
- */
-$("#Organismos").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Organismos de Cuenca",
-        search: "Buscar Organismos de Cuenca",
-    },
-});
-/**
- * Se aplica el estilo para el select de los estados
- */
-$("#Estados").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Estados",
-        search: "Buscar Estado",
-    },
-});
-/**
- * Se aplica el estilo al select de los Presas
- */
-$("#Presas").multiselect({
-    columns: 1,
-    search: true,
-    selectAll: true,
-    texts: {
-        placeholder: "Presas",
-        search: "Buscar Presa",
-    },
-});
+// Se aplica estilo a los selects
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismo');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Presas', 'Presas', 'Buscar Presa');
+
+
 
 /**
  * Esta función controla todos los cambios del select de organismos de cuenca.
@@ -52,19 +23,8 @@ $("#Presas").multiselect({
  * retorna en este caso los estados que dependen de un organismo de cuenta además de los shapes de los organismos.
  * @constructor
  */
+
 async function Organismos() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-     */
     await limpiarOrganismos();
     const query = await concatOrganismo();
     /**
@@ -122,18 +82,6 @@ async function Organismos() {
  * @constructor
  */
 async function Estados() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-     */
     await limpiarEstados();
     const query = await concatEstado();
     /**
@@ -182,6 +130,7 @@ async function Estados() {
         Swal.close();
     }
 }
+
 
 async function loadShape() {
     await map.off();
@@ -233,8 +182,7 @@ async function Consultar() {
         onBeforeOpen: () => {
             Swal.showLoading();
         },
-    });
-    $("#referencias").show();
+    }); 
     /**
      * Limpiamos la parte de Presas
      */
@@ -296,197 +244,185 @@ async function Consultar() {
      */
     if (Pres !== "" && OC !== "" && Est !== "") {
         //Se obtiene la cita con la información de las presas
-        cadena = "Accion=getCitaConsulta&modulo_id=2";
-        citas = "\n ";
+        data = "Accion=getCitaConsulta&modulo_id=2";
+        citas = construirReferencias(data, false);
+
+        const query = Pres + " GROUP by id_presa";
+        var cadena = "query=" + query + "&Accion=Presas";
+        data = [];
         $.ajax({
-            type: "GET",
-            url: "/aplicacion/controlador/catalogo.php",
+            type: "POST",
+            url: "/aplicacion/controlador/mapa.php",
             data: cadena,
-            success: function (resp) {
-                document.getElementById("lista").innerHTML = "";
+            //Si el controlador devuelve una respuesta
+            success: async function (resp) {
                 $.each(JSON.parse(resp), function (index, item) {
-                    citas += item.cita + " \n";
-                    $("#lista").append("<li>" + item.cita + "</li>");
+                    data.push([
+                        item.id_presa,
+                        item.nombre_oficial,
+                        item.nom_comun,
+                        item.corriente,
+                        item.nombre,
+                        item.anio_term,
+                    ]);
                 });
-            },
-        }).always(function () {
-            const query = Pres + " GROUP by id_presa";
-            var cadena = "query=" + query + "&Accion=Presas";
-            data = [];
-            $.ajax({
-                type: "POST",
-                url: "/aplicacion/controlador/mapa.php",
-                data: cadena,
-                //Si el controlador devuelve una respuesta
-                success: async function (resp) {
-                    $.each(JSON.parse(resp), function (index, item) {
-                        data.push([
-                            item.id_presa,
-                            item.nombre_oficial,
-                            item.nom_comun,
-                            item.corriente,
-                            item.nombre,
-                            item.anio_term,
-                        ]);
-                    });
-                    table.destroy();
-                    table = $("#tablaPresa").DataTable({
-                        data: data,
-                        columnDefs: [
-                            {className: 'dt-body-right', targets: [5]},
-                            {
-                                targets: 0,
-                                data: null,
-                                defaultContent:
-                                    '<button class="btn btn-gob text-ligth  btn-block"><i class="fas fa-water"></i></button>',
-                            },
-                        ],
-                        dom: "Bfrtip",
-                        columns: [
-                            {
-                                title: "Volumen",
-                            },
-                            {
-                                title: "Nombre Oficial",
-                            },
-                            {
-                                title: "Nombre Común",
-                            },
-                            {
-                                title: "Corriente",
-                            },
-                            {
-                                title: "Estado",
-                            },
-                            {
-                                title: "Año Termino",
-                            },
-                        ],
-                        buttons: [
-                            {
-                                extend: "excelHtml5",
-                                title: "Consulta de presas",
-                                className: "btn btn-gob btn-sm",
-                                text: "Exportar Excel",
-                                exportOptions: {
-                                    columns: [1, 2, 3, 4, 5],
-                                },
-                            },
-                            {
-                                extend: "pdfHtml5",
-                                title: "Consulta de presas",
-                                className: "btn btn-gob btn-sm",
-                                text: "Exportar PDF",
-                                messageBottom: citas,
-                                orientation: "portrait",
-                                pageSize: "A4",
-                                exportOptions: {
-                                    columns: [1, 2, 3, 4, 5],
-                                },
-                                customize: function (doc) {
-                                    //Remove the title created by datatTables
-                                    doc.content.splice(0, 1);
-                                    //Create a date string that we use in the footer. Format is dd-mm-yyyy
-                                    var now = new Date();
-                                    var jsDate =
-                                        now.getDate() +
-                                        "-" +
-                                        (now.getMonth() + 1) +
-                                        "-" +
-                                        now.getFullYear();
-                                    // It's important to create enough space at the top for a header !!!
-                                    doc.pageMargins = [20, 70, 20, 50];
-                                    // Set the font size fot the entire document
-                                    doc.defaultStyle.fontSize = 10;
-                                    // Set the fontsize for the table header
-                                    doc.styles.tableHeader.fontSize = 10;
-                                    doc["header"] = function () {
-                                        return {
-                                            columns: [
-                                                {
-                                                    image: logo,
-                                                    width: 200,
-                                                },
-                                                {
-                                                    alignment: "left",
-                                                    //italics: true,
-                                                    text: "Consulta de presas",
-                                                    fontSize: 12.5,
-                                                    margin: [10, 5],
-                                                },
-                                                {
-                                                    alignment: "right",
-                                                    fontSize: 10,
-                                                    text: jsDate.toString(),
-                                                },
-                                            ],
-                                            margin: 20,
-                                        };
-                                    };
-                                    doc["footer"] = function (page, pages) {
-                                        return {
-                                            columns: [
-                                                {
-                                                    // This is the right column
-                                                    alignment: "center",
-                                                    text: [
-                                                        "Página ",
-                                                        {text: page.toString()},
-                                                        " de ",
-                                                        {text: pages.toString()},
-                                                    ],
-                                                },
-                                            ],
-                                            margin: [50, 0],
-                                        };
-                                    };
-                                    var objLayout = {};
-                                    objLayout["hLineWidth"] = function (i) {
-                                        return 0.5;
-                                    };
-                                    objLayout["vLineWidth"] = function (i) {
-                                        return 0.5;
-                                    };
-                                    objLayout["hLineColor"] = function (i) {
-                                        return "#aaaaaa";
-                                    };
-                                    objLayout["vLineColor"] = function (i) {
-                                        return "#aaaaaa";
-                                    };
-                                    objLayout["paddingLeft"] = function (i) {
-                                        return 4;
-                                    };
-                                    objLayout["paddingRight"] = function (i) {
-                                        return 4;
-                                    };
-                                    doc.content[0].layout = objLayout;
-                                },
-                            },
-                        ],
-                        language: {
-                            url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+                table.destroy();
+                table = $("#tablaPresa").DataTable({
+                    data: data,
+                    columnDefs: [
+                        { className: 'dt-body-right', targets: [5] },
+                        {
+                            targets: 0,
+                            data: null,
+                            defaultContent:
+                                '<button class="btn btn-gob text-ligth  btn-block"><i class="fas fa-water"></i></button>',
                         },
-                    });
-                    //Verifica si el mapa es prioridad
-                    var x = $('#Prioridad').prop('checked');
-                    if (x == false) {
-                        if (!map.hasLayer(OCSelect)) {
-                            //Recargamos el mapa
-                            var callBack = async function () {
-                                document.getElementById("map").style.display = "block";
-                                setTimeout(function () {
-                                    map.invalidateSize();
-                                }, 100);
-                            };
-                            map.whenReady(callBack);
-                            await loadShape();
-                        }
+                    ],
+                    dom: "Bfrtip",
+                    columns: [
+                        {
+                            title: "Volumen",
+                        },
+                        {
+                            title: "Nombre Oficial",
+                        },
+                        {
+                            title: "Nombre Común",
+                        },
+                        {
+                            title: "Corriente",
+                        },
+                        {
+                            title: "Estado",
+                        },
+                        {
+                            title: "Año Termino",
+                        },
+                    ],
+                    buttons: [
+                        {
+                            extend: "excelHtml5",
+                            title: "Consulta de presas",
+                            className: "btn btn-gob btn-sm",
+                            text: "Exportar Excel",
+                            exportOptions: {
+                                columns: [1, 2, 3, 4, 5],
+                            },
+                        },
+                        {
+                            extend: "pdfHtml5",
+                            title: "Consulta de presas",
+                            className: "btn btn-gob btn-sm",
+                            text: "Exportar PDF",
+                            messageBottom: citas,
+                            orientation: "portrait",
+                            pageSize: "A4",
+                            exportOptions: {
+                                columns: [1, 2, 3, 4, 5],
+                            },
+                            customize: function (doc) {
+                                //Remove the title created by datatTables
+                                doc.content.splice(0, 1);
+                                //Create a date string that we use in the footer. Format is dd-mm-yyyy
+                                var now = new Date();
+                                var jsDate =
+                                    now.getDate() +
+                                    "-" +
+                                    (now.getMonth() + 1) +
+                                    "-" +
+                                    now.getFullYear();
+                                // It's important to create enough space at the top for a header !!!
+                                doc.pageMargins = [20, 70, 20, 50];
+                                // Set the font size fot the entire document
+                                doc.defaultStyle.fontSize = 10;
+                                // Set the fontsize for the table header
+                                doc.styles.tableHeader.fontSize = 10;
+                                doc["header"] = function () {
+                                    return {
+                                        columns: [
+                                            {
+                                                image: logo,
+                                                width: 200,
+                                            },
+                                            {
+                                                alignment: "left",
+                                                //italics: true,
+                                                text: "Consulta de presas",
+                                                fontSize: 12.5,
+                                                margin: [10, 5],
+                                            },
+                                            {
+                                                alignment: "right",
+                                                fontSize: 10,
+                                                text: jsDate.toString(),
+                                            },
+                                        ],
+                                        margin: 20,
+                                    };
+                                };
+                                doc["footer"] = function (page, pages) {
+                                    return {
+                                        columns: [
+                                            {
+                                                // This is the right column
+                                                alignment: "center",
+                                                text: [
+                                                    "Página ",
+                                                    { text: page.toString() },
+                                                    " de ",
+                                                    { text: pages.toString() },
+                                                ],
+                                            },
+                                        ],
+                                        margin: [50, 0],
+                                    };
+                                };
+                                var objLayout = {};
+                                objLayout["hLineWidth"] = function (i) {
+                                    return 0.5;
+                                };
+                                objLayout["vLineWidth"] = function (i) {
+                                    return 0.5;
+                                };
+                                objLayout["hLineColor"] = function (i) {
+                                    return "#aaaaaa";
+                                };
+                                objLayout["vLineColor"] = function (i) {
+                                    return "#aaaaaa";
+                                };
+                                objLayout["paddingLeft"] = function (i) {
+                                    return 4;
+                                };
+                                objLayout["paddingRight"] = function (i) {
+                                    return 4;
+                                };
+                                doc.content[0].layout = objLayout;
+                            },
+                        },
+                    ],
+                    language: {
+                        url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+                    },
+                });
+                //Verifica si el mapa es prioridad
+                var x = $('#Prioridad').prop('checked');
+                if (x == false) {
+                    if (!map.hasLayer(OCSelect)) {
+                        //Recargamos el mapa
+                        var callBack = async function () {
+                            document.getElementById("map").style.display = "block";
+                            setTimeout(function () {
+                                map.invalidateSize();
+                            }, 100);
+                        };
+                        map.whenReady(callBack);
+                        await loadShape();
                     }
-                },
-            }).always(async function () {
-                await habilitar();
-                await Swal.close();
-            });
+                }
+            },
+        }).always(async function () {
+            await habilitar();
+            await Swal.close();
         });
     } else {
         swal(

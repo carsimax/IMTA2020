@@ -90,6 +90,7 @@ async function habilitar() {
     $("#botonMapa").show();
     $("#divPrioridad").show();
     $("#referencias").show();
+    
 }
 
 $('#Prioridad').change(async function () {

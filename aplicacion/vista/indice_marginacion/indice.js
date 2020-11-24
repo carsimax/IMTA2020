@@ -10,6 +10,7 @@ $(document).ready(async function () {
   $("#divPrioridad").hide();
   $("#botonMapa").hide();
   $("#referencias").hide();
+  $("#divglosario").hide();
   crearMapa();
   table = $("#tablaIndiceMarginacion").DataTable({
     columnDefs: [{ className: 'dt-body-right', targets: [10] }],

@@ -406,7 +406,7 @@ async function Consultar() {
                     document.getElementById("lista").innerHTML = "";
                     $.each(JSON.parse(resp), function (index, item) {
                         citas += item.cita + " \n";
-                        $("#lista").append("<li>" + item.cita + "</li>");
+                        $("#lista").append("<li class='text-left'>" + item.cita + "</li>");
                     });
                 },
             }).always(async function () {

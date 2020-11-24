@@ -29,9 +29,9 @@ $Anios = $registros->getAnios();
 ?>
 <div class="row">
     <!--Select del los AÑo-->
-    <div class="col-sm">
+    <div class="col-md-6 col-lg-2">
         <label>Año:</label>
-        <select class="form-control" id="Anios" onchange="Anios()">
+        <select class="form-control green" id="Anios" onchange="Anios()">
             <?php
             foreach ($Anios as $Anio) {
             ?>
@@ -40,10 +40,10 @@ $Anios = $registros->getAnios();
         </select>
     </div>
     <!--Select del Municipios-->
-    <div class="col-sm">
+    <div class="col-md-6 col-lg-2">
         <label>Indicador de calidad:</label>
-        <select class="form-control" name="indicador" id="indicador" onchange="Anios()">
-            <option value="DBO_TOT">Demanda Bioquímica de Oxígeno</option>
+        <select class="form-control green" name="indicador" id="indicador" onchange="Anios()">
+            <option value="DBO_TOT" selected='selected'>Demanda Bioquímica de Oxígeno</option>
             <option value="DQO_TOT">Demanda Química de Oxígeno</option>
             <option value="SST">Sólidos Suspendidos Totales</option>
             <option value="COLI_FEC">Coliformes Fecales</option>
@@ -51,7 +51,7 @@ $Anios = $registros->getAnios();
         </select>
     </div>
     <!--Select del organismo de cuenca-->
-    <div class="col-sm">
+    <div class="col-md-6 col-lg-2">
         <label>Organismo de Cuenca:</label>
         <select onchange="Organismos()" name="Organismos[]" multiple id="Organismos">
             <?php
@@ -65,7 +65,7 @@ $Anios = $registros->getAnios();
     <!--Fin del Select de los OC-->
 
     <!--Select del Estados-->
-    <div class="col-sm">
+    <div class="col-md-6 col-lg-2">
         <label>Estado:</label>
         <select onchange="Estados()" name="Estados[]" multiple id="Estados">
         </select>
@@ -73,16 +73,16 @@ $Anios = $registros->getAnios();
     <!--Fin del Select de los Estados-->
 
     <!--Select del Municipios-->
-    <div class="col-sm">
+    <div class="col-md-6 col-lg-2">
         <label>Municipio:</label>
         <select name="Municipios[]" multiple id="Municipios" onchange="getPuntosMonitoreo()">
         </select>
     </div>
     <!--Fin del Select de los Estados-->
-    <!--Select del Acuiferos-->
-    <div class="col-sm">
+    
+    <div class="col-md-6 col-lg-2">
         <label>Sitios de Monitoreo:</label>
-        <select name="Sitios[]" multiple id="Sitios">
+        <select name="Sitios[]" multiple onchange="Sitios()" id="Sitios">
         </select>
     </div>
     <!--Fin del Select de los Estados-->
@@ -90,12 +90,11 @@ $Anios = $registros->getAnios();
 <div class="row">
     <div class="col-sm">
         <br>
-        <button id="consultar" onclick="Consultar()" class="btn btn-gob btn-fill btn-block">Consultar</button>
+        <button id="consultar" onclick="Consultar()" class="btn btn-gob btn-fill btn-block" disabled>Consultar</button>
         <br>
     </div>
 </div>
-
+<!-- Funciones globales de los selects -->
+<script src="/sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->
-<script
-    src="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial(anual)/calidad_agua_superficial(anual).js">
-</script>
+<script src="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial(anual)/calidad_agua_superficial(anual).js"></script>

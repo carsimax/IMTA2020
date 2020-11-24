@@ -528,37 +528,16 @@ async function Consultar() {
   await deshabilitar();
   const OC = await selectOrganismo();
   const Est = await selectEst();
-  //Distrito
   const DR = await selectDR();
-  //Anio
   const Anio = await selectAnio();
-  //Tenecia
   const Tenencia = await selectTenencia();
-  //fuentes
   const Fuente = await selectFuente();
 
   if (DR !== "" && Anio !== "" && Tenencia !== "" && Fuente !== "") {
-    //Se obtiene la cita con la información de los acuiferos
-    cadena = "Accion=ConsultaAgricolaHistorica&modulo_id=3&anios=" + Anio;
-    citas = "\n ";
-    $.ajax({
-      type: "GET",
-      url: "/aplicacion/controlador/catalogo.php",
-      data: cadena,
-      success: function (resp) {
-        document.getElementById("lista").innerHTML = "";
-        $.each(JSON.parse(resp), function (index, item) {
-          citas += item.cita + " \n";
-          $("#lista").append("<li>" + item.cita + "</li>");
-        });
-      },
-    });
-    /**
-     *
-     * @type String
-     * Se crea la variable con la sentencia que se va a mandar al controlador
-     *
-     */
+    //Se construyen las referencias
+    data = "Accion=ConsultaAgricolaHistorica&modulo_id=3&anios=" + Anio;
+    citas = construirReferencias(data, false);
+    // Se crea la variable con la sentencia que se va a mandar al controlador
     var query ='(' + OC + ') AND (' + Est + ') AND (' + DR + ') AND (' + Anio + ') AND (' + Tenencia + ') AND (' + Fuente + ') GROUP by anio_id ORDER BY anio';
     var cadena = "query=" + query + "&Accion=DistritosVol2";
     $.ajax({

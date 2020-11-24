@@ -21,8 +21,6 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
             </ol>
         </nav>
     </div>
-
-
     <div class="col-sm">
         <p>Esta sección está creada para que puedas dejarnos tus comentarios y sugerencias acerca del funcionamiento del sistema. Esto nos ayudará a mejorar constantemente esta plataforma.</p>
         <form action="../controlador/usuario.php" name="formRegistro" method="POST">
@@ -30,6 +28,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
             <div class="row">
                 <input type="text" id="Accion" name="Accion" value="Comentario" hidden />
                 <?php if (isset($_SESSION['loggedin'])) { ?>
+
                     <div class="col-sm" id="Nombre">
                         <p>Nombre:</p>
                         <input type="text" class="form-control" name="Nombre" id="Nombre" required value=" <?php echo $_SESSION['Nombre'] ?>" />

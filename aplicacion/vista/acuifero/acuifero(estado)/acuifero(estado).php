@@ -51,7 +51,7 @@ $Organismos = $registros->getTodos();
     <!--Select del Acuiferos-->
     <div class="col-sm">
         <label>Acuífero:</label>
-        <select name="Acuiferos[]" multiple id="Acuiferos">
+        <select name="Acuiferos[]" onchange="Acuiferos()" multiple id="Acuiferos">
         </select>
     </div>
 </div>
@@ -63,6 +63,7 @@ $Organismos = $registros->getTodos();
     </div>
 </div>
 
-
+<!-- Funciones globales de los selects -->
+<script src="/sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->
 <script src="/aplicacion/vista/acuifero/acuifero(estado)/acuifero(estado).js"></script>

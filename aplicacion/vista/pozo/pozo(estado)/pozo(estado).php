@@ -100,7 +100,7 @@ $Usos = $registros->getTodos();
     </div>
 </div>
 
-
+<!-- Funciones globales de los selects -->
+<script src="/sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->
-
 <script src="/aplicacion/vista/pozo/pozo(estado)/pozo(estado).js"></script>

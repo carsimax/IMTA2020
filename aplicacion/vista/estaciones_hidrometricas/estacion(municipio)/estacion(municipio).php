@@ -25,7 +25,7 @@ $Regiones = $registros->getRegionesHidrologicas();
 ?>
 
 <div class="row">
-    <div class="col-sm">
+    <div class="col-md-4">
         <!--Select del organismo de cuenca-->
         <label>Región Hidrológica:</label>
         <select class="form-control" onchange="Regiones()" multiple id="RegHidrologicas">
@@ -39,7 +39,7 @@ $Regiones = $registros->getRegionesHidrologicas();
     <!--Fin del Select de los OC-->
 
     <!--Select del Estados-->
-    <div class="col-sm" id="divEstado">
+    <div class="col-md-4" id="divEstado">
         <label>Estado:</label>
         <select class="form-control" onchange="Estados()" multiple id="Estados">
         </select>
@@ -47,27 +47,27 @@ $Regiones = $registros->getRegionesHidrologicas();
     <!--Fin del Select de los Estados-->
 
     <!--Select del Municipios-->
-    <div class="col-sm" id="divMuni">
+    <div class="col-md-4" id="divMuni">
         <label>Municipio:</label>
         <select class="form-control" onchange="Municipios()" multiple id="Municipios">
         </select>
     </div>
     
-    <div class="col-sm">
+    <div class="col-md-4">
         <label>Cuenca:</label>
         <select onchange="Cuencas()"  multiple id="Cuencas">
         </select>
     </div>
-    <div class="col-sm">
+    <div class="col-md-8">
         <label>Estación Hidrométrica:</label>
-        <select name="EstacionHidrometrica[]" multiple id="EstacionHidrometrica">
+        <select name="EstacionHidrometrica[]" multiple onchange="Estaciones()" id="EstacionHidrometrica">
         </select>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm" id="divAcuifero">
+    <div class="col-sm">
         <br>
-        <button id="consultar" onclick="Consultar()" class="btn btn-gob text-light  btn-block">Consultar</button>
+        <button id="consultar" onclick="Consultar()" disabled class="btn btn-gob text-light  btn-block">Consultar</button>
         <br>
     </div>
 </div>

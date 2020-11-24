@@ -234,18 +234,15 @@ async function obtenerMunicipio() {
  * @constructor
  */
 async function Organismos() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
-  /**
-   * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-   */
+  // Swal.fire({
+  //   title: "Por favor espere", // add html attribute if you want or remove
+  //   html: "Cargando Datos",
+  //   allowOutsideClick: false,
+  //   onBeforeOpen: () => {
+  //     Swal.showLoading();
+  //   },
+  // });
+  
   await limpiarOrganismos();
   /**
    * @type {string}

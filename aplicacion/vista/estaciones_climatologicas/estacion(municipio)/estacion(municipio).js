@@ -4,9 +4,7 @@ setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
 setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipios');
 setEstiloSelect('#Cuencas', 'Cuencas', 'Buscar Cuencas');
 setEstiloSelect('#TipoEstacion', 'Tipos', 'Buscar Tipo');
-setEstiloSelect('#EstacionClimatologica', 'Estaciones', 'Buscar Estación');
-
-
+setEstiloSelect('#EstacionClimatologica', 'Estaciones Climatológicas', 'Buscar Estación');
 
 
 async function Organismos() {
@@ -87,9 +85,9 @@ async function Cuencas() {
     await limpiarCuencas();
 }
 
-async function Estaciones() {
+async function TipoEstacion() {
     await limpiarEstaciones();
-    const query =  concatQuery();
+    const query = concatQuery();
 
     if (query !== "") {
         const cadena = "query=" + query + "&Accion=EstacionClimatologica(Municipio)";
@@ -110,6 +108,10 @@ async function Estaciones() {
             $("#EstacionClimatologica").multiselect("loadOptions", data);
         });
     }
+}
+
+async function Estaciones(){
+    isFormCompleted('#EstacionClimatologica');
 }
 
 
@@ -141,7 +143,7 @@ async function limpiarCuencas() {
     data.push({ name: "Climatológico", value: 2, checked: false });
     data.push({ name: "Observatorio", value: 1, checked: false });
     $("#TipoEstacion").multiselect("loadOptions", data);
-     limpiarEstaciones();
+    limpiarEstaciones();
 
 }
 
@@ -202,71 +204,51 @@ async function Consultar() {
             Swal.showLoading();
         }
     });
-
-    $("#referencias").show();
-
     // Se verifica que el ultimo select tenga cosas seleccionadas
-    var EstC = await concatValoresSelect('#EstacionClimatologica', 'id_estacion_climatologica=');
+    var EstC = concatValoresSelect('#EstacionClimatologica', 'id_estacion_climatologica=');
     if (EstC !== "") {
-        //Se obtiene la cita con la información de las presas, para obtener el id del modulo, consultar en la bd
-        cadena = "Accion=ConsultaPresa&modulo_id=6";
-        citas = "\n ";
+        data = "Accion=getCitaConsulta&modulo_id=6";
+        citas = construirReferencias(data, false);
+        var cadena = "query=" + EstC + " GROUP by id_estacion_climatologica" + "&Accion=EstacionesClimatologicas";
+        var data = [];
         $.ajax({
-            type: "GET",
-            url: "/aplicacion/controlador/catalogo.php",
+            type: "POST",
+            url: "/aplicacion/controlador/mapa.php",
             data: cadena,
             success: function (resp) {
-                document.getElementById("lista").innerHTML = "";
                 $.each(JSON.parse(resp), function (index, item) {
-                    citas += item.cita + " \n";
-                    $("#lista").append("<li>" + item.cita + "</li>");
+                    data.push([
+                        item.nombre,
+                        item.cuenca,
+                        item.subcuenca,
+                        item.tipo,
+                        item.estado,
+                        item.municipio,
+                        item.fechainicio,
+                        item.fechafin,
+                        item.situacion
+                    ]);
                 });
             }
-        }).always(function () {
-            //Se consulta la información tabular
-            const query = EstC + " GROUP by id_estacion_climatologica";
-            var cadena = "query=" + query + "&Accion=EstacionesClimatologicas";
-            var data = [];
-            $.ajax({
-                type: "POST",
-                url: "/aplicacion/controlador/mapa.php",
-                data: cadena,
-                //Si el controlador devuelve una respuesta
-                success: function (resp) {
-                    $.each(JSON.parse(resp), function (index, item) {
-                        data.push([
-                            item.nombre,
-                            item.cuenca,
-                            item.subcuenca,
-                            item.tipo,
-                            item.estado,
-                            item.municipio,
-                            item.fechainicio,
-                            item.fechafin,
-                            item.situacion
-                        ]);
-                    });
+        }).always(async function () {
+            table.destroy();
+            await generarTablaEstacionClimatologica(data); //Se genera la tabla con la información obtenida del AJAX
+            habilitar();
+            var x = $('#Prioridad').prop('checked');
+            if (x == false) {
+                if (!map.hasLayer(OCSelect)) {
+                    //Recargamos el mapa
+                    var callBack = async function () {
+                        document.getElementById("map").style.display = "block";
+                        setTimeout(function () {
+                            map.invalidateSize();
+                        }, 100);
+                    };
+                    map.whenReady(callBack);
+                    await loadShape();
                 }
-            }).always(async function () {
-                table.destroy();
-                await generarTablaEstacionClimatologica(data); //Se genera la tabla con la información obtenida del AJAX
-                habilitar();
-                var x = $('#Prioridad').prop('checked');
-                if (x == false) {
-                    if (!map.hasLayer(OCSelect)) {
-                        //Recargamos el mapa
-                        var callBack = async function () {
-                            document.getElementById("map").style.display = "block";
-                            setTimeout(function () {
-                                map.invalidateSize();
-                            }, 100);
-                        };
-                        map.whenReady(callBack);
-                        await loadShape();
-                    }
-                }
-                await Swal.close();
-            });
+            }
+            await Swal.close();
         });
     } else {
         swal("¡Cuidado!", "Todos los filtros tienen que tener al menos un elemento seleccionado");

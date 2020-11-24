@@ -3,7 +3,7 @@ setEstiloSelect('#RegHidrologicas', 'Regiones Hidrológicas', 'Buscar Región');
 setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
 setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipios');
 setEstiloSelect('#Cuencas', 'Cuencas', 'Buscar Cuencas');
-setEstiloSelect('#EstacionHidrometrica', 'Estaciones', 'Buscar Estación');
+setEstiloSelect('#EstacionHidrometrica', 'Estaciones Hidrométricas', 'Buscar Estación');
 
 
 //Controla la información del select de estados dependiendo de los valores seleccionados en el select de Regiones
@@ -102,6 +102,11 @@ async function Cuencas() {
     }
 }
 
+async function Estaciones(){
+    isFormCompleted('#EstacionHidrometrica');
+}
+
+
 
 /*
  * Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas
@@ -190,69 +195,56 @@ async function Consultar() {
         }
     });
 
-    $("#referencias").show();
 
     //Se valida que se haya seleccionado algo
     var EstH = concatValoresSelect('#EstacionHidrometrica', 'id_estacion_hidrometrica=');
     //Busqueda tabular
     if (EstH !== "") {
         //Se obtiene la cita con la información de las presas, para obtener el id del modulo, consultar en la bd
-        cadena = "Accion=ConsultaEstacionHidrometrica&modulo_id=5";
-        citas = "\n ";
+        var data = "Accion=ConsultaEstacionHidrometrica&modulo_id=5";
+        citas = construirReferencias(data, false);
+        //Se extrae la información tabular de la base de datos
+        var cadena = "query=" + EstH + " GROUP by id_estacion_hidrometrica" + "&Accion=EstacionesHidrometricas";
+
+        var data = [];
         $.ajax({
-            type: "GET",
-            url: "/aplicacion/controlador/catalogo.php",
+            type: "POST",
+            url: "/aplicacion/controlador/mapa.php",
             data: cadena,
+            //Si el controlador devuelve una respuesta
             success: function (resp) {
-                document.getElementById("lista").innerHTML = "";
                 $.each(JSON.parse(resp), function (index, item) {
-                    citas += item.cita + " \n";
-                    $("#lista").append("<li>" + item.cita + "</li>");
+                    data.push([
+                        item.nombre,
+                        item.corriente,
+                        item.cuenca,
+                        item.estado,
+                        item.municipio
+                    ]);
                 });
             }
-        }).always(function () {
-            //Se extrae la información tabular de la base de datos
-            const query = EstH + " GROUP by id_estacion_hidrometrica";
-            var cadena = "query=" + query + "&Accion=EstacionesHidrometricas";
-
-            var data = [];
-            $.ajax({
-                type: "POST",
-                url: "/aplicacion/controlador/mapa.php",
-                data: cadena,
-                //Si el controlador devuelve una respuesta
-                success: function (resp) {
-                    $.each(JSON.parse(resp), function (index, item) {
-                        data.push([
-                            item.nombre,
-                            item.corriente,
-                            item.cuenca,
-                            item.estado,
-                            item.municipio
-                        ]);
-                    });
+        }).always(async function () {
+            table.destroy();
+            await generarTablaEstacionHidrometrica(data); //Se genera la tabla con la información obtenida del AJAX
+            habilitar();
+            var x = $('#Prioridad').prop('checked');
+            if (x == false) {
+                if (!map.hasLayer(OCSelect)) {
+                    //Recargamos el mapa
+                    var callBack = async function () {
+                        document.getElementById("map").style.display = "block";
+                        setTimeout(function () {
+                            map.invalidateSize();
+                        }, 100);
+                    };
+                    map.whenReady(callBack);
+                    await loadShape();
                 }
-            }).always(async function () {
-                table.destroy();
-                await generarTablaEstacionHidrometrica(data); //Se genera la tabla con la información obtenida del AJAX
-                habilitar();
-                var x = $('#Prioridad').prop('checked');
-                if (x == false) {
-                    if (!map.hasLayer(OCSelect)) {
-                        //Recargamos el mapa
-                        var callBack = async function () {
-                            document.getElementById("map").style.display = "block";
-                            setTimeout(function () {
-                                map.invalidateSize();
-                            }, 100);
-                        };
-                        map.whenReady(callBack);
-                        await loadShape();
-                    }
-                }
-                await Swal.close();
-            });
+            }
+            await Swal.close();
         });
+
+
     } else {
         swal("¡Cuidado!", "Todos los filtros tienen que tener al menos un elemento seleccionado");
         await habilitar();

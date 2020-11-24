@@ -27,7 +27,7 @@ query = "";
 
 async function Anios() {
   await limpiarOrganismos();
-  if($("#Anios option:selected").length!=0) {
+  if ($("#Anios option:selected").length != 0) {
     $("#Organismos").multiselect("reset");
     Swal.fire({
       title: "Por favor espere", // add html attribute if you want or remove
@@ -64,7 +64,7 @@ async function Anios() {
              * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
              */
             data.push({
-              name: item.numero+'. '+item.OC,
+              name: item.numero + '. ' + item.OC,
               value: item.id_organismo,
               checked: false,
             });
@@ -77,7 +77,7 @@ async function Anios() {
     } else {
       Swal.close();
     }
-  }else{
+  } else {
     Swal.close();
   }
 }
@@ -191,8 +191,8 @@ async function Ciclos() {
     },
   });
   if ($("#Organismos option:selected").length != 0 &&
-      $("#Estados option:selected").length != 0 &&
-      $("#Ciclos option:selected").length != 0) {
+    $("#Estados option:selected").length != 0 &&
+    $("#Ciclos option:selected").length != 0) {
     var query = "(";
     /**
      * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
@@ -374,13 +374,13 @@ async function concatEstado() {
 async function selectOrganismo() {
   var OC = "";
   $("#Organismos option:selected")
-      .each(async function () {
-        OC += "id_organismo=" + $(this).val() + " or ";
-      })
-      .promise()
-      .always(async function () {
-        OC = OC.slice(0, -3);
-      });
+    .each(async function () {
+      OC += "id_organismo=" + $(this).val() + " or ";
+    })
+    .promise()
+    .always(async function () {
+      OC = OC.slice(0, -3);
+    });
   return OC;
 }
 
@@ -393,13 +393,13 @@ async function selectOrganismo() {
 async function selectEst() {
   var Est = "";
   $("#Estados option:selected")
-      .each(async function () {
-        Est += "id_estado=" + $(this).val() + " or ";
-      })
-      .promise()
-      .always(async function () {
-        Est = Est.slice(0, -3);
-      });
+    .each(async function () {
+      Est += "id_estado=" + $(this).val() + " or ";
+    })
+    .promise()
+    .always(async function () {
+      Est = Est.slice(0, -3);
+    });
   return Est;
 }
 
@@ -412,13 +412,13 @@ async function selectEst() {
 async function selectDR() {
   var DR = "";
   $("#Distritos option:selected")
-      .each(async function () {
-        DR += 'dtt_id="' + $(this).val() + '" or ';
-      })
-      .promise()
-      .always(async function () {
-        DR = DR.slice(0, -3);
-      });
+    .each(async function () {
+      DR += 'dtt_id="' + $(this).val() + '" or ';
+    })
+    .promise()
+    .always(async function () {
+      DR = DR.slice(0, -3);
+    });
   return DR;
 }
 
@@ -431,13 +431,13 @@ async function selectDR() {
 async function selectAnio() {
   var Anio = "";
   $("#Anios option:selected")
-      .each(async function () {
-        Anio += "anioagricola_id=" + $(this).val() + " or ";
-      })
-      .promise()
-      .always(async function () {
-        Anio = Anio.slice(0, -3);
-      });
+    .each(async function () {
+      Anio += "anioagricola_id=" + $(this).val() + " or ";
+    })
+    .promise()
+    .always(async function () {
+      Anio = Anio.slice(0, -3);
+    });
   return Anio;
 }
 
@@ -450,13 +450,13 @@ async function selectAnio() {
 async function selectCiclo() {
   var Ciclos = "";
   $("#Ciclos option:selected")
-      .each(async function () {
-        Ciclos += "id_ciclo=" + $(this).val() + " or ";
-      })
-      .promise()
-      .always(async function () {
-        Ciclos = Ciclos.slice(0, -3);
-      });
+    .each(async function () {
+      Ciclos += "id_ciclo=" + $(this).val() + " or ";
+    })
+    .promise()
+    .always(async function () {
+      Ciclos = Ciclos.slice(0, -3);
+    });
   return Ciclos;
 }
 
@@ -469,13 +469,13 @@ async function selectCiclo() {
 async function selectCultivo() {
   var Cultivos = "";
   $("#Cultivos option:selected")
-      .each(async function () {
-        Cultivos += "cultivo_id=" + $(this).val() + " or ";
-      })
-      .promise()
-      .always(async function () {
-        Cultivos = Cultivos.slice(0, -3);
-      });
+    .each(async function () {
+      Cultivos += "cultivo_id=" + $(this).val() + " or ";
+    })
+    .promise()
+    .always(async function () {
+      Cultivos = Cultivos.slice(0, -3);
+    });
   return Cultivos;
 }
 
@@ -495,8 +495,8 @@ async function getCultivos() {
     },
   });
   if ($("#Organismos option:selected").length != 0 &&
-      $("#Estados option:selected").length != 0 &&
-      $("#Ciclos option:selected").length != 0) {
+    $("#Estados option:selected").length != 0 &&
+    $("#Ciclos option:selected").length != 0) {
     var query = "(";
     /**
      * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
@@ -571,29 +571,11 @@ async function Consultar() {
   const Cultivo = await selectCultivo();
 
   if (OC !== "" && Est !== "" && DR !== "" && Ciclo !== "" && Cultivo !== "" && Anio !== "") {
-     //Se obtiene la cita
-     cadena = "Accion=ConsultaAgricolaHistorica&modulo_id=9&anios=" + Anio.replace(/anioagricola_id/g, 'anio_id');
-     citas = "\n ";
-     $.ajax({
-         type: "GET",
-         url: "/aplicacion/controlador/catalogo.php",
-         data: cadena,
-         success: function (resp) {
-             document.getElementById("lista").innerHTML = "";
-             $.each(JSON.parse(resp), function (index, item) {
-                 citas += item.cita + " \n";
-                 $("#lista").append("<li>" + item.cita + "</li>");
-             });
-         },
-     });
     
-    /**
-     *
-     * @type String
-     * Se crea la variable con la sentencia que se va a mandar al controlador
-     *
-     */
+    data = "Accion=ConsultaAgricolaHistorica&modulo_id=9&anios=" + Anio.replace(/anioagricola_id/g, 'anio_id');
+    citas = construirReferencias(data, false);
 
+    //Se crea la variable de sentencia a mandar al controlador
     query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ") AND (" + Anio + ")  AND (" + Ciclo + ") AND (" + Cultivo + ") GROUP by anioagricola_id ORDER BY anio";
     var cadena = "query=" + query + "&Accion=DTTTabla";
     $.ajax({
@@ -610,74 +592,74 @@ async function Consultar() {
         document.getElementById("pantalla").innerHTML = "";
         $("#pantalla").append(
           '<div class="row">' +
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Informe estadístico histórico de producción agrícola</h3></div>' +
-            //Titulo1
-            '<div class="col-sm-12">' +
-            "<h5>Superficie sembrada y cosechada por año agrícola (ha)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica1
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica1"></canvas>' +
-            "</div>" +
-            //Tabla1
-            '<div class="col-sm-4">' +
-            '<div style="overflow-x:auto;">'+
-            '<table id="tabla1"  class="table table-bordered  nowrap"  width="100%"></table>' +
-            "</div>" +
-            "</div>" +
-            //Titulo2
-            '<div class="col-sm-12">' +
-            "<h5>Producción por año agrícola (miles ton)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica2
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica2"></canvas>' +
-            "</div>" +
-            //Tabla2
-            '<div class="col-sm-4" style="overflow-x:auto;">' +
-            '<table id="tabla2" class="table table-bordered  nowrap"  width="100%"></table>' +
-            "</div>" +
-            //Titulo3
-            '<div class="col-sm-12">' +
-            "<h5>Valor de la cosecha por año agrícola (millones $)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica3
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica3"></canvas>' +
-            "</div>" +
-            //Tabla3
-            '<div class="col-sm-4" style="overflow-x:auto;">' +
-            '<table id="tabla3" class="table table-bordered  nowrap"  width="100%"></table>' +
-            "</div>" +
-            //Titulo 4
-            '<div class="col-sm-12">' +
-            "<h5>Rendimiento por año agrícola (ton/ha)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica4
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica4"></canvas>' +
-            "</div>" +
-            //Tabla4
-            '<div class="col-sm-4" style="overflow-x:auto;">' +
-            '<table id="tabla4" class="table table-bordered  nowrap"  width="100%"></table>' +
-            "</div>" +
-            //Titulo 5
-            '<div class="col-sm-12">' +
-            "<h5>P.M.R por año agrícola ($/ton)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica5
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica5"></canvas>' +
-            "</div>" +
-            //Tabla5
-            '<div class="col-sm-4" style="overflow-x:auto;">' +
-            '<table id="tabla5" class="table table-bordered  nowrap"  width="100%"></table>' +
-            "</div></div>"
+          '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Informe estadístico histórico de producción agrícola</h3></div>' +
+          //Titulo1
+          '<div class="col-sm-12">' +
+          "<h5>Superficie sembrada y cosechada por año agrícola (ha)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica1
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica1"></canvas>' +
+          "</div>" +
+          //Tabla1
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla1"  class="table table-bordered  nowrap"  width="100%"></table>' +
+          "</div>" +
+          "</div>" +
+          //Titulo2
+          '<div class="col-sm-12">' +
+          "<h5>Producción por año agrícola (miles ton)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica2
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica2"></canvas>' +
+          "</div>" +
+          //Tabla2
+          '<div class="col-sm-4" style="overflow-x:auto;">' +
+          '<table id="tabla2" class="table table-bordered  nowrap"  width="100%"></table>' +
+          "</div>" +
+          //Titulo3
+          '<div class="col-sm-12">' +
+          "<h5>Valor de la cosecha por año agrícola (millones $)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica3
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica3"></canvas>' +
+          "</div>" +
+          //Tabla3
+          '<div class="col-sm-4" style="overflow-x:auto;">' +
+          '<table id="tabla3" class="table table-bordered  nowrap"  width="100%"></table>' +
+          "</div>" +
+          //Titulo 4
+          '<div class="col-sm-12">' +
+          "<h5>Rendimiento por año agrícola (ton/ha)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica4
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica4"></canvas>' +
+          "</div>" +
+          //Tabla4
+          '<div class="col-sm-4" style="overflow-x:auto;">' +
+          '<table id="tabla4" class="table table-bordered  nowrap"  width="100%"></table>' +
+          "</div>" +
+          //Titulo 5
+          '<div class="col-sm-12">' +
+          "<h5>P.M.R por año agrícola ($/ton)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica5
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica5"></canvas>' +
+          "</div>" +
+          //Tabla5
+          '<div class="col-sm-4" style="overflow-x:auto;">' +
+          '<table id="tabla5" class="table table-bordered  nowrap"  width="100%"></table>' +
+          "</div></div>"
         );
         var etiquetas = [];
         var sup_sem = [];
