@@ -13,16 +13,9 @@ setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
 
 async function Anios() {
     await limpiarOrganismos();
+    $('#Anios').addClass('green');
     $("#Organismos").multiselect("reset");
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    $("#Cultivos").multiselect("reset");
     var query = '(';
     $("#Anios option:selected").each(function () {
         query += "anioagricola_id=" + $(this).val() + " or ";
@@ -73,15 +66,6 @@ async function Anios() {
  *
  */
 async function Organismos() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
     /**
      * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
      */
@@ -165,15 +149,7 @@ async function Estados() {
 
 async function Ciclos() {
     $("#Distritos").multiselect("reset");
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    
     if ($("#Organismos option:selected").length != 0 &&
         $("#Estados option:selected").length != 0 &&
         $("#Ciclos option:selected").length != 0) {
@@ -233,15 +209,6 @@ async function Ciclos() {
  */
 async function getCultivos() {
     $("#Cultivos").multiselect("reset");
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
     if ($("#Organismos option:selected").length != 0 &&
         $("#Estados option:selected").length != 0 &&
         $("#Ciclos option:selected").length != 0) {
@@ -293,6 +260,11 @@ async function getCultivos() {
         Swal.close();
     }
 }
+
+async function Cultivos() {
+    isFormCompleted('#Cultivos');
+}
+
 
 /**
  *

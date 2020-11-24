@@ -82,7 +82,7 @@ $Fuentes = $registros->getFuentes();
     <!--Select del los ciclos-->
     <div class="col-sm">
         <label>Cultivos:</label>
-        <select name="Cultivos[]" multiple id="Cultivos">
+            <select name="Cultivos[]" multiple id="Cultivos" onchange="Cultivos()">
         </select>
     </div>
 </div>
@@ -90,7 +90,7 @@ $Fuentes = $registros->getFuentes();
     <!--Select del Acuiferos-->
     <div class="col-sm">
         <br>
-        <button id="consultar" onclick="Consultar()" class="btn btn-gob btn-fill  btn-block">Consultar</button>
+        <button id="consultar" onclick="Consultar()" disabled class="btn btn-gob btn-fill  btn-block">Consultar</button>
         <br>
     </div>
 </div>

@@ -12,46 +12,17 @@
  *
  */
 
- // Se aplica el estilo a los selects
- setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
- setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
- setEstiloSelect('#Distritos', 'Distritos de Riego', 'Buscar Distrito');
- setEstiloSelect('#Tenencias', 'Tenencias', 'Buscar Tenencia');
- setEstiloSelect('#Fuentes', 'Fuentes', 'Buscar Fuente');
- setEstiloSelect('#Anios', 'Años', 'Buscar Años');
- 
-/**
- * Funcion para guardar la consulta en el historial
- * @returns {Promise<void>}
- * @constructor
- */
-async function Historial() {
-  //Guardamos en es historial
-  cadena = "Modulo=Estadística Agrícola" + "&Accion=Historial";
-  $.ajax({
-    type: "POST",
-    url: "/aplicacion/controlador/mapa.php",
-    data: cadena,
-    //Si el controlador devuelve una respuesta
-    success: function (resp) {
-      return true;
-    },
-  });
-}
+// Se aplica el estilo a los selects
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Distritos', 'Distritos de Riego', 'Buscar Distrito');
+setEstiloSelect('#Tenencias', 'Tenencias', 'Buscar Tenencia');
+setEstiloSelect('#Fuentes', 'Fuentes', 'Buscar Fuente');
+setEstiloSelect('#Anios', 'Años', 'Buscar Años');
 
 async function Anios() {
-  await limpiarOrganismos();
-  if($("#Anios option:selected").length!=0) {
-    $("#Organismos").multiselect("reset");
-    Swal.fire({
-      title: "Por favor espere", // add html attribute if you want or remove
-      html: "Cargando Datos",
-      allowEscapeKey: false,
-    allowOutsideClick: false,
-      onBeforeOpen: () => {
-        Swal.showLoading();
-      },
-    });
+  if ($("#Anios option:selected").length != 0) {
+    limpiarAnios();
     var query = '(';
     $("#Anios option:selected").each(function () {
       query += "anio_id=" + $(this).val() + " or ";
@@ -78,7 +49,7 @@ async function Anios() {
              * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
              */
             data.push({
-              name: item.numero+'. '+item.organismo,
+              name: item.numero + '. ' + item.organismo,
               value: item.id_organismo,
               checked: false,
             });
@@ -91,7 +62,7 @@ async function Anios() {
     } else {
       Swal.close();
     }
-  }else{
+  } else {
     Swal.close();
   }
 }
@@ -106,18 +77,7 @@ async function Anios() {
  *
  */
 async function Organismos() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
-  /**
-   * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-   */
+
   await limpiarOrganismos();
   /**
    * @type {string}
@@ -170,16 +130,8 @@ async function Organismos() {
     Swal.close();
   }
 }
+
 async function Organismos() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
   /**
    * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
    */
@@ -262,19 +214,10 @@ async function Estados() {
 
 async function Fuentes() {
   $("#Distritos").multiselect("reset");
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
   if ($("#Organismos option:selected").length != 0 &&
-      $("#Estados option:selected").length != 0 &&
-      $("#Tenencias option:selected").length != 0 &&
-      $("#Fuentes option:selected").length != 0) {
+    $("#Estados option:selected").length != 0 &&
+    $("#Tenencias option:selected").length != 0 &&
+    $("#Fuentes option:selected").length != 0) {
     var query = "(";
     /**
      * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
@@ -330,9 +273,16 @@ async function Fuentes() {
   }
 }
 
-/**
- * Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas
- */
+async function Distritos(){
+    isFormCompleted('#Distritos');
+}
+
+async function limpiarAnios() {
+  $("#Organismos").multiselect("reset");
+  await limpiarOrganismos();
+}
+
+ //Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas 
 async function limpiarOrganismos() {
   $("#Estados").multiselect("reset");
   await limpiarEstados();
@@ -482,13 +432,13 @@ async function selectFuente() {
 async function selectOrganismo() {
   var OC = "";
   $("#Organismos option:selected")
-      .each(async function () {
-        OC += "id_organismo=" + $(this).val() + " or ";
-      })
-      .promise()
-      .always(async function () {
-        OC = OC.slice(0, -3);
-      });
+    .each(async function () {
+      OC += "id_organismo=" + $(this).val() + " or ";
+    })
+    .promise()
+    .always(async function () {
+      OC = OC.slice(0, -3);
+    });
   return OC;
 }
 
@@ -501,20 +451,20 @@ async function selectOrganismo() {
 async function selectEst() {
   var Est = "";
   $("#Estados option:selected")
-      .each(async function () {
-        Est += "id_estado=" + $(this).val() + " or ";
-      })
-      .promise()
-      .always(async function () {
-        Est = Est.slice(0, -3);
-      });
+    .each(async function () {
+      Est += "id_estado=" + $(this).val() + " or ";
+    })
+    .promise()
+    .always(async function () {
+      Est = Est.slice(0, -3);
+    });
   return Est;
 }
 
 async function Consultar() {
   Swal.fire({
-    title: "Realizando Consulta",
-    html: "Cargando filtro", // add html attribute if you want or remove
+    title: "Por favor espere", // add html attribute if you want or remove
+    html: "Realizando la consulta",
     allowEscapeKey: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
@@ -538,7 +488,7 @@ async function Consultar() {
     data = "Accion=ConsultaAgricolaHistorica&modulo_id=3&anios=" + Anio;
     citas = construirReferencias(data, false);
     // Se crea la variable con la sentencia que se va a mandar al controlador
-    var query ='(' + OC + ') AND (' + Est + ') AND (' + DR + ') AND (' + Anio + ') AND (' + Tenencia + ') AND (' + Fuente + ') GROUP by anio_id ORDER BY anio';
+    var query = '(' + OC + ') AND (' + Est + ') AND (' + DR + ') AND (' + Anio + ') AND (' + Tenencia + ') AND (' + Fuente + ') GROUP by anio_id ORDER BY anio';
     var cadena = "query=" + query + "&Accion=DistritosVol2";
     $.ajax({
       type: "POST",
@@ -554,64 +504,64 @@ async function Consultar() {
         document.getElementById("pantalla").innerHTML = "";
         $("#pantalla").append(
           '<div class="row">' +
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Informe estadístico histórico de superficies regadas y volúmenes de agua distribuidos en los distritos de riego</h3></div>' +
-            '<hr class="red">' +
-            '<div class="col-sm-12">' +
-            "<h5>Total de usuarios por año agrícola</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica 1
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica1"></canvas>' +
-            "</div>" +
-            //Tabla1
-            '<div class="col-sm-4">' +
-            '<div style="overflow-x:auto;">'+
-            '<table id="tabla1" class="table table-bordered nowrap"  width="100%"></table>' +
-            '</div>'+
-            "</div>" +
-            '<div class="col-sm-12">' +
-            "<h5>Superficie regada por año agrícola (ha)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica2
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica2"></canvas>' +
-            "</div>" +
-            //Tabla2
-            '<div class="col-sm-4">' +
-            '<div style="overflow-x:auto;">'+
-            '<table id="tabla2" class="table table-bordered nowrap"  width="100%"></table>' +
-            '</div>'+
-            "</div>" +
-            //titulo 3
-            '<div class="col-sm-12">' +
-            "<h5>Volumen distribuido por año agrícola (miles m<sup>3</sup>)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            //Grafica 3
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica3"></canvas>' +
-            "</div>" +
-            //tabla 3
-            '<div class="col-sm-4">' +
-            '<div style="overflow-x:auto;">'+
-            '<table id="tabla3" class="table table-bordered  nowrap"  width="100%"></table>' +
-            "</div>" +
-            "</div>" +
-            //titulo 4
-            '<div class="col-sm-12">' +
-            "<h5>Lámina bruta por año agrícola (cm)</h5>" +
-            '<hr class="red">' +
-            "</div>" +
-            '<div class="col-sm-8">' +
-            '<canvas id="grafica4"></canvas>' +
-            "</div>" +
-            //tabla 4
-            '<div class="col-sm-4">' +
-            '<div style="overflow-x:auto;">'+
-            '<table id="tabla4" class="table table-bordered nowrap"  width="100%"></table>' +
-            "</div></div></div>"
+          '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Informe estadístico histórico de superficies regadas y volúmenes de agua distribuidos en los distritos de riego</h3></div>' +
+          '<hr class="red">' +
+          '<div class="col-sm-12">' +
+          "<h5>Total de usuarios por año agrícola</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica 1
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica1"></canvas>' +
+          "</div>" +
+          //Tabla1
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla1" class="table table-bordered nowrap"  width="100%"></table>' +
+          '</div>' +
+          "</div>" +
+          '<div class="col-sm-12">' +
+          "<h5>Superficie regada por año agrícola (ha)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica2
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica2"></canvas>' +
+          "</div>" +
+          //Tabla2
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla2" class="table table-bordered nowrap"  width="100%"></table>' +
+          '</div>' +
+          "</div>" +
+          //titulo 3
+          '<div class="col-sm-12">' +
+          "<h5>Volumen distribuido por año agrícola (miles m<sup>3</sup>)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica 3
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica3"></canvas>' +
+          "</div>" +
+          //tabla 3
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla3" class="table table-bordered  nowrap"  width="100%"></table>' +
+          "</div>" +
+          "</div>" +
+          //titulo 4
+          '<div class="col-sm-12">' +
+          "<h5>Lámina bruta por año agrícola (cm)</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica4"></canvas>' +
+          "</div>" +
+          //tabla 4
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla4" class="table table-bordered nowrap"  width="100%"></table>' +
+          "</div></div></div>"
         );
         var etiquetas = [];
         var usuarios = [];
@@ -964,4 +914,23 @@ async function Consultar() {
     $("#divPrioridad").hide();
     $("#referencias").hide();
   }
+}
+
+/**
+ * Funcion para guardar la consulta en el historial
+ * @returns {Promise<void>}
+ * @constructor
+ */
+async function Historial() {
+  //Guardamos en es historial
+  cadena = "Modulo=Estadística Agrícola" + "&Accion=Historial";
+  $.ajax({
+    type: "POST",
+    url: "/aplicacion/controlador/mapa.php",
+    data: cadena,
+    //Si el controlador devuelve una respuesta
+    success: function (resp) {
+      return true;
+    },
+  });
 }

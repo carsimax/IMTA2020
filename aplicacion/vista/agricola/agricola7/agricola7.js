@@ -12,17 +12,7 @@ setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
 
 async function Anios() {
     await limpiarOrganismos();
-    $("#Cultivos").multiselect("reset");
-    $("#Organismos").multiselect("reset");
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    $('#Anios').addClass('green');
     var query = '(';
     $("#Anios option:selected").each(function () {
         query += "anio_id=" + $(this).val() + " or ";
@@ -49,7 +39,7 @@ async function Anios() {
                      * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
                      */
                     data.push({
-                        name: item.numero+'. '+item.OC,
+                        name: item.numero + '. ' + item.OC,
                         value: item.id_organismo,
                         checked: false,
                     });
@@ -73,20 +63,7 @@ async function Anios() {
  *
  */
 async function Organismos() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-     */
     await limpiarOrganismos();
-    $("#Cultivos").multiselect("reset");
     var query = "(";
     /**
      * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
@@ -160,17 +137,7 @@ async function Organismos() {
  *
  */
 async function Estados() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
     limpiarEstados();
-    $("#Cultivos").multiselect("reset");
     var query = "(";
     /**
      * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
@@ -243,16 +210,9 @@ async function Estados() {
  */
 
 async function getCultivos() {
+    limpiarDR();
     $("#Cultivos").multiselect("reset");
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    
     if ($("#Organismos option:selected").length != 0 &&
         $("#Estados option:selected").length != 0 &&
         $("#Municipios option:selected").length != 0) {
@@ -302,6 +262,10 @@ async function getCultivos() {
     }
 }
 
+async function Cultivos() {
+    isFormCompleted('#Cultivos');
+}
+
 /**
  *
  * @returns {Promise<void>}
@@ -313,7 +277,7 @@ async function Consultar() {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Realizando la consulta",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -334,7 +298,7 @@ async function Consultar() {
      * */
     if (OC !== "" && Est !== "" && Mun !== "" && Cultivo !== "" && Anio !== "") {
         //Se obtiene la cita con la información de las unidades de riego
-        data = "Accion=getCitaConsultaAnio&modulo_id=8&anios=anio_id=" + $( "#Anios" ).val();
+        data = "Accion=getCitaConsultaAnio&modulo_id=8&anios=anio_id=" + $("#Anios").val();
         citas = construirReferencias(data, false);
         query = "(" + OC + ") AND (" + Est + ") AND (" + Mun + ") AND (" + Anio + ") AND (" + Cultivo + ")";
         await desgloce1(query);
@@ -494,6 +458,8 @@ async function limpiarEstados() {
  *
  */
 async function limpiarDR() {
+    
+    $("#Cultivos").multiselect("reset");
     /**
      * Limpia su porpia capa
      */
@@ -584,7 +550,7 @@ async function desgloce1(query) {
      * Se coloca el encabezado
      */
     $("#nav-01").append(
-        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por organismo de cuenca, año agrícola: '+ Anio +' </h3></div>'
+        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por organismo de cuenca, año agrícola: ' + Anio + ' </h3></div>'
     );
     /**
      * Funcion de ajax que se encarga de obtener la informacion
@@ -854,7 +820,7 @@ async function desgloce2() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -872,7 +838,7 @@ async function desgloce2() {
          */
         document.getElementById("nav-02").innerHTML = "";
         $("#nav-02").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por entidad federativa, año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por entidad federativa, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -1166,7 +1132,7 @@ async function desgloce4() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1195,7 +1161,7 @@ async function desgloce5() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1212,7 +1178,7 @@ async function desgloce5() {
          */
         document.getElementById("nav-05").innerHTML = "";
         $("#nav-05").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por municipio, año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por municipio, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -1347,7 +1313,7 @@ async function desgloce5() {
                                          */
                                         if (data.length > 0) {
                                             $("#body4-" + anio + "").append(
-                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' + Est +', año agrícola: '+Anio+'</h4></div>' +
+                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' + Est + ', año agrícola: ' + Anio + '</h4></div>' +
                                                 /*
                                                  * Se crea la tabla
                                                  */
@@ -1710,7 +1676,7 @@ async function desgloce6() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1728,7 +1694,7 @@ async function desgloce6() {
          */
         $("#nav-06").innerHTML = "";
         $("#nav-06").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado nacional por cultivo, año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado nacional por cultivo, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -1887,7 +1853,7 @@ async function desgloce6() {
                                              * Se coloca el encabezado
                                              */
                                             $("#body5-" + anio + "").append(
-                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>' + JSON.parse(respC) +', año agrícola: '+Anio+'</h3></div>'
+                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>' + JSON.parse(respC) + ', año agrícola: ' + Anio + '</h3></div>'
                                             );
                                             /*
                                              * Se coloca la tabla
@@ -2210,10 +2176,10 @@ async function grafica1() {
     //var cadena = "query=" + query2 + "&Accion=DTTTabla";
     document.getElementById("nav-04").innerHTML = "";
     $("#nav-04").append(
-        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada, año agrícola: '+Anio+'</h3></div>' +
+        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada, año agrícola: ' + Anio + '</h3></div>' +
         '<div class="row">' +
         '<div class="col-sm">' +
-        '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca, año agrícola: '+Anio+'</h4></div>' +
+        '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca, año agrícola: ' + Anio + '</h4></div>' +
         '<canvas id="G-4"></canvas>' +
         '<canvas id="G-4-1"></canvas>' +
         "</div>" +

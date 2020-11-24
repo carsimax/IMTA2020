@@ -23,21 +23,10 @@ $("#map").show();
  
 
 async function Anios() {
-  await limpiarOrganismos();
-  $("#Organismos").multiselect("reset");
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  $('#Anios').addClass('green');
+  limpiarAnios();
   var query = '(';
-  $("#Anios option:selected").each(function () {
-    query += "anio_id=" + $(this).val() + " or ";
-  });
+  $("#Anios option:selected").each(function () {query += "anio_id=" + $(this).val() + " or "; });
   query = query.slice(0, -4) + ')';
   if (query !== "") {
     /**
@@ -85,18 +74,8 @@ async function Anios() {
  *
  */
 async function Organismos() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
-  /**
-   * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-   */
+  
+  
   await limpiarOrganismos();
   var query = "(";
   /**
@@ -177,15 +156,6 @@ async function Estados() {
 
 async function Fuentes() {
   $("#Distritos").multiselect("reset");
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
   if ($("#Organismos option:selected").length != 0 &&
       $("#Estados option:selected").length != 0 &&
       $("#Tenencias option:selected").length != 0 &&
@@ -244,6 +214,9 @@ async function Fuentes() {
     Swal.close();
   }
 }
+
+
+Distritos
 
 /**
  * Funcion para realizar la consulta de las selecicones con sus respectivos shapes
@@ -350,16 +323,16 @@ async function Historial() {
   });
 }
 
-/**
- * Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas
- */
+
+
+async function limpiarAnios() {
+  $("#Organismos").multiselect("reset");
+  await limpiarOrganismos();
+}
+
+
+ //Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas
 async function limpiarOrganismos() {
-  /**
-   * Limpia su porpia capa
-   */
-  /**
-   * Limpia la capa de la cual dependen de organismos
-   */
   $("#Estados").multiselect("reset");
   await limpiarEstados();
 }

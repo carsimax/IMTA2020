@@ -25,18 +25,8 @@ setEstiloSelect('#Anios', 'Años', 'Buscar Año');
 
 
 async function Anios() {
-  await limpiarOrganismos();
+  limpiarAnios();
   if ($("#Anios option:selected").length != 0) {
-    $("#Organismos").multiselect("reset");
-    Swal.fire({
-      title: "Por favor espere", // add html attribute if you want or remove
-      html: "Cargando Datos",
-      allowEscapeKey: false,
-    allowOutsideClick: false,
-      onBeforeOpen: () => {
-        Swal.showLoading();
-      },
-    });
     var query = '(';
     $("#Anios option:selected").each(function () {
       query += "anio_id=" + $(this).val() + " or ";
@@ -91,15 +81,7 @@ async function Anios() {
  *
  */
 async function Organismos() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  
   /**
    * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
    */
@@ -181,16 +163,8 @@ async function Estados() {
 }
 
 async function Tenencias() {
-  $("#Distritos").multiselect("reset");
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  $("#Distritos").multiselect("reset");  
+  $("#Cultivos").multiselect("reset");  
   if ($("#Organismos option:selected").length != 0 &&
     $("#Estados option:selected").length != 0 &&
     $("#Ciclos option:selected").length != 0 &&
@@ -255,12 +229,23 @@ async function Tenencias() {
   }
 }
 
+async function Cultivos() {
+  isFormCompleted('#Cultivos');
+}
+
 /**
  *
  * @returns {undefined}
  *  Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas
  *
  */
+
+async function limpiarAnios() {
+  $("#Organismos").multiselect("reset");
+  await limpiarOrganismos();
+}
+
+
 async function limpiarOrganismos() {
   $("#Estados").multiselect("reset");
   await limpiarEstados();
@@ -287,6 +272,7 @@ async function limpiarDR() {
   map.off();
   map.remove();
   crearMapa();
+  $("#Cultivos").multiselect("reset");
   $("#Ciclos").multiselect("reset2");
   $("#Modalidades").multiselect("reset2");
   $("#Tenencias").multiselect("reset2");
@@ -595,7 +581,7 @@ async function Consultar() {
   if (OC !== "" && Est !== "" && DR !== "" && Anio !== "") {
     data = "Accion=ConsultaAgricolaHistorica&modulo_id=3&anios=" + Anio;
     citas = construirReferencias(data, false);
-     //Se crea la variable con la sentencia que se va a mandar al controlador     
+    //Se crea la variable con la sentencia que se va a mandar al controlador     
     var query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ") AND (" + Anio + ") AND (" + Mod + ") AND (" + Ciclo + ") AND (" + Tenencia + ") AND (" + Cultivo + ") GROUP by anio_id ORDER BY anio";
     var cadena = "query=" + query + "&Accion=DistritosOC2";
     $.ajax({

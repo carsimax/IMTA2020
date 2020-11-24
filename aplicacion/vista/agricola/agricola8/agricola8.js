@@ -24,19 +24,9 @@ citas = "";
 query = "";
 
 async function Anios() {
-  await limpiarOrganismos();
+  await limpiarAnios();
   if ($("#Anios option:selected").length != 0) {
     $("#Cultivos").multiselect("reset");
-    $("#Organismos").multiselect("reset");
-    Swal.fire({
-      title: "Por favor espere", // add html attribute if you want or remove
-      html: "Cargando Datos",
-      allowEscapeKey: false,
-    allowOutsideClick: false,
-      onBeforeOpen: () => {
-        Swal.showLoading();
-      },
-    });
     var query = '(';
     $("#Anios option:selected").each(function () {
       query += "anio_id=" + $(this).val() + " or ";
@@ -90,15 +80,6 @@ async function Anios() {
  *
  */
 async function Organismos() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
   /**
    * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
    */
@@ -254,7 +235,9 @@ async function Estados() {
     Swal.close();
   }
 }
-
+async function Cultivos() {
+  isFormCompleted('#Cultivos');
+}
 /**
  *
  * @returns {Promise<void>}
@@ -262,26 +245,14 @@ async function Estados() {
  * Funcion para guardar la consulta en el historial
  */
 async function Historial() {
-  /**
-   *
-   * Guardamos en es historial
-   *
-   */
   cadena = "Modulo=Estadística Agrícola" + "&Accion=Historial";
   $.ajax({
     type: "POST",
     url: "/aplicacion/controlador/mapa.php",
     data: cadena,
-    /**
-     *
-     * @param {type} resp
-     * @returns {Boolean}
-     * Si el controlador devuelve una respuesta
-     *
-     */
     success: function (resp) {
       return true;
-    },
+    }
   });
 }
 
@@ -291,6 +262,11 @@ async function Historial() {
  *  Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas
  *
  */
+async function limpiarAnios() {
+  $("#Organismos").multiselect("reset");
+  await limpiarOrganismos();
+}
+
 async function limpiarOrganismos() {
   $("#Estados").multiselect("reset");
   await limpiarEstados();
@@ -476,15 +452,6 @@ async function selectCultivo() {
  */
 async function getCultivos() {
   $("#Cultivos").multiselect("reset");
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
   if ($("#Organismos option:selected").length != 0 &&
     $("#Estados option:selected").length != 0 &&
     $("#Municipios option:selected").length != 0) {

@@ -22,13 +22,14 @@ setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
 setEstiloSelect('#Tenencias', 'Tenencias', 'Buscar Tenencia');
 
 async function Anios() {
+    $('#Anios').addClass('green');
     await limpiarOrganismos();
     $("#Organismos").multiselect("reset");
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Datos",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -84,18 +85,8 @@ async function Anios() {
  *
  */
 async function Organismos() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-     */
+
+
     await limpiarOrganismos();
     var query = "(";
     /**
@@ -171,7 +162,7 @@ async function Tenencias() {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Datos",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -240,6 +231,10 @@ async function Tenencias() {
     }
 }
 
+async function Cultivos(){
+    isFormCompleted('#Cultivos');
+}
+
 /**
  *
  * @returns {Promise<void>}
@@ -251,7 +246,7 @@ async function Consultar() {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Realizando la consulta",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -366,6 +361,7 @@ async function limpiarDR() {
     map.off();
     map.remove();
     crearMapa();
+    $("#Cultivos").multiselect("reset");
     $("#Ciclos").multiselect("reset2");
     $("#Modalidades").multiselect("reset2");
     $("#Tenencias").multiselect("reset2");
@@ -851,7 +847,7 @@ async function desgloce2() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1210,7 +1206,7 @@ async function desgloce3() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1525,7 +1521,7 @@ async function desgloce4() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1995,7 +1991,7 @@ async function desgloce5() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -3296,7 +3292,7 @@ async function getCultivos() {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Datos",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -3372,7 +3368,7 @@ async function mostrarG1() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },

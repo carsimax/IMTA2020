@@ -27,17 +27,8 @@ query = "";
 
 async function Anios() {
   await limpiarOrganismos();
+  $("#Cultivos").multiselect("reset"); $("#Organismos").multiselect("reset");
   if ($("#Anios option:selected").length != 0) {
-    $("#Organismos").multiselect("reset");
-    Swal.fire({
-      title: "Por favor espere", // add html attribute if you want or remove
-      html: "Cargando Datos",
-      allowEscapeKey: false,
-    allowOutsideClick: false,
-      onBeforeOpen: () => {
-        Swal.showLoading();
-      },
-    });
     var query = '(';
     $("#Anios option:selected").each(function () {
       query += "anioagricola_id=" + $(this).val() + " or ";
@@ -91,15 +82,7 @@ async function Anios() {
  *
  */
 async function Organismos() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+
   /**
    * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
    */
@@ -181,15 +164,6 @@ async function Estados() {
 }
 async function Ciclos() {
   $("#Distritos").multiselect("reset");
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
   if ($("#Organismos option:selected").length != 0 &&
     $("#Estados option:selected").length != 0 &&
     $("#Ciclos option:selected").length != 0) {
@@ -243,6 +217,11 @@ async function Ciclos() {
     Swal.close();
   }
 }
+
+async function Cultivos() {
+  isFormCompleted('#Cultivos');
+}
+
 
 /**
  *
@@ -485,15 +464,7 @@ async function selectCultivo() {
  */
 async function getCultivos() {
   $("#Cultivos").multiselect("reset");
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  
   if ($("#Organismos option:selected").length != 0 &&
     $("#Estados option:selected").length != 0 &&
     $("#Ciclos option:selected").length != 0) {
@@ -571,7 +542,7 @@ async function Consultar() {
   const Cultivo = await selectCultivo();
 
   if (OC !== "" && Est !== "" && DR !== "" && Ciclo !== "" && Cultivo !== "" && Anio !== "") {
-    
+
     data = "Accion=ConsultaAgricolaHistorica&modulo_id=9&anios=" + Anio.replace(/anioagricola_id/g, 'anio_id');
     citas = construirReferencias(data, false);
 
