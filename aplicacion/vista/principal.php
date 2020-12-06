@@ -23,7 +23,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
     <div class="row">
         <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-md-4">
             <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
-                <h4><small>Bienvenido </small>Plataforma Web Informativa Sobre Usos del Agua en la Agricultura Nacional</h4>
+                <h4><small>Bienvenido &nbsp;</small>Sistema de Información Sobre el Uso del Agua a Nivel Nacional</h4>
             </div>
 
             <?php if (isset($_SESSION['loggedin'])) { ?>
