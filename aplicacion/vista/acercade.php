@@ -50,7 +50,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                     (777) 3 29 36 00 Ext. 115 <br>
                     <hr>
                     <strong>Última actualización: </strong><br>
-                    ► septiembre 2020
+                    ► diciembre 2020
                     <hr>
                     <strong>Programadores:</strong><br>
                     ► Alberto González Sánchez, <br>

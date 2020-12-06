@@ -166,7 +166,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
             <?php } ?>
         </main>
     </div>
-    <br><br><br><br>
+    <br><br><br>
 </div>
 
 <!-- Modal Login-->
