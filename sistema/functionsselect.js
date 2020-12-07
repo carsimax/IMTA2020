@@ -80,6 +80,7 @@ function concatValoresSelect(idSelect, foreingkey) {
 
 //Construye las referencias y retorna una cadena con las mismas para ponerlos en el reporte PDF.
 function construirReferencias(data, geoespacial) {
+    geoespacial=false;
     citas = '\n';
     $.ajax({
         type: "GET",

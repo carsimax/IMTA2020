@@ -23,7 +23,20 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
     <div class="row">
         <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-md-4">
             <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
-                <h4><small>Bienvenido &nbsp;</small>Sistema de Información Sobre el Uso del Agua a Nivel Nacional</h4>
+                <style>
+                    .myDiv {
+                        float: left;
+                    }
+                </style>
+
+                <h4>Sistema de Información Sobre el Uso del Agua a Nivel Nacional</h4>
+
+
+
+                <!-- <div class="d-inline" style="background-color: blue;">
+                    <h4 class="">Sistema de Información Sobre el Uso del Agua a Nivel Nacional</h4>
+                    <h4 class="text-center"><small>Bienvenido</small></h4>
+                </div> -->
             </div>
 
             <?php if (isset($_SESSION['loggedin'])) { ?>
@@ -121,6 +134,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                 <div class="col-sm">
                     <div class="row">
                         <div class="col-sm">
+                        <h4 class="text-center"><small>Bienvenido</small></h4>
                             <p align="justify">
                                 La agricultura es una actividad económica vital para el desarrollo de un país que demanda
                                 cada
@@ -157,15 +171,17 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                                 En ese contexto, se presenta el Sistema de Información Sobre el Uso del Agua de Riego en la Agricultura Nacional (SISUAR), con el propósito de brindar un punto de acceso común a la información relacionada con el uso y explotación del recurso agua en la agricultura nacional de riego. El sistema proporciona información estadística de la producción agrícola de los Distritos y las Unidades de Riego, presas, aprovechamientos subterráneos para la explotación del agua destinada al uso agrícola, datos sobre la evapotranspiración de cultivos, volúmenes utilizados y otras fuentes de datos relacionadas. La intención es poner al alcance de los usuarios interesados una hereramienta de consulta con una interfaz amigable y con herramientas que facilitan el análisis y la extracción de información.
                             </p>
                         </div>
-                            <div class="col" id="padre">
-                                <img id="hijo" style="max-width:100%;width:auto;height:auto;" class="img-responsive" src="/imagenes/inicio.jpg">
+                        <div class="col-sm" id="padre">
+                            <div class="container">
+                                <img id="hijo" style="max-width:80%;width:auto;height:auto;" class="img-responsive" src="/imagenes/inicio.jpg">
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php } ?>
-        </main>
     </div>
+<?php } ?>
+</main>
+</div>
 </div>
 
 

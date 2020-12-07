@@ -68,7 +68,7 @@ $Anios = $registros->getAniosUR();
     <!--Select del los ciclos-->
     <div class="col-sm">
         <label>Cultivos:</label>
-        <select name="Cultivos[]" onchange="Cultivos()" multiple id="Cultivos">
+        <select name="Cultivos[]" multiple id="Cultivos" onchange="Cultivos()">
         </select>
     </div>
 </div>

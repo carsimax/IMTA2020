@@ -31,31 +31,33 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-6">
+                    <strong>Sistema de Información Sobre el Uso del Agua de Riego en la Agricultura Nacional (SISUAR)</strong>
                     <hr>
-                    <strong>Plataforma WEB informativa sobre usos del agua en la agricultura nacional</strong>
+                    <strong>Fondo SADER - CONACYT</strong> <br>
+                    <em>Fondo Sectorial de Investigación en Materias Agrícola, Pecuaria, Acuacultura, Agrobiotecnología y Recursos Fitogenéticos.</em><br> <br>
+                    <strong>Proyecto 2017-02-291372 “Plataforma Web Informativa sobre Usos del Agua en la Agricultura Nacional”</strong>
                     <hr>
-                    <strong>® SAGARPA - CONACYT</strong> <br>
-                    <em>Fondo Sectorial de Investigación en Materias Agrícola, Pecuaria, Acuacultura, Agrobiotecnología y Recursos Fitogenéticos.
-                        Todos los derechos reservados.</em>
-                    <hr>
-                    Se autoriza el uso de este producto a:<br>
-                    Identificación de producto: <strong>Convenio RD1732.6</strong><br>
                     Este producto está protegido por las leyes de derechos de autor y otros tratados internacionales. La reproducción y distribución no autorizada del código, está penada severamente por la ley. <br><br>
                     Para cualquier informe sobre este favor de contactar a:<br>
-                    <strong>Dr. Alberto González Sánchez</strong><br>
-                    Jefe de proyecto y tecnólogo del agua del Instituto Mexicano de Tecnología del Agua (IMTA) <br>
-                    Paseo Cuauhnáhuac #8532<br>
-                    Progreso, Jiutepec, Mor. 62550<br>
-                    <a href="alberto_gonzalez@tlaloc.imta.mx">alberto_gonzalez@tlaloc.imta.mx</a><br>
-                    (777) 3 29 36 00 Ext. 115 <br>
-                    <hr>
+                    <strong>Dr. Alberto González Sánchez (alberto_gonzalez@tlaloc.imta.mx)</strong><br>
+                    Jefe de proyecto (IMTA) <br><br>
+                    <strong>Dr. Ronald Ontiveros Capurata (ronald.ontiveros@tlaloc.imta.mx)</strong><br>
+                    Cátedra CONACyT-IMTA <br><br>
+
+                    <strong>Instituto Mexicano de Tecnología del Agua (IMTA)</strong><br>
+                    Paseo Cuauhnáhuac #8532 <br>
+                    Progreso, Jiutepec, Mor. 62550 <br>
+                    (777) 3 29 36 00 Ext. 115 <br><br>
+
                     <strong>Última actualización: </strong><br>
-                    ► septiembre 2020
+                    ► diciembre 2020
                     <hr>
                     <strong>Programadores:</strong><br>
                     ► Alberto González Sánchez, <br>
                     ► Maximiliano Carsi Castrejon,<br>
-                    ► Jorge Calderon Peralta. <br>
+                    ► Jorge Calderón Peralta. <br> <br>
+                    <strong>Apoyo Técnico y Diseño:</strong><br>
+                    ► Juan Bahena Sánchez. <br>
                 </div>
 
                 <div id="logos3" class="col-sm-12 col-md-6" style="background-color:#778899">
