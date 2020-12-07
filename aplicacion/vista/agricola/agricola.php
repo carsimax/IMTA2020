@@ -44,7 +44,7 @@ $filtros = $registros->getAgricola(); ?>
                 <?php foreach ($filtros as $filtro) { ?>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="filtro" id="<?php echo $filtro['id_filtro'] ?>" value="<?php echo $filtro['id_filtro'] ?>">
-                        <label class="form-check-label" for="<?php echo $filtro['id_filtro'] ?>"><?php echo $filtro['filtro'] ?> <?php echo $filtro['id_filtro'] ?></label>
+                        <label class="form-check-label" for="<?php echo $filtro['id_filtro'] ?>"><?php echo $filtro['filtro'] ?></label>
                     </div>
                 <?php } ?>
             </div>
