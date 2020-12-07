@@ -168,12 +168,11 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                                 información geográfica para maximizar el aprovechamiento de los datos generados.
                             </p>
                             <p align="justify">
-                                En ese contexto, se presenta el Sistema de Información Sobre el Uso del Agua de Riego en la Agricultura Nacional (SISUAR), con el propósito de brindar un punto de acceso común a la información relacionada con el uso y explotación del recurso agua en la agricultura nacional de riego. El sistema proporciona información estadística de la producción agrícola de los Distritos y las Unidades de Riego, presas, aprovechamientos subterráneos para la explotación del agua destinada al uso agrícola, datos sobre la evapotranspiración de cultivos, volúmenes utilizados y otras fuentes de datos relacionadas. La intención es poner al alcance de los usuarios interesados una hereramienta de consulta con una interfaz amigable y con herramientas que facilitan el análisis y la extracción de información.
+                                En este contexto, se presenta el Sistema de Información Sobre el Uso del Agua de Riego en la Agricultura Nacional (SISUAR), con el propósito de brindar un punto de acceso común a la información relacionada con el uso y explotación del recurso agua en la agricultura nacional de riego. El sistema proporciona información estadística de la producción agrícola de los Distritos y las Unidades de Riego, presas, aprovechamientos subterráneos para la explotación del agua destinada al uso agrícola, datos sobre la evapotranspiración de cultivos, volúmenes utilizados y otras fuentes de datos relacionadas. La intención es poner al alcance de los usuarios interesados una hereramienta de consulta con una interfaz amigable y con herramientas que facilitan el análisis y la extracción de información.
                             </p>
                         </div>
-                        <div class="col-sm" id="padre">
-                            <div class="container">
-                                <img id="hijo" style="max-width:80%;width:auto;height:auto;" class="img-responsive" src="/imagenes/inicio.jpg">
+                            <div class="col" id="padre">
+                                <img id="hijo" style="max-width:100%;width:auto;height:auto;" class="img-responsive" src="/imagenes/Inicio.jpg">
                             </div>
                         </div>
                     </div>
@@ -183,8 +182,6 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
 </main>
 </div>
 </div>
-
-
 
 <!-- Modal Login-->
 <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
