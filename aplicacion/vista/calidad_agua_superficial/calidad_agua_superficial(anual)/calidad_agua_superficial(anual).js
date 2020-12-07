@@ -16,6 +16,7 @@ var query = '';
 var citas = '';
 
 async function Anios() {
+  $("#referencias").hide();
   await limpiarOrganismos();
   Organismos();
 }
@@ -2117,7 +2118,7 @@ async function distribucion3(query) {
    * Se limpian todas las secciones del html en caso de que exista contenido
    */
   $("#nav-01").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Organismo de Cuenca Organismo de Cuenca Sólidos Suspendidos Totales</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Organismo de Cuenca de Sólidos Suspendidos Totales</h3></div>'
   );
   /**
    * Tabla Oc
@@ -2216,14 +2217,14 @@ async function distribucion3(query) {
             {
               extend: "excelHtml5",
               title:
-                "Distribución porcentual por Organismo de Cuenca Organismo de Cuenca Sólidos Suspendidos Totales",
+                "Distribución porcentual por Organismo de Cuenca de Sólidos Suspendidos Totales",
               className: "btn btn-gob btn-sm",
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
-                "Distribución porcentual por Organismo de Cuenca Organismo de Cuenca Sólidos Suspendidos Totales",
+                "Distribución porcentual por Organismo de Cuenca de Sólidos Suspendidos Totales",
               className: "btn btn-gob btn-sm",
               text: "Exportar PDF",
               //messageBottom: citas,
@@ -2257,7 +2258,7 @@ async function distribucion3(query) {
                         alignment: "left",
                         //italics: true,
                         text:
-                          "Distribución porcentual por Organismo de Cuenca Organismo de Cuenca Sólidos Suspendidos Totales",
+                          "Distribución porcentual por Organismo de Cuenca de Sólidos Suspendidos Totales",
                         fontSize: 12.5,
                         margin: [10, 5],
                       },
@@ -2324,7 +2325,7 @@ async function distribucion3(query) {
 
 async function distribucion3Est(query) {
   $("#nav-03").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Estado Organismo de Cuenca Sólidos Suspendidos Totales</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Estado de Sólidos Suspendidos Totales</h3></div>'
   );
   /**
    * Tabla Estado
@@ -2422,15 +2423,13 @@ async function distribucion3Est(query) {
           buttons: [
             {
               extend: "excelHtml5",
-              title:
-                "Distribución porcentual por Estado Organismo de Cuenca Sólidos Suspendidos Totales",
+              title: "Distribución porcentual por Estado de Sólidos Suspendidos Totales",
               className: "btn btn-gob btn-sm",
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
-              title:
-                "Distribución porcentual por Estado Bioquímica de Oxígeno",
+              title: "Distribución porcentual por Estado de Sólidos Suspendidos Totales",
               className: "btn btn-gob btn-sm",
               text: "Exportar PDF",
               //messageBottom: citas,
@@ -2463,8 +2462,7 @@ async function distribucion3Est(query) {
                       {
                         alignment: "left",
                         //italics: true,
-                        text:
-                          "Distribución porcentual por Estado Organismo de Cuenca Sólidos Suspendidos Totales",
+                        text:"Distribución porcentual por Estado de Sólidos Suspendidos Totales",
                         fontSize: 12.5,
                         margin: [10, 5],
                       },
@@ -2959,7 +2957,7 @@ async function distribucion4(query) {
    * Se limpian todas las secciones del html en caso de que exista contenido
    */
   $("#nav-01").append(
-    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Organismo de Cuenca Organismo de Cuenca Coliformes fecales</h3></div>'
+    '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución porcentual por Organismo de Cuenca Coliformes fecales</h3></div>'
   );
   /**
    * Tabla Oc
@@ -3058,14 +3056,14 @@ async function distribucion4(query) {
             {
               extend: "excelHtml5",
               title:
-                "Distribución porcentual por Organismo de Cuenca Organismo de Cuenca Coliformes fecales",
+                "Distribución porcentual por Organismo de Cuenca Coliformes fecales",
               className: "btn btn-gob btn-sm",
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
-                "Distribución porcentual por Organismo de Cuenca Organismo de Cuenca Coliformes fecales",
+                "Distribución porcentual por Organismo de Cuenca Coliformes fecales",
               className: "btn btn-gob btn-sm",
               text: "Exportar PDF",
               //messageBottom: citas,
@@ -3099,7 +3097,7 @@ async function distribucion4(query) {
                         alignment: "left",
                         //italics: true,
                         text:
-                          "Distribución porcentual por Organismo de Cuenca Organismo de Cuenca Coliformes fecales",
+                          "Distribución porcentual por Organismo de Cuenca Coliformes fecales",
                         fontSize: 12.5,
                         margin: [10, 5],
                       },

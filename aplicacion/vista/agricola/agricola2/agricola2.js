@@ -101,7 +101,7 @@ async function Organismos() {
        * este contiene tanto el query anteriormente descrito como la acción que va realizar en el controlador de mapa
        */
       const cadena = "query=" + query + "&Accion=getEstados2";
-      console.log(cadena);
+      
       var data = [];
       /**
        * Se manda a llamar por medio de Ajax a la función de estados en el controlador de mapa
@@ -216,7 +216,9 @@ async function Fuentes() {
 }
 
 
-Distritos
+async function Distritos() {
+  isFormCompleted('#Distritos');
+}
 
 /**
  * Funcion para realizar la consulta de las selecicones con sus respectivos shapes

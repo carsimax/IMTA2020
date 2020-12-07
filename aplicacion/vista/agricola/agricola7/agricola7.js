@@ -273,6 +273,7 @@ async function Cultivos() {
  * Funcion para realizar la consulta de las selecicones con sus respectivos shapes
  */
 async function Consultar() {
+    
     Swal.fire({
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Realizando la consulta",
@@ -293,6 +294,8 @@ async function Consultar() {
     const Mun = await selectMuni();
     const Anio = await selectAnio();
     const Cultivo = await selectCultivo();
+
+    
     /**
      * * Se verifica que el query de Organismos ese vacio
      * */
@@ -459,7 +462,6 @@ async function limpiarEstados() {
  */
 async function limpiarDR() {
     
-    $("#Cultivos").multiselect("reset");
     /**
      * Limpia su porpia capa
      */
