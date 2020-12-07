@@ -23,20 +23,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
     <div class="row">
         <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-md-4">
             <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
-                <style>
-                    .myDiv {
-                        float: left;
-                    }
-                </style>
-
                 <h4>Sistema de Información Sobre el Uso del Agua a Nivel Nacional</h4>
-
-
-
-                <!-- <div class="d-inline" style="background-color: blue;">
-                    <h4 class="">Sistema de Información Sobre el Uso del Agua a Nivel Nacional</h4>
-                    <h4 class="text-center"><small>Bienvenido</small></h4>
-                </div> -->
             </div>
 
             <?php if (isset($_SESSION['loggedin'])) { ?>
