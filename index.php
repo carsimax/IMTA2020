@@ -7,6 +7,6 @@ error_reporting(E_ALL);
 if (!defined('aplicacion/controlador/main.php')) {
     require('aplicacion/controlador/main.php');
     define('aplicacion/controlador/main.php', 1);
-    
+    //Hola
 }
 die();
