@@ -73,12 +73,6 @@ $Fuentes = $registros->getFuentes();
     </div>
 </div>
 <div class="row">
-    <!--Select del Acuiferos-->
-    <div class="col-sm">
-        <label>Distritos de Temporal Tecnificado:</label>
-        <select name="Distritos[]" multiple id="Distritos" onchange="getCultivos()">
-        </select>
-    </div>
     <!--Select del los ciclos-->
     <div class="col-sm">
         <label>Cultivos:</label>
