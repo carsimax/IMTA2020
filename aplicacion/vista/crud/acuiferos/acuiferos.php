@@ -32,7 +32,7 @@ $Organismos = $registros->getTodos();
         <select onchange="Organismos()" name="Organismos[]" multiple id="Organismos">
             <?php
             foreach ($Organismos as $Organismo) {
-                ?>
+            ?>
                 <option value="<?php echo $Organismo['id_organismo'] ?>"><?php echo $Organismo['numero'] ?>
                     .<?php echo $Organismo['nombre'] ?> </option>
             <?php } ?>
@@ -50,8 +50,7 @@ $Organismos = $registros->getTodos();
 <hr>
 <div class="row">
     <div class="col-sm">
-        <table id="example" cellpadding="0" cellspacing="0" border="0" class="table table-bordered responsive nowrap"
-               width="100%">
+        <table id="example" cellpadding="0" cellspacing="0" border="0" class="table table-bordered responsive nowrap" width="100%">
         </table>
         <br>
     </div>
@@ -96,9 +95,10 @@ $Organismos = $registros->getTodos();
             {
                 targets: 6,
                 data: null,
-                defaultContent:'<button id="eliminar" class="btn btn-gob btn-fill"><i class="far fa-trash-alt"></i></button>',
+                defaultContent: '<button id="eliminar" class="btn btn-gob btn-fill"><i class="far fa-trash-alt"></i></button>',
                 width: "5%"
-            }]
+            }
+        ]
     });
 
 
@@ -154,11 +154,11 @@ $Organismos = $registros->getTodos();
                  * @param resp
                  * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
                  */
-                success: function (resp) {
+                success: function(resp) {
                     /**
                      * Primero se recorre el array con todos los estados devueltos por el controlador.
                      */
-                    $.each(JSON.parse(resp), function (index, item) {
+                    $.each(JSON.parse(resp), function(index, item) {
                         /**
                          * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
                          */
@@ -169,7 +169,7 @@ $Organismos = $registros->getTodos();
                         });
                     });
                 }
-            }).always(function () {
+            }).always(function() {
                 $('#Estados').multiselect('loadOptions', data);
             });
         }
@@ -204,14 +204,14 @@ $Organismos = $registros->getTodos();
                  * @param resp
                  * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
                  */
-                success: function (resp) {
+                success: function(resp) {
                     /**
                      * Primero se recorre el array con todos los estados devueltos por el controlador.
                      */
-                    $.each(JSON.parse(resp), function (index, item) {
+                    $.each(JSON.parse(resp), function(index, item) {
                         data.push([item.id_acuifero, item.estado, item.nombre, item.fecha_dof,
                             item
-                                    .fecha_repda, item
+                            .fecha_repda, item
                         ]);
                     });
                     table.clear().draw();
@@ -228,7 +228,7 @@ $Organismos = $registros->getTodos();
         /**
          * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
          */
-        $('#Organismos option:selected').each(function () {
+        $('#Organismos option:selected').each(function() {
             query += 'organismo_id=' + $(this).val() + ' or ';
         });
         /**
@@ -243,7 +243,7 @@ $Organismos = $registros->getTodos();
         /**
          * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
          */
-        $('#Estados option:selected').each(function () {
+        $('#Estados option:selected').each(function() {
             query += 'estado_id=' + $(this).val() + ' or ';
         });
         /**
@@ -254,7 +254,7 @@ $Organismos = $registros->getTodos();
         return query;
     }
 
-    $('#example').on('click', '#editar', function () {
+    $('#example').on('click', '#editar', function() {
         var data = table.row($(this).parents('tr')).data();
         $.redirect("/aplicacion/vista/crud/acuiferos/editar.php", {
             ID: data[0]
@@ -262,7 +262,7 @@ $Organismos = $registros->getTodos();
     });
 
 
-    $('#example').on('click', '#eliminar', function () {
+    $('#example').on('click', '#eliminar', function() {
         var data = table.row($(this).parents('tr')).data();
         Swal.fire({
             title: "¿Estás seguro?",
@@ -275,25 +275,25 @@ $Organismos = $registros->getTodos();
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.value) {
-                cadena ="ID=" + data[0] + "&Accion=DeleteACU";
+                cadena = "ID=" + data[0] + "&Accion=DeleteACU";
                 $.ajax({
                     type: 'GET',
                     url: '/aplicacion/controlador/acuifero.php',
                     data: cadena,
-                    success: function (response) {
+                    success: function(response) {
                         if (response == 1) {
                             Swal.fire({
-                                title: "Buen Trabajo!",
-                                text: "Se han guardado los cambios",
-                                icon: "success",
-                                confirmButtonColor: '#621132'
-                            })
-                                    .then((value) => {
-                                        $.redirect(
-                                                "/aplicacion/vista/crud/dbadmin.php", {
-                                                    tablaP: "Acuiferos"
-                                                }, "POST");
-                                    });
+                                    title: "Buen Trabajo!",
+                                    text: "Se han guardado los cambios",
+                                    icon: "success",
+                                    confirmButtonColor: '#621132'
+                                })
+                                .then((value) => {
+                                    $.redirect(
+                                        "/aplicacion/vista/crud/dbadmin.php", {
+                                            tablaP: "Acuiferos"
+                                        }, "POST");
+                                });
                         }
                     },
                 });

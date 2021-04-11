@@ -21,7 +21,7 @@ require_once(__DIR__ . "/../../../controlador/sesion.php");
                         <li class="breadcrumb-item active" aria-current="page">Editar Distrito de Temporal</li>
                     </ol>
                 </nav>
-            </div> 
+            </div>
             <div class="col-sm">
                 <div class="row">
                     <div class="col-sm">
@@ -42,5 +42,3 @@ require_once(__DIR__ . "/../../../controlador/sesion.php");
 
 <?php require_once(__DIR__ . "/../../plantillas/footer.php"); ?>
 <script type="text/javascript" src="/aplicacion/vista/crud/alerts.js"></script>
-
-

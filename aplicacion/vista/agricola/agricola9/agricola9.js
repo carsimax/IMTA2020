@@ -5,337 +5,171 @@ citas = "";
 query = "";
 
 // Se aplica el estilo a los selects
-setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismos de Cuenca');
 setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
-setEstiloSelect('#Distritos', 'Distritos de Temporal', 'Buscar Distrito');
+setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipio');
 setEstiloSelect('#Ciclos', 'Ciclos', 'Buscar Ciclo');
 setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
 
-async function Anios() {
-    await limpiarOrganismos();
+
+function Anios() {
+    limpiarOrganismos();
     $('#Anios').addClass('green');
-    $("#Organismos").multiselect("reset");
-    $("#Cultivos").multiselect("reset");
-    var query = '(';
-    $("#Anios option:selected").each(function () {
-        query += "anioagricola_id=" + $(this).val() + " or ";
-    });
-    query = query.slice(0, -4) + ') GROUP BY id_organismo';
+    $("#Estados").multiselect("reset");
+    const query = concatValoresSelect('#Anios', 'anio_id=');
     if (query !== "") {
-        /**
-         * controlador
-         * @type {string}
-         */
-        const cadena = "query=" + query + "&Accion=DTTTabla";
+        const cadena = "query=" + query + "&Accion=getEstados";
         var data = [];
         $.ajax({
             type: "POST",
-            url: "/aplicacion/controlador/agricola.php",
+            url: "/aplicacion/controlador/estimacionvolumetrica.php",
             data: cadena,
-            /**
-             * @param resp
-             * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
-             */
             success: function (resp) {
                 $.each(JSON.parse(resp), function (index, item) {
-                    /**
-                     * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
-                     */
                     data.push({
-                        name: item.numero+'. '+item.OC,
-                        value: item.id_organismo,
+                        name: item.nombre,
+                        value: item.id_estado,
                         checked: false,
                     });
                 });
-                $("#Organismos").multiselect("loadOptions", data);
+                $("#Estados").multiselect("loadOptions", data);
             }
-        }).always(function () {
-            Swal.close();
         });
-    } else {
-        Swal.close();
-    }
-}
-/**
- *
- * @constructor
- * * Esta función controla todos los cambios del select de organismos de cuenca.
- * La función básicamente lo que realiza es leer todas las opciones seleccionadas desde la vista,
- * limpia las capas del mapa, limpia los select que dependen de él, prepara una sentencia MySQL y
- * retorna en este caso los estados que dependen de un organismo de cuenta además de los shapes de los organismos.
- *
- */
-async function Organismos() {
-    /**
-     * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
-     */
-    await limpiarOrganismos();
-    var query = "(";
-    /**
-     * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
-     */
-    $("#Anios option:selected").each(function () {
-        query += "anioagricola_id=" + $(this).val() + " or ";
-    });
-    query = query.slice(0, -4) + ') AND (';
-    if ($("#Organismos option:selected").length != 0) {
-        $("#Organismos option:selected").each(function () {
-            query += "id_organismo=" + $(this).val() + " or ";
-        });
-        query = query.slice(0, -4) + ') GROUP BY id_estado';
-        /**
-         * Antes de realizar la consulta a la base de datos,
-         * es necesario verificar primero si el query contiene datos a buscar.
-         */
-        if (query !== "") {
-            /**
-             * @type {string}
-             * Se crea una cadena que es la que se va a enviar por medio de Ajax,
-             * este contiene tanto el query anteriormente descrito como la acción que va realizar en el controlador de mapa
-             */
-            const cadena = "query=" + query + "&Accion=DTTTabla";
-            var data = [];
-            /**
-             * Se manda a llamar por medio de Ajax a la función de estados en el controlador de mapa
-             */
-            $.ajax({
-                type: "POST",
-                url: "/aplicacion/controlador/agricola.php",
-                data: cadena,
-                /**
-                 * @param resp
-                 * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
-                 */
-                success: function (resp) {
-                    /**
-                     * Primero se recorre el array con todos los estados devueltos por el controlador.
-                     */
-                    $.each(JSON.parse(resp), function (index, item) {
-                        /**
-                         * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
-                         */
-                        data.push({
-                            name: item.estado,
-                            value: item.id_estado,
-                            checked: false,
-                        });
-                    });
-                    $("#Estados").multiselect("loadOptions", data);
-                },
-            }).always(function () {
-                Swal.close();
-            });
-        } else {
-            Swal.close();
-        }
-    } else {
-        Swal.close();
     }
 }
 
-/**
- *
- * @constructor
- *  Esta función controla todos los cambios del select de estados.
- * La función básicamente lo que realiza es leer todas las opciones seleccionadas desde la vista,
- * limpia las capas del mapa, limpia los select que dependen de él, prepara una sentencia MySQL y
- * retorna en este caso los Distritos que dependen de un organismo de cuenta además de los shapes de los organismos.
- *
- */
-async function Estados() {
-    await limpiarEstados();
+
+function Estados() {
+    limpiarEstados();
+    $("#Municipios").multiselect("reset");
+    const query = concatValoresSelect('#Estados', 'estimacion_volumetrica_cultivo.estado_id=');
+    if (query !== "") {
+        const cadena = "query=" + query + "&Accion=getMunicipios";
+        var data = [];
+        $.ajax({
+            type: "POST",
+            url: "/aplicacion/controlador/estimacionvolumetrica.php",
+            data: cadena,
+            success: function (resp) {
+                $.each(JSON.parse(resp), function (index, item) {
+                    data.push({
+                        name: item.nombre,
+                        value: item.id_municipio,
+                        checked: false,
+                    });
+                });
+                $("#Municipios").multiselect("loadOptions", data);
+            }
+        });
+    }
+}
+
+function Municipios() {
+    $("#Ciclos").multiselect("reset");
+    const query = concatValoresSelect('#Municipios', 'municipio_id=');
+    if (query !== "") {
+        const cadena = "query=" + query + "&Accion=getCiclos";
+        var data = [];
+        $.ajax({
+            type: "POST",
+            url: "/aplicacion/controlador/estimacionvolumetrica.php",
+            data: cadena,
+            success: function (resp) {
+                $.each(JSON.parse(resp), function (index, item) {
+                    data.push({
+                        name: item.nombre,
+                        value: item.id_ciclo,
+                        checked: false,
+                    });
+                });
+                $("#Ciclos").multiselect("loadOptions", data);
+            }
+        });
+    }
 }
 
 
 async function Ciclos() {
-    $("#Distritos").multiselect("reset");
-    
-    if ($("#Organismos option:selected").length != 0 &&
-        $("#Estados option:selected").length != 0 &&
-        $("#Ciclos option:selected").length != 0) {
-        var query = "(";
-        /**
-         * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
-         */
-        $("#Anios option:selected").each(function () {
-            query += "anioagricola_id=" + $(this).val() + " or ";
-        });
-        query = query.slice(0, -4) + ') AND (';
-        $("#Organismos option:selected").each(function () {
-            query += "id_organismo=" + $(this).val() + " or ";
-        });
-        query = query.slice(0, -4) + ') AND (';
-        $("#Estados option:selected").each(function () {
-            query += "id_estado=" + $(this).val() + " or ";
-        });
-        query = query.slice(0, -4) + ') AND (';
-        $("#Ciclos option:selected").each(function () {
-            query += "id_ciclo=" + $(this).val() + " or ";
-        });
-        query = query.slice(0, -4) + ') GROUP BY dtt_id';
-        const cadena = "query=" + query + "&Accion=DTTTabla";
-        var data = [];
-        $.ajax({
-            type: "POST",
-            url: "/aplicacion/controlador/agricola.php",
-            data: cadena,
-            /**
-             * @param resp
-             * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
-             */
-            success: function (resp) {
-                $.each(JSON.parse(resp), function (index, item) {
-                    /**
-                     * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de Distritos
-                     */
-                    data.push({
-                        name: item.dtt_id + " - " + item.nombre,
-                        value: item.dtt_id,
-                        checked: false,
-                    });
-                });
-                $("#Distritos").multiselect("loadOptions", data);
-            }
-        }).always(function () {
-            Swal.close();
-        });
-    } else {
-        Swal.close();
-    }
-}
-
-/**
- * Funcion para obtener los cultivos
- */
-async function getCultivos() {
     $("#Cultivos").multiselect("reset");
-    if ($("#Organismos option:selected").length != 0 &&
-        $("#Estados option:selected").length != 0 &&
-        $("#Ciclos option:selected").length != 0) {
-        var query = "(";
-        /**
-         * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
-         */
-        $("#Anios option:selected").each(function () {
-            query += "anioagricola_id=" + $(this).val() + " or ";
-        });
-        query = query.slice(0, -4) + ') AND (';
-        $("#Organismos option:selected").each(function () {
-            query += "id_organismo=" + $(this).val() + " or ";
-        });
-        query = query.slice(0, -4) + ') AND (';
-        $("#Estados option:selected").each(function () {
-            query += "id_estado=" + $(this).val() + " or ";
-        });
-        query = query.slice(0, -4) + ') AND (';
-        $("#Ciclos option:selected").each(function () {
-            query += "ciclo_id=" + $(this).val() + " or ";
-        });
-        query = query.slice(0, -4) + ') AND (';
-        $("#Distritos option:selected").each(function () {
-            query += "dtt_id=" + $(this).val() + " or ";
-        });
-        query = query.slice(0, -4) + ')';
-        const cadena = "query=" + query + "&Accion=CultivosDTT";
+    const query = concatValoresSelect('#Ciclos', 'ciclo_id=');
+    if (query !== "") {
+        const cadena = "query=" + query + "&Accion=getCultivos";
         var data = [];
         $.ajax({
             type: "POST",
-            url: "/aplicacion/controlador/cultivo.php",
+            url: "/aplicacion/controlador/estimacionvolumetrica.php",
             data: cadena,
-            //Si el controlador devuelve una respuesta
             success: function (resp) {
                 $.each(JSON.parse(resp), function (index, item) {
                     data.push({
-                        name: item.cultivo,
+                        name: item.nombre,
                         value: item.id_cultivo,
                         checked: false,
                     });
                 });
-            },
-        }).always(function () {
-            $("#Cultivos").multiselect("loadOptions", data);
-            Swal.close();
+                $("#Cultivos").multiselect("loadOptions", data);
+            }
         });
-    } else {
-        Swal.close();
     }
 }
+
 
 async function Cultivos() {
     isFormCompleted('#Cultivos');
 }
 
 
-/**
- *
- * @returns {Promise<void>}
- * @constructor
- * Funcion para realizar la consulta de las selecicones con sus respectivos shapes
- */
+//Prepara el query para mostrar las estaciones climatologicas tomando en cuenta los valores de los selects anteriores
+function concatQuery() {
+    var query = "(";
+    query = query + concatValoresSelect('#Anios', 'anio_id=');
+    query = query + ") AND (";
+    query = query + concatValoresSelect('#Estados', 'estimacion_volumetrica_cultivo.estado_id=');
+    query = query + ") AND (";
+    query = query + concatValoresSelect('#Municipios', 'municipio_id=');
+    query = query + ") AND (";
+    query = query + concatValoresSelect('#Ciclos', 'ciclo_id=');
+    query = query + ") AND (";
+    query = query + concatValoresSelect('#Cultivos', 'cultivo_id=');
+    query = query + ")";
+    return query;
+}
+
 async function Consultar() {
     Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
+        title: "Por favor espere",
         html: "Realizando la consulta",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
     });
     $('#nav-tab-acu a[href="#nav-01"]').tab("show");
-    /**
-     * Llmamos a deshabilitar y a limpiar los Distritos
-     * */
     await deshabilitar();
-    await limpiarDR();
-    const OC = await selectOrganismo();
-    const Est = await selectEst();
-    const DR = await selectDR();
-    const Anio = await selectAnio();
-    const Ciclo = await selectCiclo();
-    const Cultivo = await selectCultivo();
-    /**
-     * * Se verifica que el query de Organismos ese vacio
-     * */
-    if (OC !== "" && Est !== "" && DR !== "" && Ciclo !== "" && Cultivo !== "" && Anio !== "") {
-        data = "Accion=getCitaConsultaAnio&modulo_id=9&anios=anio_id=" + $( "#Anios" ).val();
-        citas = construirReferencias(data, true);
-        query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ") AND (" + Anio + ")  AND (" + Ciclo + ") AND (" + Cultivo + ")";
-        await desgloce1(query);
-        //Verifica si el mapa es prioridad
-        var x = $('#Prioridad').prop('checked');
-        if (x === false) {
-            if (!map.hasLayer(OCSelect)) {
-                //Recargamos el mapa
-                var callBack = async function () {
-                    document.getElementById("map").style.display = "block";
-                    setTimeout(function () {
-                        map.invalidateSize();
-                    }, 100);
-                };
-                map.whenReady(callBack);
-                await loadShape();
+
+    const cultivos = concatValoresSelect('#Cultivos', 'cultivo_id=');
+    if (cultivos !== "") {
+        // TODO: HABILITAR LA CITA DE ESTA INFORMACION
+
+        const query = concatQuery();
+        const cadena = "query=" + query + "&Accion=getConsulta";
+        $.ajax({
+            type: "POST",
+            url: "/aplicacion/controlador/estimacionvolumetrica.php",
+            data: cadena,
+            success: function (resp) {
+                alert("Aqui ya esta la informacion: agricola9.js linea 161")
+                alert(resp);
             }
-        }
-        /**
-         *
-         * @returns {Promise<void>}
-         * Esta funcion habilida el mapa y los elementos de la interfaz
-         */
+        });
+
+
+        // await desgloce1(query);
+
         await habilitar();
-        /**
-         *
-         * @returns {Promise<void>}
-         * Una  vez realizada la ocnsulta , se guarda en el historial
-         */
+
         await Swal.close();
     } else {
-        /**
-         *
-         * @returns {Promise<void>}
-         * Si algun selector esta vacio, se muestra un mensaje de error.
-         *
-         */
         swal(
             "Algo está mal.",
             "Todos los filtros tienen que tener al menos un elemento seleccionado"
@@ -349,119 +183,6 @@ async function Consultar() {
     }
 }
 
-/**
- *
- * Funcion que carga los shape de los estados
- * @returns {Promise<string>}
- *
- */
-async function selectOrganismo() {
-    var OC = "";
-    $("#Organismos option:selected")
-        .each(async function () {
-            OC += "id_organismo=" + $(this).val() + " or ";
-        })
-        .promise()
-        .always(async function () {
-            OC = OC.slice(0, -3);
-        });
-    return OC;
-}
-
-/**
- *
- * Funcion que carga los shape de los estados
- * @returns {Promise<string>}
- *
- */
-async function selectEst() {
-    var Est = "";
-    $("#Estados option:selected")
-        .each(async function () {
-            Est += "id_estado=" + $(this).val() + " or ";
-        })
-        .promise()
-        .always(async function () {
-            Est = Est.slice(0, -3);
-        });
-    return Est;
-}
-
-/**
- *
- * @returns {String|selectDR.DR}
- * Funcion que obtiene los Distritos de riego seleccionados
- *
- */
-async function selectDR() {
-    var DR = "";
-    $("#Distritos option:selected")
-        .each(async function () {
-            DR += 'dtt_id="' + $(this).val() + '" or ';
-        })
-        .promise()
-        .always(async function () {
-            DR = DR.slice(0, -3);
-        });
-    return DR;
-}
-
-/**
- *
- * @returns {selectAnio.Anio|String}
- * Funcion que obtiene los anios seleccionados
- *
- */
-async function selectAnio() {
-    var Anio = "";
-    $("#Anios option:selected")
-        .each(async function () {
-            Anio += "anioagricola_id=" + $(this).val() + " or ";
-        })
-        .promise()
-        .always(async function () {
-            Anio = Anio.slice(0, -3);
-        });
-    return Anio;
-}
-
-/**
- *
- * @returns {selectCiclo.Ciclos|String}
- * Funcion que obtiene los ciclos seleccionados
- *
- */
-async function selectCiclo() {
-    var Ciclos = "";
-    $("#Ciclos option:selected")
-        .each(async function () {
-            Ciclos += "id_ciclo=" + $(this).val() + " or ";
-        })
-        .promise()
-        .always(async function () {
-            Ciclos = Ciclos.slice(0, -3);
-        });
-    return Ciclos;
-}
-
-/**
- *
- * @returns {selectCultivo.Cultivos|String}
- * Funcion que obtiene los cultivos sleeccionados
- *
- */
-async function selectCultivo() {
-    var Cultivos = "";
-    $("#Cultivos option:selected")
-        .each(async function () {
-            Cultivos += "cultivo_id=" + $(this).val() + " or ";
-        })
-        .promise()
-        .always(async function () {
-            Cultivos = Cultivos.slice(0, -3);
-        });
-    return Cultivos;
-}
 
 /**
  *
@@ -471,7 +192,7 @@ async function selectCultivo() {
  */
 async function limpiarOrganismos() {
     $("#Estados").multiselect("reset");
-    await limpiarEstados();
+    limpiarEstados();
 }
 
 /**
@@ -481,25 +202,11 @@ async function limpiarOrganismos() {
  *
  */
 async function limpiarEstados() {
-    $("#Distritos").multiselect("reset");
-    await limpiarDR();
-    $("#Ciclos").multiselect("reset2");
+    $("#Municipios").multiselect("reset");
+    $("#Ciclos").multiselect("reset");
 }
 
-/**
- *
- * @returns {undefined}
- * Funcion para limpiar la capa de Distritos
- *
- */
-async function limpiarDR() {
-    /**
-     * Limpia su porpia capa
-     */
-    map.off();
-    map.remove();
-    crearMapa();
-}
+
 
 /**
  *
@@ -508,23 +215,10 @@ async function limpiarDR() {
  *
  */
 async function concatOrganismo() {
-    /**
-     *
-     * @type String
-     * Se crea la variable para ir concatenando el query
-     *
-     */
     var query = "";
-    /**
-     * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
-     */
     $("#Organismos option:selected").each(function () {
         query += "organismo_id=" + $(this).val() + " or ";
     });
-    /**
-     * Al final el query quedara con un or al final, la siguiente línea quita ese or sobrante.
-     * @type {string}
-     */
     query = query.slice(0, -3);
     return query;
 }
@@ -583,7 +277,7 @@ async function desgloce1(query) {
      * Se coloca el encabezado
      */
     $("#nav-01").append(
-        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por organismo de cuenca: año agrícola: '+Anio+'</h3></div>'
+        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por organismo de cuenca: año agrícola: ' + Anio + '</h3></div>'
     );
     /**
      * Funcion de ajax que se encarga de obtener la informacion
@@ -853,7 +547,7 @@ async function desgloce2() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -871,7 +565,7 @@ async function desgloce2() {
          */
         document.getElementById("nav-02").innerHTML = "";
         $("#nav-02").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por entidad federativa, año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por entidad federativa, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -1168,7 +862,7 @@ async function desgloce3() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1186,7 +880,7 @@ async function desgloce3() {
          */
         document.getElementById("nav-03").innerHTML = "";
         $("#nav-03").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por distrito de temporal tecnificado (organismo de cuenca),año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por distrito de temporal tecnificado (organismo de cuenca),año agrícola: ' + Anio + '</h3></div>'
         );
         /**
          *
@@ -1306,7 +1000,7 @@ async function desgloce3() {
                                  */
                                 $("#body").append(
                                     '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' +
-                                    OC +', año agrícola: '+Anio+
+                                    OC + ', año agrícola: ' + Anio +
                                     "</h4></div>" +
                                     '<div style="overflow-x:auto;">' +
                                     '<table id="T3-' + rha + '" class="table table-bordered nowrap"  width="100%">' +
@@ -1519,7 +1213,7 @@ async function desgloce4() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1550,7 +1244,7 @@ async function desgloce5() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -1567,7 +1261,7 @@ async function desgloce5() {
          */
         document.getElementById("nav-05").innerHTML = "";
         $("#nav-05").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por distrito de temporal tecnificado (cultivo), año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por distrito de temporal tecnificado (cultivo), año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -1708,7 +1402,7 @@ async function desgloce5() {
                                         if (data.length > 0) {
                                             $("#body4-" + anio + "").append(
                                                 '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' +
-                                                DRS +', año agrícola: '+Anio+
+                                                DRS + ', año agrícola: ' + Anio +
                                                 "</h4></div>" +
                                                 /*
                                                  * Se crea la tabla
@@ -2072,7 +1766,7 @@ async function desgloce6() {
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
             allowEscapeKey: false,
-    allowOutsideClick: false,
+            allowOutsideClick: false,
             onBeforeOpen: () => {
                 Swal.showLoading();
             },
@@ -2090,7 +1784,7 @@ async function desgloce6() {
          */
         $("#nav-06").innerHTML = "";
         $("#nav-06").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado nacional por cultivo, año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado nacional por cultivo, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -2250,7 +1944,7 @@ async function desgloce6() {
                                              */
                                             $("#body5-" + anio + "").append(
                                                 '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>' +
-                                                JSON.parse(respC) + ', año agrícola: '+Anio+
+                                                JSON.parse(respC) + ', año agrícola: ' + Anio +
                                                 "</h3></div>"
                                             );
                                             /*
@@ -2588,23 +2282,23 @@ async function grafica1(query2) {
              * Se coloca el bloque respectivo al anio y los canvas para colocar las graficas
              */
             $("#nav-04").append(
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada, año agrícola: '+Anio+'</h3></div>' +
+                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada, año agrícola: ' + Anio + '</h3></div>' +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Ciclo agrícola, año agrícola: '+Anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Ciclo agrícola, año agrícola: ' + Anio + '</h4></div>' +
                 '<canvas id="G-1"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca, año agrícola: '+Anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca, año agrícola: ' + Anio + '</h4></div>' +
                 '<canvas id="G-4"></canvas>' +
                 '<canvas id="G-4-1"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución de la superficie cosechada por organismo de cuenca y ciclo agrícola, año agrícola: '+Anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución de la superficie cosechada por organismo de cuenca y ciclo agrícola, año agrícola: ' + Anio + '</h4></div>' +
                 '<canvas id="G-7"></canvas>' +
                 "</div>" +
                 "</div>"
