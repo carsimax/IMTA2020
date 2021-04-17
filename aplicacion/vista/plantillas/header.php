@@ -17,6 +17,7 @@ if (!isset($_SESSION)) {
     <!--CARGA DE LOS ARCHIVOS DE GOB MX-->
     <link href="/estilo/css/sisuar.css" rel="stylesheet">
     <link href="/estilo/css/bootstrap.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.gob.mx/cms/uploads/image/file/488329/favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -130,8 +131,10 @@ if (!isset($_SESSION)) {
                 ?>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="navbar-brand" href="/"><!--<i class="fas fa-home"></i>
-                                Plataforma Web Informativa Sobre Usos de Agua en la Agricultura Nacional--></a>
+                            <a class="navbar-brand" href="/">
+                                <!--<i class="fas fa-home"></i>
+                                Plataforma Web Informativa Sobre Usos de Agua en la Agricultura Nacional-->
+                            </a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="/aplicacion/vista/perfil/perfil.php">

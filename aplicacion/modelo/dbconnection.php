@@ -95,10 +95,10 @@ class DBConnection
             default:
                 //Vacia variabes constantes
                 $this->setDriver('mysql');
-                $this->setHost('10.147.20.206');
-                $this->setUser('carsi');
+                $this->setHost('localhost');
+                $this->setUser('root');
                 $this->setDatabase('test');
-                $this->setPass('root');
+                $this->setPass('');
                 $this->setCharset('utf8');
                 break;
         }

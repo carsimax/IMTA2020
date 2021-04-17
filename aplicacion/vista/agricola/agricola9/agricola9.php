@@ -22,7 +22,7 @@ $Anios = $registros->getAnios();
 <div class="row">
     <div class="col-sm">
         <label>Año Agrícola:</label>
-        <select class="form-control" id="Anios" onchange="Anios()" multiple id="Anios">
+        <select class="form-control" id="Anios" onchange="Anios()" id="Anios">
             <option disabled selected value> -- Seleccione una opción -- </option>
             <?php
             foreach ($Anios as $Anio) {
@@ -67,4 +67,4 @@ $Anios = $registros->getAnios();
 <!-- Funciones globales de los selects -->
 <script src="/../sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->
-<script src="/aplicacion/vista/agricola/agricola9/agricola10.js"></script>
+<script src="/aplicacion/vista/agricola/agricola9/agricola9.js"></script>

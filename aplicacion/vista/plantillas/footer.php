@@ -4,15 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <a href="https://www.gob.mx/agricultura"> <img src="/imagenes/SADER.png" class="img-responsive"
-                                                               width="80%"></a>
+                <a target="_blank" rel="noreferrer" href="https://www.gob.mx/agricultura"> <img src="/imagenes/SADER.png" class="img-responsive" width="80%"></a>
             </div>
             <div class="col-sm">
-                <a href="https://www.conacyt.gob.mx/"> <img src="/imagenes/CONACYT.png" class="img-responsive"
-                                                            width="80%"></a>
+                <a target="_blank" rel="noreferrer" href="https://www.conacyt.gob.mx/"> <img src="/imagenes/CONACYT.png" class="img-responsive" width="80%"></a>
             </div>
             <div class="col-sm">
-                <a href="https://www.gob.mx/imta"> <img src="/imagenes/IMTA.png" class="img-responsive" width="80%"></a>
+                <a target="_blank" rel="noreferrer" href="https://www.gob.mx/imta"> <img src="/imagenes/IMTA.png" class="img-responsive" width="80%"></a>
             </div>
         </div>
         <hr>
@@ -27,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-6 col-xs-12">
-                <p class="copyright-text">Copyright &copy; 2020 todos los derechos reservados CONACyT-SADER.
+                <p class="copyright-text" id="footer__text">
                     <!--<a href="#">Scanfcode</a>.-->
                 </p>
             </div>
@@ -46,22 +44,27 @@
 </body>
 <a id="back2Top" title="Back to top" href="#">&#10148;</a>
 <script>
-function logout() {
-    Swal.fire({
-        title: "¿Estás seguro?",
-        text: "Estas a punto de cerrar sesión",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: '#621132',
-        cancelButtonColor: '#6f7271',
-        confirmButtonText: 'Si, continuar',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-        if (result.value) {
-            window.location.href = '/aplicacion/controlador/logout.php';
-        }
-    });
-}
+    // Se asigna el anio actual al footer
+    const legend = document.querySelector('#footer__text');
+    legend.textContent = `Copyright © ${new Date().getFullYear()} todos los derechos reservados CONACyT-SADER.`
+
+
+    function logout() {
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: "Estas a punto de cerrar sesión",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: '#621132',
+            cancelButtonColor: '#6f7271',
+            confirmButtonText: 'Si, continuar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = '/aplicacion/controlador/logout.php';
+            }
+        });
+    }
 </script>
 
 </html>
