@@ -92,21 +92,13 @@ class DBConnection
                 $this->setPass('$sisuar2020$');
                 $this->setCharset('utf8');
                 break;
-            case 'sisuar.imta.test':
+            default:
                 //Vacia variabes constantes
                 $this->setDriver('mysql');
-                $this->setHost('localhost');
-                $this->setUser('root');
+                $this->setHost('10.147.20.206');
+                $this->setUser('carsi');
                 $this->setDatabase('test');
-                $this->setPass('');
-                $this->setCharset('utf8');
-                break;
-            default:
-                $this->setDriver('mysql');
-                $this->setHost('localhost');
-                $this->setUser('root');
-                $this->setDatabase('test');
-                $this->setPass('');
+                $this->setPass('root');
                 $this->setCharset('utf8');
                 break;
         }

@@ -79,21 +79,12 @@ class DBConnectionGeoespacial {
                 $this->setPass('$sisuar2020$');
                 $this->setCharset('utf8');
                 break;
-            case 'sisuar.imta.test':
-                //Vacia variabes constantes
-                $this->setDriver('mysql');
-                $this->setHost('localhost');
-                $this->setUser('root');
-                $this->setDatabase('geoespacial');
-                $this->setPass('');
-                $this->setCharset('utf8');
-                break;
             default:
                 $this->setDriver('mysql');
-                $this->setHost('localhost');
-                $this->setUser('root');
+                $this->setHost('10.147.20.206');
+                $this->setUser('carsi');
                 $this->setDatabase('geoespacial');
-                $this->setPass('');
+                $this->setPass('root');
                 $this->setCharset('utf8');
                 break;
 

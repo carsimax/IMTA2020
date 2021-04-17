@@ -115,12 +115,24 @@ class EstimacionVolumetrica
     $pdo = new DBConnection();
     $db = $pdo->DBConnect();
     try {
-      $select = $db->prepare('SELECT anio.anio_agricola, estado.nombre as "Estado" , municipio.nombre as "Municipio", ciclo.nombre as "Ciclo", cultivo.nombre AS "Cultivo", sup_sembrada,volumen_neto FROM estimacion_volumetrica_cultivo,anio,estado, municipio ,ciclo, cultivo WHERE 
-estimacion_volumetrica_cultivo.anio_id = anio.id_anio AND 
-estimacion_volumetrica_cultivo.estado_id=estado.id_estado AND 
-estimacion_volumetrica_cultivo.municipio_id=municipio.id_municipio AND 
-estimacion_volumetrica_cultivo.ciclo_id =ciclo.id_ciclo AND 
-estimacion_volumetrica_cultivo.cultivo_id=cultivo.id_cultivo AND (' . $QUERY . ')');
+      $select = $db->prepare('SELECT
+      anio.id_anio,
+      anio.anio,
+      anio.anio_agricola,
+      estado.nombre as Estado,
+      municipio.nombre as Municipio,
+      ciclo.nombre as Ciclo,
+      cultivo.id_cultivo,
+      cultivo.nombre as Cultivo,
+      TRUNCATE (sum(estimacion_volumetrica_cultivo.sup_sembrada),2) AS SEM,
+      TRUNCATE (sum(estimacion_volumetrica_cultivo.volumen_neto),2) AS VOL_NET
+      FROM estimacion_volumetrica_cultivo
+      INNER JOIN anio ON anio.id_anio=estimacion_volumetrica_cultivo.anio_id
+      INNER JOIN estado ON estado.id_estado=estimacion_volumetrica_cultivo.estado_id
+      INNER JOIN municipio ON municipio.id_municipio=estimacion_volumetrica_cultivo.municipio_id
+      INNER JOIN ciclo ON ciclo.id_ciclo=estimacion_volumetrica_cultivo.ciclo_id
+      INNER JOIN cultivo on cultivo.id_cultivo=estimacion_volumetrica_cultivo.cultivo_id
+      WHERE '.$QUERY);
       $select->execute();
       return $select->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $exc) {
