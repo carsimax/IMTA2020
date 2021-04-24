@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -34,32 +35,32 @@ $Usos = $registros->getTodos();
 
 <div class="row">
     <!--Select del Tipo de Pozo-->
-    <div class="col-sm" id="divTipo">
+    <div class="col-sm-6 col-md-4" id="divTipo">
         <label>Tipo de Título:</label>
         <select class="form-control green" onchange="CambioTipo()" id="Tipos">
             <?php
             foreach ($Tipos as $Tipo) {
-                ?>
-            <option value="<?php echo $Tipo['id_tipo']; ?>"><?php echo $Tipo['tipo']; ?></option>
+            ?>
+                <option value="<?php echo $Tipo['id_tipo']; ?>"><?php echo $Tipo['tipo']; ?></option>
             <?php } ?>
         </select>
     </div>
-    <div class="col-sm">
+    <div class="col-sm-6 col-md-4">
         <!--Select del organismo de cuenca-->
         <label>Organismo de Cuenca:</label>
         <select class="form-control" onchange="Organismos()" id="Organismos">
             <option disabled selected value> -- Seleccione una opción -- </option>
             <?php
-        foreach ($Organismos as $Organismo) {
+            foreach ($Organismos as $Organismo) {
             ?>
-            <option value="<?php echo $Organismo['id_organismo'] ?>"><?php echo $Organismo['numero'] ?>. <?php echo $Organismo['nombre'] ?> </option>
+                <option value="<?php echo $Organismo['id_organismo'] ?>"><?php echo $Organismo['numero'] ?>. <?php echo $Organismo['nombre'] ?> </option>
             <?php } ?>
         </select>
     </div>
     <!--Fin del Select de los OC-->
 
     <!--Select del Estados-->
-    <div class="col-sm" id="divEstado">
+    <div class="col-sm-6 col-md-4" id="divEstado">
         <label>Estado:</label>
         <select class="form-control" onchange="Estados()" id="Estados">
             <option disabled selected value> -- Seleccione una opción -- </option>
@@ -68,7 +69,7 @@ $Usos = $registros->getTodos();
     <!--Fin del Select de los Estados-->
 
     <!--Select del Municipios-->
-    <div class="col-sm" id="divMuni">
+    <div class="col-sm-6 col-md-4" id="divMuni">
         <label>Municipio:</label>
         <select class="form-control" onchange="Municipios()" id="Municipios">
             <option disabled selected value> -- Seleccione una opción -- </option>
@@ -76,23 +77,23 @@ $Usos = $registros->getTodos();
     </div>
     <!--Fin del Select de los Estados-->
 
-    <div class="col-sm" id="divAcuifero">
+    <div class="col-sm-6 col-md-4" id="divAcuifero">
         <label>Acuífero:</label>
         <select onchange="limpiarAcuifero()" name="Acuiferos[]" multiple id="Acuiferos">
         </select>
     </div>
-    <div class="col-sm">
+    <div class="col-sm-6 col-md-4">
         <label>Uso del Título:</label>
         <select onchange="getTitulo()" name="Usos[]" multiple id="Usos">
             <?php
-        foreach ($Usos as $Uso) {
+            foreach ($Usos as $Uso) {
             ?>
-            <option value="<?php echo $Uso['id_uso']; ?>"><?php echo $Uso['uso']; ?></option>
+                <option value="<?php echo $Uso['id_uso']; ?>"><?php echo $Uso['uso']; ?></option>
             <?php } ?>
         </select>
     </div>
     <!--Select del Titulos-->
-    <div class="col-sm" id="divTitulo">
+    <div class="col-sm-6 col-md-4" id="divTitulo">
         <label>Titulo de Concesión:</label>
         <select name="Concesiones[]" onchange="Concesiones()" multiple id="Concesiones">
         </select>
@@ -101,7 +102,7 @@ $Usos = $registros->getTodos();
 <div class="row">
     <!--Fin del Select de los Estados-->
     <!--Select del Acuiferos-->
-    <div class="col-sm" id="divAcuifero">
+    <div class="col" id="divAcuifero">
         <br>
         <button id="consultar" onclick="Consultar()" disabled class="btn btn-gob text-light  btn-block">Consultar</button>
         <br>

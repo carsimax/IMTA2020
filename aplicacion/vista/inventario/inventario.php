@@ -37,7 +37,11 @@ $filtros = $registros->getFiltrosInventario(); ?>
                     </ol>
                 </nav>
             </div>
-            <!--fin del encabezado-->
+            <div class="col-md">
+                <p class="bold">Inventario de Obras de los Distritos de Riego</p>
+                <p class="font-weight-normal">Consulta el inventario de obras de infraestructura, obras de cabeza y sociedades de responsabilidad limitada a nivel Distrito y Módulo de Distritos de Riego.</p>
+            </div>
+
             <!--Seccion Para Seleccionr el Filtro-->
             <div class="col-sm" id="filtros">
                 <h6>Seleccione un filtro</h6>
@@ -68,7 +72,7 @@ $filtros = $registros->getFiltrosInventario(); ?>
             <div class="col-sm" id="pantalla">
 
             </div>
-            <?php require_once(__DIR__ . "/../plantillas/referencias.html");?>
+            <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
         </main>
     </div>
 </div>

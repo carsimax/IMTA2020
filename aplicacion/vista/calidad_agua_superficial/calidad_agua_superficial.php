@@ -37,7 +37,10 @@ $filtros = $registros->getCalidadAguaSuperficial(); ?>
                     </ol>
                 </nav>
             </div>
-            <!--Seccion Para Seleccionr el Filtro-->
+            <div class="col-md">
+                <p class="bold">Calidad del Agua</p>
+                <p class="font-weight-normal">Consulta los diferentes indicadores de la calidad del agua como lo son: Demanda Bioquímica de Oxígeno a cinco días (DBO5), Demanda Química de Oxígeno (DQO), Sólidos Suspendidos Totales (SST), Coliformes Fecales (CF) recabados por los sitios de monitoreo operados por la Conagua en todo el país.</p>
+            </div>
             <div class="col-sm" id="filtros">
                 <h6>Seleccione un filtro</h6>
                 <?php foreach ($filtros as $filtro) { ?>
@@ -65,7 +68,7 @@ $filtros = $registros->getCalidadAguaSuperficial(); ?>
             </div>
             <div class="col-sm" id="pantalla">
             </div>
-            <?php require_once(__DIR__ . "/../plantillas/referencias.html");?>
+            <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
         </main>
     </div>
     <br>

@@ -42,13 +42,18 @@ $filtros = $registros->getTodos();
             <div class="pt-3 pb-2 mb-3 border-bottom">
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Consulta de Información</a></li>
+                        <li class="breadcrumb-item"><a href="/">Consulta de Información</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Acuíferos</li>
                     </ol>
                 </nav>
             </div>
+
+            <div class="col-md">
+                <p class="bold">Acuíferos</p>
+                <p class="font-weight-normal">Consulta los valores de Disponibilidad Media Anual de Agua Subterránea, Descarga Natural Comprometida, Recarga Media Anual, Volumen de Extracción de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+            </div>
             <!--Seccion Para Seleccionr el Filtro-->
-            <div class="col-sm" id="filtros">
+            <div class="col-md" id="filtros">
                 <h6>Seleccione un filtro</h6>
                 <?php foreach ($filtros as $filtro) { ?>
                     <div class="form-check form-check-inline">
@@ -102,7 +107,7 @@ $filtros = $registros->getTodos();
                             <li><b>DMA: </b>Disponibilidad media anual de agua del subsuelo (hm<sup>3</sup>).</li>
                         </ul>
                     </div>
-                    <?php require_once(__DIR__ . "/../plantillas/referencias.html");?>
+                    <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
                 </div>
             </div>
         </main>

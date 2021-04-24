@@ -190,7 +190,7 @@ async function Municipios() {
     }
 }
 
-async function Concesiones(){
+async function Concesiones() {
     isFormCompleted('#Concesiones');
 }
 
@@ -372,6 +372,7 @@ async function loadShape() {
             Swal.showLoading();
         },
     });
+
     /**
      * Cargamos los OC
      */
@@ -388,14 +389,18 @@ async function loadShape() {
                  * Si Esta seleccionado los acuferos
                  */
                 if ($("#Acuiferos option:selected").val() != null && $val == 1) {
+
+
                     /**
                      * Obtenemos los acuiferos
                      */
                     getMuni_SIG(function () {
+
                         /**
                          * Cargamos los Pozos
                          */
                         getPozo_SIG(function () {
+
                             /**
                              * Añadimos los overlays
                              * @type {{Pozos: *, Estados: *, Acuiferos: *, "Organismos de Cuenca": *}}

@@ -37,45 +37,45 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                             <div class="card-header">
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a></h5>
                             </div>
-                            <a href="/aplicacion/vista/acuifero/acuiferos.php"><img class="card-img-top" src="/imagenes/acuifero.jpg" alt="Card image"></a>
+                            <a href="/aplicacion/vista/acuifero/acuiferos.php"><img src="/imagenes/acuifero.jpg" alt="Card image"></a>
                             <div class="card-body text-justify">
-                                <p class='font-weight-normal'>Consulta los valores de Disponibilidad Media Anual de Agua Subterránea, Descarga Natural Comprometida, Recarga Media Anual, Volumen de Extracción de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+                                <p class="font-weight-normal">Consulta los valores de Disponibilidad Media Anual de Agua Subterránea, Descarga Natural Comprometida, Recarga Media Anual, Volumen de Extracción de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
                             </div>
                         </div>
                         <div class="card modulo">
                             <div class="card-header">
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/presa/presas.php">Presas</a></h5>
                             </div>
-                            <a href="/aplicacion/vista/presa/presas.php"><img class="card-img-top" src="/imagenes/presa.jpg" alt="Card image"></a>
+                            <a href="/aplicacion/vista/presa/presas.php"><img src="/imagenes/presa.jpg" alt="Card image"></a>
                             <div class="card-body text-justify">
-                                <p class='font-weight-normal'>Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
+                                <p class="font-weight-normal">Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
                             </div>
                         </div>
                         <div class="card modulo">
                             <div class="card-header">
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/pozo/pozos.php">Pozos</a></h5>
                             </div>
-                            <a href="/aplicacion/vista/pozo/pozos.php"><img class="card-img-top" src="/imagenes/pozo.jpg" alt="Card image"></a>
+                            <a href="/aplicacion/vista/pozo/pozos.php"><img src="/imagenes/pozo.jpg" alt="Card image"></a>
                             <div class="card-body text-justify">
-                                <p class='font-weight-normal'>Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+                                <p class="font-weight-normal">Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
                             </div>
                         </div>
                         <div class="card modulo">
                             <div class="card-header">
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/agricola/agricola.php">Estadística Agrícola</a></h5>
                             </div>
-                            <a href="/aplicacion/vista/agricola/agricola.php"><img class="card-img-top" src="/imagenes/agricultura.jpg" alt="Card image"></a>
+                            <a href="/aplicacion/vista/agricola/agricola.php"><img src="/imagenes/agricultura.jpg" alt="Card image"></a>
                             <div class="card-body text-justify">
-                                <p class='font-weight-normal'>Consulta los Informes Estadísticos de Producción Agrícola, Superficies Regadas y Volúmenes de Agua Distribuidos en los Distritos de Riego y Temporal Tecnificado, así como sus históricos.</p>
+                                <p class="font-weight-normal">Consulta los Informes Estadísticos de Producción Agrícola, Superficies Regadas y Volúmenes de Agua Distribuidos en los Distritos de Riego, Unidades de Riego y Temporal Tecnificado, así como sus históricos.</p>
                             </div>
                         </div>
                         <div class="card modulo">
                             <div class="card-header">
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad del Agua</a></h5>
                             </div>
-                            <a href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php"><img class="card-img-top" src="/imagenes/calidad_agua.jpg" alt="Card image"></a>
+                            <a href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php"><img src="/imagenes/calidad_agua.jpg" alt="Card image"></a>
                             <div class="card-body text-justify">
-                                <p class='font-weight-normal'>Consulta los diferentes indicadores de la calidad del agua como lo son: Demanda Bioquímica de Oxígeno a cinco días (DBO5), Demanda Química de Oxígeno (DQO), Sólidos Suspendidos Totales (SST), Coliformes Fecales (CF) recabados por los sitios de monitoreo operados por la Conagua en todo el país.</p>
+                                <p class="font-weight-normal">Consulta los diferentes indicadores de la calidad del agua como lo son: Demanda Bioquímica de Oxígeno a cinco días (DBO5), Demanda Química de Oxígeno (DQO), Sólidos Suspendidos Totales (SST), Coliformes Fecales (CF) recabados por los sitios de monitoreo operados por la Conagua en todo el país.</p>
                             </div>
                         </div>
 
@@ -83,36 +83,36 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                             <div class="card-header">
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones Climatológicas</a></h5>
                             </div>
-                            <a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php"><img class="card-img-top" src="/imagenes/climatologica.jpg" alt="Card image"></a>
+                            <a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php"><img src="/imagenes/climatologica.jpg" alt="Card image"></a>
                             <div class="card-body text-justify">
-                                <p class='font-weight-normal'>Consulta las diferentes estaciones climatológicas distribuidas en todo el país.</p>
+                                <p class="font-weight-normal">Consulta las diferentes estaciones climatológicas distribuidas en todo el país.</p>
                             </div>
                         </div>
                         <div class="card modulo">
                             <div class="card-header">
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones Hidrométricas</a></h5>
                             </div>
-                            <a href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php"><img class="card-img-top" src="/imagenes/hidrometrica.jpg" alt="Card image"></a>
+                            <a href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php"><img src="/imagenes/hidrometrica.jpg" alt="Card image"></a>
                             <div class="card-body text-justify">
-                                <p class='font-weight-normal'>Consulta las diferentes estaciones hidrométricas distribuidas en todo el país.</p>
+                                <p class="font-weight-normal">Consulta las diferentes estaciones hidrométricas distribuidas en todo el país.</p>
                             </div>
                         </div>
                         <div class="card modulo">
                             <div class="card-header">
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/inventario/inventario.php"><small>Inventario de Obras de los Distritos de Riego</small></a></h5>
                             </div>
-                            <a href="/aplicacion/vista/inventario/inventario.php"><img class="card-img-top" src="/imagenes/Inventario.jpg" alt="Card image"></a>
+                            <a href="/aplicacion/vista/inventario/inventario.php"><img src="/imagenes/Inventario.jpg" alt="Card image"></a>
                             <div class="card-body text-justify">
-                                <p class='font-weight-normal'>Consulta el inventario de obras de infraestructura, obras de cabeza y sociedades de responsabilidad limitada de Distritos de Riego.</p>
+                                <p class="font-weight-normal">Consulta el inventario de obras de infraestructura, obras de cabeza y sociedades de responsabilidad limitada de Distritos de Riego.</p>
                             </div>
                         </div>
                         <div class="card modulo">
                             <div class="card-header">
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de Marginación</a></h5>
                             </div>
-                            <a href="/aplicacion/vista/indice_marginacion/indice_marginacion.php"><img class="card-img-top" src="/imagenes/marginacion.png" alt="Card image"></a>
+                            <a href="/aplicacion/vista/indice_marginacion/indice_marginacion.php"><img src="/imagenes/marginacion.png" alt="Card image"></a>
                             <div class="card-body text-justify">
-                                <p class='font-weight-normal'>Consulta el índice de marginación estatal y municipal de todo el país.</p>
+                                <p class="font-weight-normal">Consulta el índice de marginación estatal</p>
                             </div>
                         </div>
                     </div>
@@ -121,7 +121,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                 <div class="col-sm">
                     <div class="row">
                         <div class="col-sm">
-                        <h4 class="text-center"><small>Bienvenido</small></h4>
+                            <h4 class="text-center"><small>Bienvenido</small></h4>
                             <p align="justify">
                                 La agricultura es una actividad económica vital para el desarrollo de un país que demanda
                                 cada
@@ -158,13 +158,13 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                                 En este contexto, se presenta el Sistema de Información Sobre el Uso del Agua de Riego en la Agricultura Nacional (SISUAR), con el propósito de brindar un punto de acceso común a la información relacionada con el uso y explotación del recurso agua en la agricultura nacional de riego. El sistema proporciona información estadística de la producción agrícola de los Distritos y las Unidades de Riego, presas, aprovechamientos subterráneos para la explotación del agua destinada al uso agrícola, datos sobre la evapotranspiración de cultivos, volúmenes utilizados y otras fuentes de datos relacionadas. La intención es poner al alcance de los usuarios interesados una hereramienta de consulta con una interfaz amigable y con herramientas que facilitan el análisis y la extracción de información.
                             </p>
                         </div>
-                            <div class="col" id="padre">
-                                <img id="hijo" style="max-width:100%;width:auto;height:auto;" class="img-responsive" src="/imagenes/Inicio.jpg">
-                            </div>
+                        <div class="col" id="padre">
+                            <img id="hijo" style="max-width:100%;width:auto;height:auto;" class="img-responsive" src="/imagenes/Inicio.jpg">
                         </div>
                     </div>
                 </div>
     </div>
+</div>
 <?php } ?>
 </main>
 </div>

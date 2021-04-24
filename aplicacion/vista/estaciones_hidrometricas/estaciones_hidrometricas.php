@@ -21,6 +21,10 @@ require_once(__DIR__ . "/../plantillas/header.php");
                     </ol>
                 </nav>
             </div>
+            <div class="col-md">
+                <p class="bold">Estaciones Hidrométricas</p>
+                <p class="font-weight-normal">Consulta las diferentes estaciones hidrométricas distribuidas en todo el país.</p>
+            </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
                 <div id="divFiltro">
@@ -47,7 +51,7 @@ require_once(__DIR__ . "/../plantillas/header.php");
                     </div>
                 </div>
             </div>
-            <?php require_once(__DIR__ . "/../plantillas/referencias.html");?>
+            <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
 
         </main>
     </div>
