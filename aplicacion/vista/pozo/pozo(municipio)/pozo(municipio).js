@@ -359,7 +359,7 @@ function sleep(ms) {
 }
 
 
-async function loadShape() {
+async function loadShape(tipo) {
     await map.off();
     await map.remove();
     crearMapa();
@@ -373,32 +373,23 @@ async function loadShape() {
         },
     });
 
-    /**
+    if (tipo === "1") {
+        /**
      * Cargamos los OC
      */
-    getOC_SIG(function () {
-        /**
-         * Cargamos los Estados
-         */
-        getEst_SIG(function () {
+        getOC_SIG(function () {
             /**
-             * Cargamos los Municipios
+             * Cargamos los Estados
              */
-            getAcu_SIG(function () {
+            getEst_SIG(function () {
                 /**
-                 * Si Esta seleccionado los acuferos
+                 * Cargamos los Municipios
                  */
-                if ($("#Acuiferos option:selected").val() != null && $val == 1) {
-
-
+                getMuni_SIG(function () {
                     /**
-                     * Obtenemos los acuiferos
+                     * Cargamos los Pozos
                      */
-                    getMuni_SIG(function () {
-
-                        /**
-                         * Cargamos los Pozos
-                         */
+                    getAcu_SIG(function () {
                         getPozo_SIG(function () {
 
                             /**
@@ -417,10 +408,13 @@ async function loadShape() {
                             Swal.close();
                         });
                     });
-                } else {
-                    /**
-                     * Cargamos los Pozos
-                     */
+                });
+            });
+        });
+    } else {
+        getOC_SIG(function () {
+            getEst_SIG(function () {
+                getMuni_SIG(function () {
                     getPozo_SIG(function () {
                         /**
                          * Añadimos los overlays
@@ -436,8 +430,8 @@ async function loadShape() {
                         lc.addTo(map);
                         Swal.close();
                     });
-                }
+                });
             });
         });
-    });
+    }
 }
