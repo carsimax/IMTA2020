@@ -123,7 +123,7 @@ if (!isset($_SESSION)) {
     <nav class="navbar navbar-expand-lg navbar-dark bg-gob sticky-top">
         <a class="navbar-brand" href="#"><a class="navbar-brand" href="/"><i class="fas fa-home"></i></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span> Inicio
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <?php

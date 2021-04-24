@@ -30,7 +30,7 @@ $(document).on("change", "input[type=radio]", async function () {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando modulo",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -90,7 +90,7 @@ async function habilitar() {
     $("#botonMapa").show();
     $("#divPrioridad").show();
     $("#referencias").show();
-    
+
 }
 
 $('#Prioridad').change(async function () {
@@ -121,18 +121,27 @@ $('#Prioridad').change(async function () {
         $("#exampleModalLabel").append('Información Tabular');
         document.getElementById("botonMapa").innerHTML = "";
         $("#botonMapa").append('<i class="fa fa-table my-float"></i><b> Ver Tablas</b>');
-        if (!map.hasLayer(OCSelect)) {
-            await loadShape();
+        var val = $('[name="filtro"]:checked').val();
+        if (val = "agricola9") {
+            await loadShape2();
+        } else {
+            if (!map.hasLayer(OCSelect)) {
+                await loadShape();
+            }
         }
     }
 });
 
 async function cargarMapa() {
-    alert($('[name="filtro"]:checked').val());
     var x = $('#Prioridad').prop('checked');
+    var val = $('[name="filtro"]:checked').val();
     if (x === true) {
         if (!map.hasLayer(OCSelect)) {
-            await loadShape();
+            if (val = "agricola9") {
+                await loadShape2();
+            }else{
+                await loadShape();
+            }
             var callBack = async function () {
                 document.getElementById("exampleModal").style.display = "block";
                 setTimeout(function () {
@@ -143,6 +152,7 @@ async function cargarMapa() {
         }
     }
 }
+
 async function loadShape() {
     await map.off();
     await map.remove();
@@ -151,7 +161,7 @@ async function loadShape() {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Mapa Geoespacial",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
@@ -212,7 +222,7 @@ async function loadShape() {
                     });
                     break;
                 case "agricola7":
-                    getMuni_SIG(function (){
+                    getMuni_SIG(function () {
                         var overlays = {
                             "Organismos de Cuenca": GroupoOCSelect,
                             "Estados": GroupoEstSelect,
@@ -224,6 +234,36 @@ async function loadShape() {
                     });
                     break;
             }
+        });
+    });
+}
+
+async function loadShape2() {
+    await map.off();
+    await map.remove();
+    crearMapa();
+    Swal.fire({
+        title: "Por favor espere", // add html attribute if you want or remove
+        html: "Cargando Mapa Geoespacial",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        onBeforeOpen: () => {
+            Swal.showLoading();
+        },
+    });
+    /**
+        * Cargamos Estados
+        */
+    getEst_SIG(function () {
+        getMuni_SIG(function () {
+            var overlays = {
+                "Organismos de Cuenca": GroupoOCSelect,
+                "Estados": GroupoEstSelect,
+                "Municipios": GroupoMunSelect,
+            }
+            var lc = L.control.layers(null, overlays);
+            lc.addTo(map);
+            Swal.close();
         });
     });
 }

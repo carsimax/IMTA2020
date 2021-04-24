@@ -154,17 +154,15 @@ async function Consultar() {
         //Verifica si el mapa es prioridad
         var x = $('#Prioridad').prop('checked');
         if (x == false) {
-            if (!map.hasLayer(EstSelect)) {
-                //Recargamos el mapa
-                var callBack = async function () {
-                    document.getElementById("map").style.display = "block";
-                    setTimeout(function () {
-                        map.invalidateSize();
-                    }, 100);
-                };
-                map.whenReady(callBack);
-                await loadShape();
-            }
+            //Recargamos el mapa
+            var callBack = async function () {
+                document.getElementById("map").style.display = "block";
+                setTimeout(function () {
+                    map.invalidateSize();
+                }, 100);
+            };
+            map.whenReady(callBack);
+            await loadShape2();
         }
         await habilitar();
 
@@ -328,7 +326,7 @@ async function desgloce1(query) {
                  * Se inserta la seccion al html
                  */
                 $("#nav-01").append(
-                    '<div style="overflow-x:auto;">' +
+                    '<div style="ocflow-x:auto;">' +
                     '<table id="T1" class="table table-bordered nowrap" style="width:100%">' +
                     "<tfoot><tr>" +
                     /**
