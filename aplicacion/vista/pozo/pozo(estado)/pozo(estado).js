@@ -154,10 +154,10 @@ async function limpiarEstados() {
     /**
      * Llamos a limpiar acuifero
      */
-    
-    $("#Acuiferos").multiselect("reset"); 
+
+    $("#Acuiferos").multiselect("reset");
     $('#Acuiferos option:eq(0)').prop('selected', true)
-    
+
     await limpiarAcuifero();
 }
 
@@ -166,12 +166,12 @@ async function limpiarEstados() {
  */
 async function limpiarAcuifero() {
     //Se valida para asignarle el la clase green
-    if($('#Acuiferos').val() === null){
+    if ($('#Acuiferos').val() === null) {
         $('#Acuiferos').removeClass('green');
-    }else{
+    } else {
         $('#Acuiferos').addClass('green');
     }
-    
+
     /**
      * Limpia su porpia capa
      */
@@ -193,7 +193,7 @@ async function limpiarAcuifero() {
 }
 
 //Se valida el valor del select de titulos para poder habilitar el boton de consulta
-async function Concesiones(){
+async function Concesiones() {
     isFormCompleted('#Concesiones');
 }
 
@@ -238,7 +238,7 @@ async function concatEstado() {
     return query;
 }
 
-async function loadShape() {
+async function loadShape(tipo) {
     await map.off();
     await map.remove();
     crearMapa();
@@ -246,25 +246,22 @@ async function loadShape() {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Mapa Geoespacial",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },
     });
-    /**
+    if (tipo === "1") {
+        /**
      * Cargamos los OC
      */
-    getOC_SIG(function () {
-        /**
-         * Cargamos los Estados
-         */
-        getEst_SIG(function () {
+        getOC_SIG(function () {
             /**
-             * Si Esta seleccionado los acuferos
+             * Cargamos los Estados
              */
-            if ($("#Acuiferos option:selected").val() != null && $val == 1) {
+            getEst_SIG(function () {
                 /**
-                 * Obtenemos los acuiferos
+                 * Si Esta seleccionado los acuferos
                  */
                 getAcu_SIG(function () {
                     /**
@@ -286,10 +283,11 @@ async function loadShape() {
                         Swal.close();
                     });
                 });
-            } else {
-                /**
-                 * Cargamos los Pozos
-                 */
+            });
+        });
+    } else {
+        getOC_SIG(function () {
+            getEst_SIG(function () {
                 getPozo_SIG(function () {
                     /**
                      * Añadimos los overlays
@@ -304,7 +302,7 @@ async function loadShape() {
                     lc.addTo(map);
                     Swal.close();
                 });
-            }
+            });
         });
-    });
+    }
 }

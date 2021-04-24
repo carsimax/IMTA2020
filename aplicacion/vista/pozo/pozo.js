@@ -1902,6 +1902,7 @@ async function cargarMapa() {
 }
 
 $('#Prioridad').change(async function () {
+    var tipo=$("#Tipos option:selected").val();
     var x = $(this).prop('checked');
     if (x) {
         //El mapa del modal al auxiliar
@@ -1930,7 +1931,7 @@ $('#Prioridad').change(async function () {
         document.getElementById("botonMapa").innerHTML = "";
         $("#botonMapa").append('<i class="fa fa-table my-float"></i><b> Ver Tablas</b>');
         if (!map.hasLayer(OCSelect)) {
-            await loadShape();
+            await loadShape(tipo);
         }
     }
 });
