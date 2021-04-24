@@ -51,9 +51,6 @@ $filtros = $registros->getAgricola(); ?>
                 <?php } ?>
             </div>
             <hr>
-            <div class="col-sm">
-            <p>Consulta los Informes Estadísticos de Producción Agrícola, Superficies Regadas y Volúmenes de Agua Distribuidos en los Distritos de Riego y Temporal Tecnificado, así como sus históricos.</p>
-            </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
                 <div id="divFiltro">

@@ -239,7 +239,7 @@ async function Consultar() {
   /**
    * Llmamos a deshabilitar y a limpiar los Distritos
    */
-  await deshabilitar();
+  deshabilitar();
   await limpiarDR();
   const OC = await selectOrganismo();
   const Est = await selectEst();
@@ -254,12 +254,11 @@ async function Consultar() {
     //Se construye las referencias 
     data = "Accion=ConsultaAgricola&modulo_id=3&anios=" + Anio;
     citas = construirReferencias(data, true);
-
     var query = '(' + OC + ') AND (' + Est + ') AND (' + DR + ') AND (' + Anio + ') AND (' + Tenencia + ') AND (' + Fuente + ') GROUP by distrito_riego_id,id_tenencia,fuente_id,anio_id ORDER BY fuente DESC,id_tenencia';
     /**
      * Funcion para el desgloce 1
      */
-    await desgloce1(query);
+    desgloce1(query);
     //Verifica si el mapa es prioridad
     var x = $('#Prioridad').prop('checked');
     if (x == false) {
@@ -272,24 +271,17 @@ async function Consultar() {
           }, 100);
         };
         map.whenReady(callBack);
+
         await loadShape();
       }
     }
-    /**
-     * Obtenemos las graficas
-     */
     query = '(' + OC + ') AND (' + Est + ') AND (' + DR + ') AND (' + Anio + ') AND (' + Tenencia + ') AND (' + Fuente + ')GROUP by fuente_id';
-    /**
-     *
-     * @returns {Promise<void>}
-     * Funcion que muestra las graficas
-     */
-    await grafica7(query);
+    grafica7(query);
     query = '(' + OC + ') AND (' + Est + ') AND (' + DR + ') AND (' + Anio + ') AND (' + Tenencia + ') AND (' + Fuente + ') GROUP BY id_organismo';
     await desgloce3(query);
     query = '(' + OC + ') AND (' + Est + ') AND (' + DR + ') AND (' + Anio + ') AND (' + Tenencia + ') AND (' + Fuente + ') GROUP BY id_estado';
     await desgloce4(query);
-    await habilitar();
+    habilitar();
     await Historial();
     $("#referencias").show();
   } else {
@@ -297,7 +289,7 @@ async function Consultar() {
       "Algo está mal.",
       "Todos los filtros tienen que tener al menos un elemento seleccionado"
     );
-    await habilitar();
+    habilitar();
     $("#pantalla").hide();
     $("#divPrioridad").hide();
     $("#referencias").hide();

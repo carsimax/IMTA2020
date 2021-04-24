@@ -95,6 +95,7 @@ async function habilitar() {
 
 $('#Prioridad').change(async function () {
     var x = $(this).prop('checked');
+    debugger
     if (x) {
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#SeccionModal');
@@ -122,10 +123,12 @@ $('#Prioridad').change(async function () {
         document.getElementById("botonMapa").innerHTML = "";
         $("#botonMapa").append('<i class="fa fa-table my-float"></i><b> Ver Tablas</b>');
         var val = $('[name="filtro"]:checked').val();
-        if (val = "agricola9") {
+
+        if (val === "agricola9") {
             await loadShape2();
         } else {
             if (!map.hasLayer(OCSelect)) {
+
                 await loadShape();
             }
         }
@@ -137,9 +140,9 @@ async function cargarMapa() {
     var val = $('[name="filtro"]:checked').val();
     if (x === true) {
         if (!map.hasLayer(OCSelect)) {
-            if (val = "agricola9") {
+            if (val === "agricola9") {
                 await loadShape2();
-            }else{
+            } else {
                 await loadShape();
             }
             var callBack = async function () {
@@ -175,7 +178,9 @@ async function loadShape() {
          */
         getEst_SIG(function () {
             let val = $('[name="filtro"]:checked').val();
+
             switch (val.toLowerCase()) {
+
                 case "agricola1":
                     /**
                      * Cargamos DR

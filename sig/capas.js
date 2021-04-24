@@ -416,6 +416,7 @@ function getEst_SIG(callback) {
 function getMuni_SIG(callback) {
     let Mun = '';
     $("#Municipios option:selected").each(function () {
+        alert("Entre")
         Mun += "id_municipio=" + $(this).val() + " or ";
     }).promise().done(function () {
         Mun = Mun.slice(0, -3);

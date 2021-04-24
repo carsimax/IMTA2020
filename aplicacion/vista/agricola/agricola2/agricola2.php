@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -39,9 +40,8 @@ $Fuentes = $registros->getFuentes();
         <select class="form-control" id="Anios" onchange="Anios()">
             <option disabled selected value> -- Seleccione una opción -- </option>
             <?php
-            foreach ($Anios as $Anio)
-            {
-                ?>
+            foreach ($Anios as $Anio) {
+            ?>
                 <option value="<?php echo $Anio['id_anio'] ?>"><?php echo $Anio['anio_agricola'] ?></option>
             <?php } ?>
         </select>
@@ -75,10 +75,9 @@ $Fuentes = $registros->getFuentes();
         <label>Fuente:</label>
         <select name="Fuentes[]" multiple id="Fuentes" onchange="Fuentes()">
             <?php
-        foreach ($Fuentes as $Fuente)
-        {
+            foreach ($Fuentes as $Fuente) {
             ?>
-            <option value="<?php echo $Fuente['id_fuente'] ?>"><?php echo $Fuente['nombre'] ?></option>
+                <option value="<?php echo $Fuente['id_fuente'] ?>"><?php echo $Fuente['nombre'] ?></option>
             <?php } ?>
         </select>
     </div>

@@ -17,7 +17,7 @@
         <div class="row">
 
             <div class="col-sm d-flex justify-content-center">
-                <h6><a href='/aplicacion/vista/acercade.php'>Acerca de</a></h6>
+                <h6><a href="/aplicacion/vista/sugerencia.php">Comentarios y sugerencias</a></h6>
             </div>
         </div>
         <hr>
