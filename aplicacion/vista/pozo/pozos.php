@@ -36,9 +36,14 @@ $filtros = $registros->getPozos();
                     </ol>
                 </nav>
             </div>
+<<<<<<< HEAD
             <div class="col-md">
                 <p class="bold">Pozos</p>
                 <p class="font-weight-normal">Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+=======
+            <div class="col-sm">
+            <p>Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+>>>>>>> ad8f5f653825806d099a5408261514b4c4fae668
             </div>
             <!--Seccion Para Seleccionr el Filtro-->
             <div class="col-sm" id="filtros">
@@ -97,7 +102,7 @@ $filtros = $registros->getPozos();
 </div>
 <br>
 <!-- Modal -->
-<a href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
+<a hidden href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">

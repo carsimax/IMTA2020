@@ -59,7 +59,7 @@ if (!isset($_SESSION)) {
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <!--SweetAlert-->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-borderless/borderless.css  ">-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
     <!--ChartJs-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -121,7 +121,8 @@ if (!isset($_SESSION)) {
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-gob sticky-top">
-        <a class="navbar-brand" href="#"><a class="navbar-brand" href="/"><i class="fas fa-home"></i></a>
+        <a class="navbar-brand" href="#"><a class="navbar-brand" href="/"><i class="fas fa-home"></i> Inicio</a>
+        <a class="navbar-brand" href='/aplicacion/vista/acercade.php'>Acerca de</a>  
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

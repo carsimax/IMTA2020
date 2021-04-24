@@ -31,9 +31,14 @@ require_once(__DIR__ . "/../plantillas/header.php");
                     </ol>
                 </nav>
             </div>
+<<<<<<< HEAD
             <div class="col-md">
                 <p class="bold">Estaciones Climatológicas</p>
                 <p class="font-weight-normal">Consulta las diferentes estaciones climatológicas distribuidas en todo el país.</p>
+=======
+            <div class="col-sm">
+            <p>Consulta las diferentes estaciones climatológicas distribuidas en todo el país.</p>
+>>>>>>> ad8f5f653825806d099a5408261514b4c4fae668
             </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
@@ -67,7 +72,7 @@ require_once(__DIR__ . "/../plantillas/header.php");
 </div>
 <br>
 <!-- Modal -->
-<a href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
+<a hidden href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">

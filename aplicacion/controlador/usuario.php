@@ -324,17 +324,17 @@ function Registrar() {
         $Contra->insert();
         /**
          * Se redirecciona a la pantalla principal
-        $email_user = "maximilianocarsi@gmail.com";
-        $email_password = "C02101998m0644";
+        $email_user = "sisuar_imta2019@outlook.com";
+        $email_password = "v3emLED5dB;D";
         $the_subject = "Registro  Exitoso";
         $address_to = $usuario->getCorreo(); //correo del paciente
         $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
         $phpmailer = new PHPMailer();
         $phpmailer->Username = $email_user;
         $phpmailer->Password = $email_password;
-        $phpmailer->SMTPSecure = 'ssl';
-        $phpmailer->Host = "smtp.gmail.com"; // GMail
-        $phpmailer->Port = 465;
+        $phpmailer->SMTPSecure = 'tls';
+        $phpmailer->Host = "smtp.live.com"; // GMail
+        $phpmailer->Port = 587;
         $phpmailer->IsSMTP(); // use SMTP
         $phpmailer->SMTPAuth = true;
         $phpmailer->setFrom($phpmailer->Username, $from_name);
@@ -406,8 +406,8 @@ function RegistrarAdmin() {
         /**
          * Se redirecciona a la pantalla principal
          */
-        $email_user = "maximilianocarsi@gmail.com";
-        $email_password = "C02101998m0644";
+        $email_user = "sisuar_imta2019@outlook.com";
+        $email_password = "v3emLED5dB;D";
         $the_subject = "Registro  Exitoso";
         $address_to = $usuario->getCorreo(); //correo del paciente
         $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
@@ -416,9 +416,9 @@ function RegistrarAdmin() {
          * datos de la cuenta de Gmail
         $phpmailer->Username = $email_user;
         $phpmailer->Password = $email_password;
-        $phpmailer->SMTPSecure = 'ssl';
-        $phpmailer->Host = "smtp.gmail.com"; // GMail
-        $phpmailer->Port = 465;
+        $phpmailer->SMTPSecure = 'tls';
+        $phpmailer->Host = "smtp.live.com"; // GMail
+        $phpmailer->Port = 587;
         $phpmailer->IsSMTP(); // use SMTP
         $phpmailer->SMTPAuth = true;
         $phpmailer->setFrom($phpmailer->Username, $from_name);
@@ -533,8 +533,8 @@ function restablecer() {
     $usuario = new Usuario;
     $usuario->setCorreo(filter_input(INPUT_POST, "Correo"));
     if ($usuario->restablecer() == 1) {
-        $email_user = "maximilianocarsi@gmail.com";
-        $email_password = "C02101998m0644";
+        $email_user = "sisuar_imta2019@outlook.com";
+        $email_password = "v3emLED5dB;D";
         $the_subject = "Restablecimiento de contraseña";
         $address_to = $usuario->getCorreo(); //correo del paciente
         $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
@@ -544,9 +544,9 @@ function restablecer() {
          */
         $phpmailer->Username = $email_user;
         $phpmailer->Password = $email_password;
-        $phpmailer->SMTPSecure = 'ssl';
-        $phpmailer->Host = "smtp.gmail.com"; // GMail
-        $phpmailer->Port = 465;
+        $phpmailer->SMTPSecure = 'tls';
+        $phpmailer->Host = "smtp.live.com"; // GMail
+        $phpmailer->Port = 587;
         $phpmailer->IsSMTP(); // use SMTP
         $phpmailer->SMTPAuth = true;
         $phpmailer->setFrom($phpmailer->Username, $from_name);
@@ -853,17 +853,17 @@ function Registrar2() {
         $Contra->insert();
         /**
          * Se redirecciona a la pantalla principal
-        $email_user = "maximilianocarsi@gmail.com";
-        $email_password = "C02101998m0644";
+        $email_user = "sisuar_imta2019@outlook.com";
+        $email_password = "v3emLED5dB;D";
         $the_subject = "Registro  Exitoso";
         $address_to = $usuario->getCorreo(); //correo del paciente
         $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
         $phpmailer = new PHPMailer();
         $phpmailer->Username = $email_user;
         $phpmailer->Password = $email_password;
-        $phpmailer->SMTPSecure = 'ssl';
-        $phpmailer->Host = "smtp.gmail.com"; // GMail
-        $phpmailer->Port = 465;
+        $phpmailer->SMTPSecure = 'tls';
+        $phpmailer->Host = "smtp.live.com"; // GMail
+        $phpmailer->Port = 587;
         $phpmailer->IsSMTP(); // use SMTP
         $phpmailer->SMTPAuth = true;
         $phpmailer->setFrom($phpmailer->Username, $from_name);

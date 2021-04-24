@@ -53,6 +53,9 @@ $filtros = $registros->getFiltrosInventario(); ?>
                 <?php } ?>
             </div>
             <hr>
+            <div class="col-sm">
+            <p>Consulta el inventario de obras de infraestructura, obras de cabeza y sociedades de responsabilidad limitada de Distritos de Riego.</p>
+            </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
                 <div id="divFiltro">
@@ -78,7 +81,7 @@ $filtros = $registros->getFiltrosInventario(); ?>
 </div>
 <br>
 <!-- Modal -->
-<a href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
+<a hidden href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">

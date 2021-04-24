@@ -36,9 +36,14 @@ $filtros = $registros->getPresas();
                     </ol>
                 </nav>
             </div>
+<<<<<<< HEAD
             <div class="col-md">
                 <p class="bold">Presas</p>
                 <p class="font-weight-normal">Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
+=======
+            <div class="col-sm">
+            <p>Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
+>>>>>>> ad8f5f653825806d099a5408261514b4c4fae668
             </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
@@ -81,7 +86,7 @@ $filtros = $registros->getPresas();
 </div>
 <br>
 <!-- Modal -->
-<a href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
+<a hidden href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
