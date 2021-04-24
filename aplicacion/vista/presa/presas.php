@@ -36,14 +36,9 @@ $filtros = $registros->getPresas();
                     </ol>
                 </nav>
             </div>
-<<<<<<< HEAD
             <div class="col-md">
                 <p class="bold">Presas</p>
                 <p class="font-weight-normal">Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
-=======
-            <div class="col-sm">
-            <p>Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
->>>>>>> ad8f5f653825806d099a5408261514b4c4fae668
             </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
