@@ -49,6 +49,9 @@ $filtros = $registros->getFiltrosInventario(); ?>
                 <?php } ?>
             </div>
             <hr>
+            <div class="col-sm">
+            <p>Consulta el inventario de obras de infraestructura, obras de cabeza y sociedades de responsabilidad limitada de Distritos de Riego.</p>
+            </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
                 <div id="divFiltro">

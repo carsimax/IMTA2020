@@ -37,6 +37,9 @@ $filtros = $registros->getCalidadAguaSuperficial(); ?>
                     </ol>
                 </nav>
             </div>
+            <div class="col-sm">
+            <p>Consulta los diferentes indicadores de la calidad del agua como lo son: Demanda Bioquímica de Oxígeno a cinco días (DBO5), Demanda Química de Oxígeno (DQO), Sólidos Suspendidos Totales (SST), Coliformes Fecales (CF) recabados por los sitios de monitoreo operados por la Conagua en todo el país.</p>
+            </div>
             <!--Seccion Para Seleccionr el Filtro-->
             <div class="col-sm" id="filtros">
                 <h6>Seleccione un filtro</h6>

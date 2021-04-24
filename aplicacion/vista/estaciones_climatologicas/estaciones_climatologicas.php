@@ -31,6 +31,9 @@ require_once(__DIR__ . "/../plantillas/header.php");
                     </ol>
                 </nav>
             </div>
+            <div class="col-sm">
+            <p>Consulta las diferentes estaciones climatológicas distribuidas en todo el país.</p>
+            </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
                 <div id="divFiltro">

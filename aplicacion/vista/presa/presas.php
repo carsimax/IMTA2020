@@ -36,6 +36,9 @@ $filtros = $registros->getPresas();
                     </ol>
                 </nav>
             </div>
+            <div class="col-sm">
+            <p>Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
+            </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
                 <div id="divFiltro">

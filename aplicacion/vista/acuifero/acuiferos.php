@@ -47,6 +47,9 @@ $filtros = $registros->getTodos();
                     </ol>
                 </nav>
             </div>
+            <div class="col-sm">
+            <p>Consulta los valores de Disponibilidad Media Anual de Agua Subterránea, Descarga Natural Comprometida, Recarga Media Anual, Volumen de Extracción de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+            </div>
             <!--Seccion Para Seleccionr el Filtro-->
             <div class="col-sm" id="filtros">
                 <h6>Seleccione un filtro</h6>
