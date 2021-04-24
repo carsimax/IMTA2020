@@ -31,13 +31,19 @@ $filtros = $registros->getPozos();
             <div class="pt-3 pb-2 mb-3 border-bottom">
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Consulta de Información</a></li>
+                        <li class="breadcrumb-item"><a href="/">Consulta de Información</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Pozos</li>
                     </ol>
                 </nav>
             </div>
+<<<<<<< HEAD
+            <div class="col-md">
+                <p class="bold">Pozos</p>
+                <p class="font-weight-normal">Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+=======
             <div class="col-sm">
             <p>Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+>>>>>>> ad8f5f653825806d099a5408261514b4c4fae668
             </div>
             <!--Seccion Para Seleccionr el Filtro-->
             <div class="col-sm" id="filtros">
@@ -89,7 +95,7 @@ $filtros = $registros->getPozos();
             </div>
             <div class="col-sm" id="pantalla2">
                 <hr>
-                <?php require_once(__DIR__ . "/../plantillas/referencias.html");?>
+                <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
             </div>
         </main>
     </div>

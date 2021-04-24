@@ -391,6 +391,7 @@ async function loadShape(tipo) {
                      */
                     getAcu_SIG(function () {
                         getPozo_SIG(function () {
+
                             /**
                              * Añadimos los overlays
                              * @type {{Pozos: *, Estados: *, Acuiferos: *, "Organismos de Cuenca": *}}

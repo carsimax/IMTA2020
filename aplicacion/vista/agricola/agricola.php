@@ -37,8 +37,10 @@ $filtros = $registros->getAgricola(); ?>
                     </ol>
                 </nav>
             </div>
-            <!--fin del encabezado-->
-            <!--Seccion Para Seleccionr el Filtro-->
+            <div class="col-md">
+                <p class="bold">Estadística Agrícola</p>
+                <p class="font-weight-normal">Consulta los Informes Estadísticos de Producción Agrícola, Superficies Regadas y Volúmenes de Agua Distribuidos en los Distritos de Riego, Unidades de Riego y Temporal Tecnificado, así como sus históricos.</p>
+            </div>
             <div class="col-sm" id="filtros">
                 <h6>Seleccione un filtro</h6>
                 <?php foreach ($filtros as $filtro) { ?>

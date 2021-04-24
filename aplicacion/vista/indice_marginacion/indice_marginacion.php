@@ -37,6 +37,10 @@ $filtros = $registros->getFiltrosMarginacion(); ?>
                     </ol>
                 </nav>
             </div>
+            <div class="col-md">
+                <p class="bold">Índice de Marginación</p>
+                <p class="font-weight-normal">Consulta el índice de marginación estatal.</p>
+            </div>
             <!--Seccion Para Seleccionr el Filtro-->
             <div class="col-sm" id="filtros">
                 <h6>Seleccione un filtro</h6>
