@@ -59,7 +59,7 @@ if (!isset($_SESSION)) {
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <!--SweetAlert-->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-borderless/borderless.css  ">-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
     <!--ChartJs-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
