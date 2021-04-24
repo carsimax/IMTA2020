@@ -151,7 +151,21 @@ async function Consultar() {
         // TODO: HABILITAR LA CITA DE ESTA INFORMACION
         query = concatQuery();
         await desgloce1(query);
-
+        //Verifica si el mapa es prioridad
+        var x = $('#Prioridad').prop('checked');
+        if (x == false) {
+            if (!map.hasLayer(EstSelect)) {
+                //Recargamos el mapa
+                var callBack = async function () {
+                    document.getElementById("map").style.display = "block";
+                    setTimeout(function () {
+                        map.invalidateSize();
+                    }, 100);
+                };
+                map.whenReady(callBack);
+                await loadShape();
+            }
+        }
         await habilitar();
 
         await Swal.close();

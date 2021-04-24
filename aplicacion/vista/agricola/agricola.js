@@ -128,6 +128,7 @@ $('#Prioridad').change(async function () {
 });
 
 async function cargarMapa() {
+    alert($('[name="filtro"]:checked').val());
     var x = $('#Prioridad').prop('checked');
     if (x === true) {
         if (!map.hasLayer(OCSelect)) {
@@ -142,8 +143,6 @@ async function cargarMapa() {
         }
     }
 }
-
-
 async function loadShape() {
     await map.off();
     await map.remove();
