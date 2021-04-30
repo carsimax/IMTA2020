@@ -164,7 +164,7 @@ class Catalogo {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT cita from tabla_registro where modulo_id=:modulo_id ORDER BY anio_id DESC LIMIT 1');
+            $select = $db->prepare('SELECT cita FROM tabla_registro, anio WHERE tabla_registro.anio_id=anio.id_anio AND modulo_id=:modulo_id ORDER BY anio DESC LIMIT 1');
             $select->bindValue('modulo_id', $this->getModulo_id(), PDO::PARAM_INT);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);

@@ -15,7 +15,7 @@ async function Anios() {
     $("#referencias").hide();
 }
 
-async function Estados(){
+async function Estados() {
     isFormCompleted('#Estados');
 }
 
@@ -34,7 +34,7 @@ async function habilitar() {
     $("#botonMapa").show();
     $("#referencias").show();
     $("#divglosario").show();
-    
+
 }
 
 
@@ -44,7 +44,7 @@ async function Consultar() {
         title: "Por favor espere",
         html: "Realizando consulta", // add html attribute if you want or remove
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         }
@@ -118,7 +118,7 @@ async function Historial() {
         url: "/aplicacion/controlador/mapa.php",
         data: cadena,
         //Si el controlador devuelve una respuesta
-        success: function (resp) {
+        success: function () {
             return true;
         }
     });

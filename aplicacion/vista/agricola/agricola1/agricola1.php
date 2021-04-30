@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -34,9 +35,8 @@ $Anios = $registros->getAnioSiembraDistrito();
         <select class="form-control" id="Anios" onchange="Anios()">
             <option disabled selected value> -- Seleccione una opción -- </option>
             <?php
-            foreach ($Anios as $Anio)
-            {
-                ?>
+            foreach ($Anios as $Anio) {
+            ?>
                 <option value="<?php echo $Anio['id_anio'] ?>"><?php echo $Anio['anio_agricola'] ?></option>
             <?php } ?>
         </select>
@@ -58,10 +58,9 @@ $Anios = $registros->getAnioSiembraDistrito();
         <label>Ciclos:</label>
         <select name="Ciclos[]" multiple id="Ciclos">
             <?php
-        foreach ($Ciclos as $Ciclo)
-        {
+            foreach ($Ciclos as $Ciclo) {
             ?>
-            <option value="<?php echo $Ciclo['id_ciclo'] ?>"><?php echo $Ciclo['nombre'] ?></option>
+                <option value="<?php echo $Ciclo['id_ciclo'] ?>"><?php echo $Ciclo['nombre'] ?></option>
             <?php } ?>
         </select>
     </div>
@@ -105,6 +104,7 @@ $Anios = $registros->getAnioSiembraDistrito();
         <br>
     </div>
 </div>
+
 <!-- Funciones globales de los selects -->
 <script src="/../sistema/functionsselect.js"></script>
 <!--importacion de las capas de informacion-->

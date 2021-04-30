@@ -294,6 +294,7 @@ class SiembraUnidad {
             TRUNCATE ( sum( cos ), 2 ) AS COS,
             TRUNCATE ( sum( prod ), 2 ) AS PROD,
             TRUNCATE ( sum( val ), 2 ) AS VAL,
+            TRUNCATE ( sum( volumen ), 2 ) AS VOL,
             TRUNCATE (( sum( prod )/ sum( cos )), 2 ) AS REND,
             TRUNCATE ((( sum( val ))/ sum( prod )), 2 ) AS PMR,
             anio,

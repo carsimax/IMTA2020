@@ -231,7 +231,7 @@ async function Tenencias() {
     }
 }
 
-async function Cultivos(){
+async function Cultivos() {
     isFormCompleted('#Cultivos');
 }
 
@@ -603,35 +603,33 @@ async function desgloce1(query) {
             var COS = 0;
             var PROD = 0;
             var VAL = 0;
+            var VOL_NETO = 0;
+            var VOL_BRUTO = 0;
             var REND = 0;
             var PMR = 0;
             var id = "";
-            /**
-             * Se itera sobre cala elemento devuelto por el controlador
-             */
             $.each(JSON.parse(resp), function (index, item) {
-                /**
-                 * Se colocan los datos al array
-                 */
                 data.push([
                     item.numero + ". " + item.OC,
                     numeral(Math.round(item.SEM)).format("0,0"),
                     numeral(Math.round(item.COS)).format("0,0"),
                     numeral((item.PROD / 1000).toFixed(2)).format("0,0.00"),
                     numeral((item.VAL / 1000000).toFixed(2)).format("0,0.00"),
+                    numeral(item.VOL_NETO).format("0,0.00"),
+                    numeral(item.VOL_BRUTO).format("0,0.00"),
                     numeral(item.REND).format("0,0.00"),
                     numeral(Math.round(item.PMR)).format("0,0.00"),
                 ]);
-                /**
-                 * Se suma el acumulado para sacar el total
-                 */
                 SEM += parseFloat(item.SEM);
                 COS += parseFloat(item.COS);
                 PROD += parseFloat(item.PROD);
                 VAL += parseFloat(item.VAL);
+                VOL_NETO += parseFloat(item.VOL_NETO);
+                VOL_BRUTO += parseFloat(item.VOL_BRUTO);
                 REND += parseFloat(item.REND);
                 PMR += parseFloat(item.PMR);
             });
+
             /**
              * Si existen datos en la tabla
              * Se crea una seccion de los datos
@@ -657,9 +655,9 @@ async function desgloce1(query) {
                     '<td style="background-color:#CCD1D1" align="right"><b>' +
                     numeral(parseFloat(PROD / 1000).toFixed(2)).format("0,0.00") +
                     "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' +
-                    numeral(parseFloat(VAL / 1000000).toFixed(2)).format("0,0.00") +
-                    "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VAL / 1000000).toFixed(2)).format("0,0.00") + "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_NETO).toFixed(2)).format("0,0.00") + "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_BRUTO).toFixed(2)).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right" ><b>' +
                     numeral(parseFloat(PROD / COS).toFixed(2)).format("0,0.00") +
                     "</b></td>" +
@@ -697,6 +695,12 @@ async function desgloce1(query) {
                             title: "Valor de la cosecha (millones $)",
                         },
                         {
+                            title: "Volumen Neto (miles de m³)*",
+                        },
+                        {
+                            title: "Volumen Bruto (miles de m³)*",
+                        },
+                        {
                             title: "Rend. (ton/ha)",
                         },
                         {
@@ -704,7 +708,7 @@ async function desgloce1(query) {
                         },
                     ],
                     columnDefs: [
-                        { className: 'dt-body-right', targets: [1, 2, 3, 4, 5, 6] },
+                        { className: 'dt-body-right', targets: [1, 2, 3, 4, 5, 6, 7, 8] },
                     ],
                     /**
                      * Se colocan los datos obenidos
@@ -879,13 +883,6 @@ async function desgloce2() {
             type: "POST",
             url: "/aplicacion/controlador/mapa.php",
             data: cadena,
-            /**
-             *
-             * @param {type} resp2
-             * @returns {undefined}
-             * Si el controlador devuelve una respuesta
-             *
-             */
             success: function (resp2) {
                 /*
                  * Se coloca la seccion respectiva al anio seleccionado
@@ -899,42 +896,22 @@ async function desgloce2() {
                 $("#Organismos option:selected").each(async function () {
                     var rha = $(this).val();
                     cadena = "id=" + rha + "&Accion=rha";
-                    /**
-                     * Por medio de ajax se obtiene el nombre del OC
-                     */
                     $.ajax({
                         type: "POST",
                         url: "/aplicacion/controlador/mapa.php",
                         data: cadena,
-                        /*
-                         *
-                         * @param {type} respOC
-                         * @returns {undefined}
-                         * Si el controlador devuelve una respuesta
-                         *
-                         */
                         success: async function (respOC) {
-
-                            /**
-                             *
-                             * @type String
-                             * Se obtiene el nombre completo del OC
-                             */
                             var OC = '';
                             $.each(JSON.parse(respOC), function (index, item) {
                                 OC += item.nombre;
                             });
-
-                            /*
-                             *
-                             * @type Array
-                             * Se crean las variables que almacenan los datos
-                             */
                             var data = [];
                             var SEM = 0;
                             var COS = 0;
                             var PROD = 0;
                             var VAL = 0;
+                            var VOL_NETO = 0;
+                            var VOL_BRUTO = 0;
                             var REND = 0;
                             var PMR = 0;
                             var id = "";
@@ -955,6 +932,8 @@ async function desgloce2() {
                                         numeral(Math.round(item.COS)).format("0,0"),
                                         numeral(Math.round(item.PROD)).format("0,0.00"),
                                         numeral((item.VAL / 1000).toFixed(2)).format("0,0.00"),
+                                        numeral(item.VOL_NETO).format("0,0.00"),
+                                        numeral(item.VOL_BRUTO).format("0,0.00"),
                                         numeral(item.REND).format("0,0.00"),
                                         numeral(Math.round(item.PMR)).format("0,0.00"),
                                     ]);
@@ -965,6 +944,8 @@ async function desgloce2() {
                                     COS += parseFloat(item.COS);
                                     PROD += parseFloat(item.PROD);
                                     VAL += parseFloat(item.VAL);
+                                    VOL_NETO += parseFloat(item.VOL_NETO);
+                                    VOL_BRUTO += parseFloat(item.VOL_BRUTO);
                                     REND += parseFloat(item.REND);
                                     PMR += parseFloat(item.PMR);
                                     id = item.numero;
@@ -1009,11 +990,9 @@ async function desgloce2() {
                                         "0,0.00"
                                     ) +
                                     "</b></td>" +
-                                    '<td style="background-color:#CCD1D1" align="right"><b>' +
-                                    numeral(parseFloat(VAL / 1000).toFixed(2)).format(
-                                        "0,0.00"
-                                    ) +
-                                    "</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VAL / 1000).toFixed(2)).format("0,0.00") + "</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_NETO).toFixed(2)).format("0,0.00") + "</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_BRUTO).toFixed(2)).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right" ><b>' +
                                     numeral(parseFloat(PROD / COS).toFixed(2)).format(
                                         "0,0.00"
@@ -1052,6 +1031,12 @@ async function desgloce2() {
                                             title: "Valor de la cosecha (miles $)",
                                         },
                                         {
+                                            title: "Volumen Neto (miles de m³)*",
+                                        },
+                                        {
+                                            title: "Volumen Bruto (miles de m³)*",
+                                        },
+                                        {
                                             title: "Rend. (ton/ha)",
                                         },
                                         {
@@ -1068,11 +1053,7 @@ async function desgloce2() {
                                     /*
                                      * Paramatros del comportamiento de la tabla
                                      */
-                                    columnDefs: [
-                                        {
-                                            className: 'dt-body-right',
-                                            targets: [1, 2, 3, 4, 5, 6],
-                                        },
+                                    columnDefs: [{ className: 'dt-body-right', targets: [1, 2, 3, 4, 5, 6, 7, 8], },
                                     ],
                                     language: {
                                         url:
@@ -1258,6 +1239,8 @@ async function desgloce3() {
                 var COS = 0;
                 var PROD = 0;
                 var VAL = 0;
+                var VOL_NETO = 0;
+                var VOL_BRUTO = 0;
                 var REND = 0;
                 var PMR = 0;
                 /*
@@ -1286,6 +1269,8 @@ async function desgloce3() {
                         numeral(Math.round(item.COS)).format("0,0"),
                         numeral(item.PROD).format("0,0.00"),
                         numeral(item.VAL).format("0,0.00"),
+                        numeral(item.VOL_NETO).format("0,0.00"),
+                        numeral(item.VOL_BRUTO).format("0,0.00"),
                         numeral(item.REND).format("0,0.00"),
                         numeral(Math.round(item.PMR)).format("0,0.00"),
                     ]);
@@ -1296,6 +1281,8 @@ async function desgloce3() {
                     COS += parseFloat(item.COS);
                     PROD += parseFloat(item.PROD);
                     VAL += parseFloat(item.VAL);
+                    VOL_NETO += parseFloat(item.VOL_NETO);
+                    VOL_BRUTO += parseFloat(item.VOL_BRUTO);
                     REND += parseFloat(item.REND);
                     PMR += parseFloat(item.PMR);
                 });
@@ -1333,9 +1320,9 @@ async function desgloce3() {
                         '<td style="background-color:#CCD1D1" align="right"><b>' +
                         numeral(PROD).format("0,0.00") +
                         "</b></td>" +
-                        '<td style="background-color:#CCD1D1" align="right"><b>' +
-                        numeral(VAL).format("0,0.00") +
-                        "</b></td>" +
+                        '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VAL / 1000).toFixed(2)).format("0,0.00") + "</b></td>" +
+                        '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_NETO).toFixed(2)).format("0,0.00") + "</b></td>" +
+                        '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_BRUTO).toFixed(2)).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right" ><b>' +
                         numeral(parseFloat(PROD / COS).toFixed(2)).format("0,0.00") +
                         "</b></td>" +
@@ -1370,6 +1357,12 @@ async function desgloce3() {
                                 title: "Valor de la cosecha (miles $)",
                             },
                             {
+                                title: "Volumen Neto (miles de m³)*",
+                            },
+                            {
+                                title: "Volumen Bruto (miles de m³)*",
+                            },
+                            {
                                 title: "Rend. (ton/ha)",
                             },
                             {
@@ -1385,7 +1378,7 @@ async function desgloce3() {
                          */
 
                         columnDefs: [
-                            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5, 6] },
+                            { className: 'dt-body-right', targets: [1, 2, 3, 4, 5, 6, 7, 8] },
                         ],
                         searching: false,
                         paging: false,
@@ -1609,6 +1602,8 @@ async function desgloce4() {
                             var COS = 0;
                             var PROD = 0;
                             var VAL = 0;
+                            var VOL_NETO = 0;
+                            var VOL_BRUTO = 0;
                             var REND = 0;
                             var PMR = 0;
                             /*
@@ -1630,6 +1625,8 @@ async function desgloce4() {
                                         numeral(Math.round(item.COS)).format("0,0"),
                                         numeral(Math.round(item.PROD)).format("0,0.00"),
                                         numeral((item.VAL / 1000).toFixed(2)).format("0,0.00"),
+                                        numeral(item.VOL_NETO).format("0,0.00"),
+                                        numeral(item.VOL_BRUTO).format("0,0.00"),
                                         numeral(item.REND).format("0,0.00"),
                                         numeral(Math.round(item.PMR)).format("0,0.00"),
                                     ]);
@@ -1640,6 +1637,8 @@ async function desgloce4() {
                                     COS += parseFloat(item.COS);
                                     PROD += parseFloat(item.PROD);
                                     VAL += parseFloat(item.VAL);
+                                    VOL_NETO += parseFloat(item.VOL_NETO);
+                                    VOL_BRUTO += parseFloat(item.VOL_BRUTO);
                                     REND += parseFloat(item.REND);
                                     PMR += parseFloat(item.PMR);
                                 }
@@ -1675,11 +1674,9 @@ async function desgloce4() {
                                     '<td style="background-color:#52BE80" align="right"><b>' +
                                     numeral(Math.round(PROD)).format("0,0.00") +
                                     "</b></td>" +
-                                    '<td style="background-color:#52BE80" align="right"><b>' +
-                                    numeral(parseFloat(VAL / 1000).toFixed(2)).format(
-                                        "0,0.00"
-                                    ) +
-                                    "</b></td>" +
+                                    '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VAL / 1000).toFixed(2)).format("0,0.00") + "</b></td>" +
+                                    '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VOL_NETO).toFixed(2)).format("0,0.00") + "</b></td>" +
+                                    '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VOL_BRUTO).toFixed(2)).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#52BE80" align="right" ><b>' +
                                     numeral(parseFloat(PROD / COS).toFixed(2)).format(
                                         "0,0.00"
@@ -1720,6 +1717,12 @@ async function desgloce4() {
                                         },
                                         {
                                             title: "Valor de la cosecha (miles $)",
+                                        },
+                                        {
+                                            title: "Volumen Neto (miles de m³)*",
+                                        },
+                                        {
+                                            title: "Volumen Bruto (miles de m³)*",
                                         },
                                         {
                                             title: "Rend. (ton/ha)",
@@ -1801,6 +1804,28 @@ async function desgloce4() {
                                                         parseFloat(numeral(b.toString()).value()) * 1
                                                     );
                                                 }, 0);
+
+                                            // Se obtiene el subtotal del volumen neto
+                                            var SUBTOTAL_VOL_NETO = rows
+                                                .data()
+                                                .pluck(7)
+                                                .reduce(function (a, b) {
+                                                    return (
+                                                        parseFloat(numeral(a.toString()).value()) +
+                                                        parseFloat(numeral(b.toString()).value()) * 1
+                                                    );
+                                                }, 0);
+
+                                            // Se obtiene el subtotal del volumen bruto
+                                            var SUBTOTAL_VOL_BRUTO = rows
+                                                .data()
+                                                .pluck(8)
+                                                .reduce(function (a, b) {
+                                                    return (
+                                                        parseFloat(numeral(a.toString()).value()) +
+                                                        parseFloat(numeral(b.toString()).value()) * 1
+                                                    );
+                                                }, 0);
                                             /*
                                              *
                                              * @type Number
@@ -1840,6 +1865,16 @@ async function desgloce4() {
                                                 ) +
                                                 "</b></td>" +
                                                 '<td style="background-color:#A9DFBF"  align="right"><b>' +
+                                                numeral(parseFloat(SUBTOTAL_VOL_NETO).toFixed(2)).format(
+                                                    "0,0.00"
+                                                ) +
+                                                "</b></td>" +
+                                                '<td style="background-color:#A9DFBF"  align="right"><b>' +
+                                                numeral(parseFloat(SUBTOTAL_VOL_BRUTO).toFixed(2)).format(
+                                                    "0,0.00"
+                                                ) +
+                                                "</b></td>" +
+                                                '<td style="background-color:#A9DFBF"  align="right"><b>' +
                                                 numeral(parseFloat(rend).toFixed(2)).format(
                                                     "0,0.00"
                                                 ) +
@@ -1854,7 +1889,7 @@ async function desgloce4() {
                                         { targets: [0], visible: false },
                                         {
                                             className: 'dt-body-right',
-                                            targets: [3, 4, 5, 6, 7, 8],
+                                            targets: [3, 4, 5, 6, 7, 8, 9, 10],
                                         },
                                     ],
                                     language: {
@@ -2070,6 +2105,8 @@ async function desgloce5() {
                             var COS = 0;
                             var PROD = 0;
                             var VAL = 0;
+                            var VOL_NETO = 0;
+                            var VOL_BRUTO = 0;
                             var REND = 0;
                             var PMR = 0;
                             /*
@@ -2117,6 +2154,8 @@ async function desgloce5() {
                                         numeral(Math.round(item.COS)).format("0,0"),
                                         numeral(Math.round(item.PROD)).format("0,0.00"),
                                         numeral(VAL1.toFixed(2)).format("0,0.00"),
+                                        numeral(item.VOL_NETO).format("0,0.00"),
+                                        numeral(item.VOL_BRUTO).format("0,0.00"),
                                         numeral(REND1).format("0,0.00"),
                                         numeral(Math.round(PMR1)).format("0,0.00"),
                                     ]);
@@ -2127,6 +2166,8 @@ async function desgloce5() {
                                     COS += parseFloat(item.COS);
                                     PROD += parseFloat(item.PROD);
                                     VAL += parseFloat(VAL1);
+                                    VOL_NETO += parseFloat(item.VOL_NETO);
+                                    VOL_BRUTO += parseFloat(item.VOL_BRUTO);
                                     REND += parseFloat(REND1);
                                 }
                             });
@@ -2172,9 +2213,9 @@ async function desgloce5() {
                                     '<td style="background-color:#52BE80" align="right"><b>' +
                                     numeral(Math.round(PROD)).format("0,0.00") +
                                     "</b></td>" +
-                                    '<td style="background-color:#52BE80" align="right"><b>' +
-                                    numeral(parseFloat(VAL).toFixed(2)).format("0,0.00") +
-                                    "</b></td>" +
+                                    '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VAL).toFixed(2)).format("0,0.00") + "</b></td>" +
+                                    '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VOL_NETO).toFixed(2)).format("0,0.00") + "</b></td>" +
+                                    '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VOL_BRUTO).toFixed(2)).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#52BE80" align="right" ><b>' +
                                     numeral(parseFloat(REND1).toFixed(2)).format("0,0.00") +
                                     "</b></td>" +
@@ -2211,6 +2252,12 @@ async function desgloce5() {
                                         },
                                         {
                                             title: "Valor de la cosecha (miles $)",
+                                        },
+                                        {
+                                            title: "Volumen Neto (miles de m³)*",
+                                        },
+                                        {
+                                            title: "Volumen Bruto (miles de m³)*",
                                         },
                                         {
                                             title: "Rend. (ton/ha)",
@@ -2273,7 +2320,27 @@ async function desgloce5() {
                                                         parseFloat(numeral(b.toString()).value()) * 1
                                                     );
                                                 }, 0);
+                                            // Se obtiene el subtotal del volumen neto
+                                            var SUBTOTAL_VOL_NETO = rows
+                                                .data()
+                                                .pluck(6)
+                                                .reduce(function (a, b) {
+                                                    return (
+                                                        parseFloat(numeral(a.toString()).value()) +
+                                                        parseFloat(numeral(b.toString()).value()) * 1
+                                                    );
+                                                }, 0);
 
+                                            // Se obtiene el subtotal del volumen bruto
+                                            var SUBTOTAL_VOL_BRUTO = rows
+                                                .data()
+                                                .pluck(7)
+                                                .reduce(function (a, b) {
+                                                    return (
+                                                        parseFloat(numeral(a.toString()).value()) +
+                                                        parseFloat(numeral(b.toString()).value()) * 1
+                                                    );
+                                                }, 0);
                                             var rend = prod / sc;
                                             var pmr = (vc / prod) * 1000;
                                             if (!isFinite(rend)) rend = 0;
@@ -2297,6 +2364,15 @@ async function desgloce5() {
                                                 '<td style="background-color:#A9DFBF" align="right"><b>' +
                                                 numeral(parseFloat(vc).toFixed(2)).format(
                                                     "0,0.00"
+                                                ) + "</b></td>" +
+                                                '<td style="background-color:#A9DFBF"  align="right"><b>' +
+                                                numeral(parseFloat(SUBTOTAL_VOL_NETO).toFixed(2)).format(
+                                                    "0,0.00"
+                                                ) +
+                                                "</b></td>" +
+                                                '<td style="background-color:#A9DFBF"  align="right"><b>' +
+                                                numeral(parseFloat(SUBTOTAL_VOL_BRUTO).toFixed(2)).format(
+                                                    "0,0.00"
                                                 ) +
                                                 "</b></td>" +
                                                 '<td style="background-color:#A9DFBF" align="right"><b>' +
@@ -2314,7 +2390,7 @@ async function desgloce5() {
                                         { targets: [0], visible: false },
                                         {
                                             className: 'dt-body-right',
-                                            targets: [2, 3, 4, 5, 6, 7],
+                                            targets: [2, 3, 4, 5, 6, 7, 8, 9],
                                         },
                                     ],
                                     language: {
@@ -3391,4 +3467,3 @@ async function mostrarG1() {
         await grafica8(query8);
     }
 }
-

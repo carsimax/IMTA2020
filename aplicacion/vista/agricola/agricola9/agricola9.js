@@ -148,7 +148,8 @@ async function Consultar() {
     await deshabilitar();
     const cultivos = concatValoresSelect('#Cultivos', 'cultivo_id=');
     if (cultivos !== "") {
-        // TODO: HABILITAR LA CITA DE ESTA INFORMACION
+        data = "Accion=ConsultaAcuifero&modulo_id=12";
+        citas = construirReferencias(data, false);
         query = concatQuery();
         await desgloce1(query);
         //Verifica si el mapa es prioridad
@@ -620,7 +621,7 @@ async function desgloce2() {
                                 title: "Entidad federativa",
                             },
                             {
-                                title: "Municpio",
+                                title: "Municipio",
                             },
                             {
                                 title: "Superficie sembrada (ha)",

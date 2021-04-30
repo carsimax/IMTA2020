@@ -661,9 +661,6 @@ function getPresa_SIG(callback) {
                         }
                     }).always(function () {
                         l.bindPopup(contenido);
-                        l.on("click", function () {
-                            centerLeafletMapOnMarker(map, this);
-                        });
                     });
                 }
             },
@@ -1714,9 +1711,9 @@ function getEstadoMarginacion_SIG(callback) {
                         }
                     }).always(function () {
                         l.bindPopup(contenido);
-                        l.on("click", function () {
-                            map.fitBounds(this.getBounds());
-                        });
+                        // l.on("click", function () {
+                        //     map.fitBounds(this.getBounds());
+                        // });
                     });
                 }
             },
@@ -1791,9 +1788,6 @@ function getMunicipioMarginacion_SIG(callback) {
                         }
                     }).always(function () {
                         l.bindPopup(contenido);
-                        l.on("click", function () {
-                            map.fitBounds(this.getBounds());
-                        });
                     });
                 }
             },

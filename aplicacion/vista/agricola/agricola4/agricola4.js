@@ -81,7 +81,7 @@ async function Anios() {
  *
  */
 async function Organismos() {
-  
+
   /**
    * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
    */
@@ -163,8 +163,8 @@ async function Estados() {
 }
 
 async function Tenencias() {
-  $("#Distritos").multiselect("reset");  
-  $("#Cultivos").multiselect("reset");  
+  $("#Distritos").multiselect("reset");
+  $("#Cultivos").multiselect("reset");
   if ($("#Organismos option:selected").length != 0 &&
     $("#Estados option:selected").length != 0 &&
     $("#Ciclos option:selected").length != 0 &&
@@ -672,6 +672,34 @@ async function Consultar() {
           '<div class="col-sm-4">' +
           '<div style="overflow-x:auto;">' +
           '<table id="tabla5" class="table table-bordered nowrap"  width="100%"></table>' +
+          "</div></div>" +
+          //Titulo 6
+          '<div class="col-sm-12">' +
+          "<h5>Volumen neto por año agrícola (miles de m³)*</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica 6
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica6"></canvas>' +
+          "</div>" +
+          //Tabla 6
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla6" class="table table-bordered nowrap"  width="100%"></table>' +
+          "</div></div>" +
+          //Titulo 7
+          '<div class="col-sm-12">' +
+          "<h5>Volumen bruto por año agrícola (miles de m³)*</h5>" +
+          '<hr class="red">' +
+          "</div>" +
+          //Grafica 7
+          '<div class="col-sm-8">' +
+          '<canvas id="grafica7"></canvas>' +
+          "</div>" +
+          //Tabla 7
+          '<div class="col-sm-4">' +
+          '<div style="overflow-x:auto;">' +
+          '<table id="tabla7" class="table table-bordered nowrap"  width="100%"></table>' +
           "</div></div></div>"
         );
         var etiquetas = [];
@@ -679,6 +707,8 @@ async function Consultar() {
         var sup_cos = [];
         var prod = [];
         var valor = [];
+        var vol_neto = [];
+        var vol_bruto = [];
         var rend = [];
         var pmr = [];
         var t1 = [];
@@ -686,6 +716,8 @@ async function Consultar() {
         var t3 = [];
         var t4 = [];
         var t5 = [];
+        var t6 = [];
+        var t7 = [];
         $.each(JSON.parse(resp2), function (index, item) {
           etiquetas.push(item.anio);
           sup_sem.push(Math.round(item.SEM));
@@ -716,6 +748,20 @@ async function Consultar() {
           t5.push([
             item.anio,
             numeral(Math.round(item.VAL / item.PROD)).format("0,0.00"),
+          ]);
+
+          vol_neto.push(parseFloat(item.VOL_NETO).toFixed(2));
+          t6.push([
+            item.anio,
+            numeral(parseFloat(item.VOL_NETO).toFixed(2)).format("0,0.00"),
+
+          ]);
+
+          vol_bruto.push(parseFloat(item.VOL_BRUTO).toFixed(2));
+          t7.push([
+            item.anio,
+            numeral(parseFloat(item.VOL_BRUTO).toFixed(2)).format("0,0.00"),
+
           ]);
         });
         var element = "grafica1";
@@ -941,8 +987,96 @@ async function Consultar() {
           },
         });
 
+        var element = "grafica6";
+        new Chart(document.getElementById(element), {
+          type: "line",
+          data: {
+            labels: etiquetas,
+            datasets: [
+              {
+                data: vol_neto,
+                borderColor: "#FEF34F",
+                fill: false,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Volumen Neto (miles de m³)",
+                  },
+                  ticks: {
+                    min: 0,
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Año",
+                  },
+                },
+              ],
+            },
+            title: {
+              display: false,
+            },
+            legend: {
+              display: false,
+            },
+          },
+        });
+
+        var element = "grafica7";
+        new Chart(document.getElementById(element), {
+          type: "line",
+          data: {
+            labels: etiquetas,
+            datasets: [
+              {
+                data: vol_bruto,
+                borderColor: "#FEF34F",
+                fill: false,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Volumen Bruto (miles de m³)",
+                  },
+                  ticks: {
+                    min: 0,
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Año",
+                  },
+                },
+              ],
+            },
+            title: {
+              display: false,
+            },
+            legend: {
+              display: false,
+            },
+          },
+        });
+
         //Tablas
-        var tabla1 = $("#tabla1").DataTable({
+        $("#tabla1").DataTable({
           columns: [
             {
               title: "Año",
@@ -976,7 +1110,7 @@ async function Consultar() {
             },
           ],
         });
-        var tabla2 = $("#tabla2").DataTable({
+        $("#tabla2").DataTable({
           columns: [
             {
               title: "Año",
@@ -1008,7 +1142,7 @@ async function Consultar() {
             },
           ],
         });
-        var tabla3 = $("#tabla3").DataTable({
+        $("#tabla3").DataTable({
           columns: [
             {
               title: "Año",
@@ -1040,7 +1174,7 @@ async function Consultar() {
             },
           ],
         });
-        var tabla4 = $("#tabla4").DataTable({
+        $("#tabla4").DataTable({
           columns: [
             {
               title: "Año",
@@ -1072,7 +1206,7 @@ async function Consultar() {
             },
           ],
         });
-        var tabla5 = $("#tabla5").DataTable({
+        $("#tabla5").DataTable({
           columns: [
             {
               title: "Año",
@@ -1099,6 +1233,66 @@ async function Consultar() {
             {
               extend: "excelHtml5",
               title: "P.M.R por año agrícola ($/ton)",
+              className: "btn btn-gob btn-sm",
+              text: "Exportar Excel",
+            },
+          ],
+        });
+        $("#tabla6").DataTable({
+          columns: [
+            {
+              title: "Año",
+            },
+            {
+              title: "Volumen Neto por año agrícola (miles de m³)*",
+            },
+          ],
+          data: t6,
+
+          ordering: true,
+          searching: false,
+          paging: false,
+          scrollY: "450px",
+          columnDefs: [{ className: 'dt-body-right', targets: [1] }],
+          language: {
+            url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+          },
+          dom: "Bfrtip",
+          /**
+           * Se colocan el boton para exportar la tabla en excel
+           */
+          buttons: [
+            {
+              extend: "excelHtml5",
+              title: "P.M.R por año agrícola ($/ton)",
+              className: "btn btn-gob btn-sm",
+              text: "Exportar Excel",
+            },
+          ],
+        });
+        $("#tabla7").DataTable({
+          columns: [
+            {
+              title: "Año",
+            },
+            {
+              title: "Volumen Bruto (miles de m³)*",
+            },
+          ],
+          data: t7,
+          ordering: true,
+          searching: false,
+          paging: false,
+          scrollY: "450px",
+          columnDefs: [{ className: 'dt-body-right', targets: [1] }],
+          language: {
+            url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+          },
+          dom: "Bfrtip",
+          buttons: [
+            {
+              extend: "excelHtml5",
+              title: "Volumen bruto por año agrícola (miles de m³)",
               className: "btn btn-gob btn-sm",
               text: "Exportar Excel",
             },

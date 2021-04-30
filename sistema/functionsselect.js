@@ -80,7 +80,7 @@ function concatValoresSelect(idSelect, foreingkey) {
 
 //Construye las referencias y retorna una cadena con las mismas para ponerlos en el reporte PDF.
 function construirReferencias(data, geoespacial) {
-    geoespacial=false;
+    geoespacial = false;
     citas = '\n';
     $.ajax({
         type: "GET",
@@ -105,8 +105,8 @@ function construirReferencias(data, geoespacial) {
 // Valida el valor de un select y habilita el boton de consulta
 function isFormCompleted(idSelect) {
     if ($(idSelect).val() != '') {
-        $( "#consultar" ).prop( "disabled", false );
-    } else{
-        $( "#consultar" ).prop( "disabled", true );
-    } 
+        $("#consultar").prop("disabled", false);
+    } else {
+        $("#consultar").prop("disabled", true);
+    }
 }

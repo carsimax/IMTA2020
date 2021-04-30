@@ -22,7 +22,8 @@ require_once(__DIR__ . "/../controlador/sesion.php");
 /**
  * Class SiembraDistrito
  */
-class SiembraDistrito {
+class SiembraDistrito
+{
 
     private $id_siembra_distrito;
     private $modalidad;
@@ -42,7 +43,6 @@ class SiembraDistrito {
      */
     public function __construct()
     {
-        
     }
 
     /**
@@ -233,7 +233,7 @@ class SiembraDistrito {
             $db->beginTransaction();
             $select = $db->prepare('SELECT id_siembra_distrito,modalidad,sembrada, cosechada, produccion, valor, cultivo.nombre AS cultivo, tenencia.nombre AS tenencia,  anio.anio, ciclo.nombre AS ciclo FROM siembra_distrito, cultivo, tenencia, anio, ciclo WHERE siembra_distrito.cultivo_id=cultivo.id_cultivo AND siembra_distrito.ciclo_id=ciclo.id_ciclo AND siembra_distrito.tenencia_id=tenencia.id_tenencia AND siembra_distrito.anio_id=anio.id_anio AND distrito_riego_id=:distrito_riego_id');
             $select->bindValue('distrito_riego_id', $this->getDistritoRiegoId(), PDO::PARAM_STR);
-            $select->execute();  
+            $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;
         } catch (PDOException $exc) {
@@ -295,8 +295,7 @@ class SiembraDistrito {
             $select->bindValue('tenencia_id', $this->getTenenciaId(), PDO::PARAM_INT);
             $select->bindValue('cultivo_id', $this->getCultivoId(), PDO::PARAM_INT);
             $select->bindValue('distrito_riego_id', $this->getDistritoRiegoId(), PDO::PARAM_STR);
-            if ($select->execute())
-            {
+            if ($select->execute()) {
                 //Se obtiene el ultimo registro
                 $select = $db->prepare('SELECT MAX(id_siembra_distrito) AS id FROM siembra_distrito');
                 $select->execute();
@@ -339,8 +338,7 @@ class SiembraDistrito {
             $select->bindValue('tenencia_id', $this->getTenenciaId(), PDO::PARAM_INT);
             $select->bindValue('cultivo_id', $this->getCultivoId(), PDO::PARAM_INT);
             $select->bindValue('id_siembra_distrito', $this->getIdSiembraDistrito(), PDO::PARAM_INT);
-            if ($select->execute())
-            {
+            if ($select->execute()) {
                 //insertamos en la tabla log
                 $select = $db->prepare('INSERT INTO tabla_version VALUES(0,NOW(),:cadena)');
                 $cadena = "El administrador " . $_SESSION['ID_Usuario'] . " actualizó el registro " . $this->getIdSiembraDistrito() . " en la tabla siembra_distrito";
@@ -361,8 +359,7 @@ class SiembraDistrito {
             $select = $db->prepare('DELETE FROM siembra_distrito WHERE id_siembra_distrito=:id_siembra_distrito');
             //Colocamos los datos
             $select->bindValue('id_siembra_distrito', $this->getIdSiembraDistrito(), PDO::PARAM_INT);
-            if ($select->execute())
-            {
+            if ($select->execute()) {
                 //insertamos en la tabla log
                 $select = $db->prepare('INSERT INTO tabla_version VALUES(0,NOW(),:cadena)');
                 $cadena = "El administrador " . $_SESSION['ID_Usuario'] . " eliminó el registro " . $this->getIdSiembraDistrito() . " de la tabla siembra_distrito";
@@ -402,7 +399,7 @@ class SiembraDistrito {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $sql = '
+            $sql = "
             SELECT
             organismo.id_organismo,
             organismo.numero,
@@ -415,6 +412,8 @@ class SiembraDistrito {
             TRUNCATE(sum(cosechada),2) as COS,
             TRUNCATE(sum(produccion),2) as PROD,
             TRUNCATE(sum(valor),2) as VAL,
+            TRUNCATE(sum(volumen_neto),2) as VOL_NETO,
+            TRUNCATE(sum(volumen_bruto),2) as VOL_BRUTO,
             TRUNCATE((sum(produccion)/sum(cosechada)),2)as REND,
             TRUNCATE(((sum(valor))/sum(produccion)),2)as PMR,
             anio,
@@ -432,7 +431,7 @@ class SiembraDistrito {
             INNER JOIN organismo on organismo.id_organismo=distrito_riego.organismo_id 
             INNER JOIN cultivo on cultivo.id_cultivo=siembra_distrito.cultivo_id
             INNER JOIN ciclo on ciclo.id_ciclo=siembra_distrito.ciclo_id
-            WHERE ' . $query;
+            WHERE " . $query;
             $select = $db->prepare($sql);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -458,6 +457,8 @@ class SiembraDistrito {
             TRUNCATE(sum(cosechada),2) as COS,
             TRUNCATE(sum(produccion),2) as PROD,
             TRUNCATE(sum(valor),2) as VAL,
+            TRUNCATE(sum(volumen_neto),2) as VOL_NETO,
+            TRUNCATE(sum(volumen_bruto),2) as VOL_BRUTO,
             TRUNCATE((sum(produccion)/sum(cosechada)),2)as REND,
             TRUNCATE(((sum(valor))/sum(produccion)),2)as PMR,
             anio,
@@ -484,5 +485,4 @@ class SiembraDistrito {
             return null;
         }
     }
-
 }

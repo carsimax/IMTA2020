@@ -9,7 +9,7 @@ setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
 setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipio');
 setEstiloSelect('#Ciclos', 'Ciclos', 'Buscar Ciclo');
 setEstiloSelect('#Cultivos', 'Cultivos', 'Buscar Cultivo');
-setEstiloSelect('#Anios', 'Municipios', 'Buscar Años');
+setEstiloSelect('#Anios', 'Años', 'Buscar Años');
 
 
 function Anios() {
@@ -149,7 +149,8 @@ async function Consultar() {
     await deshabilitar();
     const cultivos = concatValoresSelect('#Cultivos', 'cultivo_id=');
     if (cultivos !== "") {
-        // TODO: HABILITAR LA CITA DE ESTA INFORMACION
+        data = "Accion=ConsultaAcuifero&modulo_id=12";
+        citas = construirReferencias(data, false);
         query = concatQuery();
         var query2 = query + " GROUP by anio"
         var cadena = "query=" + query2 + "&Accion=getConsulta";
@@ -203,7 +204,7 @@ async function Consultar() {
                 var vol_net = [];
                 var t1 = [];
                 var t2 = [];
-                
+
                 $.each(JSON.parse(resp2), function (index, item) {
                     etiquetas.push(item.anio);
                     sup_sem.push(Math.round(item.SEM));
@@ -312,7 +313,7 @@ async function Consultar() {
                         },
                         {
                             title: "Superficie sembrada (ha)",
-                        },  
+                        },
                     ],
                     data: t1,
                     ordering: true,
