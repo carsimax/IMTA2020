@@ -578,7 +578,7 @@ async function desgloce1(query) {
  * @returns {undefined}
  * Fyuncion que muestra el desgloce 3
  */
-async function desgloce2()   {
+ async function desgloce2()   {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-02").html()) {
         Swal.fire({
@@ -644,7 +644,7 @@ async function desgloce2()   {
                              * Se coloca la seccion del anio seleccionado
                              */
                             $("#nav-02").append(
-                                '<div class="panel-body" id="body3-' + anio + '">' + "</div>"
+                                '<div class="panel-body" id="body2-' + anio + '">' + "</div>"
                             );
                             /*
                              * Se itera sobre los Cultivo seleccionados
@@ -719,7 +719,7 @@ async function desgloce2()   {
                                          * Si el array tiene elementos
                                          */
                                         if (data.length > 0) {
-                                            $("#body3-" + anio + "").append(
+                                            $("#body2-" + anio + "").append(
                                                 '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' +
                                                 CUL + ', año agrícola: ' + Anio +
                                                 "</h4></div>" +
@@ -977,7 +977,6 @@ async function desgloce2()   {
         }); //Fin AJAX para obtener la consulta
     }
 }
-
 
 /**
  *
