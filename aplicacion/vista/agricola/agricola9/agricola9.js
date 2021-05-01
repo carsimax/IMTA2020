@@ -256,7 +256,7 @@ async function concatEstado() {
  */
  async function desgloce1() {
     var Anio = $("#Anios :selected").text();
-    if (!$("#nav-02").html()) {
+    if (!$("#nav-01").html()) {
         Swal.fire({
             title: "Por favor espere", // add html attribute if you want or remove
             html: "Cargando contenido",
@@ -277,8 +277,8 @@ async function concatEstado() {
         /*
          * Se limpia el HTML y se coloca el encabezado
          */
-        document.getElementById("nav-02").innerHTML = "";
-        $("#nav-02").append(
+        document.getElementById("nav-01").innerHTML = "";
+        $("#nav-01").append(
             '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado municipal de la estimación volumétrica por coeficientes de cultivo, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
@@ -335,12 +335,12 @@ async function concatEstado() {
                  * @type String
                  * Se crea la variable de la tabla
                  */
-                var tabla = "#T2";
+                var tabla = "#T1";
                 /*
                  * Si existen los datos en el array
                  */
                 if (data.length > 0) {
-                    $("#nav-02").append(
+                    $("#nav-01").append(
                         /*
                          * Se coloca el encabezado del anio
                          */
@@ -349,7 +349,7 @@ async function concatEstado() {
                          * Se coloca la tabla
                          */
                         '<div style="overflow-x:auto;">' +
-                        '<table id="T2" class="table table-bordered  nowrap"  width="100%">' +
+                        '<table id="T1" class="table table-bordered  nowrap"  width="100%">' +
                         "<tfoot><tr>" +
                         /*
                          * Se coloca el footer con los totales
