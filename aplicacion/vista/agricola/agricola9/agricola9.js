@@ -698,7 +698,7 @@ async function desgloce1(query) {
                                                 data.push([
                                                     item.Estado,
                                                     item.Municipio,
-                                                    item.Ciclo,
+                                                    item.Cultivo,
                                                     numeral(Math.round(item.SEM)).format("0,0"),
                                                     numeral(Math.round(item.VOL_NET)).format("0,0"),
                                                 ]);
@@ -761,7 +761,7 @@ async function desgloce1(query) {
                                                         title: "Municipio",
                                                     },
                                                     {
-                                                        title: "Ciclo",
+                                                        title: "Cultivo",
                                                     },
                                                     {
                                                         title: "Superficie sembrada (ha)",
