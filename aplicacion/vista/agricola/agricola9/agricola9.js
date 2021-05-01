@@ -91,7 +91,6 @@ function Municipios() {
 async function Ciclos() {
     $("#Cultivos").multiselect("reset");
     const query = concatValoresSelect('#Ciclos', 'ciclo_id=');
-    alert(query);
     if (query !== "") {
         const cadena = "query=" + query + "&Accion=getCultivos";
         var data = [];
