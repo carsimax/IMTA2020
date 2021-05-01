@@ -91,6 +91,7 @@ function Municipios() {
 async function Ciclos() {
     $("#Cultivos").multiselect("reset");
     const query = concatValoresSelect('#Ciclos', 'ciclo_id=');
+    alert(query);
     if (query !== "") {
         const cadena = "query=" + query + "&Accion=getCultivos";
         var data = [];
@@ -255,6 +256,7 @@ async function concatEstado() {
  * Esta funcion muestra el desglose por Organismo de Cuenca
  */
  async function desgloce1(query) {
+    document.getElementById("nav-01").innerHTML = "";
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-01").html()) {
         Swal.fire({
