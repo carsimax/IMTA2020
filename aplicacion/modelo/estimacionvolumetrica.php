@@ -93,12 +93,12 @@ class EstimacionVolumetrica
   }
 
   //Obtiene los cultivos de la tabla estimacion_volumetrica_cultivo 
-  public function getCultivos($ciclos)
+  public function getCultivos($query)
   {
     $pdo = new DBConnection();
     $db = $pdo->DBConnect();
     try {
-      $select = $db->prepare('SELECT id_cultivo,nombre FROM estimacion_volumetrica_cultivo, cultivo WHERE estimacion_volumetrica_cultivo.cultivo_id=cultivo.id_cultivo AND (' . $ciclos . ') GROUP BY id_cultivo ORDER BY cultivo.nombre');
+      $select = $db->prepare('SELECT id_cultivo,nombre FROM estimacion_volumetrica_cultivo, cultivo WHERE estimacion_volumetrica_cultivo.cultivo_id=cultivo.id_cultivo AND (' . $query . ') GROUP BY id_cultivo ORDER BY cultivo.nombre');
       $select->execute();
       return $select->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $exc) {
@@ -133,7 +133,7 @@ class EstimacionVolumetrica
       INNER JOIN municipio ON municipio.id_municipio=estimacion_volumetrica_cultivo.municipio_id
       INNER JOIN ciclo ON ciclo.id_ciclo=estimacion_volumetrica_cultivo.ciclo_id
       INNER JOIN cultivo on cultivo.id_cultivo=estimacion_volumetrica_cultivo.cultivo_id
-      WHERE '.$QUERY);
+      WHERE ' . $QUERY);
       $select->execute();
       return $select->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $exc) {
