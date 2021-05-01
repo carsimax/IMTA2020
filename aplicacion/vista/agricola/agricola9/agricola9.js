@@ -151,7 +151,7 @@ async function Consultar() {
         data = "Accion=ConsultaAcuifero&modulo_id=12";
         citas = construirReferencias(data, false);
         query = concatQuery();
-        await desgloce1(query);
+        await desgloce1();
         //Verifica si el mapa es prioridad
         var x = $('#Prioridad').prop('checked');
         if (x == false) {
@@ -254,243 +254,321 @@ async function concatEstado() {
  * @returns {Promise<void>}
  * Esta funcion muestra el desglose por Organismo de Cuenca
  */
-async function desgloce1(query) {
+ async function desgloce1() {
     var Anio = $("#Anios :selected").text();
-    /**
-     *
-     * @type String
-     * Se crea una variable que se guarda el query y la accion que va a realizar el controlador
-     */
-    var query2 = query + " GROUP by estado"
-    var cadena = "query=" + query2 + "&Accion=getConsulta";
-    /**
-     * Se limpian todas las secciones del html en caso de que exista contenido
-     */
-    document.getElementById("nav-01").innerHTML = "";
-    document.getElementById("nav-02").innerHTML = "";
-    document.getElementById("nav-03").innerHTML = "";
-    /**
-     * Se coloca el encabezado
-     */
-    $("#nav-01").append(
-        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado estatal de la estimación volumétrica por coeficientes de cultivo: ' + Anio + '</h3></div>'
-    );
-    /**
-     * Funcion de ajax que se encarga de obtener la informacion
-     *
-     */
-    $.ajax({
-        type: "POST",
-        url: "/aplicacion/controlador/estimacionvolumetrica.php",
-        data: cadena,
-        /**
+    if (!$("#nav-02").html()) {
+        Swal.fire({
+            title: "Por favor espere", // add html attribute if you want or remove
+            html: "Cargando contenido",
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading();
+            },
+        });
+        /*
+        *
+        * @type String
+        * * Variable para enviar la sentancia al controlador
+        * *
+        * */
+        var query2 = query + " GROUP by estado,municipio"
+        var cadena = "query=" + query2 + "&Accion=getConsulta";
+        /*
+         * Se limpia el HTML y se coloca el encabezado
+         */
+        document.getElementById("nav-02").innerHTML = "";
+        $("#nav-02").append(
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado municipal de la estimación volumétrica por coeficientes de cultivo, año agrícola: ' + Anio + '</h3></div>'
+        );
+        /*
          *
-         * @param {type} resp2
-         * @returns {undefined}
-         * Si el controlador devuelve una respuesta
+         * @type type
+         * Variable para guardar las tablas
          *
          */
-        success: async function (resp) {
-            /**
+        var tablas = {};
+        /*
+         * Ajax para obtener la consulta de los datos
+         */
+        $.ajax({
+            type: "POST",
+            url: "/aplicacion/controlador/estimacionvolumetrica.php",
+            data: cadena,
+            /*
              *
-             * @type Array
-             * Se crean las variables que se encargar de guardar los datos extraidos de la consulta.
+             * @param {type} resp2
+             * @returns {undefined}
+             * Si el controlador devuelve una respuesta
              *
              */
-            var data = [];
-            var SEM = 0;
-            var VOL_NET = 0;
-            /**
-             * Se itera sobre cala elemento devuelto por el controlador
-             */
-            $.each(JSON.parse(resp), function (index, item) {
-                /**
-                 * Se colocan los datos al array
-                 */
-                data.push([
-                    item.Estado,
-                    numeral(Math.round(item.SEM)).format("0,0"),
-                    numeral(Math.round(item.VOL_NET)).format("0,0"),
-                ]);
-                /**
-                 * Se suma el acumulado para sacar el total
-                 */
-                SEM += parseFloat(item.SEM);
-                VOL_NET += parseFloat(item.VOL_NET);
-            });
-            /**
-             * Si existen datos en la tabla
-             * Se crea una seccion de los datos
-             */
-            if (data.length > 0) {
-                /**
-                 * Se inserta la seccion al html
-                 */
-                $("#nav-01").append(
-                    '<div style="ocflow-x:auto;">' +
-                    '<table id="T1" class="table table-bordered nowrap" style="width:100%">' +
-                    "<tfoot><tr>" +
-                    /**
-                     * Se colocan los totales antes obtenidos
-                     */
-                    '<td style="background-color:#CCD1D1" align="center"><b>Suma Total:</b></th>' +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' +
-                    numeral(Math.round(SEM)).format("0,0") +
-                    "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' +
-                    numeral(Math.round(VOL_NET)).format("0,0") +
-                    "</b></td>" +
-                    "</tr></tfoot></table>" +
-                    '</div>'
-                );
+            success: async function (resp) {
                 /**
                  *
-                 * Se inicializa la tabla con datatables
-                 *
+                 * @type Array
+                 * Las variables para almacenar los datos
                  */
-                $("#T1").DataTable({
+                var data = [];
+                var SEM = 0;
+                var VOL_NET = 0;
+                /*
+                 * Para cada elemento de la consulta
+                 */
+                $.each(JSON.parse(resp), function (index, item) {
                     /*
-                     *
-                     * Se crean las columnas que van a ir en la tabla
-                     *
+                     * Se colocan los daros en el array
                      */
-                    columns: [
-                        {
-                            title: "Entidad federativa",
-                        },
-                        {
-                            title: "Superficie sembrada (ha)",
-                        },
-                        {
-                            title: "Volumen Neto (miles m<sup>3</sup>)",
-                        },
-                    ],
-                    columnDefs: [
-                        { className: 'dt-body-right', targets: [1, 2] },
-                    ],
-                    /**
-                     * Se colocan los datos obenidos
+                    data.push([
+                        item.Estado,
+                        item.Municipio,
+                        numeral(Math.round(item.SEM)).format("0,0"),
+                        numeral(Math.round(item.VOL_NET)).format("0,0"),
+                    ]);
+                    /*
+                     * Se colocan los acumulados
                      */
-                    data: data,
-                    searching: false,
-                    paging: false,
-                    ordering: false,
-                    /**
-                     * Se colocan parametros para el comportamiento de la tabla
+                    SEM += parseFloat(item.SEM);
+                    VOL_NET += parseFloat(item.VOL_NET);
+                });
+                /*
+                 *
+                 * @type String
+                 * Se crea la variable de la tabla
+                 */
+                var tabla = "#T2";
+                /*
+                 * Si existen los datos en el array
+                 */
+                if (data.length > 0) {
+                    $("#nav-02").append(
+                        /*
+                         * Se coloca el encabezado del anio
+                         */
+                        '<div class="panel-body">' +
+                        /*
+                         * Se coloca la tabla
+                         */
+                        '<div style="overflow-x:auto;">' +
+                        '<table id="T2" class="table table-bordered  nowrap"  width="100%">' +
+                        "<tfoot><tr>" +
+                        /*
+                         * Se coloca el footer con los totales
+                         */
+                        '<td style="background-color:#CCD1D1" colspan="2" align="center"><b>Suma Total</b></th>' +
+                        '<td style="background-color:#CCD1D1" align="right"><b>' +
+                        numeral(Math.round(SEM)).format("0,0") +
+                        "</b></td>" +
+                        '<td style="background-color:#CCD1D1" align="right"><b>' +
+                        numeral(Math.round(VOL_NET)).format("0,0") +
+                        "</b></td>" +
+                        "</tr></tfoot></table>" +
+                        "</div>" +
+                        "</div>"
+                    );
+                    /*
+                     * Se crea la instancia de datatables
                      */
-                    language: {
-                        url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
-                    },
-                    dom: "Bfrtip",
-                    /**
-                     * Se colocan el boton para exportar la tabla en excel
-                     */
-                    buttons: [
-                        {
-                            extend: "excelHtml5",
-                            title:
-                                "Concentrado estatal de la estimación volumétrica por coeficientes de cultivo",
-                            className: "btn btn-gob btn-sm",
-                            text: "Exportar Excel",
-                        },
-                        {
-                            extend: "pdfHtml5",
-                            title:
-                                "Concentrado estatal de la estimación volumétrica por coeficientes de cultivo",
-                            className: "btn btn-gob btn-sm",
-                            text: "Exportar PDF",
-                            messageBottom: citas,
-                            orientation: "landscape",
-                            pageSize: "A4",
-                            customize: function (doc) {
-                                //Remove the title created by datatTables
-                                doc.content.splice(0, 1);
-                                //Create a date string that we use in the footer. Format is dd-mm-yyyy
-                                var now = new Date();
-                                var jsDate =
-                                    now.getDate() +
-                                    "-" +
-                                    (now.getMonth() + 1) +
-                                    "-" +
-                                    now.getFullYear();
-                                // It's important to create enough space at the top for a header !!!
-                                doc.pageMargins = [20, 70, 20, 50];
-                                // Set the font size fot the entire document
-                                doc.defaultStyle.fontSize = 10;
-                                // Set the fontsize for the table header
-                                doc.styles.tableHeader.fontSize = 10;
-                                doc["header"] = function () {
-                                    return {
-                                        columns: [
-                                            {
-                                                image: logo,
-                                                width: 200,
-                                            },
-                                            {
-                                                alignment: "left",
-                                                //italics: true,
-                                                text:
-                                                    "Concentrado estatal de la estimación volumétrica por coeficientes de cultivo",
-                                                fontSize: 12.5,
-                                                margin: [10, 5],
-                                            },
-                                            {
-                                                alignment: "right",
-                                                fontSize: 10,
-                                                text: jsDate.toString(),
-                                            },
-                                        ],
-                                        margin: 20,
-                                    };
-                                };
-                                doc["footer"] = function (page, pages) {
-                                    return {
-                                        columns: [
-                                            {
-                                                // This is the right column
-                                                alignment: "center",
-                                                text: [
-                                                    "Página ",
-                                                    {
-                                                        text: page.toString(),
-                                                    },
-                                                    " de ",
-                                                    {
-                                                        text: pages.toString(),
-                                                    },
-                                                ],
-                                            },
-                                        ],
-                                        margin: [50, 0],
-                                    };
-                                };
-                                var objLayout = {};
-                                objLayout["hLineWidth"] = function (i) {
-                                    return 0.5;
-                                };
-                                objLayout["vLineWidth"] = function (i) {
-                                    return 0.5;
-                                };
-                                objLayout["hLineColor"] = function (i) {
-                                    return "#aaaaaa";
-                                };
-                                objLayout["vLineColor"] = function (i) {
-                                    return "#aaaaaa";
-                                };
-                                objLayout["paddingLeft"] = function (i) {
-                                    return 4;
-                                };
-                                objLayout["paddingRight"] = function (i) {
-                                    return 4;
-                                };
-                                doc.content[0].layout = objLayout;
+                    tabla3 = $(tabla).DataTable({
+                        /*
+                         * Se crean las columnas a mostrar
+                         */
+                        columns: [
+                            {
+                                title: "Entidad federativa",
+                            },
+                            {
+                                title: "Municipio",
+                            },
+                            {
+                                title: "Superficie sembrada (ha)",
+                            },
+                            {
+                                title: "Volumen Neto (miles m<sup>3</sup>)",
+                            },
+                        ],
+                        /*
+                         * Se colocan los datos
+                         */
+                        data: data,
+                        /**
+                         * Se colocan los datos obenidos
+                         */
+                        data: data,
+                        searching: false,
+                        ordering: false,
+                        /*
+                         * Funcion para obtener los sibtotales
+                         */
+                        rowGroup: {
+                            dataSrc: [0],
+                            startRender: function (rows, group) {
+                                /*
+                                 *
+                                 * @type type
+                                 * Se obtiene el subtotal de la superficie sembrada
+                                 */
+                                var ss = rows
+                                    .data()
+                                    .pluck(2)
+                                    .reduce(function (a, b) {
+                                        return (
+                                            parseFloat(numeral(a.toString()).value()) +
+                                            parseFloat(numeral(b.toString()).value()) * 1
+                                        );
+                                    }, 0);
+                                /**
+                                 *
+                                 * @type type
+                                 * Funcion para obtener el subtotal de la superficie cosechada
+                                 */
+                                var vn = rows
+                                    .data()
+                                    .pluck(3)
+                                    .reduce(function (a, b) {
+                                        return (
+                                            parseFloat(numeral(a.toString()).value()) +
+                                            parseFloat(numeral(b.toString()).value()) * 1
+                                        );
+                                    }, 0)
+                                return $("<tr/>").append(
+                                    '<td style="background-color:#A9DFBF" colspan="1"><b>' +
+                                    group +
+                                    "</b></td>" +
+                                    '<td style="background-color:#A9DFBF" align="right" ><b>' +
+                                    numeral(Math.round(ss)).format("0,0") +
+                                    "</b></td>" +
+                                    '<td style="background-color:#A9DFBF"  align="right" ><b>' +
+                                    numeral(Math.round(vn)).format("0,0") +
+                                    "</b></td>"
+                                );
                             },
                         },
-                    ],
-                });
-            } //Fin del if
-        },
-    }); //Fin del ajax de la obtencion de los datos
+                        columnDefs: [
+                            { targets: [0], visible: false },
+                            {
+                                className: 'dt-body-right',
+                                targets: [2, 3],
+                            },
+                        ],
+                        language: {
+                            url:
+                                "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+                        },
+                        paging: false,
+                        dom: "Bfrtip",
+                        /*
+                         * Creacion del boton de exportar en excel
+                         */
+                        buttons: [
+                            {
+                                extend: "excelHtml5",
+                                title:
+                                    "Concentrado municipal de la estimación volumétrica por coeficientes de cultivo",
+                                className: "btn btn-gob btn-sm",
+                                text: "Exportar Excel",
+                            },
+                            {
+                                extend: "pdfHtml5",
+                                title:
+                                    "Concentrado municipal de la estimación volumétrica por coeficientes de cultivo",
+                                className: "btn btn-gob btn-sm",
+                                text: "Exportar PDF",
+                                messageBottom: citas,
+                                orientation: "landscape",
+                                pageSize: "A4",
+                                customize: function (doc) {
+                                    //Remove the title created by datatTables
+                                    doc.content.splice(0, 1);
+                                    //Create a date string that we use in the footer. Format is dd-mm-yyyy
+                                    var now = new Date();
+                                    var jsDate =
+                                        now.getDate() +
+                                        "-" +
+                                        (now.getMonth() + 1) +
+                                        "-" +
+                                        now.getFullYear();
+                                    // It's important to create enough space at the top for a header !!!
+                                    doc.pageMargins = [20, 70, 20, 50];
+                                    // Set the font size fot the entire document
+                                    doc.defaultStyle.fontSize = 10;
+                                    // Set the fontsize for the table header
+                                    doc.styles.tableHeader.fontSize = 10;
+                                    doc["header"] = function () {
+                                        return {
+                                            columns: [
+                                                {
+                                                    image: logo,
+                                                    width: 200,
+                                                },
+                                                {
+                                                    alignment: "left",
+                                                    //italics: true,
+                                                    text:
+                                                        "Concentrado municipal de la estimación volumétrica por coeficientes de cultivo",
+                                                    fontSize: 12.5,
+                                                    margin: [10, 5],
+                                                },
+                                                {
+                                                    alignment: "right",
+                                                    fontSize: 10,
+                                                    text: jsDate.toString(),
+                                                },
+                                            ],
+                                            margin: 20,
+                                        };
+                                    };
+                                    doc["footer"] = function (page, pages) {
+                                        return {
+                                            columns: [
+                                                {
+                                                    // This is the right column
+                                                    alignment: "center",
+                                                    text: [
+                                                        "Página ",
+                                                        {
+                                                            text: page.toString(),
+                                                        },
+                                                        " de ",
+                                                        {
+                                                            text: pages.toString(),
+                                                        },
+                                                    ],
+                                                },
+                                            ],
+                                            margin: [50, 0],
+                                        };
+                                    };
+                                    var objLayout = {};
+                                    objLayout["hLineWidth"] = function (i) {
+                                        return 0.5;
+                                    };
+                                    objLayout["vLineWidth"] = function (i) {
+                                        return 0.5;
+                                    };
+                                    objLayout["hLineColor"] = function (i) {
+                                        return "#aaaaaa";
+                                    };
+                                    objLayout["vLineColor"] = function (i) {
+                                        return "#aaaaaa";
+                                    };
+                                    objLayout["paddingLeft"] = function (i) {
+                                        return 4;
+                                    };
+                                    objLayout["paddingRight"] = function (i) {
+                                        return 4;
+                                    };
+                                    doc.content[0].layout = objLayout;
+                                },
+                            },
+                        ],
+
+                    }); //Fin del datatables
+                }
+            },
+        }).always(function () {
+            Swal.close();
+        }); //Fin del AJAX de la obtecion de los datos
+    }
 }
 
 /**

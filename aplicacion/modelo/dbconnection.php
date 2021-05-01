@@ -92,6 +92,15 @@ class DBConnection
                 $this->setPass('$sisuar2020$');
                 $this->setCharset('utf8');
                 break;
+                case '10.147.20.119':
+                    //Vacia variabes constantes
+                    $this->setDriver('mysql');
+                    $this->setHost('localhost');
+                    $this->setUser('root');
+                    $this->setDatabase('test');
+                    $this->setPass('$sisuar2020$');
+                    $this->setCharset('utf8');
+                    break;
             default:
                 //Vacia variabes constantes
                 $this->setDriver('mysql');

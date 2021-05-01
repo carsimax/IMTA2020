@@ -42,13 +42,13 @@ require_once(__DIR__ . "/../../plantillas/header.php");
     </div>
 </div>
 <!--Footer de la pagina-->
-<?php require_once(__DIR__ . "/../../Plantillas/footer.php"); ?>
+<?php require_once(__DIR__ . "/../../plantillas/footer.php"); ?>
 <!--Fin del footer de la pagina-->
 <script>
     cadena = "Accion=Todos";
     $.ajax({
         type: "POST",
-        url: "/Aplicacion/Controlador/Catalogo.php",
+        url: "/aplicacion/controlador/catalogo.php",
         data: cadena,
         //Si el controlador devuelve una respuesta
         success: function(resp) {
@@ -141,7 +141,7 @@ require_once(__DIR__ . "/../../plantillas/header.php");
                                 })
                                 .then((value) => {
                                     window.location.href =
-                                        "Catalogo.php";
+                                        "catalogo.php";
                                 });
                         }
                     },
