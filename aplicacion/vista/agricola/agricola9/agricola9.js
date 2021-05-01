@@ -578,7 +578,7 @@ async function concatEstado() {
  * @returns {undefined}
  * Fyuncion que muestra el desgloce 3
  */
-async function desgloce2() {
+ async function desgloce2() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-02").html()) {
         Swal.fire({
@@ -590,30 +590,23 @@ async function desgloce2() {
                 Swal.showLoading();
             },
         });
-        /*
-        *
-        * @type String
-        * * Variable para enviar la sentancia al controlador
-        * *
-        * */
-        var query2 = query + " GROUP by estado,municipio"
+        var query2 = query + " GROUP by estado,municipio,ciclo,cultivo"
         var cadena = "query=" + query2 + "&Accion=getConsulta";
         /*
-         * Se limpia el HTML y se coloca el encabezado
+         * Se limpia el html y se coloca el encabezado
          */
         document.getElementById("nav-02").innerHTML = "";
         $("#nav-02").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado municipal de la estimación volumétrica por coeficientes de cultivo, año agrícola: ' + Anio + '</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado por cultivo de la estimación volumétrica por coeficientes de cultivo, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
          * @type type
-         * Variable para guardar las tablas
-         *
+         * Array donde se guardan las
          */
         var tablas = {};
         /*
-         * Ajax para obtener la consulta de los datos
+         * Ajax para obtener los datos
          */
         $.ajax({
             type: "POST",
@@ -626,272 +619,362 @@ async function desgloce2() {
              * Si el controlador devuelve una respuesta
              *
              */
-            success: async function (resp) {
-                /**
-                 *
-                 * @type Array
-                 * Las variables para almacenar los datos
-                 */
-                var data = [];
-                var SEM = 0;
-                var VOL_NET = 0;
+            success: function (resp2) {
                 /*
-                 * Para cada elemento de la consulta
+                 * Se itera sobre los anios seleccionados
                  */
-                $.each(JSON.parse(resp), function (index, item) {
+                $("#Anios option:selected").each(async function () {
+                    var anio = $(this).val();
+                    cadena = "id=" + anio + "&Accion=Anio";
                     /*
-                     * Se colocan los daros en el array
+                     * Ajax para obtener los valores del anio
                      */
-                    data.push([
-                        item.Estado,
-                        item.Municipio,
-                        numeral(Math.round(item.SEM)).format("0,0"),
-                        numeral(Math.round(item.VOL_NET)).format("0,0"),
-                    ]);
-                    /*
-                     * Se colocan los acumulados
-                     */
-                    SEM += parseFloat(item.SEM);
-                    VOL_NET += parseFloat(item.VOL_NET);
-                });
-                /*
-                 *
-                 * @type String
-                 * Se crea la variable de la tabla
-                 */
-                var tabla = "#T2";
-                /*
-                 * Si existen los datos en el array
-                 */
-                if (data.length > 0) {
-                    $("#nav-02").append(
+                    $.ajax({
+                        type: "POST",
+                        url: "/aplicacion/controlador/mapa.php",
+                        data: cadena,
                         /*
-                         * Se coloca el encabezado del anio
+                         *
+                         * @param {type} resp
+                         * @returns {undefined}
+                         * Si el controlador devuelve una respuesta
                          */
-                        '<div class="panel-body">' +
-                        /*
-                         * Se coloca la tabla
-                         */
-                        '<div style="overflow-x:auto;">' +
-                        '<table id="T2" class="table table-bordered  nowrap"  width="100%">' +
-                        "<tfoot><tr>" +
-                        /*
-                         * Se coloca el footer con los totales
-                         */
-                        '<td style="background-color:#CCD1D1" colspan="2" align="center"><b>Suma Total</b></th>' +
-                        '<td style="background-color:#CCD1D1" align="right"><b>' +
-                        numeral(Math.round(SEM)).format("0,0") +
-                        "</b></td>" +
-                        '<td style="background-color:#CCD1D1" align="right"><b>' +
-                        numeral(Math.round(VOL_NET)).format("0,0") +
-                        "</b></td>" +
-                        "</tr></tfoot></table>" +
-                        "</div>" +
-                        "</div>"
-                    );
-                    /*
-                     * Se crea la instancia de datatables
-                     */
-                    tabla3 = $(tabla).DataTable({
-                        /*
-                         * Se crean las columnas a mostrar
-                         */
-                        columns: [
-                            {
-                                title: "Entidad federativa",
-                            },
-                            {
-                                title: "Municipio",
-                            },
-                            {
-                                title: "Superficie sembrada (ha)",
-                            },
-                            {
-                                title: "Volumen Neto (miles m<sup>3</sup>)",
-                            },
-                        ],
-                        /*
-                         * Se colocan los datos
-                         */
-                        data: data,
-                        /**
-                         * Se colocan los datos obenidos
-                         */
-                        data: data,
-                        searching: false,
-                        ordering: false,
-                        /*
-                         * Funcion para obtener los sibtotales
-                         */
-                        rowGroup: {
-                            dataSrc: [0],
-                            startRender: function (rows, group) {
+                        success: function (resp) {
+                            /*
+                             * Se coloca la seccion del anio seleccionado
+                             */
+                            $("#nav-02").append(
+                                '<div class="panel-body" id="body3-' + anio + '">' + "</div>"
+                            );
+                            /*
+                             * Se itera sobre los Cultivo seleccionados
+                             */
+                            $("#Cultivos option:selected").each(async function () {
+                                var Cultivo = $(this).val();
+                                cadena = "id=" + Cultivo + "&Accion=Cultivo";
                                 /*
-                                 *
-                                 * @type type
-                                 * Se obtiene el subtotal de la superficie sembrada
+                                 * Ajax para obtener el nombre del distrito de riego
                                  */
-                                var ss = rows
-                                    .data()
-                                    .pluck(2)
-                                    .reduce(function (a, b) {
-                                        return (
-                                            parseFloat(numeral(a.toString()).value()) +
-                                            parseFloat(numeral(b.toString()).value()) * 1
-                                        );
-                                    }, 0);
-                                /**
-                                 *
-                                 * @type type
-                                 * Funcion para obtener el subtotal de la superficie cosechada
-                                 */
-                                var vn = rows
-                                    .data()
-                                    .pluck(3)
-                                    .reduce(function (a, b) {
-                                        return (
-                                            parseFloat(numeral(a.toString()).value()) +
-                                            parseFloat(numeral(b.toString()).value()) * 1
-                                        );
-                                    }, 0)
-                                return $("<tr/>").append(
-                                    '<td style="background-color:#A9DFBF" colspan="1"><b>' +
-                                    group +
-                                    "</b></td>" +
-                                    '<td style="background-color:#A9DFBF" align="right" ><b>' +
-                                    numeral(Math.round(ss)).format("0,0") +
-                                    "</b></td>" +
-                                    '<td style="background-color:#A9DFBF"  align="right" ><b>' +
-                                    numeral(Math.round(vn)).format("0,0") +
-                                    "</b></td>"
-                                );
-                            },
-                        },
-                        columnDefs: [
-                            { targets: [0], visible: false },
-                            {
-                                className: 'dt-body-right',
-                                targets: [2, 3],
-                            },
-                        ],
-                        language: {
-                            url:
-                                "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
-                        },
-                        paging: false,
-                        dom: "Bfrtip",
-                        /*
-                         * Creacion del boton de exportar en excel
-                         */
-                        buttons: [
-                            {
-                                extend: "excelHtml5",
-                                title:
-                                    "Concentrado municipal de la estimación volumétrica por coeficientes de cultivo",
-                                className: "btn btn-gob btn-sm",
-                                text: "Exportar Excel",
-                            },
-                            {
-                                extend: "pdfHtml5",
-                                title:
-                                    "Concentrado municipal de la estimación volumétrica por coeficientes de cultivo",
-                                className: "btn btn-gob btn-sm",
-                                text: "Exportar PDF",
-                                messageBottom: citas,
-                                orientation: "landscape",
-                                pageSize: "A4",
-                                customize: function (doc) {
-                                    //Remove the title created by datatTables
-                                    doc.content.splice(0, 1);
-                                    //Create a date string that we use in the footer. Format is dd-mm-yyyy
-                                    var now = new Date();
-                                    var jsDate =
-                                        now.getDate() +
-                                        "-" +
-                                        (now.getMonth() + 1) +
-                                        "-" +
-                                        now.getFullYear();
-                                    // It's important to create enough space at the top for a header !!!
-                                    doc.pageMargins = [20, 70, 20, 50];
-                                    // Set the font size fot the entire document
-                                    doc.defaultStyle.fontSize = 10;
-                                    // Set the fontsize for the table header
-                                    doc.styles.tableHeader.fontSize = 10;
-                                    doc["header"] = function () {
-                                        return {
-                                            columns: [
-                                                {
-                                                    image: logo,
-                                                    width: 200,
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/aplicacion/controlador/mapa.php",
+                                    data: cadena,
+                                    /*
+                                     *
+                                     * @param {type} respCultivo
+                                     * @returns {undefined}
+                                     * Si se tiene una respiesta
+                                     */
+                                    success: async function (respC) {
+                                        /*
+                                         *
+                                         * @type String
+                                         * Se crea una variable para colocar el nombre del distrito de riego
+                                         */
+                                        var CUL = JSON.parse(respC);
+                                        /*
+                                         *
+                                         * @type Array
+                                         * Se crean las variables para colocar los datos obtenidos
+                                         *
+                                         */
+                                        var data = [];
+                                        var SEM = 0;
+                                        var VOL_NET = 0;
+                                        /*
+                                         * Para cada elemento de la consulta
+                                         */
+                                        $.each(JSON.parse(resp2), function (index, item) {
+                                            /*
+                                             * Si el anio y el distrito de riego coinciden
+                                             */
+                                            if (
+                                                item.id_anio === anio &&
+                                                Cultivo === item.id_cultivo
+                                            ) {
+                                                /*
+                                                 * Se colocan los datos en el array
+                                                 */
+                                                data.push([
+                                                    item.Estado,
+                                                    item.Municipio,
+                                                    item.Ciclo,
+                                                    numeral(Math.round(item.SEM)).format("0,0"),
+                                                    numeral(Math.round(item.VOL_NET)).format("0,0"),
+                                                ]);
+                                                /*
+                                                 * Se suman los acumulados
+                                                 */
+                                                SEM += parseFloat(item.SEM);
+                                                VOL_NET += parseFloat(item.VOL_NET);
+                                            }
+                                        });
+                                        /*
+                                         *
+                                         * @type String
+                                         * Se crea la variable para la tabla creada
+                                         */
+                                        var tabla = "#T2-" + anio + "-" + Cultivo;
+                                        /*
+                                         * Si el array tiene elementos
+                                         */
+                                        if (data.length > 0) {
+                                            $("#body3-" + anio + "").append(
+                                                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' +
+                                                CUL + ', año agrícola: ' + Anio +
+                                                "</h4></div>" +
+                                                /*
+                                                 * Se crea la tabla
+                                                 */
+                                                '<div style="overflow-x:auto;">' +
+                                                '<table id="T2-' +
+                                                anio +
+                                                "-" +
+                                                Cultivo +
+                                                '" class="table table-bordered nowrap"  width="100%">' +
+                                                "<tfoot><tr>" +
+                                                /*
+                                                 * Se colocan los totales en el pie de la tabla
+                                                 */
+                                                '<td style="background-color:#52BE80" colspan="3" align="center"><b>Total general</b></th>' +
+                                                '<td style="background-color:#52BE80" align="right"><b>' +
+                                                numeral(Math.round(SEM)).format("0,0.00") +
+                                                "</b></td>" +
+                                                '<td style="background-color:#52BE80" align="right"><b>' +
+                                                numeral(Math.round(VOL_NET)).format("0,0.00") +
+                                                "</b></td>" +
+                                                "</tr></tfoot></table>" +
+                                                '</div>'
+                                            );
+                                            /*
+                                             * Se inicializa en datables
+                                             */
+                                            tabla4 = $(tabla).DataTable({
+                                                /*
+                                                 * Se crean las columnas
+                                                 */
+                                                columns: [
+                                                    {
+                                                        title: "Estado",
+                                                    },
+                                                    {
+                                                        title: "Municipio",
+                                                    },
+                                                    {
+                                                        title: "Ciclo",
+                                                    },
+                                                    {
+                                                        title: "Superficie sembrada (ha)",
+                                                    },
+                                                    {
+                                                        title: "Volumen Neto (miles m<sup>3</sup>)",
+                                                    },
+                                                ],
+                                                /*
+                                                 * Se colocan los datos de la tabla
+                                                 */
+                                                data: data,
+                                                /*
+                                                 * Parametros del comportamiento de la tabla
+                                                 */
+                                                order: [0, "asc"],
+                                                ordering: false,
+                                                searching: false,
+                                                /*
+                                                 * Funcion para obtener los sibtotales
+                                                 */
+                                                rowGroup: {
+                                                    dataSrc: [0],
+                                                    startRender: function (rows, group) {
+                                                        /*
+                                                         *
+                                                         * @type type
+                                                         * Se obtiene el subtotal de la superficie sembrada
+                                                         */
+                                                        var ss = rows
+                                                            .data()
+                                                            .pluck(3)
+                                                            .reduce(function (a, b) {
+                                                                return (
+                                                                    parseFloat(numeral(a.toString()).value()) +
+                                                                    parseFloat(numeral(b.toString()).value()) * 1
+                                                                );
+                                                            }, 0);
+                                                        /**
+                                                         *
+                                                         * @type type
+                                                         * Funcion para obtener el subtotal de la superficie cosechada
+                                                         */
+                                                        var vn = rows
+                                                            .data()
+                                                            .pluck(4)
+                                                            .reduce(function (a, b) {
+                                                                return (
+                                                                    parseFloat(numeral(a.toString()).value()) +
+                                                                    parseFloat(numeral(b.toString()).value()) * 1
+                                                                );
+                                                            }, 0);
+                                                        /*
+                                                         * Se retorna los subtotales
+                                                         */
+                                                        return $("<tr/>").append(
+                                                            '<td style="background-color:#A9DFBF" colspan="2"><b>' +
+                                                            group +
+                                                            "</b></td>" +
+                                                            '<td style="background-color:#A9DFBF" align="right" ><b>' +
+                                                            numeral(Math.round(ss)).format("0,0") +
+                                                            "</b></td>" +
+                                                            '<td style="background-color:#A9DFBF"  align="right" ><b>' +
+                                                            numeral(Math.round(vn)).format("0,0") +
+                                                            "</b></td>"
+                                                        );
+                                                    },
                                                 },
-                                                {
-                                                    alignment: "left",
-                                                    //italics: true,
-                                                    text:
-                                                        "Concentrado municipal de la estimación volumétrica por coeficientes de cultivo",
-                                                    fontSize: 12.5,
-                                                    margin: [10, 5],
+                                                columnDefs: [
+                                                    { targets: [0], visible: false },
+                                                    {
+                                                        className: 'dt-body-right',
+                                                        targets: [3, 4],
+                                                    },
+                                                ],
+                                                language: {
+                                                    url:
+                                                        "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
                                                 },
-                                                {
-                                                    alignment: "right",
-                                                    fontSize: 10,
-                                                    text: jsDate.toString(),
-                                                },
-                                            ],
-                                            margin: 20,
-                                        };
-                                    };
-                                    doc["footer"] = function (page, pages) {
-                                        return {
-                                            columns: [
-                                                {
-                                                    // This is the right column
-                                                    alignment: "center",
-                                                    text: [
-                                                        "Página ",
-                                                        {
-                                                            text: page.toString(),
+                                                paging: false,
+                                                dom: "Bfrtip",
+                                                /*
+                                                 * Creacion del boton de exportar en excel
+                                                 */
+                                                buttons: [
+                                                    {
+                                                        extend: "excelHtml5",
+                                                        title:
+                                                            "Concentrado por cultivo de la estimación volumétrica por coeficientes de  " +
+                                                            CUL +
+                                                            " Año agrícola : " +
+                                                            (parseInt(JSON.parse(resp)) - 1) +
+                                                            " - " +
+                                                            JSON.parse(resp),
+                                                        className: "btn btn-gob btn-sm",
+                                                        text: "Exportar Excel",
+                                                    },
+                                                    {
+                                                        extend: "pdfHtml5",
+                                                        title:
+                                                            "Concentrado por cultivo de la estimación volumétrica por coeficientes de  " +
+                                                            CUL +
+                                                            " Año agrícola : " +
+                                                            (parseInt(JSON.parse(resp)) - 1) +
+                                                            " - " +
+                                                            JSON.parse(resp),
+                                                        className: "btn btn-gob btn-sm",
+                                                        text: "Exportar PDF",
+                                                        messageBottom: citas,
+                                                        orientation: "landscape",
+                                                        pageSize: "A4",
+                                                        customize: function (doc) {
+                                                            //Remove the title created by datatTables
+                                                            doc.content.splice(0, 1);
+                                                            //Create a date string that we use in the footer. Format is dd-mm-yyyy
+                                                            var now = new Date();
+                                                            var jsDate =
+                                                                now.getDate() +
+                                                                "-" +
+                                                                (now.getMonth() + 1) +
+                                                                "-" +
+                                                                now.getFullYear();
+                                                            // It's important to create enough space at the top for a header !!!
+                                                            doc.pageMargins = [20, 70, 20, 50];
+                                                            // Set the font size fot the entire document
+                                                            doc.defaultStyle.fontSize = 10;
+                                                            // Set the fontsize for the table header
+                                                            doc.styles.tableHeader.fontSize = 10;
+                                                            doc["header"] = function () {
+                                                                return {
+                                                                    columns: [
+                                                                        {
+                                                                            image: logo,
+                                                                            width: 200,
+                                                                        },
+                                                                        {
+                                                                            alignment: "left",
+                                                                            //italics: true,
+                                                                            text:
+                                                                                "Concentrado por cultivo de la estimación volumétrica por coeficientes de  " +
+                                                                                CUL +
+                                                                                " Año agrícola : " +
+                                                                                (parseInt(JSON.parse(resp)) - 1) +
+                                                                                " - " +
+                                                                                JSON.parse(resp),
+                                                                            fontSize: 12.5,
+                                                                            margin: [10, 5],
+                                                                        },
+                                                                        {
+                                                                            alignment: "right",
+                                                                            fontSize: 10,
+                                                                            text: jsDate.toString(),
+                                                                        },
+                                                                    ],
+                                                                    margin: 20,
+                                                                };
+                                                            };
+                                                            doc["footer"] = function (page, pages) {
+                                                                return {
+                                                                    columns: [
+                                                                        {
+                                                                            // This is the right column
+                                                                            alignment: "center",
+                                                                            text: [
+                                                                                "Página ",
+                                                                                {
+                                                                                    text: page.toString(),
+                                                                                },
+                                                                                " de ",
+                                                                                {
+                                                                                    text: pages.toString(),
+                                                                                },
+                                                                            ],
+                                                                        },
+                                                                    ],
+                                                                    margin: [50, 0],
+                                                                };
+                                                            };
+                                                            var objLayout = {};
+                                                            objLayout["hLineWidth"] = function (i) {
+                                                                return 0.5;
+                                                            };
+                                                            objLayout["vLineWidth"] = function (i) {
+                                                                return 0.5;
+                                                            };
+                                                            objLayout["hLineColor"] = function (i) {
+                                                                return "#aaaaaa";
+                                                            };
+                                                            objLayout["vLineColor"] = function (i) {
+                                                                return "#aaaaaa";
+                                                            };
+                                                            objLayout["paddingLeft"] = function (i) {
+                                                                return 4;
+                                                            };
+                                                            objLayout["paddingRight"] = function (i) {
+                                                                return 4;
+                                                            };
+                                                            doc.content[0].layout = objLayout;
                                                         },
-                                                        " de ",
-                                                        {
-                                                            text: pages.toString(),
-                                                        },
-                                                    ],
-                                                },
-                                            ],
-                                            margin: [50, 0],
-                                        };
-                                    };
-                                    var objLayout = {};
-                                    objLayout["hLineWidth"] = function (i) {
-                                        return 0.5;
-                                    };
-                                    objLayout["vLineWidth"] = function (i) {
-                                        return 0.5;
-                                    };
-                                    objLayout["hLineColor"] = function (i) {
-                                        return "#aaaaaa";
-                                    };
-                                    objLayout["vLineColor"] = function (i) {
-                                        return "#aaaaaa";
-                                    };
-                                    objLayout["paddingLeft"] = function (i) {
-                                        return 4;
-                                    };
-                                    objLayout["paddingRight"] = function (i) {
-                                        return 4;
-                                    };
-                                    doc.content[0].layout = objLayout;
-                                },
-                            },
-                        ],
-
-                    }); //Fin del datatables
-                }
+                                                    },
+                                                ],
+                                            }); //Fin del datables
+                                        }
+                                    },
+                                }); //Fin AJAX Cultivo
+                            }); //Fin de la iteracion Cultivo
+                        },
+                    }); //Fin AJAX Anio
+                }); //Fin iteracion de anio
             },
         }).always(function () {
             Swal.close();
-        }); //Fin del AJAX de la obtecion de los datos
+        }); //Fin AJAX para obtener la consulta
     }
 }
 
