@@ -650,7 +650,7 @@ async function desgloce2()   {
                              * Se itera sobre los Cultivo seleccionados
                              */
                             $("#Estados option:selected").each(async function () {
-                                var Cultivo = $(this).val();
+                                var Estado = $(this).val();
                                 cadena = "id=" + Estado + "&Accion=Estado";
                                 /*
                                  * Ajax para obtener el nombre del distrito de riego
