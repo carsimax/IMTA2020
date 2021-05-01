@@ -151,7 +151,7 @@ async function Consultar() {
         data = "Accion=ConsultaAcuifero&modulo_id=12";
         citas = construirReferencias(data, false);
         query = concatQuery();
-        await desgloce1();
+        await desgloce1(query);
         //Verifica si el mapa es prioridad
         var x = $('#Prioridad').prop('checked');
         if (x == false) {
@@ -254,7 +254,8 @@ async function concatEstado() {
  * @returns {Promise<void>}
  * Esta funcion muestra el desglose por Organismo de Cuenca
  */
- async function desgloce1() {
+ async function desgloce1(query) {
+     alert('Hola');
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-01").html()) {
         Swal.fire({
