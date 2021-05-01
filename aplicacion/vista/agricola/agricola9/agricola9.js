@@ -281,7 +281,7 @@ async function desgloce1(query) {
          */
         document.getElementById("nav-01").innerHTML = "";
         $("#nav-01").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Estatal de la estimación volumétrica por coeficientes de cultivo, año agrícola: ' + Anio + '</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado estatal de la estimación volumétrica por coeficientes de cultivo, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -465,14 +465,14 @@ async function desgloce1(query) {
                             {
                                 extend: "excelHtml5",
                                 title:
-                                    "Concentrado Estatal de la estimación volumétrica por coeficientes de cultivo",
+                                    "Concentrado estatal de la estimación volumétrica por coeficientes de cultivo",
                                 className: "btn btn-gob btn-sm",
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title:
-                                    "Concentrado Estatal de la estimación volumétrica por coeficientes de cultivo",
+                                    "Concentrado estatal de la estimación volumétrica por coeficientes de cultivo",
                                 className: "btn btn-gob btn-sm",
                                 text: "Exportar PDF",
                                 messageBottom: citas,
@@ -506,7 +506,7 @@ async function desgloce1(query) {
                                                     alignment: "left",
                                                     //italics: true,
                                                     text:
-                                                        "Concentrado Estatal de la estimación volumétrica por coeficientes de cultivo",
+                                                        "Concentrado estatal de la estimación volumétrica por coeficientes de cultivo",
                                                     fontSize: 12.5,
                                                     margin: [10, 5],
                                                 },
@@ -578,7 +578,7 @@ async function desgloce1(query) {
  * @returns {undefined}
  * Fyuncion que muestra el desgloce 3
  */
- async function desgloce2()   {
+async function desgloce2() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-02").html()) {
         Swal.fire({
@@ -597,7 +597,7 @@ async function desgloce1(query) {
          */
         document.getElementById("nav-02").innerHTML = "";
         $("#nav-02").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado por cultivo de la estimación volumétrica por coeficientes de cultivo, año agrícola: ' + Anio + '</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado municipal de la estimación volumétrica por coeficientes de cultivo, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -850,7 +850,7 @@ async function desgloce1(query) {
                                                     {
                                                         extend: "excelHtml5",
                                                         title:
-                                                            "Concentrado por cultivo de la estimación volumétrica por coeficientes de  " +
+                                                            "Concentrado municipal de la estimación volumétrica por coeficientes de  " +
                                                             CUL +
                                                             " Año agrícola : " +
                                                             (parseInt(JSON.parse(resp)) - 1) +
@@ -862,7 +862,7 @@ async function desgloce1(query) {
                                                     {
                                                         extend: "pdfHtml5",
                                                         title:
-                                                            "Concentrado por cultivo de la estimación volumétrica por coeficientes de  " +
+                                                            "Concentrado municipal de la estimación volumétrica por coeficientes de  " +
                                                             CUL +
                                                             " Año agrícola : " +
                                                             (parseInt(JSON.parse(resp)) - 1) +
@@ -901,7 +901,7 @@ async function desgloce1(query) {
                                                                             alignment: "left",
                                                                             //italics: true,
                                                                             text:
-                                                                                "Concentrado por cultivo de la estimación volumétrica por coeficientes de  " +
+                                                                                "Concentrado municipal de la estimación volumétrica por coeficientes de  " +
                                                                                 CUL +
                                                                                 " Año agrícola : " +
                                                                                 (parseInt(JSON.parse(resp)) - 1) +
