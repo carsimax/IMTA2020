@@ -690,7 +690,7 @@ async function desgloce2()   {
                                              */
                                             if (
                                                 item.id_anio === anio &&
-                                                Cultivo === item.id_cultivo
+                                                Estado === item.id_estado
                                             ) {
                                                 /*
                                                  * Se colocan los datos en el array
