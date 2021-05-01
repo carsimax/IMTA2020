@@ -714,7 +714,7 @@ async function desgloce2()   {
                                          * @type String
                                          * Se crea la variable para la tabla creada
                                          */
-                                        var tabla = "#T2-" + anio + "-" + Cultivo;
+                                        var tabla = "#T2-" + anio + "-" + Estado;
                                         /*
                                          * Si el array tiene elementos
                                          */
@@ -730,7 +730,7 @@ async function desgloce2()   {
                                                 '<table id="T2-' +
                                                 anio +
                                                 "-" +
-                                                Cultivo +
+                                                Estado +
                                                 '" class="table table-bordered nowrap"  width="100%">' +
                                                 "<tfoot><tr>" +
                                                 /*
