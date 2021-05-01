@@ -1,8 +1,8 @@
 <?php
 
 /**
-     * Copyright (c) 2019.
-     * Universidad Politécnica del Estado de Morelos.
+ * Copyright (c) 2019.
+ * Universidad Politécnica del Estado de Morelos.
  * Maximiliano Carsi Castrejón.
  * Jorge Calderon Peralta.
  * Ingeniería en informática IIF – 10A.
@@ -63,13 +63,13 @@ switch ($accion) {
             echo $exc->getTraceAsString();
         }
         break;
-        case 'Estadod':
-            try {
-                getEstado(filter_input(INPUT_POST, "id"));
-            } catch (Exception $exc) {
-                echo $exc->getTraceAsString();
-            }
-            break;
+    case 'Estado':
+        try {
+            getEstado(filter_input(INPUT_POST, "id"));
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+        break;
         /**
          * Funcion para obtener los municipios
          */
@@ -605,12 +605,14 @@ function getAnio($query)
     echo json_encode($anio['anio']);
 }
 
-function getRH($query){
+function getRH($query)
+{
     $RH = new RegionHidrologica();
     echo json_encode($RH->getRH($query));
 }
 
-function getOC($query){
+function getOC($query)
+{
     $OC = new Organismo();
     echo json_encode($OC->getOC($query));
 }
