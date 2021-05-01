@@ -119,6 +119,7 @@ class EstimacionVolumetrica
       anio.id_anio,
       anio.anio,
       anio.anio_agricola,
+      estado.id_estado,
       estado.nombre as Estado,
       municipio.nombre as Municipio,
       ciclo.nombre as Ciclo,
