@@ -63,6 +63,13 @@ switch ($accion) {
             echo $exc->getTraceAsString();
         }
         break;
+        case 'Estadod':
+            try {
+                getEstado(filter_input(INPUT_POST, "id"));
+            } catch (Exception $exc) {
+                echo $exc->getTraceAsString();
+            }
+            break;
         /**
          * Funcion para obtener los municipios
          */
@@ -315,6 +322,15 @@ function getEstados($query)
      * Regresa los registros de los estados
      */
     echo json_encode($OrganismoEstado->getEstadoOrganismo($query));
+}
+function getEstado($query)
+{
+    $OrganismoEstado = new Estado();
+    /**
+     * Regresa los registros de los estados
+     */
+    $Estado = $OrganismoEstado->getEstadoid($query);
+    echo json_encode($Estado['nombre']);
 }
 
 /**

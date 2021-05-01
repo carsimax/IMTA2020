@@ -255,7 +255,7 @@ async function concatEstado() {
  * @returns {Promise<void>}
  * Esta funcion muestra el desglose por Organismo de Cuenca
  */
- async function desgloce1(query) {
+async function desgloce1(query) {
     document.getElementById("nav-01").innerHTML = "";
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-01").html()) {
@@ -578,7 +578,7 @@ async function concatEstado() {
  * @returns {undefined}
  * Fyuncion que muestra el desgloce 3
  */
- async function desgloce2() {
+async function desgloce2()   {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-02").html()) {
         Swal.fire({
@@ -590,7 +590,7 @@ async function concatEstado() {
                 Swal.showLoading();
             },
         });
-        var query2 = query + " GROUP by estado,municipio,ciclo,cultivo"
+        var query2 = query + " GROUP by estado,municipio,cultivo"
         var cadena = "query=" + query2 + "&Accion=getConsulta";
         /*
          * Se limpia el html y se coloca el encabezado
@@ -649,9 +649,9 @@ async function concatEstado() {
                             /*
                              * Se itera sobre los Cultivo seleccionados
                              */
-                            $("#Cultivos option:selected").each(async function () {
+                            $("#Estados option:selected").each(async function () {
                                 var Cultivo = $(this).val();
-                                cadena = "id=" + Cultivo + "&Accion=Cultivo";
+                                cadena = "id=" + Estado + "&Accion=Estado";
                                 /*
                                  * Ajax para obtener el nombre del distrito de riego
                                  */
