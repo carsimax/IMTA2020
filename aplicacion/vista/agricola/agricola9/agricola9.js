@@ -255,7 +255,6 @@ async function concatEstado() {
  * Esta funcion muestra el desglose por Organismo de Cuenca
  */
  async function desgloce1(query) {
-     alert('Hola');
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-01").html()) {
         Swal.fire({
@@ -273,14 +272,14 @@ async function concatEstado() {
         * * Variable para enviar la sentancia al controlador
         * *
         * */
-        var query2 = query + " GROUP by estado,municipio"
+        var query2 = query + " GROUP by estado,cultivo"
         var cadena = "query=" + query2 + "&Accion=getConsulta";
         /*
          * Se limpia el HTML y se coloca el encabezado
          */
         document.getElementById("nav-01").innerHTML = "";
         $("#nav-01").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado municipal de la estimación volumétrica por coeficientes de cultivo, año agrícola: ' + Anio + '</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado Estatal de la estimación volumétrica por coeficientes de cultivo, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -321,7 +320,7 @@ async function concatEstado() {
                      */
                     data.push([
                         item.Estado,
-                        item.Municipio,
+                        item.Cultivo,
                         numeral(Math.round(item.SEM)).format("0,0"),
                         numeral(Math.round(item.VOL_NET)).format("0,0"),
                     ]);
@@ -378,7 +377,7 @@ async function concatEstado() {
                                 title: "Entidad federativa",
                             },
                             {
-                                title: "Municipio",
+                                title: "Cultivo",
                             },
                             {
                                 title: "Superficie sembrada (ha)",
@@ -464,14 +463,14 @@ async function concatEstado() {
                             {
                                 extend: "excelHtml5",
                                 title:
-                                    "Concentrado municipal de la estimación volumétrica por coeficientes de cultivo",
+                                    "Concentrado Estatal de la estimación volumétrica por coeficientes de cultivo",
                                 className: "btn btn-gob btn-sm",
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title:
-                                    "Concentrado municipal de la estimación volumétrica por coeficientes de cultivo",
+                                    "Concentrado Estatal de la estimación volumétrica por coeficientes de cultivo",
                                 className: "btn btn-gob btn-sm",
                                 text: "Exportar PDF",
                                 messageBottom: citas,
@@ -505,7 +504,7 @@ async function concatEstado() {
                                                     alignment: "left",
                                                     //italics: true,
                                                     text:
-                                                        "Concentrado municipal de la estimación volumétrica por coeficientes de cultivo",
+                                                        "Concentrado Estatal de la estimación volumétrica por coeficientes de cultivo",
                                                     fontSize: 12.5,
                                                     margin: [10, 5],
                                                 },
