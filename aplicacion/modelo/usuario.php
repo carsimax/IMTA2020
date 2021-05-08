@@ -483,21 +483,13 @@ class Usuario {
             $this->setRolID($registro['rol_id']);
             $this->setSectorID($registro['sector_id']);
             $this->setCorreo($registro['correo']);
-
             //Sacar la contra
             $select = $db->prepare('SELECT * FROM contra WHERE usuario_id=:usuario_id');
             $select->bindValue('usuario_id', $this->getIdUsuario(), PDO::PARAM_INT);
             $select->execute();
             $registro = $select->fetch();
             $this->setContra($registro['contra']);
-
-            ////Actualizamos el estado de su contra
-            $select = $db->prepare('UPDATE usuario SET is_olvidada=:is_olvidada WHERE correo=:correo ');
-            $select->bindValue('correo', $this->getCorreo(), PDO::PARAM_STR);
-            $select->bindValue('is_olvidada', 1, PDO::PARAM_INT);
-            $select->execute();
-            $registro = $select->rowCount();
-            return $registro;
+            return $this;
         } catch (PDOException $exc) {
             $db->rollback();
             $db = null;

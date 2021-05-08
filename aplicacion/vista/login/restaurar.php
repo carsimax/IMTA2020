@@ -42,6 +42,20 @@ require_once(__DIR__ . "/../plantillas/header.php");
 
 <script>
     function sendMail() {
+        var x = document.getElementById("Correo").value;
+        const cadena = "Correo=" + x + "&Accion=Restablecer";
+        $.ajax({
+            type: "POST",
+            url: "/aplicacion/controlador/usuario.php",
+            data: cadena,
+            /**
+             * @param resp
+             * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
+             */
+            success: function(resp) {
+                alert(JSON.parse(resp));
+            }
+        });
         Email.send({
                 Host: "smtp.gmail.com",
                 Username: "sisuar.imta@gmail.com",

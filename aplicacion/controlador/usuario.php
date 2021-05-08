@@ -102,7 +102,7 @@ switch ($accion) {
      */
     case 'Restablecer':
         try {
-            restablecer();
+            restablecer(filter_input(INPUT_POST, "Correo"));
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
@@ -322,43 +322,6 @@ function Registrar() {
          * Se manda a llamar a la funcion de insertar
          */
         $Contra->insert();
-        /**
-         * Se redirecciona a la pantalla principal
-        $email_user = 'sisuar.imta@gmail.com';
-        $email_password = '$imta2021$';
-        $the_subject = "Registro  Exitoso";
-        $address_to = $usuario->getCorreo(); //correo del paciente
-        $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
-        $phpmailer = new PHPMailer();
-        $phpmailer->Username = $email_user;
-        $phpmailer->Password = $email_password;
-        $phpmailer->SMTPSecure = 'tls';
-        $phpmailer->Host = 'smtp.gmail.com'; // GMail
-        $phpmailer->Port = 587;
-        $phpmailer->IsSMTP(); // use SMTP
-        $phpmailer->SMTPAuth = true;
-        $phpmailer->setFrom($phpmailer->Username, $from_name);
-        $phpmailer->AddAddress($address_to); // recipients email
-        $phpmailer->Subject = $the_subject;
-
-        $phpmailer->Body .= "<h1 style='color:#3498db;'>Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional</h1>"; //Encabezado del correo
-        $phpmailer->Body .= "<h2>Registro  Exitoso</h2>"; //Encabezado del correo
-        $phpmailer->Body .= "<h3><b>Usuario:</b> " . $usuario->getUsuario() . "</h3>";
-        $phpmailer->Body .= "<h3><b>Nombre:</b> " . $usuario->getNombre() . " " . $usuario->getAPaterno() . " " . $usuario->getAMaterno() . "</h3>";
-        $phpmailer->Body .= "<p>Ya eres parte del Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional </p>";
-        $phpmailer->IsHTML(true);
-
-        if ($phpmailer->Send()) {
-            echo '<script type="text/javascript">alert("Registro Exitoso");</script>';
-            echo "<script type='text/javascript'>";
-            echo "window.location.href ='/'";
-            echo "</script>";
-        } else {
-            //echo '<script type="text/javascript">alert("Algo Salio mal;");</script>';
-            //echo "<script type='text/javascript'>";
-            //echo "window.location.href ='/'";
-            //echo "</script>";
-        }*/
         echo '<script type="text/javascript">alert("Registro Exitoso");</script>';
         echo "<script type='text/javascript'>";
         echo "window.location.href ='/'";
@@ -403,45 +366,6 @@ function RegistrarAdmin() {
          * Se manda a llamar a la funcion de insertar
          */
         $Contra->insert();
-        /**
-         * Se redirecciona a la pantalla principal
-         */
-        $email_user = 'sisuar.imta@gmail.com';
-        $email_password = '$imta2021$';
-        $the_subject = "Registro  Exitoso";
-        $address_to = $usuario->getCorreo(); //correo del paciente
-        $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
-        $phpmailer = new PHPMailer();
-        /**
-         * datos de la cuenta de Gmail
-        $phpmailer->Username = $email_user;
-        $phpmailer->Password = $email_password;
-        $phpmailer->SMTPSecure = 'tls';
-        $phpmailer->Host = 'smtp.gmail.com'; // GMail
-        $phpmailer->Port = 587;
-        $phpmailer->IsSMTP(); // use SMTP
-        $phpmailer->SMTPAuth = true;
-        $phpmailer->setFrom($phpmailer->Username, $from_name);
-        $phpmailer->AddAddress($address_to); // recipients email
-        $phpmailer->Subject = $the_subject;
-
-        $phpmailer->Body .= "<h1 style='color:#3498db;'>Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional</h1>"; //Encabezado del correo
-        $phpmailer->Body .= "<h2>Registro  Exitoso</h2>"; //Encabezado del correo
-        $phpmailer->Body .= "<h3><b>Usuario:</b> " . $usuario->getUsuario() . "</h3>";
-        $phpmailer->Body .= "<h3><b>Nombre:</b> " . $usuario->getNombre() . " " . $usuario->getAPaterno() . " " . $usuario->getAMaterno() . "</h3>";
-        $phpmailer->Body .= "<p>Ya eres parte del Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional </p>";
-        $phpmailer->IsHTML(true);
-
-        if ($phpmailer->Send()) {
-            echo "<script type='text/javascript'>";
-            echo "window.location.href ='/aplicacion/vista/admin/admins.php'";
-            echo "</script>";
-        } else {
-            //echo '<script type="text/javascript">alert("Algo Salio mal;");</script>';
-            //echo "<script type='text/javascript'>";
-            //echo "window.location.href ='/'";
-            //echo "</script>";
-        }*/
         echo "<script type='text/javascript'>";
         echo "window.location.href ='/aplicacion/vista/admin/admins.php'";
         echo "</script>";
@@ -526,59 +450,13 @@ function login($usu, $contra) {
  * @throws Exception
  * Funcion para restablecer contra
  */
-function restablecer() {
+function restablecer($correo) {
     /**
      * Se crea una instancia a usuario
      */
     $usuario = new Usuario;
-    $usuario->setCorreo(filter_input(INPUT_POST, "Correo"));
-    if ($usuario->restablecer() == 1) {
-        $email_user = 'sisuar.imta@gmail.com';
-        $email_password = '$imta2021$';
-        $the_subject = "Restablecimiento de contraseña";
-        $address_to = $usuario->getCorreo(); //correo del paciente
-        $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
-        $phpmailer = new PHPMailer();
-        /**
-         * datos de la cuenta de Gmail
-         */
-        $phpmailer->Username = $email_user;
-        $phpmailer->Password = $email_password;
-        $phpmailer->SMTPSecure = 'tls';
-        $phpmailer->Host = 'smtp.gmail.com'; // GMail
-        $phpmailer->Port = 587;
-        $phpmailer->IsSMTP(); // use SMTP
-        $phpmailer->SMTPAuth = true;
-        $phpmailer->setFrom($phpmailer->Username, $from_name);
-        $phpmailer->AddAddress($address_to); // recipients email
-        $phpmailer->Subject = $the_subject;
-
-        $phpmailer->Body .= "<h1 style='color:#3498db;'>Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional</h1>"; //Encabezado del correo
-        $phpmailer->Body .= "<h2>Recuperación de contraseña.</h2>"; //Encabezado del correo
-        $phpmailer->Body .= "<h3><b>Usuario:</b> " . $usuario->getUsuario() . "</h3>";
-        $phpmailer->Body .= "<h3><b>Nombre:</b> " . $usuario->getNombre() . " " . $usuario->getAPaterno() . " " . $usuario->getAMaterno() . "</h3>";
-        $phpmailer->Body .= "<h3><b>Contraseña:</b></h3>";
-        $phpmailer->Body .= "<h2 style='color:#FF0000;'>" . $usuario->getContra() . "</h2>";
-        $phpmailer->Body .= "<p>Es necesario cambiar la contraseña desde su perfil de usuario para seguir utilizando la plataforma </p>";
-        $phpmailer->IsHTML(true);
-
-        if ($phpmailer->Send()) {
-            echo '<script type="text/javascript">alert("Email enviado");</script>';
-            echo "<script type='text/javascript'>";
-            echo "window.location.href ='/'";
-            echo "</script>";
-        } else {
-            echo '<script type="text/javascript">alert("Algo Salio mal;");</script>';
-            echo "<script type='text/javascript'>";
-            echo "window.location.href ='/'";
-            echo "</script>";
-        }
-    } else {
-        echo '<script type="text/javascript">alert("Tiene una solicitud pendiente");</script>';
-        echo "<script type='text/javascript'>";
-        echo "window.location.href ='/'";
-        echo "</script>";
-    }
+    $usuario->setCorreo($correo);
+    echo json_encode($usuario->restablecer());
 }
 
 /**
