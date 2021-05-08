@@ -78,6 +78,7 @@ if (!isset($_SESSION)) {
     <script src="/estilo/js/moment.js"></script>
     <script src="/estilo/js/sweetalert.min.js"></script>
     <script src="/estilo/js/logo.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
         $(window).on("change", function() {
             $.fn.dataTable.tables({
