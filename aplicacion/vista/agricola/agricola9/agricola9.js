@@ -90,7 +90,11 @@ function Municipios() {
 
 async function Ciclos() {
     $("#Cultivos").multiselect("reset");
-    const query = concatValoresSelect('#Ciclos', 'ciclo_id=');
+    const ciclos = concatValoresSelect('#Ciclos', 'ciclo_id=');
+    const anio = concatValoresSelect('#Anios', 'anio_id=');
+    const estados = concatValoresSelect('#Estados', 'estado_id=');
+    const municipios = concatValoresSelect('#Municipios', 'municipio_id=');
+    const query = `(${ciclos}) AND (${anio}) AND (${estados}) AND (${municipios})`
     if (query !== "") {
         const cadena = "query=" + query + "&Accion=getCultivos";
         var data = [];
