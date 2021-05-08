@@ -17,13 +17,12 @@ require_once(__DIR__ . "/../plantillas/header.php");
                 <div class="row">
                     <div class="col-sm">
                         <!--Formulario-->
-                        <form action="../../controlador/usuario.php" name="formRegistro" method="POST">
-                            <input type="text" id="Accion" name="Accion" value="Restablecer" hidden>
-                            <!--Correo-->
-                            <div id="divCorreo" value="OK">
-                                <p>Correo:</p>
-                                <input type="email" class="form-control" name="Correo" id="Correo" required>
-                            </div>
+                        <input type="text" id="Accion" name="Accion" value="Restablecer" hidden>
+                        <!--Correo-->
+                        <div id="divCorreo" value="OK">
+                            <p>Correo:</p>
+                            <input type="email" class="form-control" name="Correo" id="Correo" required>
+                        </div>
                     </div>
                 </div>
                 <br>
@@ -32,9 +31,8 @@ require_once(__DIR__ . "/../plantillas/header.php");
                         <a class="btn btn-gob2 text-light  btn-block" onclick="cancelarForm()">Cancelar</a>
                     </div>
                     <div class="col-sm">
-                        <button class="btn btn-gob text-light  btn-block" type="submit">Continuar</button>
+                        <button class="btn btn-gob text-light  btn-block" onclick="sendMail()" type="submit">Continuar</button>
                     </div>
-                    </form>
                 </div>
         </main>
     </div>
@@ -43,6 +41,29 @@ require_once(__DIR__ . "/../plantillas/header.php");
 <?php require_once(__DIR__ . "/../plantillas/footer.php"); ?>
 
 <script>
+    function sendMail() {
+        $.ajax({
+            type: 'POST',
+            url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+            data: {
+                'key': '38b1a8d17624bc48ae7d599e34e97977-us1',
+                'message': {
+                    'from_email': 'sisuar.imta@gmail.com',
+                    'to': [{
+                        'email': 'maximilianocarsi@gmail.com',
+                        'name': 'RECIPIENT NAME (OPTIONAL)',
+                        'type': 'to'
+                    }],
+                    'autotext': 'true',
+                    'subject': 'YOUR SUBJECT HERE!',
+                    'html': 'YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!'
+                }
+            }
+        }).done(function(response) {
+            console.log(response); // if you're into that sorta thing
+        });
+    }
+
     function cancelarForm() {
         Swal.fire({
             title: "¿Estás seguro?",
