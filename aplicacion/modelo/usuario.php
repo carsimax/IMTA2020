@@ -40,6 +40,9 @@ class Usuario {
     private $rol_id;
     private $sector_id;
     private $is_olvidad;
+    private $Token;
+
+
 
     /**
      * @return mixed
@@ -238,6 +241,20 @@ class Usuario {
     }
 
     /**
+     * @return mixed
+     */
+    public function getToken() {
+        return $this->Token;
+    }
+
+    /**
+     * @param mixed $sector_id
+     */
+    public function setToken($Token) {
+        $this->Token = $Token;
+    }
+
+    /**
      * @return int|null
      */
     public function verificarUsuario() {
@@ -285,8 +302,8 @@ class Usuario {
     public function insert() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
-        $select = $db->prepare('INSERT INTO usuario(usuario, nombre, a_paterno, a_materno,correo, contra,rol_id, sector_id,is_olvidada) 
-        VALUES (:usuario,:nombre,:a_paterno,:a_materno,:correo,:contra,3,:sector_id,0)');
+        $select = $db->prepare('INSERT INTO usuario(usuario, nombre, a_paterno, a_materno,correo, contra,rol_id, sector_id,is_olvidada,verificar,token) 
+        VALUES (:usuario,:nombre,:a_paterno,:a_materno,:correo,:contra,3,:sector_id,0,0,:token)');
         $select->bindValue('usuario', $this->getUsuario(), PDO::PARAM_STR);
         $select->bindValue('nombre', $this->getNombre(), PDO::PARAM_STR);
         $select->bindValue('a_paterno', $this->getAPaterno(), PDO::PARAM_STR);
@@ -294,6 +311,7 @@ class Usuario {
         $select->bindValue('sector_id', $this->getSectorID(), PDO::PARAM_INT);
         $select->bindValue('correo', $this->getCorreo(), PDO::PARAM_STR);
         $select->bindValue('contra', $this->getContra(), PDO::PARAM_STR);
+        $select->bindValue('token', $this->getToken(), PDO::PARAM_STR);
         $select->execute();
         //Obtener el ultimo
         $select = $db->prepare('SELECT MAX(id_usuario) AS id FROM usuario');
@@ -465,13 +483,13 @@ class Usuario {
     /**
      * @return int|mixed|null
      */
-    public function restablecer() {
+    public function restablecer($correo) {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
             //Obtener informacion del usuario
             $select = $db->prepare('SELECT * FROM usuario WHERE correo=:correo');
-            $select->bindValue('correo', $this->getCorreo(), PDO::PARAM_STR);
+            $select->bindValue('correo', $correo, PDO::PARAM_STR);
             $select->execute();
             $registro = $select->fetch();
             $this->setIDUsuario($registro['id_usuario']);
@@ -488,8 +506,7 @@ class Usuario {
             $select->bindValue('usuario_id', $this->getIdUsuario(), PDO::PARAM_INT);
             $select->execute();
             $registro = $select->fetch();
-            $this->setContra($registro['contra']);
-            return $this;
+            return $registro['contra'];
         } catch (PDOException $exc) {
             $db->rollback();
             $db = null;

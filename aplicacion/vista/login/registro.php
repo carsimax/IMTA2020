@@ -8,6 +8,7 @@ $sectores = $registros->getTodos();
 
 <form action="/aplicacion/controlador/usuario.php" name="formRegistro" method="POST" onsubmit="return valiForm()">
     <input type="text" id="Accion" name="Accion" value="Registro" hidden>
+    <input type="text" id="Token" name="Token" value="" hidden>
     <div class="row">
         <!--Nombre-->
         <div class="col-sm">
@@ -29,7 +30,8 @@ $sectores = $registros->getTodos();
     <div class="row">
         <!--Usuario-->
         <div class="col-sm" id="divUsuario" value="OK">
-            <p>Usuario <font id="err_usu" col-smor="red"></font></p>
+            <p>Usuario <font id="err_usu" col-smor="red"></font>
+            </p>
             <input type="text" class="form-control" name="Usuario" id="Usuario" oninput="verificarUsuario()" required>
         </div>
     </div>
@@ -76,7 +78,8 @@ $sectores = $registros->getTodos();
     <div class="row">
         <!--Confirmar Contraseña-->
         <div class="col-sm" id="divContraV" value="OK">
-            <p>Verificar Contraseña: <font id="err_contraV" col-smor="red"></font> </p>
+            <p>Verificar Contraseña: <font id="err_contraV" col-smor="red"></font>
+            </p>
             <input type="password" class="form-control" name="ContraV" id="ContraV" oninput="veriContra()" required pattern="[A-Za-z0-9!?-]{8,12}">
         </div>
     </div>
@@ -224,6 +227,9 @@ $sectores = $registros->getTodos();
             swal("Las contraseñas deben de coincidir");
             return false;
         }
+        var x = document.getElementById("Correo").value;
+        var Token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        document.getElementById("Token").value = Token;
         return true;
     }
 

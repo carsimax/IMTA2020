@@ -44,6 +44,7 @@ require_once(__DIR__ . "/../plantillas/header.php");
     function sendMail() {
         var x = document.getElementById("Correo").value;
         const cadena = "Correo=" + x + "&Accion=Restablecer";
+        var contra = '';
         $.ajax({
             type: "POST",
             url: "/aplicacion/controlador/usuario.php",
@@ -53,21 +54,20 @@ require_once(__DIR__ . "/../plantillas/header.php");
              * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
              */
             success: function(resp) {
-                alert(JSON.parse(resp));
+                Email.send({
+                        Host: "smtp.gmail.com",
+                        Username: "sisuar.imta@gmail.com",
+                        Password: "$imta2021$",
+                        To: x,
+                        From: "sisuar.imta@gmail.com",
+                        Subject: "Restablecimiento de contraseña",
+                        Body: 'Esta es tu contraseña:' + resp + ' Recuerda cambiarla por seguridad en la sección de tu perfil'
+                    })
+                    .then(function(message) {
+                        alert("mail sent successfully")
+                    });
             }
         });
-        Email.send({
-                Host: "smtp.gmail.com",
-                Username: "sisuar.imta@gmail.com",
-                Password: "$imta2021$",
-                To: 'maximilianocarsi@gmail.com',
-                From: "sisuar.imta@gmail.com",
-                Subject: "Sending Email using javascript",
-                Body: "Well that was easy!!",
-            })
-            .then(function(message) {
-                alert("mail sent successfully")
-            });
     }
 
     function cancelarForm() {

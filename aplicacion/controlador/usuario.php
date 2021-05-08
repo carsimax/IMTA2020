@@ -102,7 +102,7 @@ switch ($accion) {
      */
     case 'Restablecer':
         try {
-            restablecer(filter_input(INPUT_POST, "Correo"));
+            restablecer();
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
@@ -239,6 +239,7 @@ function Registrar() {
         $usuario->setAMaterno(filter_input(INPUT_POST, "Amaterno"));
         $usuario->setSectorID(filter_input(INPUT_POST, "Sector"));
         $usuario->setCorreo(filter_input(INPUT_POST, "Correo"));
+        $usuario->setToken(filter_input(INPUT_POST, "Token"));
         $pass = filter_input(INPUT_POST, "Contra");
         /**
          * Se encripta la contrasena del usuario
@@ -318,13 +319,13 @@ function Registrar() {
          */
         $Contra->setUsuarioID($resp);
         $Contra->setContra($pass);
+        $link='window.location.href ="/?email='.$usuario->getCorreo().'&token='.$usuario->getToken().'"';
         /**
          * Se manda a llamar a la funcion de insertar
          */
         $Contra->insert();
-        echo '<script type="text/javascript">alert("Registro Exitoso");</script>';
         echo "<script type='text/javascript'>";
-        echo "window.location.href ='/'";
+        echo $link;
         echo "</script>";
     } catch (Exception $exc) {
         echo $exc->getTraceAsString();
@@ -366,6 +367,15 @@ function RegistrarAdmin() {
          * Se manda a llamar a la funcion de insertar
          */
         $Contra->insert();
+        /**
+         * Se redirecciona a la pantalla principal
+         */
+        $email_user = 'sisuar.imta@gmail.com';
+        $email_password = '$imta2021$';
+        $the_subject = "Registro  Exitoso";
+        $address_to = $usuario->getCorreo(); //correo del paciente
+        $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
+        $phpmailer = new PHPMailer();
         echo "<script type='text/javascript'>";
         echo "window.location.href ='/aplicacion/vista/admin/admins.php'";
         echo "</script>";
@@ -450,14 +460,12 @@ function login($usu, $contra) {
  * @throws Exception
  * Funcion para restablecer contra
  */
-function restablecer($correo) {
+function restablecer() {
     /**
      * Se crea una instancia a usuario
      */
     $usuario = new Usuario;
-    $usuario->setCorreo($correo);
-    echo json_encode($usuario->restablecer());
-}
+    echo $usuario->restablecer(filter_input(INPUT_POST, "Correo"));}
 
 /**
  * funcion para actualizar
