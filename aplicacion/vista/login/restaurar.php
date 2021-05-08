@@ -42,26 +42,18 @@ require_once(__DIR__ . "/../plantillas/header.php");
 
 <script>
     function sendMail() {
-        $.ajax({
-            type: 'POST',
-            url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-            data: {
-                'key': '38b1a8d17624bc48ae7d599e34e97977-us1',
-                'message': {
-                    'from_email': 'sisuar.imta@gmail.com',
-                    'to': [{
-                        'email': 'maximilianocarsi@gmail.com',
-                        'name': 'RECIPIENT NAME (OPTIONAL)',
-                        'type': 'to'
-                    }],
-                    'autotext': 'true',
-                    'subject': 'YOUR SUBJECT HERE!',
-                    'html': 'YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!'
-                }
-            }
-        }).done(function(response) {
-            console.log(response); // if you're into that sorta thing
-        });
+        Email.send({
+                Host: "smtp.gmail.com",
+                Username: "sisuar.imta@gmail.com",
+                Password: "$imta2021$",
+                To: 'maximilianocarsi@gmail.com',
+                From: "sisuar.imta@gmail.com",
+                Subject: "Sending Email using javascript",
+                Body: "Well that was easy!!",
+            })
+            .then(function(message) {
+                alert("mail sent successfully")
+            });
     }
 
     function cancelarForm() {
