@@ -706,7 +706,7 @@ async function desgloce1(query) {
                             title: "Valor de la cosecha (miles $)",
                         },
                         {
-                            title: "Rend. (ton/ha)",
+                            title: "Rendimiento (ton/ha)",
                         },
                         {
                             title: "P.M.R ($/ton)",
@@ -1017,7 +1017,7 @@ async function desgloce2() {
                                 title: "Valor de la cosecha (miles $)",
                             },
                             {
-                                title: "Rend. (ton/ha)",
+                                title: "Rendimiento (ton/ha)",
                             },
                             {
                                 title: "P.M.R ($/ton)",
@@ -1372,7 +1372,7 @@ async function desgloce3() {
                                             title: "Valor de la cosecha (miles $)",
                                         },
                                         {
-                                            title: "Rend. (ton/ha)",
+                                            title: "Rendimiento (ton/ha)",
                                         },
                                         {
                                             title: "P.M.R ($/ton)",
@@ -1779,7 +1779,7 @@ async function desgloce5() {
                                                         title: "Valor de la cosecha (miles $)",
                                                     },
                                                     {
-                                                        title: "Rend. (ton/ha)",
+                                                        title: "Rendimiento (ton/ha)",
                                                     },
                                                     {
                                                         title: "P.M.R ($/ton)",
@@ -2318,7 +2318,7 @@ async function desgloce6() {
                                                         title: "Valor de la cosecha (miles $)",
                                                     },
                                                     {
-                                                        title: "Rend. (ton/ha)",
+                                                        title: "Rendimiento (ton/ha)",
                                                     },
                                                     {
                                                         title: "P.M.R ($/ton)",

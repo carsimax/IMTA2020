@@ -701,7 +701,7 @@ async function desgloce1(query) {
                             title: "Volumen Bruto (miles de m³)*",
                         },
                         {
-                            title: "Rend. (ton/ha)",
+                            title: "Rendimiento (ton/ha)",
                         },
                         {
                             title: "P.M.R ($/ton)",
@@ -1037,7 +1037,7 @@ async function desgloce2() {
                                             title: "Volumen Bruto (miles de m³)*",
                                         },
                                         {
-                                            title: "Rend. (ton/ha)",
+                                            title: "Rendimiento (ton/ha)",
                                         },
                                         {
                                             title: "P.M.R ($/ton)",
@@ -1363,7 +1363,7 @@ async function desgloce3() {
                                 title: "Volumen Bruto (miles de m³)*",
                             },
                             {
-                                title: "Rend. (ton/ha)",
+                                title: "Rendimiento (ton/ha)",
                             },
                             {
                                 title: "P.M.R ($/ton)",
@@ -1725,7 +1725,7 @@ async function desgloce4() {
                                             title: "Volumen Bruto (miles de m³)*",
                                         },
                                         {
-                                            title: "Rend. (ton/ha)",
+                                            title: "Rendimiento (ton/ha)",
                                         },
                                         {
                                             title: "P.M.R ($/ton)",
@@ -2260,7 +2260,7 @@ async function desgloce5() {
                                             title: "Volumen Bruto (miles de m³)*",
                                         },
                                         {
-                                            title: "Rend. (ton/ha)",
+                                            title: "Rendimiento (ton/ha)",
                                         },
                                         {
                                             title: "P.M.R ($/ton)",
