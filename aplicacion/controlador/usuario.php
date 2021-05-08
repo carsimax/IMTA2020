@@ -443,12 +443,12 @@ function login($usu, $contra)
                  * Se retorna el estado de la operacion
                  */
                 if ($resp->getVerificar() == 0) {
-                    echo 'No verificado';
-                    session_unset($_SESSION['ID_Usuario']);
+                
                     /**
                      * Se utiliza la funcion destruir la sesion.
                      */
                     session_destroy();
+                    echo 'No verificado';
                 } else {
                     echo 1;
                 }
