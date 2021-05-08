@@ -17,7 +17,7 @@ set_time_limit(300);
 /**
  * Para que el controlador funcione de forma correcta, es necesario la llamada a los modelos necesarios en el mismo.
  */
-require_once(__DIR__ . "/../controlador/sesion.php");
+
 require_once(__DIR__ . "/../modelo/organismoestado.php");
 require_once(__DIR__ . "/../modelo/acuifero.php");
 require_once(__DIR__ . "/../modelo/acuiferomun.php");

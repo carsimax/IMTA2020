@@ -16,7 +16,7 @@ error_reporting(E_ALL);
  * Para que el controlador funcione de forma correcta, es necesario la llamada a los modelos necesarios en el mismo.
  */
 require_once("dbconnection.php");
-require_once(__DIR__ . "/../controlador/sesion.php");
+
 
 class FuenteModulo
 {
