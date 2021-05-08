@@ -43,7 +43,7 @@ if (filter_input(INPUT_POST, "Accion") == NULL) {
  * Desde aquí se determina a que función del controlador llamar.
  */
 switch ($accion) {
-    /**
+        /**
      * Funcion de login
      */
     case 'Login':
@@ -53,9 +53,9 @@ switch ($accion) {
             echo $exc->getTraceAsString();
         }
         break;
-    /**
-     * Funcion para verificar el usuario
-     */
+        /**
+         * Funcion para verificar el usuario
+         */
     case 'verificarUsuario':
         try {
             verificarUsuario(filter_input(INPUT_POST, "Usuario"));
@@ -63,9 +63,9 @@ switch ($accion) {
             echo $exc->getTraceAsString();
         }
         break;
-    /**
-     * funcion para verificar el correo
-     */
+        /**
+         * funcion para verificar el correo
+         */
     case 'verificarCorreo':
         try {
             verificarCorreo(filter_input(INPUT_POST, "Correo"));
@@ -73,9 +73,9 @@ switch ($accion) {
             echo $exc->getTraceAsString();
         }
         break;
-    /**
-     * Funcion para realizar el registro del usuario
-     */
+        /**
+         * Funcion para realizar el registro del usuario
+         */
     case 'Registro':
         try {
             Registrar();
@@ -97,9 +97,9 @@ switch ($accion) {
             echo $exc->getTraceAsString();
         }
         break;
-    /**
-     * Funcion para restablecer la contra
-     */
+        /**
+         * Funcion para restablecer la contra
+         */
     case 'Restablecer':
         try {
             restablecer();
@@ -107,9 +107,9 @@ switch ($accion) {
             echo $exc->getTraceAsString();
         }
         break;
-    /**
-     * Funcion para actualizar el usuario
-     */
+        /**
+         * Funcion para actualizar el usuario
+         */
     case 'Update':
         try {
             update();
@@ -173,7 +173,8 @@ switch ($accion) {
  * @return bool
  * Funcion para verificarusuario
  */
-function verificarUsuario($Usuario) {
+function verificarUsuario($Usuario)
+{
     try {
         /**
          * Se crea la instancia a usuario
@@ -199,7 +200,8 @@ function verificarUsuario($Usuario) {
  * @return bool
  * Funcion para verificar correo
  */
-function verificarCorreo($Correo) {
+function verificarCorreo($Correo)
+{
     try {
         /**
          * Se crea la instancia a usuario
@@ -224,7 +226,8 @@ function verificarCorreo($Correo) {
  * @return bool
  * Funcion para registrar el nuevo usuario
  */
-function Registrar() {
+function Registrar()
+{
     try {
         /**
          * Se crea la instancia al objeto usuario
@@ -319,7 +322,7 @@ function Registrar() {
          */
         $Contra->setUsuarioID($resp);
         $Contra->setContra($pass);
-        $link='window.location.href ="/?email='.$usuario->getCorreo().'&token='.$usuario->getToken().'"';
+        $link = 'window.location.href ="/?email=' . $usuario->getCorreo() . '&token=' . $usuario->getToken() . '"';
         /**
          * Se manda a llamar a la funcion de insertar
          */
@@ -333,7 +336,8 @@ function Registrar() {
     }
 }
 
-function RegistrarAdmin() {
+function RegistrarAdmin()
+{
     try {
         /**
          * Se crea la instancia al objeto usuario
@@ -391,7 +395,8 @@ function RegistrarAdmin() {
  * @return bool
  * Funcion del Login
  */
-function login($usu, $contra) {
+function login($usu, $contra)
+{
     try {
         /**
          * Creamos la instancia a usuario
@@ -437,7 +442,16 @@ function login($usu, $contra) {
                 /**
                  * Se retorna el estado de la operacion
                  */
-                echo 1;
+                if ($resp->getVerificar() == 0) {
+                    echo 'No verificado';
+                    session_unset($_SESSION['ID_Usuario']);
+                    /**
+                     * Se utiliza la funcion destruir la sesion.
+                     */
+                    session_destroy();
+                } else {
+                    echo 1;
+                }
             } else {
                 /**
                  * si la contra no coincide, se muestra el mensaje de error
@@ -460,17 +474,20 @@ function login($usu, $contra) {
  * @throws Exception
  * Funcion para restablecer contra
  */
-function restablecer() {
+function restablecer()
+{
     /**
      * Se crea una instancia a usuario
      */
     $usuario = new Usuario;
-    echo $usuario->restablecer(filter_input(INPUT_POST, "Correo"));}
+    echo $usuario->restablecer(filter_input(INPUT_POST, "Correo"));
+}
 
 /**
  * funcion para actualizar
  */
-function update() {
+function update()
+{
     /**
      * Se crea la instancia al objeto usuario
      */
@@ -513,7 +530,8 @@ function update() {
     }
 }
 
-function updateAdmin() {
+function updateAdmin()
+{
     /**
      * Se crea la instancia al objeto usuario
      */
@@ -555,14 +573,16 @@ function updateAdmin() {
     }
 }
 
-function Admins() {
+function Admins()
+{
     $Admins = new Usuario();
     /**
      * Regresa los registros de los acuiferos
      */
     echo json_encode($Admins->getAdmins());
 }
-function Comentarios() {
+function Comentarios()
+{
     $Admins = new Usuario();
     /**
      * Regresa los registros de los acuiferos
@@ -573,7 +593,8 @@ function Comentarios() {
 /**
  * Funcion para Eliminar un admin
  */
-function Eliminar() {
+function Eliminar()
+{
     /**
      * Se crea una instanica a un grupo de cultivo
      */
@@ -588,7 +609,8 @@ function Eliminar() {
     echo $Usuario->delete();
 }
 
-function getTodos() {
+function getTodos()
+{
     $Usuarios = new Usuario();
     /**
      * Regresa los registros de los acuiferos
@@ -596,7 +618,8 @@ function getTodos() {
     echo json_encode($Usuarios->getUsuarios());
 }
 
-function update2() {
+function update2()
+{
     /**
      * Se crea la instancia al objeto usuario
      */
@@ -639,7 +662,8 @@ function update2() {
     }
 }
 
-function Registrar2() {
+function Registrar2()
+{
     try {
         /**
          * Se crea la instancia al objeto usuario
@@ -784,7 +808,8 @@ function Registrar2() {
     }
 }
 
-function setComentario() {
+function setComentario()
+{
     /**
      * Se crea la instancia al objeto usuario
      */

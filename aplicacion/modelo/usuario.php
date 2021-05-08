@@ -41,8 +41,22 @@ class Usuario {
     private $sector_id;
     private $is_olvidad;
     private $Token;
+    private $Verificar;
 
 
+     /**
+     * @return mixed
+     */
+    public function getVerificar() {
+        return $this->Verificar;
+    }
+
+    /**
+     * @param mixed $is_olvidad
+     */
+    public function setVerificar($Verificar) {
+        $this->Verificar = $Verificar;
+    }
 
     /**
      * @return mixed
@@ -365,6 +379,7 @@ class Usuario {
                 $usuario->setCorreo($registro['correo']);
                 $usuario->setContra($registro['contra']);
                 $usuario->setIsOlvidad($registro['is_olvidada']);
+                $usuario->setVerificar($registro['verificar']);
             }
             return $usuario;
         } catch (PDOException $exc) {
