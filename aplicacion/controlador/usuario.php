@@ -324,8 +324,8 @@ function Registrar() {
         $Contra->insert();
         /**
          * Se redirecciona a la pantalla principal
-        $email_user = "sisuar_imta2019@outlook.com";
-        $email_password = "v3emLED5dB;D";
+        $email_user = 'sisuar.imta@gmail.com';
+        $email_password = '$imta2021$';
         $the_subject = "Registro  Exitoso";
         $address_to = $usuario->getCorreo(); //correo del paciente
         $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
@@ -333,7 +333,7 @@ function Registrar() {
         $phpmailer->Username = $email_user;
         $phpmailer->Password = $email_password;
         $phpmailer->SMTPSecure = 'tls';
-        $phpmailer->Host = "smtp.live.com"; // GMail
+        $phpmailer->Host = 'smtp.gmail.com'; // GMail
         $phpmailer->Port = 587;
         $phpmailer->IsSMTP(); // use SMTP
         $phpmailer->SMTPAuth = true;
@@ -406,8 +406,8 @@ function RegistrarAdmin() {
         /**
          * Se redirecciona a la pantalla principal
          */
-        $email_user = "sisuar_imta2019@outlook.com";
-        $email_password = "v3emLED5dB;D";
+        $email_user = 'sisuar.imta@gmail.com';
+        $email_password = '$imta2021$';
         $the_subject = "Registro  Exitoso";
         $address_to = $usuario->getCorreo(); //correo del paciente
         $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
@@ -417,7 +417,7 @@ function RegistrarAdmin() {
         $phpmailer->Username = $email_user;
         $phpmailer->Password = $email_password;
         $phpmailer->SMTPSecure = 'tls';
-        $phpmailer->Host = "smtp.live.com"; // GMail
+        $phpmailer->Host = 'smtp.gmail.com'; // GMail
         $phpmailer->Port = 587;
         $phpmailer->IsSMTP(); // use SMTP
         $phpmailer->SMTPAuth = true;
@@ -533,8 +533,8 @@ function restablecer() {
     $usuario = new Usuario;
     $usuario->setCorreo(filter_input(INPUT_POST, "Correo"));
     if ($usuario->restablecer() == 1) {
-        $email_user = "sisuar_imta2019@outlook.com";
-        $email_password = "v3emLED5dB;D";
+        $email_user = 'sisuar.imta@gmail.com';
+        $email_password = '$imta2021$';
         $the_subject = "Restablecimiento de contraseña";
         $address_to = $usuario->getCorreo(); //correo del paciente
         $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
@@ -545,7 +545,7 @@ function restablecer() {
         $phpmailer->Username = $email_user;
         $phpmailer->Password = $email_password;
         $phpmailer->SMTPSecure = 'tls';
-        $phpmailer->Host = "smtp.live.com"; // GMail
+        $phpmailer->Host = 'smtp.gmail.com'; // GMail
         $phpmailer->Port = 587;
         $phpmailer->IsSMTP(); // use SMTP
         $phpmailer->SMTPAuth = true;
@@ -853,8 +853,8 @@ function Registrar2() {
         $Contra->insert();
         /**
          * Se redirecciona a la pantalla principal
-        $email_user = "sisuar_imta2019@outlook.com";
-        $email_password = "v3emLED5dB;D";
+        $email_user = 'sisuar.imta@gmail.com';
+        $email_password = '$imta2021$';
         $the_subject = "Registro  Exitoso";
         $address_to = $usuario->getCorreo(); //correo del paciente
         $from_name = "Sistema de Información Sobre el Uso del Agua de Riego a Nivel Nacional";
@@ -862,7 +862,7 @@ function Registrar2() {
         $phpmailer->Username = $email_user;
         $phpmailer->Password = $email_password;
         $phpmailer->SMTPSecure = 'tls';
-        $phpmailer->Host = "smtp.live.com"; // GMail
+        $phpmailer->Host = 'smtp.gmail.com'; // GMail
         $phpmailer->Port = 587;
         $phpmailer->IsSMTP(); // use SMTP
         $phpmailer->SMTPAuth = true;
