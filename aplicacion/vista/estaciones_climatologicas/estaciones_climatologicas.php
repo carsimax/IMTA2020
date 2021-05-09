@@ -41,15 +41,7 @@ require_once(__DIR__ . "/../plantillas/header.php");
                 </div>
             </div>
             <hr>
-            <div id="divPrioridad">
-                <div class="d-flex justify-content-center">
-                    <h6>Prioridad de Vizualización</h6>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <input id="Prioridad" type="checkbox" data-toggle="toggle" data-on="Tabular" data-off="Geoespacial" checked>
-                </div>
-                <br>
-            </div>
+            <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
             <!--Resultado-->
             <div class="col-sm" id="pantalla">
                 <div class="row" id='tabla'>

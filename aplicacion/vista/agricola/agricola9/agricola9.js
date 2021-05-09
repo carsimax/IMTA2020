@@ -139,17 +139,9 @@ function concatQuery() {
 }
 
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Realizando la consulta",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Realizando consulta");
     $('#nav-tab-acu a[href="#nav-01"]').tab("show");
-    await deshabilitar();
+    deshabilitar();
     const cultivos = concatValoresSelect('#Cultivos', 'cultivo_id=');
     if (cultivos !== "") {
         data = "Accion=ConsultaAcuifero&modulo_id=12";
@@ -173,11 +165,7 @@ async function Consultar() {
 
         await Swal.close();
     } else {
-        swal(
-            "Algo está mal.",
-            "Todos los filtros tienen que tener al menos un elemento seleccionado"
-        );
-        await habilitar();
+        habilitar();
         $("#pantalla").hide();
         $("#divPrioridad").hide();
         $("#botonMapa").hide();
@@ -262,21 +250,7 @@ async function desgloce1(query) {
     document.getElementById("nav-01").innerHTML = "";
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-01").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
-        /*
-        *
-        * @type String
-        * * Variable para enviar la sentancia al controlador
-        * *
-        * */
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by estado,cultivo"
         var cadena = "query=" + query2 + "&Accion=getConsulta";
         /*
@@ -584,15 +558,7 @@ async function desgloce1(query) {
 async function desgloce2() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-02").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by estado,municipio,cultivo"
         var cadena = "query=" + query2 + "&Accion=getConsulta";
         /*
@@ -990,15 +956,7 @@ async function desgloce2() {
 async function desgloce3() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-03").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by estado,municipio,ciclo,cultivo"
         var cadena = "query=" + query2 + "&Accion=getConsulta";
         /*

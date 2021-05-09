@@ -28,15 +28,7 @@ async function Anios() {
 * @constructor
 */
 async function Organismos() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Cargando datos");
   /**
    * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
    */
@@ -179,7 +171,7 @@ async function limpiarMunicipio() {
   $("#Acuiferos").multiselect("reset");
   await limpiarAcuifero();
 }
-async function Sitios(){
+async function Sitios() {
   isFormCompleted('#Sitios');
 }
 
@@ -333,15 +325,7 @@ async function getPuntosMonitoreo() {
 
 
 async function Consultar() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Realizando la consulta",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Realizando la consulta");
   $('#nav-tab-acu a[href="#nav-01"]').tab("show");
   document.getElementById("nav-01").innerHTML = "";
   document.getElementById("nav-02").innerHTML = "";
@@ -411,16 +395,7 @@ async function Consultar() {
     }
     await habilitar();
   } else {
-    /**
-     *
-     * @returns {Promise<void>}
-     * Si algun selector esta vacio, se muestra un mensaje de error.
-     *
-     */
-    swal(
-      "Algo está mal.",
-      "Todos los filtros tienen que tener al menos un elemento seleccionado"
-    );
+
     await habilitar();
     $("#pantalla").hide();
     $("#botonMapa").hide();
@@ -2462,7 +2437,7 @@ async function distribucion3Est(query) {
                       {
                         alignment: "left",
                         //italics: true,
-                        text:"Distribución porcentual por Estado de Sólidos Suspendidos Totales",
+                        text: "Distribución porcentual por Estado de Sólidos Suspendidos Totales",
                         fontSize: 12.5,
                         margin: [10, 5],
                       },
@@ -3887,15 +3862,8 @@ async function loadShape() {
   await map.off();
   await map.remove();
   crearMapa();
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Mapa Geoespacial",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Cargando mapa geoespacial");
+
   /**
    * Cargamos Organismos
    */
@@ -3974,15 +3942,8 @@ async function loadShape() {
  * Funcion que esta al pendiente de las pestañas de los acuiferos
  */
 async function mostrarDEstado() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando contenido",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Cargando contenido");
+
   if (!$("#nav-03").html()) {
     var indicador = $("#indicador :selected").val();
     switch (indicador) {
@@ -4009,15 +3970,8 @@ async function mostrarDEstado() {
  * Funcion que esta al pendiente de las pestañas de los acuiferos
  */
 async function mostrarDMuni() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando contenido",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Cargando contenido");
+
   if (!$("#nav-04").html()) {
     var indicador = $("#indicador :selected").val();
     switch (indicador) {
@@ -4044,15 +3998,7 @@ async function mostrarDMuni() {
  * Funcion que esta al pendiente de las pestañas de los acuiferos
  */
 async function mostrarDEstacion() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando contenido",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Cargando contenido");
   if (!$("#nav-02").html()) {
     var indicador = $("#indicador :selected").val();
     switch (indicador) {

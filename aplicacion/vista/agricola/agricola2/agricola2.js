@@ -226,15 +226,7 @@ async function Distritos() {
  * @constructor
  */
 async function Consultar() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Realizando la consulta",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Realizando consulta");
   $('#nav-tab-acu a[href="#nav-03"]').tab("show");
   /**
    * Llmamos a deshabilitar y a limpiar los Distritos
@@ -285,10 +277,6 @@ async function Consultar() {
     await Historial();
     $("#referencias").show();
   } else {
-    swal(
-      "Algo está mal.",
-      "Todos los filtros tienen que tener al menos un elemento seleccionado"
-    );
     habilitar();
     $("#pantalla").hide();
     $("#divPrioridad").hide();
@@ -4735,8 +4723,6 @@ function fnExcelReport(IDTABLA) {
   }
   else                 //other browser not tested on IE 11
     sa = window.open('data:application/vnd.ms-Excel,' + encodeURIComponent(tab_text));
-
-  console.log(sa);
 
   return (sa);
 }

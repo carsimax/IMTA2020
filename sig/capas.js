@@ -416,7 +416,6 @@ function getEst_SIG(callback) {
 function getMuni_SIG(callback) {
     let Mun = '';
     $("#Municipios option:selected").each(function () {
-        alert("Entre")
         Mun += "id_municipio=" + $(this).val() + " or ";
     }).promise().done(function () {
         Mun = Mun.slice(0, -3);
@@ -608,11 +607,11 @@ function getAcu_SIG(callback) {
  * @param callback
  */
 function getPresa_SIG(callback) {
-    let Presa = '';
-    $("#Presas option:selected").each(function () {
-        Presa += "id_presa=" + $(this).val() + " or ";
+    let Estado = '';
+    $("#Estados option:selected").each(function () {
+        Estado += "estado_id=" + $(this).val() + " or ";
     }).promise().done(function () {
-        Presa = Presa.slice(0, -3);
+        Estado = Estado.slice(0, -3);
     });
     GroupoPresaSelect.clearLayers();
     var presasSHP = {
@@ -625,12 +624,13 @@ function getPresa_SIG(callback) {
         features: []
     };
 
-    var sig = "query=" + Presa + "&Accion=jsonPresa";
+    var sig = "query=" + Estado + "&Accion=jsonPresa";
     $.ajax({
         type: "POST",
         url: "/aplicacion/controlador/geoespacial.php",
         data: sig,
         success: function (resp) {
+            alert(resp);
             $.each(JSON.parse(resp), function (index, item) {
                 presasSHP.features.push(JSON.parse(item.json));
             });
@@ -649,13 +649,9 @@ function getPresa_SIG(callback) {
                             contenido =
                                 '<table class="table table-bordered"><thead><tr><th scope="col">Campo</th><th scope="col">Valor</th></tr></thead>' +
                                 '<tbody>' +
-                                //presa
                                 '<tr><th scope="row">Presa</th><td>' + item.nom_oficial + '</td></tr>' +
-                                //Estado
                                 '<tr><th scope="row">Estado</th><td>' + item.nombre + '</td></tr>' +
-                                //presa
                                 '<tr><th scope="row">Corriente</th><td>' + item.corriente + '</td></tr>' +
-                                //presa
                                 '<tr><th scope="row">Año Termino</th><td>' + item.anio_term + '</td></tr>' +
                                 '</tbody></table>';
                         }
@@ -883,7 +879,6 @@ function getPozo_SIG(callback) {
          * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
          */
         success: function (resp) {
-            //$("#infoReporteTituloP").val(resp);
             /**
              * Se crea una variable con las porpiedades de estilo de los puntos
              */
@@ -911,6 +906,9 @@ function getPozo_SIG(callback) {
                         cuenca: item.cuenca_id,
                         Latitud: item.lat,
                         Longitud: item.lon,
+                        VolAnual: item.vol_anual,
+                        Uso: item.uso.charAt(0).toUpperCase() + item.uso.slice(1),
+                        Anexo: item.anexo
                     },
                     geometry: {
                         type: "Point",
@@ -939,30 +937,20 @@ function getPozo_SIG(callback) {
              * @param l
              */
             onEachFeature: function popUp(f, l) {
-                var out = [];
                 if (f.properties) {
                     contenido =
                         '<table class="table table-bordered"><thead><tr><th scope="col">Campo</th><th scope="col">Valor</th></tr></thead>' +
                         '<tbody>' +
-                        //Organismo de Cuenca
-                        '<tr><th scope="row">Pozo</th><td>' + f.properties.ID + ' - ' + f.properties.TC + '</td></tr>' +
-                        //Organismo de Cuenca
+                        '<tr><th scope="row">Título de concesión-Anexo</th><td>' + f.properties.TC + '-' + f.properties.Anexo + '</td></tr>' +
                         '<tr><th scope="row">Región Hidrológica</th><td>' + f.properties.RH + '</td></tr>' +
-                        //Organismo de Cuenca
                         '<tr><th scope="row">Cuenca</th><td>' + f.properties.cuenca + '</td></tr>' +
-                        //Organismo de Cuenca
+                        '<tr><th scope="row">Uso</th><td>' + f.properties.Uso + '</td></tr>' +
                         '<tr><th scope="row">Latitud</th><td>' + f.properties.Latitud + '</td></tr>' +
-                        //Organismo de Cuenca
                         '<tr><th scope="row">Longitud</th><td>' + f.properties.Longitud + '</td></tr>' +
+                        '<tr><th scope="row">Volumen anual (m³)</th><td>' + f.properties.VolAnual + '</td></tr>' +
                         '</tbody></table>';
                     l.bindPopup(contenido);
-                    /**
-                     * Funcion para cuando se de clic en el punto se haga zoom en el
-                     * y se muestre su informacion
-                     */
-                    l.on("click", function () {
-                        centerLeafletMapOnMarker(map, this);
-                    });
+
                 }
             }
         });

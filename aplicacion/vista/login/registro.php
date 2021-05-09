@@ -12,24 +12,25 @@ $sectores = $registros->getTodos();
         <!--Nombre-->
         <div class="col-sm">
             <p>Nombre:</p>
-            <input type="text" class="form-control" name="Nombre" id="Nombre" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}">
+            <input type="text" placeholder="Solo texto" class="form-control" name="Nombre" id="Nombre" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}">
         </div>
         <!--Apellido Paterno-->
         <div class="col-sm">
             <p>Apellido Paterno:</p>
-            <input type="text" class="form-control" name="Apaterno" id="Apaterno" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}">
+            <input type="text" placeholder="Solo texto" class="form-control" name="Apaterno" id="Apaterno" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}">
         </div>
         <!--Apellido Materno-->
         <div class="col-sm">
             <p>Apellido Materno:</p>
-            <input type="text" class="form-control" name="Amaterno" id="Amaterno" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}">
+            <input type="text" placeholder="Solo texto" class="form-control" name="Amaterno" id="Amaterno" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}">
         </div>
     </div>
     <hr>
     <div class="row">
         <!--Usuario-->
         <div class="col-sm" id="divUsuario" value="OK">
-            <p>Usuario <font id="err_usu" col-smor="red"></font></p>
+            <p>Usuario <font id="err_usu" col-smor="red"></font>
+            </p>
             <input type="text" class="form-control" name="Usuario" id="Usuario" oninput="verificarUsuario()" required>
         </div>
     </div>
@@ -76,7 +77,8 @@ $sectores = $registros->getTodos();
     <div class="row">
         <!--Confirmar Contraseña-->
         <div class="col-sm" id="divContraV" value="OK">
-            <p>Verificar Contraseña: <font id="err_contraV" col-smor="red"></font> </p>
+            <p>Verificar Contraseña: <font id="err_contraV" col-smor="red"></font>
+            </p>
             <input type="password" class="form-control" name="ContraV" id="ContraV" oninput="veriContra()" required pattern="[A-Za-z0-9!?-]{8,12}">
         </div>
     </div>

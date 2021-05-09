@@ -9,7 +9,7 @@
     </div>
     <!--Campo de la Contraseña-->
     <div class="form-group">
-        <input on type="password" class="form-control" id="contra" placeholder="Contraseña"  onkeypress="return runScript(event)">
+        <input on type="password" class="form-control" id="contra" placeholder="Contraseña" onkeypress="return runScript(event)">
     </div>
     <!--Boton de guardar-->
     <a id="botonenviar" value="Enviar" type="submit" class="btn btn-gob btn-fill btn-block text-light">Iniciar Sesión</a>
@@ -19,21 +19,23 @@
         <a href="/aplicacion/vista/login/restaurar.php" aling="center">Olvidé mi contraseña</a>
         <br>
     </div>
-</form> 
+</form>
 <!--Scrip que valida el formulario de registro de los usuarios-->
 
 <script>
-
     //Funcion que esta atentan en todo momento
-    $(document).ready(function () {
+    $(document).ready(function() {
+
         //Cuando se da click en el boton de enviar, se ejecuta esta funcion
-        $("#botonenviar").click(async function () {
+        $("#botonenviar").click(async function() {
+
             //Aqui se valida la informacion del formulario
             if (validaForm()) {
                 Swal.fire({
                     title: 'Iniciando Sesión', // add html attribute if you want or remove
                     allowEscapeKey: false,
-    allowOutsideClick: false,
+                    allowOutsideClick: false,
+                    showConfirmButton: false,
                     onBeforeOpen: () => {
                         Swal.showLoading();
                     }
@@ -46,10 +48,10 @@
                     type: "POST",
                     url: "/aplicacion/controlador/usuario.php",
                     data: cadena,
-                    success: function (resp) {
+                    success: function(resp) {
                         if (resp == 1) {
-                            window.location.href = "/aplicacion/vista/principal.php";
                             Swal.close();
+                            window.location.href = "/aplicacion/vista/principal.php";
                         } else {
                             Swal.fire({
                                 icon: 'error',
@@ -103,7 +105,7 @@
                     type: "POST",
                     url: "/aplicacion/controlador/usuario.php",
                     data: cadena,
-                    success: function (resp) {
+                    success: function(resp) {
                         if (resp == 1) {
                             window.location.href = "/aplicacion/vista/principal.php";
                         } else {

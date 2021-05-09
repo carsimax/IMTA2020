@@ -7,14 +7,14 @@ function graficarPresa(datos) {
         barValueSpacing: 0,
         scales: {
             yAxes: [{
-                    ticks: {
-                        min: 0,
-                    },
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Hectómetros cúbicos (hm³)'  
-                    }
-                }]
+                ticks: {
+                    min: 0,
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Hectómetros cúbicos (hm³)'
+                }
+            }]
         }
     };
 

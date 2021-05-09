@@ -468,9 +468,6 @@ function getPresaMuni($query)
 function getPresas($query)
 {
     $Presa = new Presa();
-    /**
-     * Regresa los registros de las presas
-     */
     echo json_encode($Presa->getPresaTabla($query));
 }
 

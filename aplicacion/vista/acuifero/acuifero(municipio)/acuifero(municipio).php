@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -30,9 +31,9 @@ $Organismos = $registros->getTodos();
         <select onchange="Organismos()" name="Organismos[]" multiple id="Organismos">
             <?php
             foreach ($Organismos as $Organismo) {
-                ?>
-            <option value="<?php echo $Organismo['id_organismo'] ?>"><?php echo $Organismo['numero'] ?>
-                .<?php echo $Organismo['nombre'] ?> </option>
+            ?>
+                <option value="<?php echo $Organismo['id_organismo'] ?>"><?php echo $Organismo['numero'] ?>
+                    .<?php echo $Organismo['nombre'] ?> </option>
             <?php } ?>
         </select>
     </div>
@@ -72,5 +73,6 @@ $Organismos = $registros->getTodos();
 
 <!-- Funciones globales de los selects -->
 <script src="/sistema/functionsselect.js"></script>
+<script src="/aplicacion/vista/crud/alerts.js"></script>
 <!--importacion de las capas de informacion-->
 <script src="/aplicacion/vista/acuifero/acuifero(municipio)/acuifero(municipio).js"></script>

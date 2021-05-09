@@ -23,15 +23,7 @@ setEstiloSelect('#Municipios', 'Municipios', 'Buscar Municipio');
  * @constructor
  */
 async function Estados() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+
     /**
      * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
      */
@@ -85,15 +77,7 @@ async function Estados() {
  * @constructor
  */
 async function Municipios() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Cargando datos");
     /**
      * Esta línea de código llama a la función que limpia la capa de organismos de cuenca
      */
@@ -152,35 +136,12 @@ async function loadShape() {
     await map.off();
     await map.remove();
     crearMapa();
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Mapa Geoespacial",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     * Llamamos a la funcion que Carga los OC
-     */
+    alertaCargando("Por favor espere", "Cargando mapa geoespacial");
+
     getOC_SIG(function () {
-        /**
-         * Cargamos la funcion que carga los Estados
-         */
         getEst_SIG(function () {
-            /**
-             * Cargamos la funcion de los Acuiferos
-             */
             getMuni_SIG(function () {
-                /**
-                 * Cargamos Municipios
-                 */
                 getAcu_SIG(function () {
-                    /**
-                     * Agregamos los overlays
-                     * @type {{Estados: *, Acuiferos: *, "Organismos de Cuenca": *}}
-                     */
                     var overlays = {
                         "Organismos de Cuenca": GroupoOCSelect,
                         "Estados": GroupoEstSelect,
@@ -202,16 +163,7 @@ async function loadShape() {
  * @constructor
  */
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Realizando consulta",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-
+    alertaCargando("Por favor espere", "Realizando consulta");
     $("#referencias").show();
     $('#nav-tab-acu a[href="#nav-OC"]').tab("show");
     /**
@@ -223,11 +175,6 @@ async function Consultar() {
     var Est = "";
     var Acu = "";
     var Mun = "";
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //-------------------------Organismos de Cuenca-----------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
     //Colocamos los shapes
     await $("#Organismos option:selected")
         .each(async function () {
@@ -237,11 +184,6 @@ async function Consultar() {
         .always(async function () {
             OC = OC.slice(0, -3);
         });
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------Estados-----------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
 
     await $("#Estados option:selected")
         .each(async function () {
@@ -251,11 +193,7 @@ async function Consultar() {
         .always(async function () {
             Est = Est.slice(0, -3);
         });
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------Municipio---------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
+
     await $("#Municipios option:selected")
         .each(async function () {
             Mun += "id_municipio=" + $(this).val() + " or ";
@@ -264,11 +202,7 @@ async function Consultar() {
         .always(async function () {
             Mun = Mun.slice(0, -3);
         });
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------ACUIFERO-----------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
+
     await $("#Acuiferos option:selected")
         .each(async function () {
             Acu += "id_acuifero=" + $(this).val() + " or ";
@@ -277,15 +211,7 @@ async function Consultar() {
         .always(async function () {
             Acu = Acu.slice(0, -3);
         });
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //-----------------------Busqueda TABULAR-----------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
 
-    /**
-     * Se verifica que el query de Organismos ese vacio
-     */
     if (OC !== "" && Est !== "" && Mun !== "" && Acu !== "") {
         await sleep(1000);
         query =

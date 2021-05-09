@@ -241,15 +241,7 @@ async function getModulos() {
  * Funcion para realizar la consulta de las selecicones con sus respectivos shapes
  */
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Realizando la consulta",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Realizando consulta");
     $('#nav-tab-acu a[href="#nav-01"]').tab("show");
     /**
      * Llmamos a deshabilitar y a limpiar los Distritos
@@ -259,7 +251,7 @@ async function Consultar() {
     const Est = await selectEst();
     const DR = await selectDR();
     //const Fuente = await selectFuente();
-    const Mod=await selectModulo();
+    const Mod = await selectModulo();
     /**
      * Se verifica que el query de Organismos ese vacio
      */
@@ -271,16 +263,6 @@ async function Consultar() {
         await habilitar();
         await Historial();
     } else {
-        /**
-         *
-         * @returns {Promise<void>}
-         * Si algun selector esta vacio, se muestra un mensaje de error.
-         *
-         */
-        swal(
-            "Algo está mal.",
-            "Todos los filtros tienen que tener al menos un elemento seleccionado"
-        );
         await habilitar();
         $("#pantalla").hide();
         $("#divPrioridad").hide();
@@ -1115,10 +1097,10 @@ async function desgloce1(query) {
                             },
                         },
                         columnDefs: [
-                            {targets: [0], visible: false},
+                            { targets: [0], visible: false },
                             {
                                 className: 'dt-body-right',
-                                targets: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,34],
+                                targets: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
                             },
                         ],
                         language: {
@@ -1241,15 +1223,7 @@ async function desgloce1(query) {
 
 async function desgloce2() {
     if (!$("#nav-02").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-    allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query;
         /*
          *
@@ -1671,15 +1645,7 @@ async function desgloce2() {
 
 async function desgloce3() {
     if (!$("#nav-03").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-    allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
 
         document.getElementById("nav-03").innerHTML = "";
         $("#nav-03").append(
@@ -2204,7 +2170,7 @@ async function getCultivos() {
         title: "Por favor espere", // add html attribute if you want or remove
         html: "Cargando Datos",
         allowEscapeKey: false,
-    allowOutsideClick: false,
+        allowOutsideClick: false,
         onBeforeOpen: () => {
             Swal.showLoading();
         },

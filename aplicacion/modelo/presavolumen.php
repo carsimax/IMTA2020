@@ -22,7 +22,8 @@ require_once(__DIR__ . "/../controlador/sesion.php");
 /**
  * Class PresaVolumen
  */
-class PresaVolumen {
+class PresaVolumen
+{
 
     /**
      * @var
@@ -40,7 +41,6 @@ class PresaVolumen {
      */
     public function __construct()
     {
-        
     }
 
     /**
@@ -103,37 +103,38 @@ class PresaVolumen {
     {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
-        try {                       
-                $select = $db->prepare('INSERT INTO presa_volumen VALUES (0, :alt_cort ,  :cap_name ,  :cap_namo ,  :vol_alma , :presa_id , :anio_id)');
-                $select->bindValue('alt_cort', $this->getAltCort(), PDO::PARAM_INT);
-                $select->bindValue('cap_name', $this->getCapName(), PDO::PARAM_INT);
-                $select->bindValue('cap_namo', $this->getCapNamo(), PDO::PARAM_INT);
-                $select->bindValue('vol_alma', $this->getVolAlma(), PDO::PARAM_INT);
-                $select->bindValue('presa_id', $this->getPresaId(), PDO::PARAM_INT);
-                $select->bindValue('anio_id', $this->getAnioId(), PDO::PARAM_INT);
-                if ($select->execute()){
-                    //Se obtiene el ultimo registro
-                    $select = $db->prepare('SELECT MAX(id_presa_volumen) AS id FROM presa_volumen');
-                    $select->execute();
-                    $id = $select->fetch();
-                    $select = $db->prepare('INSERT INTO tabla_version VALUES(0,NOW(),:cadena)');
-                    $cadena = "El administrador " . $_SESSION['ID_Usuario'] . " insertó el registro volumétrico " . $id['id'] . " en la tabla presa_volumen";
-                    $select->bindValue('cadena', $cadena, PDO::PARAM_STR);
-                    return $select->execute();
-                }            
+        try {
+            $select = $db->prepare('INSERT INTO presa_volumen VALUES (0, :alt_cort ,  :cap_name ,  :cap_namo ,  :vol_alma , :presa_id , :anio_id)');
+            $select->bindValue('alt_cort', $this->getAltCort(), PDO::PARAM_INT);
+            $select->bindValue('cap_name', $this->getCapName(), PDO::PARAM_INT);
+            $select->bindValue('cap_namo', $this->getCapNamo(), PDO::PARAM_INT);
+            $select->bindValue('vol_alma', $this->getVolAlma(), PDO::PARAM_INT);
+            $select->bindValue('presa_id', $this->getPresaId(), PDO::PARAM_INT);
+            $select->bindValue('anio_id', $this->getAnioId(), PDO::PARAM_INT);
+            if ($select->execute()) {
+                //Se obtiene el ultimo registro
+                $select = $db->prepare('SELECT MAX(id_presa_volumen) AS id FROM presa_volumen');
+                $select->execute();
+                $id = $select->fetch();
+                $select = $db->prepare('INSERT INTO tabla_version VALUES(0,NOW(),:cadena)');
+                $cadena = "El administrador " . $_SESSION['ID_Usuario'] . " insertó el registro volumétrico " . $id['id'] . " en la tabla presa_volumen";
+                $select->bindValue('cadena', $cadena, PDO::PARAM_STR);
+                return $select->execute();
+            }
         } catch (PDOException $exc) {
             echo $exc;
             return null;
         }
     }
-    
-    public function existeRegistro(){
+
+    public function existeRegistro()
+    {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
             $select = $db->prepare('SELECT presa_id FROM presa_volumen WHERE presa_id=:presa_id AND anio_id=:anio_id');
             $select->bindValue('presa_id', $this->getPresaId(), PDO::PARAM_INT);
-            $select->bindValue('anio_id', $this->getAnioId(), PDO::PARAM_INT);            
+            $select->bindValue('anio_id', $this->getAnioId(), PDO::PARAM_INT);
             $select->execute();
             return $select->rowCount();
         } catch (PDOException $exc) {
@@ -143,7 +144,7 @@ class PresaVolumen {
             return false;
         }
     }
-    
+
 
     /**
      * @return mixed
@@ -262,8 +263,7 @@ class PresaVolumen {
             $select->bindValue('cap_namo', $this->getCapNamo(), PDO::PARAM_INT);
             $select->bindValue('vol_alma', $this->getVolAlma(), PDO::PARAM_INT);
             $select->bindValue('anio_id', $this->getAnioId(), PDO::PARAM_INT);
-            if ($select->execute())
-            {
+            if ($select->execute()) {
                 //insertamos en la tabla log
                 $select = $db->prepare('INSERT INTO tabla_version VALUES(0,NOW(),:cadena)');
                 $cadena = "El administrador " . $_SESSION['ID_Usuario'] . " actualizó el registro volumétrico " . $this->getIdPresaVolumen() . " en la tabla presa_volumen'";
@@ -318,7 +318,7 @@ class PresaVolumen {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT * FROM presa_volumen INNER JOIN anio on anio.id_anio=presa_volumen.anio_id
+            $select = $db->prepare('SELECT presa_id,nom_oficial, vol_alma, anio  FROM presa_volumen INNER JOIN anio on anio.id_anio=presa_volumen.anio_id
             INNER JOIN presa on presa.id_presa=presa_volumen.presa_id WHERE presa_id=:presa_id');
             $select->bindValue('presa_id', $query, PDO::PARAM_INT);
             $select->execute();
@@ -350,5 +350,4 @@ class PresaVolumen {
             return null;
         }
     }
-
 }

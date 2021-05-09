@@ -102,7 +102,7 @@ async function Cuencas() {
     }
 }
 
-async function Estaciones(){
+async function Estaciones() {
     isFormCompleted('#EstacionHidrometrica');
 }
 
@@ -185,17 +185,7 @@ async function habilitar() {
 
 
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Realizando consulta", // add html attribute if you want or remove
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        }
-    });
-
-
+    alertaCargando("Por favor espere", "Realizando consulta");
     //Se valida que se haya seleccionado algo
     var EstH = concatValoresSelect('#EstacionHidrometrica', 'id_estacion_hidrometrica=');
     //Busqueda tabular
@@ -246,13 +236,11 @@ async function Consultar() {
 
 
     } else {
-        swal("¡Cuidado!", "Todos los filtros tienen que tener al menos un elemento seleccionado");
         await habilitar();
         $("#pantalla").hide();
         $("#botonMapa").hide();
         $("#divPrioridad").hide();
         $("#referencias").hide();
-        await Swal.close();
     }
     await Historial();
 }

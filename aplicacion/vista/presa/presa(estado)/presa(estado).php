@@ -3,12 +3,10 @@
 //Requerimos del modelo de los organismos de cuanca disponibles
 require_once(__DIR__ . "/../../../modelo/organismo.php");
 $registros = new Organismo();
-//Obtenemos todos los registros
 $Organismos = $registros->getTodos();
 ?>
 
 <div class="row">
-    <!--Select del organismo de cuenca-->
     <div class="col-sm">
         <label>Organismo de Cuenca:</label>
         <select onchange="Organismos()" name="Organismos[]" multiple id="Organismos">
@@ -20,24 +18,11 @@ $Organismos = $registros->getTodos();
             <?php } ?>
         </select>
     </div>
-    <!--Fin del Select de los OC-->
-
-    <!--Select del Estados-->
     <div class="col-sm">
         <label>Estado:</label>
         <select onchange="Estados()" name="Estados[]" multiple id="Estados">
         </select>
     </div>
-    <!--Fin del Select de los Estados-->
-
-    <!--Select del Presas-->
-    <div class="col-sm">
-        <label>Presa:</label>
-        <select name="Presas[]" onchange="Presas()" multiple id="Presas">
-        </select>
-    </div>
-    <!--Fin del Select de los Estados-->
-    <!--Select del Acuiferos-->
 </div>
 <div class="row">
     <div class="col-sm">

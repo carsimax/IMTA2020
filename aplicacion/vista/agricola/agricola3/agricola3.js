@@ -56,14 +56,8 @@ async function Anios() {
           });
           $("#Organismos").multiselect("loadOptions", data);
         }
-      }).always(function () {
-        Swal.close();
       });
-    } else {
-      Swal.close();
     }
-  } else {
-    Swal.close();
   }
 }
 
@@ -273,8 +267,8 @@ async function Fuentes() {
   }
 }
 
-async function Distritos(){
-    isFormCompleted('#Distritos');
+async function Distritos() {
+  isFormCompleted('#Distritos');
 }
 
 async function limpiarAnios() {
@@ -282,7 +276,7 @@ async function limpiarAnios() {
   await limpiarOrganismos();
 }
 
- //Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas 
+//Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas 
 async function limpiarOrganismos() {
   $("#Estados").multiselect("reset");
   await limpiarEstados();
@@ -462,15 +456,7 @@ async function selectEst() {
 }
 
 async function Consultar() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Realizando la consulta",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Realizando consulta");
   /**
    * Llmamos a deshabilitar y a limpiar los Distritos
    */
@@ -897,17 +883,7 @@ async function Consultar() {
       await Swal.close();
     });
   } else {
-    /**
-     *
-     * @returns {Promise<void>}
-     * Si algun selector esta vacio, se muestra un mensaje de error.
-     *
-     */
-    swal(
-      "Algo está mal.",
-      "Todos los filtros tienen que tener al menos un elemento seleccionado"
-    );
-    await habilitar();
+    habilitar();
     await Swal.close();
     $("#pantalla").hide();
     $("#botonMapa").hide();

@@ -6,58 +6,24 @@
  * Ingeniería en informática IIF – 10A.
  * Sistema de Información Sobre el Uso de Agua de Riego en la Agricultura Nacional.
  */
-/* global layerscontrol, capaOrganismo, capaEstado, capaPresa, table, moment, tableV, map, shp */
-// alert(typeof($('#Organismos').val()));
 
 // Se aplica estilo a los selects
 setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismo');
 setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
 setEstiloSelect('#Presas', 'Presas', 'Buscar Presa');
 
-
-
-/**
- * Esta función controla todos los cambios del select de organismos de cuenca.
- * La función básicamente lo que realiza es leer todas las opciones seleccionadas desde la vista,
- * limpia las capas del mapa, limpia los select que dependen de él, prepara una sentencia MySQL y
- * retorna en este caso los estados que dependen de un organismo de cuenta además de los shapes de los organismos.
- * @constructor
- */
-
 async function Organismos() {
     await limpiarOrganismos();
     const query = await concatOrganismo();
-    /**
-     * Antes de realizar la consulta a la base de datos,
-     * es necesario verificar primero si el query contiene datos a buscar.
-     */
     if (query !== "") {
-        /**
-         * @type {string}
-         * Se crea una cadena que es la que se va a enviar por medio de Ajax,
-         * este contiene tanto el query anteriormente descrito como la acción que va realizar en el controlador de mapa
-         */
         const cadena = "query=" + query + "&Accion=Estados";
         var data = [];
-        /**
-         * Se manda a llamar por medio de Ajax a la función de estados en el controlador de mapa
-         */
         $.ajax({
             type: "POST",
             url: "/aplicacion/controlador/mapa.php",
             data: cadena,
-            /**
-             * @param resp
-             * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
-             */
             success: function (resp) {
-                /**
-                 * Primero se recorre el array con todos los estados devueltos por el controlador.
-                 */
                 $.each(JSON.parse(resp), function (index, item) {
-                    /**
-                     * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
-                     */
                     data.push({
                         name: item.estado,
                         value: item.id_estado,
@@ -66,103 +32,22 @@ async function Organismos() {
                 });
                 $("#Estados").multiselect("loadOptions", data);
             },
-        }).always(function () {
-            Swal.close();
         });
-    } else {
-        Swal.close();
     }
 }
 
-/**
- * Esta función controla todos los cambios del select de estados.
- * La función básicamente lo que realiza es leer todas las opciones seleccionadas desde la vista,
- * limpia las capas del mapa, limpia los select que dependen de él, prepara una sentencia MySQL y
- * retorna en este caso los Presas que dependen de un organismo de cuenta además de los shapes de los organismos.
- * @constructor
- */
-async function Estados() {
-    await limpiarEstados();
-    const query = await concatEstado();
-    /**
-     * Antes de realizar la consulta a la base de datos,
-     * es necesario verificar primero si el query contiene datos a buscar.
-     */
-    if (query !== "") {
-        /**
-         * @type {string}
-         * Se crea una cadena que es la que se va a enviar por medio de Ajax,
-         * este contiene tanto el query anteriormente descrito como la acción que va realizar en el controlador de mapa
-         */
-        const cadena = "query=" + query + "&Accion=Presas(Estado)";
-        var data = [];
-        /**
-         * Se manda a llamar por medio de Ajax a la función de estados en el controlador de mapa
-         */
-        $.ajax({
-            type: "POST",
-            url: "/aplicacion/controlador/mapa.php",
-            data: cadena,
-            /**
-             * @param resp
-             * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
-             */
-            success: function (resp) {
-                /**
-                 * Primero se recorre el array con todos los estados devueltos por el controlador.
-                 */
-                $.each(JSON.parse(resp), function (index, item) {
-                    /**
-                     * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de Presas
-                     */
-                    data.push({
-                        name: item.nom_oficial,
-                        value: item.id_presa,
-                        checked: false,
-                    });
-                });
-                $("#Presas").multiselect("loadOptions", data);
-            },
-        }).always(function () {
-            Swal.close();
-        });
-    } else {
-        Swal.close();
-    }
-}
-
-async function Presas() {
-    isFormCompleted('#Presas');
+function Estados() {
+    isFormCompleted('#Estados');
 }
 
 async function loadShape() {
     await map.off();
     await map.remove();
     crearMapa();
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Mapa Geoespacial",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     * Cargamos los OC
-     */
+    alertaCargando("Por favor espere", "Cargando mapa geoespacial");
     getOC_SIG(function () {
-        /**
-         * Cargamos los estados
-         */
         getEst_SIG(function () {
-            /**
-             * Cargamos las presas
-             */
             getPresa_SIG(function () {
-                /**
-                 * Colocamos los Layers
-                 */
                 var overlays = {
                     "Organismos de Cuenca": GroupoOCSelect,
                     "Estados": GroupoEstSelect,
@@ -177,42 +62,19 @@ async function loadShape() {
 }
 
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Realizando consulta", // add html attribute if you want or remove
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    }); 
-    /**
-     * Limpiamos la parte de Presas
-     */
-    await deshabilitar();
-    await limpiarPresa();
-    var OC = "";
-    var Est = "";
-    var Pres = "";
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //-------------------------Organismos de Cuenca-----------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //Colocamos los shapes
-    $("#Organismos option:selected")
+    alertaCargando("Por favor espere", "Realizando consulta");
+    deshabilitar();
+    var OC = "(";
+    var Est = "(";
+    await $("#Organismos option:selected")
         .each(async function () {
             OC += "id_organismo=" + $(this).val() + " or ";
         })
         .promise()
         .always(async function () {
             OC = OC.slice(0, -3);
+            OC += ")";
         });
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------Estados-----------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
 
     await $("#Estados option:selected")
         .each(async function () {
@@ -221,51 +83,28 @@ async function Consultar() {
         .promise()
         .always(async function () {
             Est = Est.slice(0, -3);
+            Est += ")";
         });
-
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------Presas-----------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    await $("#Presas option:selected")
-        .each(async function () {
-            Pres += "id_presa=" + $(this).val() + " or ";
-        })
-        .promise()
-        .always(async function () {
-            Pres = Pres.slice(0, -3);
-        });
-
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //-----------------------Busqueda TABULAR-----------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    /**
-     * Se verifica que el query de Organismos ese vacio
-     */
-    if (Pres !== "" && OC !== "" && Est !== "") {
+    if (OC !== "" && Est !== "") {
         //Se obtiene la cita con la información de las presas
         data = "Accion=getCitaConsulta&modulo_id=2";
         citas = construirReferencias(data, false);
-
-        const query = Pres + " GROUP by id_presa";
-        var cadena = "query=" + query + "&Accion=Presas";
+        var query = "query=" + Est + "&Accion=Presas";
         data = [];
         $.ajax({
             type: "POST",
             url: "/aplicacion/controlador/mapa.php",
-            data: cadena,
-            //Si el controlador devuelve una respuesta
+            data: query,
             success: async function (resp) {
                 $.each(JSON.parse(resp), function (index, item) {
                     data.push([
                         item.id_presa,
                         item.nombre_oficial,
-                        item.nom_comun,
                         item.corriente,
-                        item.nombre,
+                        numeral(Number.parseFloat(item.alt_cort)).format("0,0.00"),
+                        numeral(Number.parseFloat(item.cap_name)).format("0,0.00"),
+                        numeral(Number.parseFloat(item.cap_namo)).format("0,0.00"),
+                        item.estado,
                         item.anio_term,
                     ]);
                 });
@@ -273,7 +112,7 @@ async function Consultar() {
                 table = $("#tablaPresa").DataTable({
                     data: data,
                     columnDefs: [
-                        { className: 'dt-body-right', targets: [5] },
+                        { className: 'dt-body-right', targets: [3, 4, 5, 7] },
                         {
                             targets: 0,
                             data: null,
@@ -284,16 +123,22 @@ async function Consultar() {
                     dom: "Bfrtip",
                     columns: [
                         {
-                            title: "Volumen",
+                            title: "Ver detalle",
                         },
                         {
                             title: "Nombre Oficial",
                         },
                         {
-                            title: "Nombre Común",
+                            title: "Corriente",
                         },
                         {
-                            title: "Corriente",
+                            title: "Altura de la cortina (m)"
+                        },
+                        {
+                            title: "Capacidad al NAME (hm³)",
+                        },
+                        {
+                            title: "Capacidad al NAMO (hm³)",
                         },
                         {
                             title: "Estado",
@@ -309,7 +154,7 @@ async function Consultar() {
                             className: "btn btn-gob btn-sm",
                             text: "Exportar Excel",
                             exportOptions: {
-                                columns: [1, 2, 3, 4, 5],
+                                columns: [1, 2, 3, 4, 5, 6, 7],
                             },
                         },
                         {
@@ -321,12 +166,10 @@ async function Consultar() {
                             orientation: "portrait",
                             pageSize: "A4",
                             exportOptions: {
-                                columns: [1, 2, 3, 4, 5],
+                                columns: [1, 2, 3, 4, 5, 6, 7],
                             },
                             customize: function (doc) {
-                                //Remove the title created by datatTables
                                 doc.content.splice(0, 1);
-                                //Create a date string that we use in the footer. Format is dd-mm-yyyy
                                 var now = new Date();
                                 var jsDate =
                                     now.getDate() +
@@ -334,11 +177,8 @@ async function Consultar() {
                                     (now.getMonth() + 1) +
                                     "-" +
                                     now.getFullYear();
-                                // It's important to create enough space at the top for a header !!!
                                 doc.pageMargins = [20, 70, 20, 50];
-                                // Set the font size fot the entire document
                                 doc.defaultStyle.fontSize = 10;
-                                // Set the fontsize for the table header
                                 doc.styles.tableHeader.fontSize = 10;
                                 doc["header"] = function () {
                                     return {
@@ -349,7 +189,6 @@ async function Consultar() {
                                             },
                                             {
                                                 alignment: "left",
-                                                //italics: true,
                                                 text: "Consulta de presas",
                                                 fontSize: 12.5,
                                                 margin: [10, 5],
@@ -405,7 +244,7 @@ async function Consultar() {
                     ],
                     language: {
                         url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
-                    },
+                    }
                 });
                 //Verifica si el mapa es prioridad
                 var x = $('#Prioridad').prop('checked');
@@ -424,15 +263,11 @@ async function Consultar() {
                 }
             },
         }).always(async function () {
-            await habilitar();
+            habilitar();
             await Swal.close();
         });
     } else {
-        swal(
-            "Algo está mal.",
-            "Todos los filtros tienen que tener al menos un elemento seleccionado"
-        );
-        await habilitar();
+        habilitar();
         await $("#pantalla").hide();
         await $("#pantalla2").hide();
         await $("#divPrioridad").hide();
@@ -460,9 +295,6 @@ async function Historial() {
  * Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas
  */
 async function limpiarOrganismos() {
-    /**
-     * Limpia la capa de la cual dependen de organismos
-     */
     $("#Estados").multiselect("reset");
     await limpiarEstados();
 }
@@ -471,23 +303,9 @@ async function limpiarOrganismos() {
  * Funcion para limpiar la capa de estados
  */
 async function limpiarEstados() {
-    /**
-     * Llamos a limpiar Presifero
-     */
-    $("#Presas").multiselect("reset");
-    await limpiarPresa();
-}
-
-/**
- * Funcion para limpiar la capa de Presas
- */
-async function limpiarPresa() {
     map.off();
     map.remove();
     crearMapa();
-    /**
-     * Se limpia la tabla de Presas
-     */
     table.clear().draw();
     tableV.clear().draw();
     $("#pantalla").hide();
@@ -495,6 +313,7 @@ async function limpiarPresa() {
     $("#pantalla2").hide();
     $("#divPrioridad").hide();
 }
+
 
 async function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -522,36 +341,19 @@ function habilitar() {
  */
 async function concatOrganismo() {
     var query = "";
-    /**
-     * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
-     */
     $("#Organismos option:selected").each(function () {
         query += "organismo_id=" + $(this).val() + " or ";
     });
-    /**
-     * Al final el query quedara con un or al final, la siguiente línea quita ese or sobrante.
-     * @type {string}
-     */
     query = query.slice(0, -3);
     return query;
 }
 
-/**
- * Funcion que concatena los estados seleccionados del select
- * @returns {Promise<string>}
- */
+
 async function concatEstado() {
     var query = "";
-    /**
-     * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
-     */
     $("#Estados option:selected").each(function () {
         query += "edo_id=" + $(this).val() + " or ";
     });
-    /**
-     * Al final el query quedara con un or al final, la siguiente línea quita ese or sobrante.
-     * @type {string}
-     */
     query = query.slice(0, -3);
     return query;
 }

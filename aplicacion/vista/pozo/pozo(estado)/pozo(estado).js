@@ -242,15 +242,7 @@ async function loadShape(tipo) {
     await map.off();
     await map.remove();
     crearMapa();
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Mapa Geoespacial",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Cargando mapa geoespacial");
     if (tipo === "1") {
         /**
      * Cargamos los OC

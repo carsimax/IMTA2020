@@ -26,15 +26,6 @@ $(document).ready(async function () {
  * presenten en el select de los filtro de búsqueda de los acuiferos
  */
 $(document).on("change", "input[type=radio]", async function () {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando modulo",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
     $val = $('[name="filtro"]:checked').val();
     /**
      * Se remueve el mapa, para así evitar datos basura de mapas anteriores.
@@ -95,7 +86,6 @@ async function habilitar() {
 
 $('#Prioridad').change(async function () {
     var x = $(this).prop('checked');
-    debugger
     if (x) {
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#SeccionModal');
@@ -160,22 +150,8 @@ async function loadShape() {
     await map.off();
     await map.remove();
     crearMapa();
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Mapa Geoespacial",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     * Cargamos OC
-     */
+    alertaCargando("Por favor espere", "Cargando mapa geoespacial");
     getOC_SIG(function () {
-        /**
-         * Cargamos Estados
-         */
         getEst_SIG(function () {
             let val = $('[name="filtro"]:checked').val();
 
@@ -247,18 +223,7 @@ async function loadShape2() {
     await map.off();
     await map.remove();
     crearMapa();
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Mapa Geoespacial",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-        * Cargamos Estados
-        */
+    alertaCargando("Por favor espere", "Cargando datos");
     getEst_SIG(function () {
         getMuni_SIG(function () {
             var overlays = {

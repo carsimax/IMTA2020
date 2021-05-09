@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -38,25 +39,23 @@ $Usos = $registros->getTodos();
         <select class="form-control green" onchange="CambioTipo()" id="Tipos">
             <?php
             foreach ($Tipos as $Tipo) {
-                ?>
-            <option value="<?php echo $Tipo['id_tipo']; ?>"><?php echo $Tipo['tipo']; ?></option>
+            ?>
+                <option value="<?php echo $Tipo['id_tipo']; ?>"><?php echo $Tipo['tipo']; ?></option>
             <?php } ?>
         </select>
     </div>
     <div class="col-sm">
-        <!--Select del organismo de cuenca-->
         <label>Organismo de Cuenca:</label>
         <select class="form-control" onchange="Organismos()" id="Organismos">
             <option disabled selected value> -- Seleccione una opción -- </option>
             <?php
             foreach ($Organismos as $Organismo) {
-                ?>
-            <option value="<?php echo $Organismo['id_organismo'] ?>"><?php echo $Organismo['numero'] ?>. <?php echo $Organismo['nombre'] ?> </option>
+            ?>
+                <option value="<?php echo $Organismo['id_organismo'] ?>"><?php echo $Organismo['numero'] ?>. <?php echo $Organismo['nombre'] ?> </option>
             <?php } ?>
         </select>
     </div>
-    <!--Fin del Select de los OC-->
-    <!--Select del Estados-->
+
     <div class="col-sm" id="divEstado">
         <label>Estado:</label>
         <select class="form-control" onchange="Estados()" id="Estados">
@@ -77,14 +76,14 @@ $Usos = $registros->getTodos();
         <select onchange="getTitulo()" name="Usos[]" multiple id="Usos">
             <?php
             foreach ($Usos as $Uso) {
-                ?>
-            <option value="<?php echo $Uso['id_uso']; ?>"><?php echo $Uso['uso']; ?></option>
+            ?>
+                <option value="<?php echo $Uso['id_uso']; ?>"><?php echo $Uso['uso']; ?></option>
             <?php } ?>
         </select>
     </div>
 
     <!--Select del Titulos-->
-    <div class="col-sm" id="divTitulo">
+    <div class="col-sm-12 col-md-12 " id="divTitulo">
         <label>Titulo de Concesión:</label>
         <select name="Concesiones[]" multiple onchange="Concesiones()" id="Concesiones">
         </select>

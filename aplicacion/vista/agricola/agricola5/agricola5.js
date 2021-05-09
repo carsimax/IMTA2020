@@ -42,7 +42,7 @@ async function Anios() {
                      * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de estados
                      */
                     data.push({
-                        name: item.numero+'. '+item.OC,
+                        name: item.numero + '. ' + item.OC,
                         value: item.id_organismo,
                         checked: false,
                     });
@@ -149,7 +149,7 @@ async function Estados() {
 
 async function Ciclos() {
     $("#Distritos").multiselect("reset");
-    
+
     if ($("#Organismos option:selected").length != 0 &&
         $("#Estados option:selected").length != 0 &&
         $("#Ciclos option:selected").length != 0) {
@@ -273,15 +273,7 @@ async function Cultivos() {
  * Funcion para realizar la consulta de las selecicones con sus respectivos shapes
  */
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Realizando la consulta",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Realizando consulta");
     $('#nav-tab-acu a[href="#nav-01"]').tab("show");
     /**
      * Llmamos a deshabilitar y a limpiar los Distritos
@@ -298,7 +290,7 @@ async function Consultar() {
      * * Se verifica que el query de Organismos ese vacio
      * */
     if (OC !== "" && Est !== "" && DR !== "" && Ciclo !== "" && Cultivo !== "" && Anio !== "") {
-        data = "Accion=getCitaConsultaAnio&modulo_id=9&anios=anio_id=" + $( "#Anios" ).val();
+        data = "Accion=getCitaConsultaAnio&modulo_id=9&anios=anio_id=" + $("#Anios").val();
         citas = construirReferencias(data, true);
         query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ") AND (" + Anio + ")  AND (" + Ciclo + ") AND (" + Cultivo + ")";
         await desgloce1(query);
@@ -330,17 +322,8 @@ async function Consultar() {
          */
         await Swal.close();
     } else {
-        /**
-         *
-         * @returns {Promise<void>}
-         * Si algun selector esta vacio, se muestra un mensaje de error.
-         *
-         */
-        swal(
-            "Algo está mal.",
-            "Todos los filtros tienen que tener al menos un elemento seleccionado"
-        );
-        await habilitar();
+
+        habilitar();
         $("#pantalla").hide();
         $("#divPrioridad").hide();
         $("#botonMapa").hide();
@@ -583,7 +566,7 @@ async function desgloce1(query) {
      * Se coloca el encabezado
      */
     $("#nav-01").append(
-        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por organismo de cuenca: año agrícola: '+Anio+'</h3></div>'
+        '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por organismo de cuenca: año agrícola: ' + Anio + '</h3></div>'
     );
     /**
      * Funcion de ajax que se encarga de obtener la informacion
@@ -706,7 +689,7 @@ async function desgloce1(query) {
                             title: "Valor de la cosecha (miles $)",
                         },
                         {
-                            title: "Rend. (ton/ha)",
+                            title: "Rendimiento (ton/ha)",
                         },
                         {
                             title: "P.M.R ($/ton)",
@@ -849,21 +832,8 @@ async function desgloce1(query) {
 async function desgloce2() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-02").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-    allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
-        /*
-        *
-        * @type String
-        * * Variable para enviar la sentancia al controlador
-        * *
-        * */
+        alertaCargando("Por favor espere", "Generando tabla");
+
         var query2 = query + " GROUP by id_estado"
         var cadena = "query=" + query2 + "&Accion=DTTTabla";
         /*
@@ -871,7 +841,7 @@ async function desgloce2() {
          */
         document.getElementById("nav-02").innerHTML = "";
         $("#nav-02").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por entidad federativa, año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por entidad federativa, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -1017,7 +987,7 @@ async function desgloce2() {
                                 title: "Valor de la cosecha (miles $)",
                             },
                             {
-                                title: "Rend. (ton/ha)",
+                                title: "Rendimiento (ton/ha)",
                             },
                             {
                                 title: "P.M.R ($/ton)",
@@ -1164,21 +1134,7 @@ async function desgloce2() {
 async function desgloce3() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-03").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-    allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
-        /*
-         *
-         * @type String
-         * * Variable para enviar la sentancia al controlador
-         * *
-         * */
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by dtt_id"
         var cadena = "query=" + query2 + "&Accion=DTTTabla";
         /**
@@ -1186,7 +1142,7 @@ async function desgloce3() {
          */
         document.getElementById("nav-03").innerHTML = "";
         $("#nav-03").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por distrito de temporal tecnificado (organismo de cuenca),año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por distrito de temporal tecnificado (organismo de cuenca),año agrícola: ' + Anio + '</h3></div>'
         );
         /**
          *
@@ -1306,7 +1262,7 @@ async function desgloce3() {
                                  */
                                 $("#body").append(
                                     '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' +
-                                    OC +', año agrícola: '+Anio+
+                                    OC + ', año agrícola: ' + Anio +
                                     "</h4></div>" +
                                     '<div style="overflow-x:auto;">' +
                                     '<table id="T3-' + rha + '" class="table table-bordered nowrap"  width="100%">' +
@@ -1372,7 +1328,7 @@ async function desgloce3() {
                                             title: "Valor de la cosecha (miles $)",
                                         },
                                         {
-                                            title: "Rend. (ton/ha)",
+                                            title: "Rendimiento (ton/ha)",
                                         },
                                         {
                                             title: "P.M.R ($/ton)",
@@ -1515,15 +1471,7 @@ async function desgloce3() {
 
 async function desgloce4() {
     if (!$("#nav-04").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-    allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         /**
          * Creamos el desgloce por ciclo Agricola
          */
@@ -1546,15 +1494,7 @@ async function desgloce4() {
 async function desgloce5() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-05").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-    allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by dtt_id,ciclo_id,cultivo_id ORDER BY dtt_id,ciclo_id,cultivo"
         /*
          *
@@ -1567,7 +1507,7 @@ async function desgloce5() {
          */
         document.getElementById("nav-05").innerHTML = "";
         $("#nav-05").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por distrito de temporal tecnificado (cultivo), año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por distrito de temporal tecnificado (cultivo), año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -1708,7 +1648,7 @@ async function desgloce5() {
                                         if (data.length > 0) {
                                             $("#body4-" + anio + "").append(
                                                 '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' +
-                                                DRS +', año agrícola: '+Anio+
+                                                DRS + ', año agrícola: ' + Anio +
                                                 "</h4></div>" +
                                                 /*
                                                  * Se crea la tabla
@@ -1779,7 +1719,7 @@ async function desgloce5() {
                                                         title: "Valor de la cosecha (miles $)",
                                                     },
                                                     {
-                                                        title: "Rend. (ton/ha)",
+                                                        title: "Rendimiento (ton/ha)",
                                                     },
                                                     {
                                                         title: "P.M.R ($/ton)",
@@ -2068,15 +2008,7 @@ async function desgloce5() {
 async function desgloce6() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-06").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-    allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by cultivo_id,id_organismo,dtt_id"
         /*
          *
@@ -2090,7 +2022,7 @@ async function desgloce6() {
          */
         $("#nav-06").innerHTML = "";
         $("#nav-06").append(
-            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado nacional por cultivo, año agrícola: '+Anio+'</h3></div>'
+            '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado nacional por cultivo, año agrícola: ' + Anio + '</h3></div>'
         );
         /*
          *
@@ -2250,7 +2182,7 @@ async function desgloce6() {
                                              */
                                             $("#body5-" + anio + "").append(
                                                 '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>' +
-                                                JSON.parse(respC) + ', año agrícola: '+Anio+
+                                                JSON.parse(respC) + ', año agrícola: ' + Anio +
                                                 "</h3></div>"
                                             );
                                             /*
@@ -2318,7 +2250,7 @@ async function desgloce6() {
                                                         title: "Valor de la cosecha (miles $)",
                                                     },
                                                     {
-                                                        title: "Rend. (ton/ha)",
+                                                        title: "Rendimiento (ton/ha)",
                                                     },
                                                     {
                                                         title: "P.M.R ($/ton)",
@@ -2588,23 +2520,23 @@ async function grafica1(query2) {
              * Se coloca el bloque respectivo al anio y los canvas para colocar las graficas
              */
             $("#nav-04").append(
-                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada, año agrícola: '+Anio+'</h3></div>' +
+                '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Distribución de la superficie cosechada, año agrícola: ' + Anio + '</h3></div>' +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Ciclo agrícola, año agrícola: '+Anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Ciclo agrícola, año agrícola: ' + Anio + '</h4></div>' +
                 '<canvas id="G-1"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca, año agrícola: '+Anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Superficie cosechada y valor de la producción, por organismo de cuenca, año agrícola: ' + Anio + '</h4></div>' +
                 '<canvas id="G-4"></canvas>' +
                 '<canvas id="G-4-1"></canvas>' +
                 "</div>" +
                 "</div>" +
                 '<div class="row">' +
                 '<div class="col-sm">' +
-                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución de la superficie cosechada por organismo de cuenca y ciclo agrícola, año agrícola: '+Anio+'</h4></div>' +
+                '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>Distribución de la superficie cosechada por organismo de cuenca y ciclo agrícola, año agrícola: ' + Anio + '</h4></div>' +
                 '<canvas id="G-7"></canvas>' +
                 "</div>" +
                 "</div>"

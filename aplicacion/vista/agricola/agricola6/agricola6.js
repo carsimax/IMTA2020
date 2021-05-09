@@ -464,7 +464,7 @@ async function selectCultivo() {
  */
 async function getCultivos() {
   $("#Cultivos").multiselect("reset");
-  
+
   if ($("#Organismos option:selected").length != 0 &&
     $("#Estados option:selected").length != 0 &&
     $("#Ciclos option:selected").length != 0) {
@@ -519,21 +519,13 @@ async function getCultivos() {
 
 
 async function Consultar() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Realizando la consulta",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Realizando consulta");
 
   /**
    * Llmamos a deshabilitar y a limpiar los Distritos
    */
-  await deshabilitar();
-  await limpiarDR();
+  deshabilitar();
+  limpiarDR();
   const OC = await selectOrganismo();
   const Est = await selectEst();
   const DR = await selectDR();
@@ -1071,17 +1063,7 @@ async function Consultar() {
       await Swal.close();
     });
   } else {
-    /**
-     *
-     * @returns {Promise<void>}
-     * Si algun selector esta vacio, se muestra un mensaje de error.
-     *
-     */
-    swal(
-      "Algo está mal.",
-      "Todos los filtros tienen que tener al menos un elemento seleccionado"
-    );
-    await habilitar();
+    habilitar();
     await Swal.close();
     $("#pantalla").hide();
     $("#botonMapa").hide();

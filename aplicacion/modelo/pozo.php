@@ -546,12 +546,15 @@ class Pozo {
             $select = $db->prepare('SELECT
             pozo.id_pozo,
             titulo.id_titulo,
+            pozo.vol_anual,
+            LOWER(uso.uso) as uso,
+            pozo.anexo,
             reg_hidrologica.nombre as rh,
             pozo.cuenca_id,
             pozo.lat,
             pozo.lon
             FROM pozo 
-            INNER JOIN titulo on titulo.id_titulo=pozo.titulo_id
+            INNER JOIN titulo on titulo.id_titulo=pozo.titulo_id INNER JOIN uso on uso.id_uso=titulo.uso_id
             INNER JOIN reg_hidrologica on reg_hidrologica.id_reg_hidrologica=pozo.region_id WHERE ' . $query);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);

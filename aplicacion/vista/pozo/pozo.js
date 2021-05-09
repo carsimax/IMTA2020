@@ -12,7 +12,7 @@ tabla = $("#example").DataTable({
     dom: "Bfrtip",
     columns: [
         {
-            title: "Gráfica",
+            title: "Ver más",
             className: "dt-body-justify",
         },
         {
@@ -28,7 +28,7 @@ tabla = $("#example").DataTable({
             className: "dt-body-justify",
         },
         {
-            title: "Volumen de extracción de aguas nacionales (m3/año)",
+            title: "Volumen de extracción de aguas nacionales (m³/año)",
             className: "dt-body-right",
         },
         {
@@ -36,7 +36,7 @@ tabla = $("#example").DataTable({
             className: "dt-body-right",
         },
         {
-            title: "Volumen de aguas superficiales (m3/año)",
+            title: "Volumen de aguas superficiales (m³/año)",
             className: "dt-body-right",
         },
         {
@@ -44,7 +44,7 @@ tabla = $("#example").DataTable({
             className: "dt-body-right",
         },
         {
-            title: "Volumen de aguas subterráneas (m3/año)",
+            title: "Volumen de aguas subterráneas (m³/año)",
             className: "dt-body-right",
         },
         {
@@ -52,7 +52,7 @@ tabla = $("#example").DataTable({
             className: "dt-body-right",
         },
         {
-            title: "Volumen de descarga (m3/día)",
+            title: "Volumen de descarga (m³/día)",
             className: "dt-body-right",
         },
         {
@@ -60,7 +60,7 @@ tabla = $("#example").DataTable({
             className: "dt-body-right",
         },
         {
-            title: "Superficie (m2)",
+            title: "Superficie (m²)",
             className: "dt-body-right",
         },
     ],
@@ -210,7 +210,7 @@ tablaPozo = $("#tablaPozo").DataTable({
             className: "dt-body-right",
         },
         {
-            title: "Volumen Anual (m3)",
+            title: "Volumen anual (m³)",
             className: "dt-body-right",
         },
         {
@@ -338,20 +338,6 @@ $(document).ready(async function () {
  */
 
 $(document).on("change", "input[type=radio]", async function () {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando modulo",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     *
-     * @type {*|jQuery|string|undefined}
-     * Obtiene el valo del filtro
-     */
     $val = $('[name="filtro"]:checked').val();
     /**
      * Si el filtro esta vacio
@@ -395,15 +381,7 @@ $(document).on("change", "input[type=radio]", async function () {
  * Funcion que se accioina cuando se selecciona un titulo de concesion
  */
 $("#example").on("click", "button", async function () {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando contenido",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Cargando contenido");
     GroupoPozosSelect.clearLayers();
     $val = $("#Tipos").val();
     document.getElementById("divTablaPozo").innerHTML = "";
@@ -474,8 +452,8 @@ $("#example").on("click", "button", async function () {
                             item.acuifero,
                             item.cuenca_id,
                             numeral(Number.parseFloat(item.vol_anual)).format("0,0.00"),
-                            numeral(Number.parseFloat(item.lat)).format("0,0.00"),
-                            numeral(Number.parseFloat(item.lon)).format("0,0.00"),
+                            item.lat,
+                            item.lon
                         ]);
                         titulo = item.titulo_id;
                         document.getElementById("tituloP").innerHTML = "";
@@ -539,7 +517,7 @@ $("#example").on("click", "button", async function () {
                                 title: "Cuenca",
                             },
                             {
-                                title: "Volumen Anual (m3)",
+                                title: "Volumen anual (m³)",
                             },
                             {
                                 title: "Latitud",
@@ -739,7 +717,7 @@ $("#example").on("click", "button", async function () {
                                 title: "Cuenca",
                             },
                             {
-                                title: "Volumen Anual (m3)",
+                                title: "Volumen anual (m³)",
                             },
                             {
                                 title: "Fuente",
@@ -951,10 +929,10 @@ $("#example").on("click", "button", async function () {
                                 title: "Cuenca",
                             },
                             {
-                                title: "Volumen de descarga anual (m3)",
+                                title: "Volumen de descarga anual (m³)",
                             },
                             {
-                                title: "Volumen de descarga diario (m3)",
+                                title: "Volumen de descarga diario (m³)",
                             },
                             {
                                 title: "Procedencia",
@@ -1168,7 +1146,7 @@ $("#example").on("click", "button", async function () {
                                 title: "Cuenca",
                             },
                             {
-                                title: "Superficie (m2)",
+                                title: "Superficie (m²)",
                             },
                             {
                                 title: "Corriente",
@@ -1296,15 +1274,7 @@ $("#example").on("click", "button", async function () {
  * Funcion para la consulta de los pozos
  */
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Realizando consulta", // add html attribute if you want or remove
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Realizando consulta");
     $("#referencias").show();
     deshabilitar();
     /**
@@ -1329,22 +1299,11 @@ async function Consultar() {
         $("#botonMapa").hide();
         $("#pantalla2").hide();
         $("#divPrioridad").hide();
-        swal(
-            "Error!",
-            "Debe seleccionar al menos un titulo de concesión",
-            "warning"
-        );
         await Swal.close();
     }
     //Se construyen las referencias
     data = "Accion=ConsultaPozo&modulo_id=4";
     citas = construirReferencias(data, false);
-
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //-----------------------Busqueda TABULAR-----------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
     const query = await concatConsesion();
     var cadena = "query=" + query + "&Accion=TituloAcu";
     var data = [];
@@ -1407,31 +1366,31 @@ async function Consultar() {
                         title: "Titular",
                     },
                     {
-                        title: "Volumen de extracción de aguas nacionales (m3/año)",
+                        title: "Volumen de extracción de aguas nacionales (m³/año)",
                     },
                     {
                         title: "Número de anexos de aguas superficiales",
                     },
                     {
-                        title: "Volumen de aguas superficiales (m3/año)",
+                        title: "Volumen de aguas superficiales (m³/año)",
                     },
                     {
                         title: "Número de anexos de aguas subterráneas",
                     },
                     {
-                        title: "Volumen de aguas subterráneas (m3/año)",
+                        title: "Volumen de aguas subterráneas (m³/año)",
                     },
                     {
                         title: "Número de anexos de descarga",
                     },
                     {
-                        title: "Volumen de descarga (m3/día)",
+                        title: "Volumen de descarga (m³/día)",
                     },
                     {
                         title: "Número de anexos de zonas federales",
                     },
                     {
-                        title: "Superficie (m2)",
+                        title: "Superficie (m²)",
                     },
                 ],
                 buttons: [
@@ -1574,7 +1533,7 @@ async function Consultar() {
                         className: "dt-body-right",
                     },
                     {
-                        title: "Volumen Anual (m3)",
+                        title: "Volumen anual (m³)",
                         className: "dt-body-right",
                     },
                     {
@@ -1785,16 +1744,7 @@ async function getTitulo() {
         );
         await Swal.close();
     } else {
-        Swal.fire({
-            title: "Por favor espere",
-            html: "Cargando Datos", // add html attribute if you want or remove
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
-
+        alertaCargando("Por favor espere", "Cargando datos");
         var query = "(";
         //Estados
         if ($("#Estados option:selected").val() != null) {
@@ -1902,7 +1852,7 @@ async function cargarMapa() {
 }
 
 $('#Prioridad').change(async function () {
-    var tipo=$("#Tipos option:selected").val();
+    var tipo = $("#Tipos option:selected").val();
     var x = $(this).prop('checked');
     if (x) {
         //El mapa del modal al auxiliar

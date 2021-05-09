@@ -26,15 +26,6 @@ async function sleep(ms) {
 * presenten en el select de los filtro de búsqueda de los acuiferos
 */
 $(document).on("change", "input[type=radio]", async function () {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando modulo",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
     $val = $('[name="filtro"]:checked').val();
     /**
      * Si el filtro esta vacio
@@ -73,7 +64,6 @@ $(document).on("change", "input[type=radio]", async function () {
     await $("#divPrioridad").hide();
     await $("#botonMapa").hide();
     await $("#referencias").hide();
-    await Swal.close();
 });
 
 $('#Prioridad').change(async function () {

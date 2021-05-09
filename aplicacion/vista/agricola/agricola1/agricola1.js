@@ -23,17 +23,8 @@ setEstiloSelect('#Tenencias', 'Tenencias', 'Buscar Tenencia');
 
 async function Anios() {
     $('#Anios').addClass('green');
-    await limpiarOrganismos();
+    limpiarOrganismos();
     $("#Organismos").multiselect("reset");
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
     var query = '(';
     $("#Anios option:selected").each(function () {
         query += "anio_id=" + $(this).val() + " or ";
@@ -87,7 +78,7 @@ async function Anios() {
 async function Organismos() {
 
 
-    await limpiarOrganismos();
+    limpiarOrganismos();
     var query = "(";
     /**
      * Se tiene que recorrer el select de organismos de cuenca para encontrar todos los elementos seleccionados.
@@ -153,20 +144,12 @@ async function Organismos() {
 
 
 async function Estados() {
-    await limpiarEstados();
+    limpiarEstados();
 }
 
 async function Tenencias() {
     $("#Distritos").multiselect("reset");
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Cargando datos");
     if ($("#Organismos option:selected").length != 0 &&
         $("#Estados option:selected").length != 0 &&
         $("#Ciclos option:selected").length != 0 &&
@@ -242,15 +225,7 @@ async function Cultivos() {
  * Funcion para realizar la consulta de las selecicones con sus respectivos shapes
  */
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Realizando la consulta",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Realizando la consulta");
     $('#nav-tab-acu a[href="#nav-01"]').tab("show");
     /**
      * Llmamos a deshabilitar y a limpiar los Distritos
@@ -271,7 +246,7 @@ async function Consultar() {
         data = "Accion=ConsultaAgricola&modulo_id=3&anios=" + Anio;
         citas = construirReferencias(data, true);
         query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ") AND (" + Anio + ") AND (" + Mod + ") AND (" + Ciclo + ") AND (" + Tenencia + ") AND (" + Cultivo + ")";
-        await desgloce1(query);
+        desgloce1(query);
         //Verifica si el mapa es prioridad
         var x = $('#Prioridad').prop('checked');
         if (x == false) {
@@ -290,10 +265,6 @@ async function Consultar() {
         await habilitar();
         await Historial();
     } else {
-        swal(
-            "Algo está mal.",
-            "Todos los filtros tienen que tener al menos un elemento seleccionado"
-        );
         await habilitar();
         $("#pantalla").hide();
         $("#divPrioridad").hide();
@@ -638,6 +609,9 @@ async function desgloce1(query) {
                 /**
                  * Se inserta la seccion al html
                  */
+
+                let rendimiento = (PROD / COS).toString();
+                rendimiento = rendimiento.slice(0, (rendimiento.indexOf(".")) + 3);
                 $("#nav-01").append(
                     '<div style="overflow-x:auto;">' +
                     '<table id="T1" class="table table-bordered nowrap" style="width:100%">' +
@@ -645,7 +619,7 @@ async function desgloce1(query) {
                     /**
                      * Se colocan los totales antes obtenidos
                      */
-                    '<td style="background-color:#CCD1D1" align="center"><b>Suma Total:</b></th>' +
+                    '<td style="background-color:#CCD1D1" align="center"><b>Totales</b></th>' +
                     '<td style="background-color:#CCD1D1" align="right"><b>' +
                     numeral(Math.round(SEM)).format("0,0") +
                     "</b></td>" +
@@ -658,14 +632,12 @@ async function desgloce1(query) {
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VAL / 1000000).toFixed(2)).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_NETO).toFixed(2)).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_BRUTO).toFixed(2)).format("0,0.00") + "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right" ><b>' +
-                    numeral(parseFloat(PROD / COS).toFixed(2)).format("0,0.00") +
-                    "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right" ><b>' + rendimiento + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' +
                     numeral(Math.round(VAL / PROD)).format("0,0.00") +
                     "</b></td>" +
                     "</tr></tfoot></table>" +
-                    '</div>'
+                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                 );
                 /**
                  *
@@ -695,13 +667,13 @@ async function desgloce1(query) {
                             title: "Valor de la cosecha (millones $)",
                         },
                         {
-                            title: "Volumen Neto (miles de m³)*",
+                            title: "Volumen neto (miles de m³)*",
                         },
                         {
-                            title: "Volumen Bruto (miles de m³)*",
+                            title: "Volumen bruto (miles de m³)*",
                         },
                         {
-                            title: "Rend. (ton/ha)",
+                            title: "Rendimiento (ton/ha)",
                         },
                         {
                             title: "P.M.R ($/ton)",
@@ -847,15 +819,8 @@ async function desgloce1(query) {
 async function desgloce2() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-02").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
+
         var query2 = query + " GROUP by id_organismo,anio_id,distrito_riego_id ORDER by id_organismo"
         /**
          *
@@ -879,6 +844,7 @@ async function desgloce2() {
         /**
          * Ajax que oobtiene los datos a mostrar en el desgloce 2
          */
+        alert(cadena)
         $.ajax({
             type: "POST",
             url: "/aplicacion/controlador/mapa.php",
@@ -962,49 +928,28 @@ async function desgloce2() {
                              * Si el array  contiene datos
                              */
                             if (data.length > 0) {
-                                /*
-                                 * Se cocola en encabezado y la tabla del respectivo OC
-                                 */
+
+                                let totalRendimiento = (PROD / COS).toString();
+                                totalRendimiento = totalRendimiento.slice(0, (totalRendimiento.indexOf(".")) + 3);
+                                // Se aniaden los totales hasta abajo
+
                                 $("#body2").append(
                                     '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom">' +
                                     '<h4> <b>Organismo de cuenca: </b>' + OC + ', año agrícola: ' + Anio + '</h4></div>' +
                                     '<div style="overflow-x:auto;">' +
                                     '<table id="T2-' + rha + '" class="table table-bordered nowrap" style="width:100%">' +
                                     "<tfoot><tr>" +
-                                    /*
-                                     * Se colocan los acumulados al pie de la tabla
-                                     */
-                                    '<td style="background-color:#CCD1D1" align="center"><b>Total Organismo de Cuenca</b></th>' +
-                                    '<td style="background-color:#CCD1D1" align="right"><b>' +
-                                    numeral(Math.round(parseFloat(SEM).toFixed(2))).format(
-                                        "0,0"
-                                    ) +
-                                    "</b></td>" +
-                                    '<td style="background-color:#CCD1D1" align="right"><b>' +
-                                    numeral(Math.round(parseFloat(COS).toFixed(2))).format(
-                                        "0,0"
-                                    ) +
-                                    "</b></td>" +
-                                    '<td style="background-color:#CCD1D1" align="right"><b>' +
-                                    numeral(Math.round(parseFloat(PROD).toFixed(2))).format(
-                                        "0,0.00"
-                                    ) +
-                                    "</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="center"><b>Totales</b></th>' +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(parseFloat(SEM).toFixed(2))).format("0,0") + "</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(parseFloat(COS).toFixed(2))).format("0,0") + "</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(parseFloat(PROD).toFixed(2))).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VAL / 1000).toFixed(2)).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_NETO).toFixed(2)).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_BRUTO).toFixed(2)).format("0,0.00") + "</b></td>" +
-                                    '<td style="background-color:#CCD1D1" align="right" ><b>' +
-                                    numeral(parseFloat(PROD / COS).toFixed(2)).format(
-                                        "0,0.00"
-                                    ) +
-                                    "</b></td>" +
-                                    '<td style="background-color:#CCD1D1" align="right"><b>' +
-                                    numeral(
-                                        Math.round(parseFloat(VAL / PROD).toFixed(2))
-                                    ).format("0,0.00") +
-                                    "</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + totalRendimiento + "</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(parseFloat(VAL / PROD).toFixed(2))).format("0,0.00") + "</b></td>" +
                                     "</tr></tfoot></table>" +
-                                    '</div><hr>'
+                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
 
                                 );
                                 /*
@@ -1031,13 +976,13 @@ async function desgloce2() {
                                             title: "Valor de la cosecha (miles $)",
                                         },
                                         {
-                                            title: "Volumen Neto (miles de m³)*",
+                                            title: "Volumen neto (miles de m³)*",
                                         },
                                         {
-                                            title: "Volumen Bruto (miles de m³)*",
+                                            title: "Volumen bruto (miles de m³)*",
                                         },
                                         {
-                                            title: "Rend. (ton/ha)",
+                                            title: "Rendimiento (ton/ha)",
                                         },
                                         {
                                             title: "P.M.R ($/ton)",
@@ -1183,26 +1128,9 @@ async function desgloce2() {
 async function desgloce3() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-03").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
-        /*
-        *
-        * @type String
-        * * Variable para enviar la sentancia al controlador
-        * *
-        * */
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by id_estado"
         var cadena = "query=" + query2 + "&Accion=DistritosOC";
-        /*
-         * Se limpia el HTML y se coloca el encabezado
-         */
         document.getElementById("nav-03").innerHTML = "";
         $("#nav-03").append(
             '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Concentrado agrícola por entidad federativa, año agrícola: ' + Anio + '</h3></div>'
@@ -1268,7 +1196,7 @@ async function desgloce3() {
                         numeral(Math.round(item.SEM)).format("0,0"),
                         numeral(Math.round(item.COS)).format("0,0"),
                         numeral(item.PROD).format("0,0.00"),
-                        numeral(item.VAL).format("0,0.00"),
+                        numeral((item.VAL / 1000)).format("0,0.00"),
                         numeral(item.VOL_NETO).format("0,0.00"),
                         numeral(item.VOL_BRUTO).format("0,0.00"),
                         numeral(item.REND).format("0,0.00"),
@@ -1331,7 +1259,7 @@ async function desgloce3() {
                         "</b></td>" +
                         "</tr></tfoot></table>" +
                         "</div>" +
-                        "</div>"
+                        '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                     );
                     /*
                      * Se crea la instancia de datatables
@@ -1357,13 +1285,13 @@ async function desgloce3() {
                                 title: "Valor de la cosecha (miles $)",
                             },
                             {
-                                title: "Volumen Neto (miles de m³)*",
+                                title: "Volumen neto (miles de m³)*",
                             },
                             {
-                                title: "Volumen Bruto (miles de m³)*",
+                                title: "Volumen bruto (miles de m³)*",
                             },
                             {
-                                title: "Rend. (ton/ha)",
+                                title: "Rendimiento (ton/ha)",
                             },
                             {
                                 title: "P.M.R ($/ton)",
@@ -1510,25 +1438,9 @@ async function desgloce3() {
 async function desgloce4() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-05").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by modalidad,distrito_riego_id,ciclo_id,cultivo_id ORDER BY ciclo_id,modalidad,cultivo"
-        /*
-         *
-         * @type String
-         * Variable con los datos a enviar al controlador
-         */
         var cadena = "query=" + query2 + "&Accion=DistritosOC";
-        /*
-         * Se limpia el html y se coloca el encabezado
-         */
         document.getElementById("nav-05").innerHTML = "";
         $("#nav-05").append(
             '<div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h3>Estadística agrícola por distrito de riego, año agrícola: ' + Anio + '</h3></div>'
@@ -1686,7 +1598,7 @@ async function desgloce4() {
                                     numeral(Math.round(VAL / PROD)).format("0,0.00") +
                                     "</b></td>" +
                                     "</tr></tfoot></table>" +
-                                    '</div><hr>'
+                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
 
                                 );
                                 /*
@@ -1719,13 +1631,13 @@ async function desgloce4() {
                                             title: "Valor de la cosecha (miles $)",
                                         },
                                         {
-                                            title: "Volumen Neto (miles de m³)*",
+                                            title: "Volumen neto (miles de m³)*",
                                         },
                                         {
-                                            title: "Volumen Bruto (miles de m³)*",
+                                            title: "Volumen bruto (miles de m³)*",
                                         },
                                         {
-                                            title: "Rend. (ton/ha)",
+                                            title: "Rendimiento (ton/ha)",
                                         },
                                         {
                                             title: "P.M.R ($/ton)",
@@ -2022,15 +1934,7 @@ async function desgloce4() {
 async function desgloce5() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-06").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by cultivo_id,id_organismo,distrito_riego_id"
         /*
          *
@@ -2225,7 +2129,7 @@ async function desgloce5() {
                                     ) +
                                     "</b></td>" +
                                     "</tr></tfoot></table>" +
-                                    '</div><hr>'
+                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                                 );
                                 /*
                                  * Inicializacion en datatables
@@ -2254,13 +2158,13 @@ async function desgloce5() {
                                             title: "Valor de la cosecha (miles $)",
                                         },
                                         {
-                                            title: "Volumen Neto (miles de m³)*",
+                                            title: "Volumen neto (miles de m³)*",
                                         },
                                         {
-                                            title: "Volumen Bruto (miles de m³)*",
+                                            title: "Volumen bruto (miles de m³)*",
                                         },
                                         {
-                                            title: "Rend. (ton/ha)",
+                                            title: "Rendimiento (ton/ha)",
                                         },
                                         {
                                             title: "P.M.R ($/ton)",
@@ -3364,15 +3268,7 @@ async function grafica8(query2) {
 }
 
 async function getCultivos() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Datos",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Cargando datos");
     $("#Cultivos").multiselect("reset");
     if ($("#Distritos option:selected").length != 0) {
         var query = "(";
@@ -3440,15 +3336,8 @@ async function getCultivos() {
  */
 async function mostrarG1() {
     if (!$("#nav-04").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando gráficas");
+
         var query1 = query + " GROUP by ciclo";
         await grafica1(query1);
         var query2 = query + " GROUP by tenencia_id";

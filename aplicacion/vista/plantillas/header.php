@@ -9,7 +9,7 @@ if (!isset($_SESSION)) {
 
 <head>
     <title>Sistema de Información del Uso del Agua de Riego a Nivel Nacional</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--JAVASCRIPT-->
@@ -17,7 +17,7 @@ if (!isset($_SESSION)) {
     <!--CARGA DE LOS ARCHIVOS DE GOB MX-->
     <link href="/estilo/css/sisuar.css" rel="stylesheet">
     <link href="/estilo/css/bootstrap.css" rel="stylesheet">
-    <link rel="shortcut icon" href="https://www.gob.mx/cms/uploads/image/file/488329/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/imagenes/icono1.png" type="image/x-icon">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -59,16 +59,18 @@ if (!isset($_SESSION)) {
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <!--SweetAlert-->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-borderless/borderless.css  ">-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
     <!--ChartJs-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <!--JSPDF-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     <!--Scripts Personales-->
-    <!--<link rel="stylesheet" href="/estilo/css/sticky-footer.css">-->
-    <link rel="stylesheet" href="/estilo/css/gridCards.css">
+    <script src="/aplicacion/vista/crud/alerts.js"></script>
     <link rel="stylesheet" href="/estilo/css/multiselect.css">
     <link rel="stylesheet" href="/estilo/css/legend.css">
     <script src="/estilo/js/jquery.multiselect.js"></script>
@@ -76,7 +78,7 @@ if (!isset($_SESSION)) {
     <script src="/estilo/js/animatescroll.js"></script>
     <script src="/estilo/js/jquery.redirect.min.js"></script>
     <script src="/estilo/js/moment.js"></script>
-    <script src="/estilo/js/sweetalert.min.js"></script>
+    <!-- <script src="/estilo/js/sweetalert.min.js"></script> -->
     <script src="/estilo/js/logo.js"></script>
     <script>
         $(window).on("change", function() {

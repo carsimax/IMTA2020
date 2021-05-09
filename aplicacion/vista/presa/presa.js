@@ -8,23 +8,10 @@
  */
 citas = "";
 $(document).ready(async function () {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando modulo",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
     await $("#pantalla").hide();
     await $("#pantalla2").hide();
     await $("#divPrioridad").hide();
     await $("#botonMapa").hide();
-    /**
-     * @type {jQuery}
-     * Cargamo la tabla por defecto
-     */
     crearMapa();
     await $("#divFiltro").load("presa(estado)/presa(estado).php");
     await Swal.close();
@@ -32,20 +19,34 @@ $(document).ready(async function () {
 
 //Tabla Presas
 table = $("#tablaPresa").DataTable({
-    columnDefs: [{className: 'dt-body-right', targets: [5]}],
+    columnDefs: [
+        { className: 'dt-body-right', targets: [3, 4, 5] },
+        {
+            targets: 0,
+            data: null,
+            defaultContent:
+                '<button class="btn btn-gob text-ligth  btn-block"><i class="fas fa-water"></i></button>',
+        },
+    ],
     dom: "Bfrtip",
     columns: [
         {
-            title: "Volumen",
+            title: "Ver detalle",
         },
         {
             title: "Nombre Oficial",
         },
         {
-            title: "Nombre Común",
+            title: "Corriente",
         },
         {
-            title: "Corriente",
+            title: "Altura de la cortina (m)"
+        },
+        {
+            title: "Capacidad al NAME (hm³)",
+        },
+        {
+            title: "Capacidad al NAMO (hm³)",
         },
         {
             title: "Estado",
@@ -61,7 +62,7 @@ table = $("#tablaPresa").DataTable({
             className: "btn btn-gob btn-sm",
             text: "Exportar Excel",
             exportOptions: {
-                columns: [1, 2, 3, 4, 5],
+                columns: [1, 2, 3, 4, 5, 6, 7],
             },
         },
         {
@@ -76,17 +77,16 @@ table = $("#tablaPresa").DataTable({
                 columns: [1, 2, 3, 4, 5],
             },
             customize: function (doc) {
-                //Remove the title created by datatTables
                 doc.content.splice(0, 1);
-                //Create a date string that we use in the footer. Format is dd-mm-yyyy
                 var now = new Date();
                 var jsDate =
-                    now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
-                // It's important to create enough space at the top for a header !!!
+                    now.getDate() +
+                    "-" +
+                    (now.getMonth() + 1) +
+                    "-" +
+                    now.getFullYear();
                 doc.pageMargins = [20, 70, 20, 50];
-                // Set the font size fot the entire document
                 doc.defaultStyle.fontSize = 10;
-                // Set the fontsize for the table header
                 doc.styles.tableHeader.fontSize = 10;
                 doc["header"] = function () {
                     return {
@@ -97,7 +97,6 @@ table = $("#tablaPresa").DataTable({
                             },
                             {
                                 alignment: "left",
-                                //italics: true,
                                 text: "Consulta de presas",
                                 fontSize: 12.5,
                                 margin: [10, 5],
@@ -119,9 +118,9 @@ table = $("#tablaPresa").DataTable({
                                 alignment: "center",
                                 text: [
                                     "Página ",
-                                    {text: page.toString()},
+                                    { text: page.toString() },
                                     " de ",
-                                    {text: pages.toString()},
+                                    { text: pages.toString() },
                                 ],
                             },
                         ],
@@ -153,35 +152,23 @@ table = $("#tablaPresa").DataTable({
     ],
     language: {
         url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
-    },
+    }
 });
 
 //Tabla para Presa Volumen
 tableV = $("#tablaVolumen").DataTable({
-    columnDefs: [{className: 'dt-body-right', targets: [3, 4, 5, 6]}],
+    columnDefs: [
+        { className: 'dt-body-right', targets: [1, 2] },
+
+    ],
     dom: "Bfrtip",
     columns: [
         {
-            title: "Gráfica",
+            title: "Vol. de almacenamiento (hm³)"
         },
         {
-            title: "Presa",
-        },
-        {
-            title: "Año",
-        },
-        {
-            title: "Altura de la cortina (m)",
-        },
-        {
-            title: "Capacidad al NAME (hm³)",
-        },
-        {
-            title: "Capacidad al NAMO (hm³)",
-        },
-        {
-            title: "Vol. de almacenamiento (hm³)",
-        },
+            title: "Año"
+        }
     ],
     buttons: [
         {
@@ -190,7 +177,7 @@ tableV = $("#tablaVolumen").DataTable({
             className: "btn btn-gob btn-sm",
             text: "Exportar Excel",
             exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6],
+                columns: [1, 2],
             },
         },
         {
@@ -202,7 +189,7 @@ tableV = $("#tablaVolumen").DataTable({
             orientation: "portrait",
             pageSize: "A4",
             exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6],
+                columns: [1, 2],
             },
             customize: function (doc) {
                 //Remove the title created by datatTables
@@ -210,12 +197,16 @@ tableV = $("#tablaVolumen").DataTable({
                 //Create a date string that we use in the footer. Format is dd-mm-yyyy
                 var now = new Date();
                 var jsDate =
-                    now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
+                    now.getDate() +
+                    "-" +
+                    (now.getMonth() + 1) +
+                    "-" +
+                    now.getFullYear();
                 // It's important to create enough space at the top for a header !!!
                 doc.pageMargins = [20, 70, 20, 50];
                 // Set the font size fot the entire document
                 doc.defaultStyle.fontSize = 10;
-                // Set the fontsize for the table header
+
                 doc.styles.tableHeader.fontSize = 10;
                 doc["header"] = function () {
                     return {
@@ -248,9 +239,9 @@ tableV = $("#tablaVolumen").DataTable({
                                 alignment: "center",
                                 text: [
                                     "Página ",
-                                    {text: page.toString()},
+                                    { text: page.toString() },
                                     " de ",
-                                    {text: pages.toString()},
+                                    { text: pages.toString() },
                                 ],
                             },
                         ],
@@ -290,73 +281,34 @@ tableV = $("#tablaVolumen").DataTable({
  * presenten en el select de los filtro de búsqueda de los acuiferos
  */
 function cambio() {
-    /**
-     *
-     * @type {*|jQuery|string|undefined}
-     * Obtiene el valo del filtro
-     */
     $val = $("#filtro").val();
-
-    /**
-     * Si el filtro esta vacio
-     */
     if ($val === "0") {
-        /**
-         * @type {string}
-         * Se vacia la seccion de los filtros
-         */
         document.getElementById("divFiltro").innerHTML = "";
         $("#referencias").hide();
         document.getElementById("lista").innerHTML = "";
     }
-    /**
-     * Se remueve el mapa, para así evitar datos basura de mapas anteriores.
-     */
     map.off();
     map.remove();
-    /**
-     * Se limpia la seccion de los filtros
-     * @type {string}
-     */
     document.getElementById("divFiltro").innerHTML = "";
     $("#referencias").hide();
     document.getElementById("lista").innerHTML = "";
-    /**
-     * Se carga la sección de código HTML correspondiente al filtro seleccionado.
-     */
     $("#divFiltro").load($val + "/" + $val + ".php");
-    /**
-     * Se crea nuevamente el mapa
-     */
     crearMapa();
 }
 
 //Funcion que llena la tabla de presa volumen
 $("#tablaPresa").on("click", "button", async function () {
-    Swal.fire({
-        title: "Cargando Contenido",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    //$("#botonesVolumen").hide();
+    alertaCargando("Por favor espere", "Cargando contenido");
     document.getElementById("divVolumen").scrollIntoView();
     var data = table.row($(this).parents("tr")).data();
     var id = data[0];
     cadena = "id=" + id + "&Accion=PresaVolumen";
     data = [];
-    //Se manda a llamar al controlador que me devolvera los Presas
     $.ajax({
         type: "POST",
         url: "/aplicacion/controlador/mapa.php",
         data: cadena,
-        //Si el controlador devuelve una respuesta
         success: function (resp) {
-            //$("#infoReporteV").val(resp);
-            //Para cada uno de los registros del array
-            //Se agrega un registro a la tabla que contiene la informacion de los Presas
             $.each(JSON.parse(resp), function (index, item) {
                 document.getElementById("tituloV").innerHTML = "";
                 document.getElementById("tituloV").innerHTML =
@@ -366,50 +318,29 @@ $("#tablaPresa").on("click", "button", async function () {
                     item.nom_oficial +
                     "</h3>";
                 data.push([
-                    item,
                     item.presa_id + " - " + item.nom_oficial,
-                    item.anio,
-                    numeral(Number.parseFloat(item.alt_cort)).format("0,0.00"),
-                    numeral(Number.parseFloat(item.cap_name)).format("0,0.00"),
-                    numeral(Number.parseFloat(item.cap_namo)).format("0,0.00"),
                     numeral(Number.parseFloat(item.vol_alma)).format("0,0.00"),
+                    item.anio,
                 ]);
             });
             tableV.destroy();
             tableV = $("#tablaVolumen").DataTable({
                 data: data,
                 columnDefs: [
-                    {className: 'dt-body-right', targets: [3, 4, 5, 6]},
-                    {
-                        targets: 0,
-                        data: null,
-                        defaultContent:
-                            '<button data-toggle="modal" data-target="#graficaModal" class="btn btn-gob text-ligth  btn-block"><i class="far fa-chart-bar"></i></button>',
-                    },
+                    { className: 'dt-body-right', targets: [1, 2] },
                 ],
                 dom: "Bfrtip",
                 columns: [
                     {
-                        title: "Gráfica",
+                        title: "Presa"
+                    }
+                    ,
+                    {
+                        title: "Vol. de almacenamiento (hm³)"
                     },
                     {
-                        title: "Presa",
-                    },
-                    {
-                        title: "Año",
-                    },
-                    {
-                        title: "Altura de la cortina (m)",
-                    },
-                    {
-                        title: "Capacidad al NAME (hm³)",
-                    },
-                    {
-                        title: "Capacidad al NAMO (hm³)",
-                    },
-                    {
-                        title: "Vol. de almacenamiento (hm³)",
-                    },
+                        title: "Año"
+                    }
                 ],
                 buttons: [
                     {
@@ -417,9 +348,7 @@ $("#tablaPresa").on("click", "button", async function () {
                         title: "Volumen de presas",
                         className: "btn btn-gob btn-sm",
                         text: "Exportar Excel",
-                        exportOptions: {
-                            columns: [1, 2, 3, 4, 5, 6],
-                        },
+
                     },
                     {
                         extend: "pdfHtml5",
@@ -429,9 +358,6 @@ $("#tablaPresa").on("click", "button", async function () {
                         messageBottom: citas,
                         orientation: "portrait",
                         pageSize: "A4",
-                        exportOptions: {
-                            columns: [1, 2, 3, 4, 5, 6],
-                        },
                         customize: function (doc) {
                             //Remove the title created by datatTables
                             doc.content.splice(0, 1);
@@ -447,7 +373,7 @@ $("#tablaPresa").on("click", "button", async function () {
                             doc.pageMargins = [20, 70, 20, 50];
                             // Set the font size fot the entire document
                             doc.defaultStyle.fontSize = 10;
-                            // Set the fontsize for the table header
+
                             doc.styles.tableHeader.fontSize = 10;
                             doc["header"] = function () {
                                 return {
@@ -480,9 +406,9 @@ $("#tablaPresa").on("click", "button", async function () {
                                             alignment: "center",
                                             text: [
                                                 "Página ",
-                                                {text: page.toString()},
+                                                { text: page.toString() },
                                                 " de ",
-                                                {text: pages.toString()},
+                                                { text: pages.toString() },
                                             ],
                                         },
                                     ],

@@ -485,15 +485,7 @@ async function selectCultivo() {
 }
 
 async function getCultivos() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Cargando datos");
   $("#Cultivos").multiselect("reset");
   if ($("#Distritos option:selected").length != 0) {
     var query = "(";
@@ -554,21 +546,8 @@ async function getCultivos() {
 }
 
 async function Consultar() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Realizando la consulta",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
-
-  /**
-   * Llmamos a deshabilitar y a limpiar los Distritos
-   */
-  await deshabilitar();
-
+  alertaCargando("Por favor espere", "Realizando consulta");
+  deshabilitar();
   const OC = await selectOrganismo();
   const Est = await selectEst();
   const DR = await selectDR();
@@ -675,7 +654,7 @@ async function Consultar() {
           "</div></div>" +
           //Titulo 6
           '<div class="col-sm-12">' +
-          "<h5>Volumen neto por año agrícola (miles de m³)*</h5>" +
+          "<h5>Volumen neto por año agrícola (miles de m³)*</h5> <p class='font-weight-light'>*Estimado con lámina de riego promedio</p>" +
           '<hr class="red">' +
           "</div>" +
           //Grafica 6
@@ -689,7 +668,7 @@ async function Consultar() {
           "</div></div>" +
           //Titulo 7
           '<div class="col-sm-12">' +
-          "<h5>Volumen bruto por año agrícola (miles de m³)*</h5>" +
+          "<h5>Volumen bruto por año agrícola (miles de m³)*</h5> <p class='font-weight-light'>*Estimado con lámina de riego promedio</p>" +
           '<hr class="red">' +
           "</div>" +
           //Grafica 7
@@ -1006,7 +985,7 @@ async function Consultar() {
                 {
                   scaleLabel: {
                     display: true,
-                    labelString: "Volumen Neto (miles de m³)",
+                    labelString: "Volumen neto (miles de m³)",
                   },
                   ticks: {
                     min: 0,
@@ -1050,7 +1029,7 @@ async function Consultar() {
                 {
                   scaleLabel: {
                     display: true,
-                    labelString: "Volumen Bruto (miles de m³)",
+                    labelString: "Volumen bruto (miles de m³)",
                   },
                   ticks: {
                     min: 0,
@@ -1244,7 +1223,7 @@ async function Consultar() {
               title: "Año",
             },
             {
-              title: "Volumen Neto por año agrícola (miles de m³)*",
+              title: "Volumen neto (miles de m³)*",
             },
           ],
           data: t6,
@@ -1276,7 +1255,7 @@ async function Consultar() {
               title: "Año",
             },
             {
-              title: "Volumen Bruto (miles de m³)*",
+              title: "Volumen bruto (miles de m³)*",
             },
           ],
           data: t7,
@@ -1300,7 +1279,7 @@ async function Consultar() {
         });
       },
     }).always(async function () {
-      await habilitar();
+      habilitar();
       await Historial();
       $("#botonMapa").hide();
       $("#divPrioridad").hide();
@@ -1308,17 +1287,7 @@ async function Consultar() {
       await Swal.close();
     });
   } else {
-    /**
-     *
-     * @returns {Promise<void>}
-     * Si algun selector esta vacio, se muestra un mensaje de error.
-     *
-     */
-    swal(
-      "Algo está mal.",
-      "Todos los filtros tienen que tener al menos un elemento seleccionado"
-    );
-    await habilitar();
+    habilitar();
     await Swal.close();
     $("#pantalla").hide();
     $("#botonMapa").hide();

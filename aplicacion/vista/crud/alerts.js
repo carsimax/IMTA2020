@@ -2,6 +2,20 @@
  * Alertas y redireccionamientos por Jquery que se utilizan en la gestión de la bd
  */
 
+// Alerta de cargando
+function alertaCargando(title, mensaje) {
+    Swal.fire({
+        title,
+        html: mensaje,
+        allowEscapeKey: false,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        onBeforeOpen: () => {
+            Swal.showLoading();
+        },
+    });
+}
+
 //Redirecciona a una página al confirmar acción
 function cancelarForm(tablaPost) {
     Swal.fire({
@@ -15,7 +29,7 @@ function cancelarForm(tablaPost) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.value) {
-            $.redirect("/aplicacion/vista/crud/dbadmin.php", {tablaP: tablaPost}, "POST");
+            $.redirect("/aplicacion/vista/crud/dbadmin.php", { tablaP: tablaPost }, "POST");
         }
     });
 }
@@ -75,7 +89,7 @@ function valiFormAnterior(url, data, elementId) {
 
 //Muestra mensaje para confirmar la insersción de información del formulario para un nuevo registro
 function valiFormNuevo(url, data, tablaP) {
-    
+
     Swal.fire({
         title: "¿Estás seguro?",
         text: "Se guardarán los cambios en la base de datos.",
@@ -97,7 +111,7 @@ function valiFormNuevo(url, data, tablaP) {
                     } else if (response == 1) {
                         buenTrabajoNuevo(tablaP);
                     } else {
-                        algoAndaMal(response);   
+                        algoAndaMal(response);
                     }
                 }
             });
@@ -106,18 +120,19 @@ function valiFormNuevo(url, data, tablaP) {
 }
 
 //Muestra mensaje de error en la realización de una acción
-function algoAndaMal(response){
-    Swal.fire({title: "¡Algo anda mal!", text: response, icon: "error", confirmButtonColor: '#621132', confirmButtonText: 'OK'});
+function algoAndaMal(response) {
+    Swal.fire({ title: "¡Algo anda mal!", text: response, icon: "error", confirmButtonColor: '#621132', confirmButtonText: 'OK' });
 }
 //Muestra un warning al usuario
-function advertencia(response){
-    Swal.fire({title: "¡Cuidado!", text: response, icon: "warning", confirmButtonColor: '#621132', confirmButtonText: 'OK'});
+function advertencia(response) {
+    Swal.fire({ title: "¡Cuidado!", text: response, icon: "warning", confirmButtonColor: '#621132', confirmButtonText: 'OK' });
 }
 //Muestra una ventana emerjente de éxito que redirecciona a una página
 function buenTrabajoNuevo(tablaP) {
-    Swal.fire({title: "¿Buen tabajo!", text: "Se han guardado los cambios.", icon: "success", confirmButtonColor: '#621132', confirmButtonText: 'OK'
+    Swal.fire({
+        title: "¿Buen tabajo!", text: "Se han guardado los cambios.", icon: "success", confirmButtonColor: '#621132', confirmButtonText: 'OK'
     }).then((value) => {
-        $.redirect("/aplicacion/vista/crud/dbadmin.php", {tablaP: tablaP}, "POST");
+        $.redirect("/aplicacion/vista/crud/dbadmin.php", { tablaP: tablaP }, "POST");
     });
 }
 
@@ -154,5 +169,5 @@ function valiFormEditar(url, data) {
 
 //Muestra una ventana emergente de éxito que no redirecciona a una página
 function buenTrabajoEditar() {
-    Swal.fire({title: "¿Buen tabajo!", text: "Se han guardado los cambios.", icon: "success", confirmButtonColor: '#621132', confirmButtonText: 'OK'});
+    Swal.fire({ title: "¿Buen tabajo!", text: "Se han guardado los cambios.", icon: "success", confirmButtonColor: '#621132', confirmButtonText: 'OK' });
 }

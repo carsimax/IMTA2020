@@ -23,7 +23,8 @@ require_once(__DIR__ . "/../controlador/sesion.php");
 /**
  * Class Presa
  */
-class Presa {
+class Presa
+{
 
     /**
      * @var
@@ -136,9 +137,8 @@ class Presa {
      */
     public function __construct()
     {
-        
     }
-    
+
     public function obtenerPresas()
     {
         $pdo = new DBConnection();
@@ -158,7 +158,8 @@ class Presa {
     }
 
     //Obtiene el id y el nombre de todos los cultivos
-    public function getNamesAndIDs(){
+    public function getNamesAndIDs()
+    {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -187,7 +188,7 @@ class Presa {
         try {
             $db->beginTransaction();
             $select = $db->prepare('SELECT id_presa, nom_oficial, nom_comun, corriente, anio_term, nombre as edo FROM presa
-        INNER JOIN estado on estado.id_estado=presa.edo_id WHERE '.$query);
+        INNER JOIN estado on estado.id_estado=presa.edo_id WHERE ' . $query);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;
@@ -244,8 +245,7 @@ class Presa {
             $select->bindValue('corriente', $this->getCorriente(), PDO::PARAM_STR);
             $select->bindValue('anio_term', $this->getAnioTerm(), PDO::PARAM_INT);
             $select->bindValue('edo_id', $this->getEdo(), PDO::PARAM_INT);
-            if ($select->execute())
-            {
+            if ($select->execute()) {
                 $select = $db->prepare('INSERT INTO tabla_version VALUES(0,NOW(),:cadena)');
                 $cadena = "El administrador " . $_SESSION['ID_Usuario'] . " registró la presa " . $this->getIdPresa() . " en la tabla presa";
                 $select->bindValue('cadena', $cadena, PDO::PARAM_STR);
@@ -272,8 +272,7 @@ class Presa {
             $select->bindValue('corriente', $this->getCorriente(), PDO::PARAM_STR);
             $select->bindValue('anio_term', $this->getAnioTerm(), PDO::PARAM_INT);
             $select->bindValue('edo_id', $this->getEdo(), PDO::PARAM_INT);
-            if ($select->execute())
-            {
+            if ($select->execute()) {
                 //insertamos en la tabla log
                 $select = $db->prepare('INSERT INTO tabla_version VALUES(0,NOW(),:cadena)');
                 $cadena = "El administrador " . $_SESSION['ID_Usuario'] . " actualizó la presa " . $this->getIdPresa() . " en la tabla presa";
@@ -363,11 +362,13 @@ class Presa {
             $sql = '
             SELECT 
             presa.id_presa,
-            CONCAT(presa.id_presa, \'-\', presa.nom_oficial)as nombre_oficial,
-            presa.nom_comun,
+            CONCAT(presa.id_presa, \' - \', presa.nom_oficial)as nombre_oficial,
             presa.corriente,
+            estado.nombre as estado,
             presa.anio_term,
-            estado.nombre
+            presa.alt_cort,
+            presa.cap_name,
+            presa.cap_namo
             from presa INNER JOIN estado on estado.id_estado=presa.edo_id WHERE ' . $query;
             $select = $db->prepare($sql);
             $select->execute();
@@ -386,8 +387,8 @@ class Presa {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $sql='SELECT presa_json as json FROM sig_presa WHERE ' . $query;
-            $select = $db->prepare($sql);       
+            $sql = 'SELECT presa_json as json FROM sig_presa WHERE ' . $query;
+            $select = $db->prepare($sql);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;
@@ -399,7 +400,8 @@ class Presa {
         }
     }
 
-    public function existePresa(){
+    public function existePresa()
+    {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -448,5 +450,4 @@ class Presa {
             return null;
         }
     }
-
 }

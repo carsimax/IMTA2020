@@ -158,16 +158,7 @@ async function Organismos() {
  *
  */
 async function Estados() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando Datos",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
-  await limpiarEstados();
+  limpiarEstados();
   $("#Cultivos").multiselect("reset");
   var query = "(";
   /**
@@ -503,20 +494,8 @@ async function getCultivos() {
 
 
 async function Consultar() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Realizando la consulta",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
-
-  /**
-   * Llmamos a deshabilitar y a limpiar los Distritos
-   */
-  await deshabilitar();
+  alertaCargando("Por favor espere", "Realizando consulta");
+  deshabilitar();
   limpiarDR();
   const OC = await selectOrganismo();
   const Est = await selectEst();
@@ -1148,17 +1127,8 @@ async function Consultar() {
       await Swal.close();
     });
   } else {
-    /**
-     *
-     * @returns {Promise<void>}
-     * Si algun selector esta vacio, se muestra un mensaje de error.
-     *
-     */
-    swal(
-      "Algo está mal.",
-      "Todos los filtros tienen que tener al menos un elemento seleccionado"
-    );
-    await habilitar();
+
+    habilitar();
     await Swal.close();
     $("#pantalla").hide();
     $("#botonMapa").hide();

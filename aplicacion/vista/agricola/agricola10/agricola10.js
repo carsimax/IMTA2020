@@ -140,15 +140,7 @@ function concatQuery() {
 }
 
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Realizando la consulta",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Realizando consulta");
     $('#nav-tab-acu a[href="#nav-01"]').tab("show");
     await deshabilitar();
     const cultivos = concatValoresSelect('#Cultivos', 'cultivo_id=');
@@ -374,18 +366,15 @@ async function Consultar() {
                 });
             },
         }).always(async function () {
-            await habilitar();
+            habilitar();
             $("#botonMapa").hide();
             $("#divPrioridad").hide();
             await sleep(1000);
             await Swal.close();
         });
     } else {
-        swal(
-            "Algo está mal.",
-            "Todos los filtros tienen que tener al menos un elemento seleccionado"
-        );
-        await habilitar();
+
+        habilitar();
         $("#pantalla").hide();
         $("#divPrioridad").hide();
         $("#botonMapa").hide();

@@ -234,31 +234,12 @@ async function obtenerMunicipio() {
  * @constructor
  */
 async function Organismos() {
-  // Swal.fire({
-  //   title: "Por favor espere", // add html attribute if you want or remove
-  //   html: "Cargando Datos",
-  //   allowOutsideClick: false,
-  //   onBeforeOpen: () => {
-  //     Swal.showLoading();
-  //   },
+
   // });
-  
+
   await limpiarOrganismos();
-  /**
-   * @type {string}
-   * La variable query nos permite guardar la sentencia SQL para consultar los estados
-   */
   const query = await concatOrganismo();
-  /**
-   * Antes de realizar la consulta a la base de datos,
-   * es necesario verificar primero si el query contiene datos a buscar.
-   */
   if (query !== "") {
-    /**
-     * @type {string}
-     * Se crea una cadena que es la que se va a enviar por medio de Ajax,
-     * este contiene tanto el query anteriormente descrito como la acción que va realizar en el controlador de mapa
-     */
     const cadena = "query=" + query + "&Accion=Estados";
     var data = [];
     /**
@@ -481,15 +462,7 @@ async function mostrarDOrganismo(data) {
  */
 async function mostrarDEstado() {
   if (!tablaEst.data().any()) {
-    Swal.fire({
-      title: "Por favor espere", // add html attribute if you want or remove
-      html: "Cargando contenido",
-      allowEscapeKey: false,
-    allowOutsideClick: false,
-      onBeforeOpen: () => {
-        Swal.showLoading();
-      },
-    });
+    alertaCargando("Por favor espere", "Generando tabla");
     /**
      *
      * @type Promise<string>|String|loadShapeOrganismo.OC
@@ -764,49 +737,13 @@ async function mostrarDEstado() {
   }
 }
 
-/**
- *
- * @returns {undefined}
- * Funcion que desglosa por ]Acuidero
- */
 async function mostrarDAcuifero() {
   if (!tablaAcu.data().any()) {
-    Swal.fire({
-      title: "Por favor espere", // add html attribute if you want or remove
-      html: "Cargando contenido",
-      allowEscapeKey: false,
-    allowOutsideClick: false,
-      onBeforeOpen: () => {
-        Swal.showLoading();
-      },
-    });
-    /**
-     *
-     * @type Promise<string>|String|loadShapeOrganismo.OC
-     * Se llama a colocar los shapes de Organismos de cuenca.
-     */
+    alertaCargando("Por favor espere", "Generando tabla");
     const OC = await obtenerOrganismo();
-    /**
-     *
-     * @type Promise<string>|String|loadShapeEstado.Est
-     * Se llama a colocar los shapes de Estados.
-     */
     const Est = await obtenerEstado();
-    /**
-     *
-     * @type String|loadShapeAcuifero.Acu|Promise<string>
-     * Se llama a colocar los shapes de Acuiferos.
-     */
     const Acu = await obtenerAcuifero();
-    /**
-     * Se verifica que el query de Organismos ese vacio
-     */
     if (Acu !== "" && OC !== "" && Est !== "") {
-      /**
-       *
-       * @type String
-       * Se crea la variable que contiene todas las opciones de la consulta seleccionadas.
-       */
       const query =
         OC +
         " AND (" +
@@ -814,38 +751,13 @@ async function mostrarDAcuifero() {
         ") AND (" +
         Acu +
         ") GROUP by id_organismo,id_estado,id_acuifero";
-
-      /**
-       *
-       * @type String
-       * Se crea la variable que contiene la acción que va hacia el controlador y la variable antes creada
-       */
       var cadena = "query=" + query + "&Accion=Acuiferos";
-      /**
-       *
-       * @type Array
-       * Array de datos
-       */
       var data = [];
-      /**
-       *
-       * @param {type} resp
-       * @returns {undefined}
-       * Se manda a llamar a una función Ajax que realiza la consulta de los datos a la base de datos.
-       */
       $.ajax({
         type: "POST",
         url: "/aplicacion/controlador/mapa.php",
         data: cadena,
-        //Si el controlador devuelve una respuesta
         success: async function (resp) {
-          /**
-           *
-           * @param {type} miarray
-           * @param {type} prop
-           * @returns {unresolved}
-           * Primero se crea una variable que se encarga de agrupar los datos dependiedo el pararametro recibido
-           */
           var groupBy = function (miarray, prop) {
             return miarray.reduce(function (groups, item) {
               var val = item[prop];
@@ -901,7 +813,6 @@ async function mostrarDAcuifero() {
           });
           tablaAcu = $("#Acu").DataTable({
             data: data,
-
             columnDefs: [
               { className: 'dt-body-right', targets: [2, 3, 4, 5, 6, 7, 8] },
               {
@@ -1062,15 +973,7 @@ async function mostrarDAcuifero() {
  */
 async function mostrarMunicipio() {
   if (!tablaMun.data().any()) {
-    Swal.fire({
-      title: "Por favor espere", // add html attribute if you want or remove
-      html: "Cargando contenido",
-      allowEscapeKey: false,
-    allowOutsideClick: false,
-      onBeforeOpen: () => {
-        Swal.showLoading();
-      },
-    });
+    alertaCargando("Por favor espere", "Generando tabla");
     /**
      * @type {string}
      * La variable query nos permite guardar la sentencia SQL para consultar los acuiferos
@@ -1310,15 +1213,7 @@ async function mostrarMunicipio() {
   }
 }
 async function Acuiferos() {
-  Swal.fire({
-    title: "Por favor espere", // add html attribute if you want or remove
-    html: "Cargando selección",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  alertaCargando("Por favor espere", "Cargando selección");
   await Swal.close();
 }
 

@@ -39,19 +39,8 @@ async function habilitar() {
 
 
 async function Consultar() {
-
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Realizando consulta", // add html attribute if you want or remove
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        }
-    });
-
+    alertaCargando("Por favor espere", "Realizando consulta");
     var valores = "(" + concatValoresSelect('#Estados', 'estado_id=') + ") AND (" + concatValoresSelect('#Anios', 'anio_id=') + ")";
-
     //Busqueda tabular
     if (concatValoresSelect('#Estados', 'estado_id=')) {
         data = "Accion=ConsultaIndiceMarginacion&Filtro=Entidad&Anio=" + $("#Anios option:selected").val() + "&modulo_id=7";
@@ -103,7 +92,6 @@ async function Consultar() {
             await Swal.close();
         });
     } else {
-        swal("¡Cuidado!", "Todos los filtros tienen que tener al menos un elemento seleccionado");
         await deshabilitar();
         await Swal.close();
     }
@@ -283,14 +271,7 @@ function crearGlosario() {
 
 //Carga los shapes al mapa
 async function loadShape() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Cargando Mapa Geoespacial",
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Cargando mapa geoespacial");
     getEstadoMarginacion_SIG(function () {
         var overlays = {
             "Estados": GroupoEstSelect,

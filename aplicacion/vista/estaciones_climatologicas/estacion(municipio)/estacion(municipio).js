@@ -110,7 +110,7 @@ async function TipoEstacion() {
     }
 }
 
-async function Estaciones(){
+async function Estaciones() {
     isFormCompleted('#EstacionClimatologica');
 }
 
@@ -195,15 +195,7 @@ async function habilitar() {
 
 
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Cargando realizando consulta", // add html attribute if you want or remove
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        }
-    });
+    alertaCargando("Por favor espere", "Realizando consulta");
     // Se verifica que el ultimo select tenga cosas seleccionadas
     var EstC = concatValoresSelect('#EstacionClimatologica', 'id_estacion_climatologica=');
     if (EstC !== "") {
@@ -251,7 +243,6 @@ async function Consultar() {
             await Swal.close();
         });
     } else {
-        swal("¡Cuidado!", "Todos los filtros tienen que tener al menos un elemento seleccionado");
         habilitar();
         $("#pantalla").hide();
         $("#botonMapa").hide();

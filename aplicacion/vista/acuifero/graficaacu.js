@@ -32,40 +32,32 @@ function graficaOC(datos) {
                         display: true,
                         labelString: 'Hectómetros cúbicos (hm³)'
                     },
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    type: 'linear',
                     display: true,
                     position: 'left',
                     id: 'y-axis-1',
-                }, {
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
-                    position: 'right',
-                    id: 'y-axis-2',
-                    gridLines: {
-                        drawOnChartArea: false
-                    }
                 }],
         }
     };
 
     rData = {
-        label: 'R(hm³)',
+        label: 'R',
         data: [datos.R],
         backgroundColor: '#02ca33'
     };
     dncData = {
-        label: 'DNC(hm³)',
+        label: 'DNC',
         data: [datos.DNC],
         backgroundColor: '#1850c0'
     };
     veasData = {
-        label: 'VEAS(hm³)',
+        label: 'VCAS',
         data: [datos.VEAS],
         backgroundColor: '#e76137'
     };
 
     dmaData = {
-        label: 'DMA(hm³)',
+        label: 'DMA',
         data: [datos.DMA],
         backgroundColor: '#ffa202'
     };
@@ -99,45 +91,38 @@ function graficaEst(datos) {
             intersect: true
         },
         scales: {
-            yAxes: [{
-                scaleLabel: {
+            yAxes: [
+                {
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Hectómetros cúbicos (hm³)'
+                    },
+                    type: 'linear',
                     display: true,
-                    labelString: 'Hectómetros cúbicos (hm³)'
-                },
-                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                display: true,
-                position: 'left',
-                id: 'y-axis-1',
-            }, {
-                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                display: true,
-                position: 'right',
-                id: 'y-axis-2',
-                gridLines: {
-                    drawOnChartArea: false
-                }
-            }],
+                    position: 'left',
+                    id: 'y-axis-1',
+                }],
         }
     };
 
     rData = {
-        label: 'R(hm³)',
+        label: 'R',
         data: [datos.R],
         backgroundColor: '#02ca33'
     };
     dncData = {
-        label: 'DNC(hm³)',
+        label: 'DNC',
         data: [datos.DNC],
         backgroundColor: '#1850c0'
     };
     veasData = {
-        label: 'VEAS(hm³)',
+        label: 'VCAS',
         data: [datos.VEAS],
         backgroundColor: '#e76137'
     };
 
     dmaData = {
-        label: 'DMA(hm³)',
+        label: 'DMA',
         data: [datos.DMA],
         backgroundColor: '#ffa202'
     };
@@ -172,46 +157,39 @@ function graficaAcu(datos) {
             intersect: true
         },
         scales: {
-            yAxes: [{
-                scaleLabel: {
+            yAxes: [
+                {
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Hectómetros cúbicos (hm³)'
+                    },
+                    type: 'linear',
                     display: true,
-                    labelString: 'Hectómetros cúbicos (hm³)'
-                },
-                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                display: true,
-                position: 'left',
-                id: 'y-axis-1',
-            }, {
-                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                display: true,
-                position: 'right',
-                id: 'y-axis-2',
-                gridLines: {
-                    drawOnChartArea: false
-                }
-            }],
+                    position: 'left',
+                    id: 'y-axis-1',
+                }],
         }
     };
 
     rData = {
-        label: 'R(hm³)',
+        label: 'R',
         data: [datos.R],
         backgroundColor: '#02ca33'
     };
     dncData = {
-        label: 'DNC(hm³)',
+        label: 'DNC',
         data: [datos.DNC],
         backgroundColor: '#1850c0'
     };
 
     veasData = {
-        label: 'VEAS(hm³)',
+        label: 'VCAS',
         data: [datos.VEAS],
         backgroundColor: '#e76137'
     };
 
     dmaData = {
-        label: 'DMA(hm³)',
+        label: 'DMA',
         data: [datos.DMA],
         backgroundColor: '#ffa202'
     };
@@ -246,45 +224,38 @@ function graficaMun(datos) {
             intersect: true
         },
         scales: {
-            yAxes: [{
-                scaleLabel: {
+            yAxes: [
+                {
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Hectómetros cúbicos (hm³)'
+                    },
+                    type: 'linear',
                     display: true,
-                    labelString: 'Hectómetros cúbicos (hm³)'  
-                },
-                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                display: true,
-                position: 'left',
-                id: 'y-axis-1',
-            }, {
-                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                display: true,
-                position: 'right',
-                id: 'y-axis-2',
-                gridLines: {
-                    drawOnChartArea: false
-                }
-            }],
+                    position: 'left',
+                    id: 'y-axis-1',
+                }],
         }
     };
 
     rData = {
-        label: 'R(hm³)',
+        label: 'R',
         data: [datos.R],
         backgroundColor: '#02ca33'
     };
     dncData = {
-        label: 'DNC(hm³)',
+        label: 'DNC',
         data: [datos.DNC],
         backgroundColor: '#1850c0'
     };
     veasData = {
-        label: 'VEAS(hm³)',
+        label: 'VCAS',
         data: [datos.VEAS],
         backgroundColor: '#e76137'
     };
 
     dmaData = {
-        label: 'DMA(hm³)',
+        label: 'DMA',
         data: [datos.DMA],
         backgroundColor: '#ffa202'
     };

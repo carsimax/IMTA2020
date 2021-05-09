@@ -20,50 +20,18 @@ setEstiloSelect('#Acuiferos', 'Acuífero', 'Buscar Acuífero');
  * @constructor
  */
 async function Estados() {
-    // Swal.fire({
-    //     title: "Por favor espere", // add html attribute if you want or remove
-    //     html: "Cargando Datos",
-    //     allowOutsideClick: false,
-    //     onBeforeOpen: () => {
-    //         Swal.showLoading();
-    //     },
-    // });
-    
-    
+
     await limpiarEstados();
     const query = await concatEstado();
-    /**
-     * Antes de realizar la consulta a la base de datos,
-     * es necesario verificar primero si el query contiene datos a buscar.
-     */
     if (query !== "") {
-        /**
-         * @type {string}
-         * Se crea una cadena que es la que se va a enviar por medio de Ajax,
-         * este contiene tanto el query anteriormente descrito como la acción que va realizar en el controlador de mapa
-         */
         const cadena = "query=" + query + "&Accion=Acuiferos(Estado)";
         var data = [];
-        /**
-         * Se manda a llamar por medio de Ajax a la función de estados en el controlador de mapa
-         */
         $.ajax({
             type: "POST",
             url: "/aplicacion/controlador/mapa.php",
             data: cadena,
-            /**
-             * @param resp
-             * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
-             */
             success: function (resp) {
-                /**
-                 * Primero se recorre el array con todos los estados devueltos por el controlador.
-                 */
-
                 $.each(JSON.parse(resp), function (index, item) {
-                    /**
-                     * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de acuiferos
-                     */
                     data.push({
                         name: item.nombre,
                         value: item.id_acuifero,
@@ -89,31 +57,10 @@ async function loadShape() {
     await map.off();
     await map.remove();
     crearMapa();
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Cargando Mapa Geoespacial",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
-    /**
-     * Llamamos a la funcion que Carga los OC
-     */
+    alertaCargando("Por favor espere", "Cargando mapa geoespacial");
     getOC_SIG(function () {
-        /**
-         * Cargamos la funcion que carga los Estados
-         */
-        getEst_SIG(function (){
-            /**
-             * Cargamos la funcion de los Acuiferos
-             */
-            getAcu_SIG(function (){
-                /**
-                 * Agregamos los overlays
-                 * @type {{Estados: *, Acuiferos: *, "Organismos de Cuenca": *}}
-                 */
+        getEst_SIG(function () {
+            getAcu_SIG(function () {
                 var overlays = {
                     "Organismos de Cuenca": GroupoOCSelect,
                     "Estados": GroupoEstSelect,
@@ -133,15 +80,7 @@ async function loadShape() {
  * @constructor
  */
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Realizando consulta",
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Realizando consulta");
     $('#nav-tab-acu a[href="#nav-OC"]').tab("show");
     $("#referencias").show();
     /**
@@ -156,11 +95,7 @@ async function Consultar() {
      * Esta función limpia la capa acuífero y las tablas.
      */
     await limpiarAcuifero();
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //-------------------------Organismos de Cuenca-----------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
+
     var OC = "";
     var Est = "";
     var Acu = "";
@@ -173,11 +108,6 @@ async function Consultar() {
         .always(async function () {
             OC = OC.slice(0, -3);
         });
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------Estados-----------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
 
     await $("#Estados option:selected")
         .each(async function () {
@@ -187,11 +117,6 @@ async function Consultar() {
         .always(async function () {
             Est = Est.slice(0, -3);
         });
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------ACUIFERO-----------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
     await $("#Acuiferos option:selected")
         .each(async function () {
             Acu += "id_acuifero=" + $(this).val() + " or ";
@@ -201,11 +126,6 @@ async function Consultar() {
             Acu = Acu.slice(0, -3);
         });
 
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
-    //-----------------------Busqueda TABULAR-----------------------------------
-    //--------------------------------------------------------------------------
-    //--------------------------------------------------------------------------
     if (Acu !== "" && OC !== "" && Est !== "") {
         /**
          *
@@ -309,7 +229,7 @@ async function Consultar() {
                 });
             },
         }).always(async function () {
-            
+
             cadena = "Accion=ConsultaAcuifero&modulo_id=1";
             citas = "\n ";
             $.ajax({

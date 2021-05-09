@@ -273,22 +273,13 @@ async function Cultivos() {
  * Funcion para realizar la consulta de las selecicones con sus respectivos shapes
  */
 async function Consultar() {
-
-    Swal.fire({
-        title: "Por favor espere", // add html attribute if you want or remove
-        html: "Realizando la consulta",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
-    });
+    alertaCargando("Por favor espere", "Realizando consulta");
     $('#nav-tab-acu a[href="#nav-01"]').tab("show");
     /**
      * Llmamos a deshabilitar y a limpiar los Distritos
      * */
-    await deshabilitar();
-    await limpiarDR();
+    deshabilitar();
+    limpiarDR();
     const OC = await selectOrganismo();
     const Est = await selectEst();
     const Mun = await selectMuni();
@@ -323,11 +314,7 @@ async function Consultar() {
         await habilitar();
         await Swal.close();
     } else {
-        swal(
-            "Algo está mal.",
-            "Todos los filtros tienen que tener al menos un elemento seleccionado"
-        );
-        await habilitar();
+        habilitar();
         $("#pantalla").hide();
         $("#divPrioridad").hide();
         $("#botonMapa").hide();
@@ -648,7 +635,7 @@ async function desgloce1(query) {
                     numeral(Math.round(VAL / PROD)).format("0,0.00") +
                     "</b></td>" +
                     "</tr></tfoot></table>" +
-                    '</div>'
+                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                 );
                 /**
                  *
@@ -678,7 +665,7 @@ async function desgloce1(query) {
                             title: "Valor de la cosecha (miles $)",
                         },
                         {
-                            title: "Volumen (miles de m³)*",
+                            title: "Volumen neto (miles de m³)*",
                         },
                         {
                             title: "Rend. (ton/ha)",
@@ -824,21 +811,7 @@ async function desgloce1(query) {
 async function desgloce2() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-02").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
-        /*
-        *
-        * @type String
-        * * Variable para enviar la sentancia al controlador
-        * *
-        * */
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by id_estado"
         var cadena = "query=" + query2 + "&Accion=URTabla";
         /*
@@ -969,7 +942,7 @@ async function desgloce2() {
                         "</b></td>" +
                         "</tr></tfoot></table>" +
                         "</div>" +
-                        "</div>"
+                        '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                     );
                     /*
                      * Se crea la instancia de datatables
@@ -995,7 +968,7 @@ async function desgloce2() {
                                 title: "Valor de la cosecha (miles $)",
                             },
                             {
-                                title: "Volumen (miles de m³)*",
+                                title: "Volumen neto (miles de m³)*",
                             },
                             {
                                 title: "Rend. (ton/ha)",
@@ -1141,22 +1114,14 @@ async function desgloce2() {
 
 async function desgloce4() {
     if (!$("#nav-04").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         /**
          * Creamos el desgloce por ciclo Agricola
          */
         //var query1=query+" GROUP by ciclo";
-        await grafica1();
+        grafica1();
         var query4 = query + " GROUP BY id_organismo";
-        await grafica4(query4);
+        grafica4(query4);
         Swal.close();
     }
 }
@@ -1170,15 +1135,7 @@ async function desgloce4() {
 async function desgloce5() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-05").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by id_estado,id_municipio,cultivo_id ORDER BY id_estado,id_municipio,cultivo_id";
         /*
          *
@@ -1365,7 +1322,7 @@ async function desgloce5() {
                                                 numeral(Math.round(((VAL / PROD) * 1000))).format("0,0.00") +
                                                 "</b></td>" +
                                                 "</tr></tfoot></table>" +
-                                                '</div>'
+                                                '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                                             );
                                             /*
                                              * Se inicializa en datables
@@ -1397,7 +1354,7 @@ async function desgloce5() {
                                                         title: "Valor de la cosecha (miles $)",
                                                     },
                                                     {
-                                                        title: "Volumen (miles de m³)*",
+                                                        title: "Volumen neto (miles de m³)*",
                                                     },
                                                     {
                                                         title: "Rend. (ton/ha)",
@@ -1696,15 +1653,7 @@ async function desgloce5() {
 async function desgloce6() {
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-06").html()) {
-        Swal.fire({
-            title: "Por favor espere", // add html attribute if you want or remove
-            html: "Cargando contenido",
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
-        });
+        alertaCargando("Por favor espere", "Generando tabla");
         var query2 = query + " GROUP by cultivo_id,id_organismo,id_estado"
         /*
          *
@@ -1900,7 +1849,7 @@ async function desgloce6() {
                                                 ) +
                                                 "</b></td>" +
                                                 "</tr></tfoot></table>" +
-                                                '</div>'
+                                                '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                                             );
                                             /*
                                              * Inicializacion en datatables
@@ -1929,7 +1878,7 @@ async function desgloce6() {
                                                         title: "Valor de la cosecha (miles $)",
                                                     },
                                                     {
-                                                        title: "Volumen (miles de m³)*",
+                                                        title: "Volumen neto (miles de m³)*",
                                                     },
                                                     {
                                                         title: "Rend. (ton/ha)",

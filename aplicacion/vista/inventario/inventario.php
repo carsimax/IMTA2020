@@ -54,7 +54,7 @@ $filtros = $registros->getFiltrosInventario(); ?>
             </div>
             <hr>
             <div class="col-sm">
-            <p>Consulta el inventario de obras de infraestructura, obras de cabeza y sociedades de responsabilidad limitada de Distritos de Riego.</p>
+                <p>Consulta el inventario de obras de infraestructura, obras de cabeza y sociedades de responsabilidad limitada de Distritos de Riego.</p>
             </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
@@ -62,15 +62,7 @@ $filtros = $registros->getFiltrosInventario(); ?>
 
                 </div>
             </div>
-            <div id="divPrioridad">
-                <div class="d-flex justify-content-center">
-                    <h6>Prioridad de Vizualización</h6>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <input id="Prioridad" type="checkbox" data-toggle="toggle" data-on="Tabular" data-off="Geoespacial" checked>
-                </div>
-                <br>
-            </div>
+            <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
             <!--Resultado-->
             <div class="col-sm" id="pantalla">
 
