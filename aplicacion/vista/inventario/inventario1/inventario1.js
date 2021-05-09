@@ -699,7 +699,7 @@ async function desgloce1(query) {
                         '<td style="background-color:#52BE80" align="right"><b>' + numeral(OT_obras_diveversas).format("0,0") + "</b></td>" +
                         '</tr>' +
                         '<tr>' +
-                        '<td style="background-color:#52BE80" colspan="4" align="center"><b>Obras Cabeza Res Mayor</b></th>' +
+                        '<td style="background-color:#52BE80" colspan="4" align="center"><b>Obras de Cabeza en Red Mayor</b></th>' +
                         '<td style="background-color:#52BE80" align="right"><b>' + numeral(OC_sup_dominada).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#52BE80" align="right"><b>' + numeral(OC_sup_regable).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#52BE80" align="right"><b>' + numeral(OC_usuarios).format("0,0") + "</b></td>" +
@@ -733,7 +733,7 @@ async function desgloce1(query) {
                         '<td style="background-color:#52BE80" align="right"><b>' + numeral(OC_obras_diveversas).format("0,0") + "</b></td>" +
                         '</tr>' +
                         '<tr>' +
-                        '<td style="background-color:#52BE80" colspan="4" align="center"><b>Total Region</b></th>' +
+                        '<td style="background-color:#52BE80" colspan="4" align="center"><b>Región</b></th>' +
                         '<td style="background-color:#52BE80" align="right"><b>' + numeral(T_sup_dominada).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#52BE80" align="right"><b>' + numeral(T_sup_regable).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#52BE80" align="right"><b>' + numeral(T_usuarios).format("0,0") + "</b></td>" +

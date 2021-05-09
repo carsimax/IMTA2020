@@ -17,13 +17,12 @@ require_once(__DIR__ . "/../plantillas/header.php");
                 <div class="row">
                     <div class="col-sm">
                         <!--Formulario-->
-                        <form action="../../controlador/usuario.php" name="formRegistro" method="POST">
-                            <input type="text" id="Accion" name="Accion" value="Restablecer" hidden>
-                            <!--Correo-->
-                            <div id="divCorreo" value="OK">
-                                <p>Correo:</p>
-                                <input type="email" class="form-control" name="Correo" id="Correo" required>
-                            </div>
+                        <input type="text" id="Accion" name="Accion" value="Restablecer" hidden>
+                        <!--Correo-->
+                        <div id="divCorreo" value="OK">
+                            <p>Correo:</p>
+                            <input type="email" class="form-control" name="Correo" id="Correo" required>
+                        </div>
                     </div>
                 </div>
                 <br>
@@ -32,9 +31,8 @@ require_once(__DIR__ . "/../plantillas/header.php");
                         <a class="btn btn-gob2 text-light  btn-block" onclick="cancelarForm()">Cancelar</a>
                     </div>
                     <div class="col-sm">
-                        <button class="btn btn-gob text-light  btn-block" type="submit">Continuar</button>
+                        <button class="btn btn-gob text-light  btn-block" onclick="sendMail()" type="submit">Continuar</button>
                     </div>
-                    </form>
                 </div>
         </main>
     </div>
@@ -43,6 +41,35 @@ require_once(__DIR__ . "/../plantillas/header.php");
 <?php require_once(__DIR__ . "/../plantillas/footer.php"); ?>
 
 <script>
+    function sendMail() {
+        var x = document.getElementById("Correo").value;
+        const cadena = "Correo=" + x + "&Accion=Restablecer";
+        var contra = '';
+        $.ajax({
+            type: "POST",
+            url: "/aplicacion/controlador/usuario.php",
+            data: cadena,
+            /**
+             * @param resp
+             * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
+             */
+            success: function(resp) {
+                Email.send({
+                        Host: "smtp.gmail.com",
+                        Username: "sisuar.imta@gmail.com",
+                        Password: "$imta2021$",
+                        To: x,
+                        From: "sisuar.imta@gmail.com",
+                        Subject: "Restablecimiento de contraseña",
+                        Body: 'Esta es tu contraseña:' + resp + ' Recuerda cambiarla por seguridad en la sección de tu perfil'
+                    })
+                    .then(function(message) {
+                        alert("mail sent successfully")
+                    });
+            }
+        });
+    }
+
     function cancelarForm() {
         Swal.fire({
             title: "¿Estás seguro?",

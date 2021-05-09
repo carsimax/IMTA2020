@@ -19,7 +19,7 @@ set_time_limit(300);
  */
 require_once("dbconnection.php");
 require_once("dbconnectionGeoespacial.php");
-require_once(__DIR__ . "/../controlador/sesion.php");
+
 
 /**
  * Class Acuifero

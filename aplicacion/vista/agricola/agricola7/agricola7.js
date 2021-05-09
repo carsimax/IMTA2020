@@ -668,7 +668,7 @@ async function desgloce1(query) {
                             title: "Volumen neto (miles de m³)*",
                         },
                         {
-                            title: "Rend. (ton/ha)",
+                            title: "Rendimiento (ton/ha)",
                         },
                         {
                             title: "P.M.R ($/ton)",
@@ -971,7 +971,7 @@ async function desgloce2() {
                                 title: "Volumen neto (miles de m³)*",
                             },
                             {
-                                title: "Rend. (ton/ha)",
+                                title: "Rendimiento (ton/ha)",
                             },
                             {
                                 title: "P.M.R ($/ton)",
@@ -1357,7 +1357,7 @@ async function desgloce5() {
                                                         title: "Volumen neto (miles de m³)*",
                                                     },
                                                     {
-                                                        title: "Rend. (ton/ha)",
+                                                        title: "Rendimiento (ton/ha)",
                                                     },
                                                     {
                                                         title: "P.M.R ($/ton)",
@@ -1881,7 +1881,7 @@ async function desgloce6() {
                                                         title: "Volumen neto (miles de m³)*",
                                                     },
                                                     {
-                                                        title: "Rend. (ton/ha)",
+                                                        title: "Rendimiento (ton/ha)",
                                                     },
                                                     {
                                                         title: "P.M.R ($/ton)",

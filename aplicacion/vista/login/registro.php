@@ -8,6 +8,7 @@ $sectores = $registros->getTodos();
 
 <form action="/aplicacion/controlador/usuario.php" name="formRegistro" method="POST" onsubmit="return valiForm()">
     <input type="text" id="Accion" name="Accion" value="Registro" hidden>
+    <input type="text" id="Token" name="Token" value="" hidden>
     <div class="row">
         <!--Nombre-->
         <div class="col-sm">
@@ -226,6 +227,9 @@ $sectores = $registros->getTodos();
             swal("Las contraseñas deben de coincidir");
             return false;
         }
+        var x = document.getElementById("Correo").value;
+        var Token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        document.getElementById("Token").value = Token;
         return true;
     }
 

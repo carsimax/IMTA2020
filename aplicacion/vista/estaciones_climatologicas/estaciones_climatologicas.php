@@ -15,7 +15,7 @@ error_reporting(E_ALL);
 /**
  * Para que el controlador funcione de forma correcta, es necesario la llamada a los modelos necesarios en el mismo.
  */
-require_once(__DIR__ . "/../../controlador/sesion.php");
+
 require_once(__DIR__ . "/../../modelo/filtroacu.php");
 require_once(__DIR__ . "/../plantillas/header.php");
 ?>

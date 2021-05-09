@@ -40,6 +40,23 @@ class Usuario {
     private $rol_id;
     private $sector_id;
     private $is_olvidad;
+    private $Token;
+    private $Verificar;
+
+
+     /**
+     * @return mixed
+     */
+    public function getVerificar() {
+        return $this->Verificar;
+    }
+
+    /**
+     * @param mixed $is_olvidad
+     */
+    public function setVerificar($Verificar) {
+        $this->Verificar = $Verificar;
+    }
 
     /**
      * @return mixed
@@ -238,6 +255,20 @@ class Usuario {
     }
 
     /**
+     * @return mixed
+     */
+    public function getToken() {
+        return $this->Token;
+    }
+
+    /**
+     * @param mixed $sector_id
+     */
+    public function setToken($Token) {
+        $this->Token = $Token;
+    }
+
+    /**
      * @return int|null
      */
     public function verificarUsuario() {
@@ -285,8 +316,8 @@ class Usuario {
     public function insert() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
-        $select = $db->prepare('INSERT INTO usuario(usuario, nombre, a_paterno, a_materno,correo, contra,rol_id, sector_id,is_olvidada) 
-        VALUES (:usuario,:nombre,:a_paterno,:a_materno,:correo,:contra,3,:sector_id,0)');
+        $select = $db->prepare('INSERT INTO usuario(usuario, nombre, a_paterno, a_materno,correo, contra,rol_id, sector_id,is_olvidada,verificar,token) 
+        VALUES (:usuario,:nombre,:a_paterno,:a_materno,:correo,:contra,3,:sector_id,0,0,:token)');
         $select->bindValue('usuario', $this->getUsuario(), PDO::PARAM_STR);
         $select->bindValue('nombre', $this->getNombre(), PDO::PARAM_STR);
         $select->bindValue('a_paterno', $this->getAPaterno(), PDO::PARAM_STR);
@@ -294,6 +325,7 @@ class Usuario {
         $select->bindValue('sector_id', $this->getSectorID(), PDO::PARAM_INT);
         $select->bindValue('correo', $this->getCorreo(), PDO::PARAM_STR);
         $select->bindValue('contra', $this->getContra(), PDO::PARAM_STR);
+        $select->bindValue('token', $this->getToken(), PDO::PARAM_STR);
         $select->execute();
         //Obtener el ultimo
         $select = $db->prepare('SELECT MAX(id_usuario) AS id FROM usuario');
@@ -347,6 +379,7 @@ class Usuario {
                 $usuario->setCorreo($registro['correo']);
                 $usuario->setContra($registro['contra']);
                 $usuario->setIsOlvidad($registro['is_olvidada']);
+                $usuario->setVerificar($registro['verificar']);
             }
             return $usuario;
         } catch (PDOException $exc) {
@@ -465,13 +498,13 @@ class Usuario {
     /**
      * @return int|mixed|null
      */
-    public function restablecer() {
+    public function restablecer($correo) {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
             //Obtener informacion del usuario
             $select = $db->prepare('SELECT * FROM usuario WHERE correo=:correo');
-            $select->bindValue('correo', $this->getCorreo(), PDO::PARAM_STR);
+            $select->bindValue('correo', $correo, PDO::PARAM_STR);
             $select->execute();
             $registro = $select->fetch();
             $this->setIDUsuario($registro['id_usuario']);
@@ -483,21 +516,12 @@ class Usuario {
             $this->setRolID($registro['rol_id']);
             $this->setSectorID($registro['sector_id']);
             $this->setCorreo($registro['correo']);
-
             //Sacar la contra
             $select = $db->prepare('SELECT * FROM contra WHERE usuario_id=:usuario_id');
             $select->bindValue('usuario_id', $this->getIdUsuario(), PDO::PARAM_INT);
             $select->execute();
             $registro = $select->fetch();
-            $this->setContra($registro['contra']);
-
-            ////Actualizamos el estado de su contra
-            $select = $db->prepare('UPDATE usuario SET is_olvidada=:is_olvidada WHERE correo=:correo ');
-            $select->bindValue('correo', $this->getCorreo(), PDO::PARAM_STR);
-            $select->bindValue('is_olvidada', 1, PDO::PARAM_INT);
-            $select->execute();
-            $registro = $select->rowCount();
-            return $registro;
+            return $registro['contra'];
         } catch (PDOException $exc) {
             $db->rollback();
             $db = null;

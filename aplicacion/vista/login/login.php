@@ -25,22 +25,10 @@
 <script>
     //Funcion que esta atentan en todo momento
     $(document).ready(function() {
-
         //Cuando se da click en el boton de enviar, se ejecuta esta funcion
         $("#botonenviar").click(async function() {
-
             //Aqui se valida la informacion del formulario
             if (validaForm()) {
-                Swal.fire({
-                    title: 'Iniciando Sesión', // add html attribute if you want or remove
-                    allowEscapeKey: false,
-                    allowOutsideClick: false,
-                    showConfirmButton: false,
-                    onBeforeOpen: () => {
-                        Swal.showLoading();
-                    }
-                });
-                await sleep(1000);
                 //Se concatena una cadena con el email y con la contraseña del usuario
                 cadena = "Email=" + $("#email").val() + "&Contra=" + $("#contra").val() + "&Accion=Login";
                 //Se manda a llamar a una funcion de ajax.
@@ -50,14 +38,19 @@
                     data: cadena,
                     success: function(resp) {
                         if (resp == 1) {
-                            Swal.close();
                             window.location.href = "/aplicacion/vista/principal.php";
                         } else {
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Algo salió mal!',
                                 text: resp,
+                                confirmButtonText: 'Aceptar',
                                 confirmButtonColor: '#621132'
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                    window.location.href = '/aplicacion/controlador/logout.php';
+                                }
                             });
                         }
                     }
