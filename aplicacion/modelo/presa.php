@@ -450,4 +450,22 @@ class Presa
             return null;
         }
     }
+
+    public function getPresaMapa($id)
+    {
+        $pdo = new DBConnection();
+        $db = $pdo->DBConnect();
+        try {
+            $db->beginTransaction();
+            $select = $db->prepare('SELECT nom_oficial,nombre, corriente, cap_name, cap_namo, anio_term, alt_cort, TRUNCATE(AVG(vol_alma),2)  as promedio_volumen  FROM presa INNER JOIN estado on estado.id_estado=presa.edo_id INNER JOIN presa_volumen on presa_volumen.presa_id= presa.id_presa WHERE id_presa=:id_presa GROUP BY nom_oficial');
+            $select->bindValue('id_presa', $id, PDO::PARAM_INT);
+            $select->execute();
+            return $select->fetch();
+        } catch (PDOException $exc) {
+            $db->rollback();
+            $db = null;
+            echo $exc->getMessage();
+            return null;
+        }
+    }
 }

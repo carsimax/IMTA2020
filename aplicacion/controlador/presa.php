@@ -106,6 +106,13 @@ switch ($accion) {
             echo $exc->getTraceAsString();
         }
         break;
+    case 'getPresaMapa':
+        try {
+            getPresaMapa();
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+        break;
     case 'importFromExcel':
         try {
             importFromExcel();
@@ -195,6 +202,12 @@ function getPresaId()
 {
     $Presa = new Presa();
     echo json_encode($Presa->getPresaId(filter_input(INPUT_POST, "id")));
+}
+
+function getPresaMapa()
+{
+    $Presa = new Presa();
+    echo json_encode($Presa->getPresaMapa(filter_input(INPUT_POST, "id")));
 }
 
 /**

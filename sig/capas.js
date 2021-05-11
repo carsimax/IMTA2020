@@ -630,7 +630,6 @@ function getPresa_SIG(callback) {
         url: "/aplicacion/controlador/geoespacial.php",
         data: sig,
         success: function (resp) {
-            alert(resp);
             $.each(JSON.parse(resp), function (index, item) {
                 presasSHP.features.push(JSON.parse(item.json));
             });
@@ -639,7 +638,7 @@ function getPresa_SIG(callback) {
         PresaSelect = L.geoJson(presasSHP, {
             onEachFeature: function popUp(f, l) {
                 if (f.properties) {
-                    var data_oc = "id=" + f.properties.id_presa + "&Accion=getPresaId";
+                    var data_oc = "id=" + f.properties.id_presa + "&Accion=getPresaMapa";
                     $.ajax({
                         type: "POST",
                         url: "/aplicacion/controlador/presa.php",
@@ -652,6 +651,10 @@ function getPresa_SIG(callback) {
                                 '<tr><th scope="row">Presa</th><td>' + item.nom_oficial + '</td></tr>' +
                                 '<tr><th scope="row">Estado</th><td>' + item.nombre + '</td></tr>' +
                                 '<tr><th scope="row">Corriente</th><td>' + item.corriente + '</td></tr>' +
+                                '<tr><th scope="row">Cap. al NAME (hm³)</th><td>' + item.cap_name + '</td></tr>' +
+                                '<tr><th scope="row">Cap. al NAMO (hm³)</th><td>' + item.cap_namo + '</td></tr>' +
+                                '<tr><th scope="row">Altura de la cortina (m)</th><td>' + item.alt_cort + '</td></tr>' +
+                                '<tr><th scope="row">Vol. de almacenamiento promedio (hm³) </th><td>' + item.promedio_volumen + '</td></tr>' +
                                 '<tr><th scope="row">Año Termino</th><td>' + item.anio_term + '</td></tr>' +
                                 '</tbody></table>';
                         }

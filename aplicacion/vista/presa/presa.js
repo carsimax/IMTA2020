@@ -319,8 +319,8 @@ $("#tablaPresa").on("click", "button", async function () {
                     "</h3>";
                 data.push([
                     item.presa_id + " - " + item.nom_oficial,
-                    numeral(Number.parseFloat(item.vol_alma)).format("0,0.00"),
                     item.anio,
+                    numeral(Number.parseFloat(item.vol_alma)).format("0,0.00")
                 ]);
             });
             tableV.destroy();
@@ -333,14 +333,14 @@ $("#tablaPresa").on("click", "button", async function () {
                 columns: [
                     {
                         title: "Presa"
-                    }
-                    ,
-                    {
-                        title: "Vol. de almacenamiento (hm³)"
                     },
                     {
                         title: "Año"
-                    }
+                    },
+                    {
+                        title: "Vol. de almacenamiento (hm³)"
+                    },
+
                 ],
                 buttons: [
                     {
