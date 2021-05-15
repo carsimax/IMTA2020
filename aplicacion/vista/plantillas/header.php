@@ -71,6 +71,8 @@ if (!isset($_SESSION)) {
     <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     <!--Scripts Personales-->
     <script src="/aplicacion/vista/crud/alerts.js"></script>
+    <!-- TRUNCAR NUMEROS JS -->
+    <script src="/sistema/truncar.js"></script>
     <link rel="stylesheet" href="/estilo/css/multiselect.css">
     <link rel="stylesheet" href="/estilo/css/legend.css">
     <script src="/estilo/js/jquery.multiselect.js"></script>
@@ -81,6 +83,7 @@ if (!isset($_SESSION)) {
     <!-- <script src="/estilo/js/sweetalert.min.js"></script> -->
     <script src="/estilo/js/logo.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+
     <script>
         $(window).on("change", function() {
             $.fn.dataTable.tables({

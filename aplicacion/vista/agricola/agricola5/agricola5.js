@@ -652,9 +652,7 @@ async function desgloce1(query) {
                     '<td style="background-color:#CCD1D1" align="right"><b>' +
                     numeral(VAL).format("0,0.00") +
                     "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right" ><b>' +
-                    numeral(parseFloat(PROD / COS).toFixed(2)).format("0,0.00") +
-                    "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right" ><b>' + numeral(truncar(PROD / COS)).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' +
                     numeral(Math.round(VAL / PROD)).format("0,0.00") +
                     "</b></td>" +
@@ -953,9 +951,7 @@ async function desgloce2() {
                         '<td style="background-color:#CCD1D1" align="right"><b>' +
                         numeral(VAL).format("0,0.00") +
                         "</b></td>" +
-                        '<td style="background-color:#CCD1D1" align="right" ><b>' +
-                        numeral(parseFloat(PROD / COS).toFixed(2)).format("0,0.00") +
-                        "</b></td>" +
+                        '<td style="background-color:#CCD1D1" align="right" ><b>' + numeral(truncar(PROD / COS)).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right"><b>' +
                         numeral(Math.round(VAL / PROD)).format("0,0.00") +
                         "</b></td>" +
@@ -1292,7 +1288,7 @@ async function desgloce3() {
                                     ) +
                                     "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right" ><b>' +
-                                    numeral(parseFloat(PROD / COS).toFixed(2)).format(
+                                    numeral(truncar(PROD / COS)).format(
                                         "0,0.00"
                                     ) +
                                     "</b></td>" +
@@ -1678,11 +1674,7 @@ async function desgloce5() {
                                                     "0,0.00"
                                                 ) +
                                                 "</b></td>" +
-                                                '<td style="background-color:#52BE80" align="right" ><b>' +
-                                                numeral(parseFloat(PROD / COS).toFixed(2)).format(
-                                                    "0,0.00"
-                                                ) +
-                                                "</b></td>" +
+                                                '<td style="background-color:#52BE80" align="right" ><b>' + numeral(truncar(PROD / COS)).format("0,0.00") + "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
                                                 numeral(Math.round(((VAL / PROD) * 1000))).format("0,0.00") +
                                                 "</b></td>" +
@@ -1803,7 +1795,7 @@ async function desgloce5() {
                                                          * @type Number
                                                          * obener el sibtotal del rendimiento
                                                          */
-                                                        var rend = prod / sc;
+                                                        var rend = truncar(prod/sc)
                                                         /*
                                                          *
                                                          * @type Number
@@ -1837,7 +1829,7 @@ async function desgloce5() {
                                                             ) +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF"  align="right"><b>' +
-                                                            numeral(parseFloat(rend).toFixed(2)).format(
+                                                            numeral(parseFloat(rend)).format(
                                                                 "0,0.00"
                                                             ) +
                                                             "</b></td>" +
@@ -2173,8 +2165,8 @@ async function desgloce6() {
                                          * Si existen datos en array
                                          */
                                         if (data.length > 0) {
-                                            var REND1 = PROD / COS;
-                                            var PMR1 = VAL / PROD;
+                                            var REND1 = truncar(PROD / COS);
+                                            var PMR1 = (VAL / PROD)*1000;
                                             if (!isFinite(REND1)) REND1 = 0;
                                             if (!isFinite(PMR1)) PMR1 = 0;
                                             /*
@@ -2213,7 +2205,7 @@ async function desgloce6() {
                                                 numeral(parseFloat(VAL).toFixed(2)).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right" ><b>' +
-                                                numeral(parseFloat(REND1).toFixed(2)).format("0,0.00") +
+                                                numeral(REND1).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
                                                 numeral(Math.round(parseFloat(PMR1).toFixed(2))).format(
@@ -2311,7 +2303,7 @@ async function desgloce6() {
                                                                 );
                                                             }, 0);
 
-                                                        var rend = prod / sc;
+                                                        var rend = truncar(prod / sc);
                                                         var pmr = (vc / prod) * 1000;
                                                         if (!isFinite(rend)) rend = 0;
                                                         if (!isFinite(pmr)) pmr = 0;
@@ -2337,7 +2329,7 @@ async function desgloce6() {
                                                             ) +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right"><b>' +
-                                                            numeral(parseFloat(rend).toFixed(2)).format(
+                                                            numeral(parseFloat(rend)).format(
                                                                 "0,0.00"
                                                             ) +
                                                             "</b></td>" +
