@@ -123,9 +123,9 @@ if (!isset($_SESSION)) {
 <!--Fin del Encabezado de la pagina-->
 
 <body>
-    <input hidden="hidden" name="sesionStatus" id="sesionStatus" value="<?php echo $_SESSION['loggedin'] ?>">
     <nav class="navbar navbar-expand-lg navbar-dark bg-gob sticky-top">
         <a class="navbar-brand" href="#"><a class="navbar-brand" href="/"><i class="fas fa-home"></i> Inicio</a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -184,25 +184,6 @@ if (!isset($_SESSION)) {
                     </ul>
                 <?php } else { ?>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Consulta
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Pozos</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/agricola/agricola.php">Estadística Agrícola</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad del agua superficial</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones Climatológicas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones Hidrométricas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de Marginación</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario de Obras de los Distritos de Riego</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href='/aplicacion/vista/acercade.php'>Acerca de</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#LoginModal" class="trigger-btn" data-toggle="modal">Iniciar Sesión</a>
                         </li>
