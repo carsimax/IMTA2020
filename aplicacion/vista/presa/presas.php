@@ -112,6 +112,7 @@ $filtros = $registros->getPresas();
 <?php require_once(__DIR__ . "/../plantillas/footer.php"); ?>
 <!--Script de chartJS-->
 <script src="gpresa.js"></script>
+<script src="/sistema/functionsselect.js"></script>
 <script src="presa.js"></script>
 <script src="/sig/capas.js"></script>
 <script>

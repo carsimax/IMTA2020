@@ -143,41 +143,6 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
 </main>
 </div>
 </div>
-
-<!-- Modal Login-->
-<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesíon</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <?php require(__DIR__ . '/login/login.php'); ?>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Registro-->
-<div class="modal fade" id="RegistroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registro Sistema De Información Sobre Uso Del Agua De
-                    Riego A Nivel Nacional</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <?php require(__DIR__ . '/login/registro.php'); ?>
-            </div>
-        </div>
-    </div>
-</div>
 <br>
 <?php
 //LLamamos la cabezera con todos los ccs y scripts del sistema

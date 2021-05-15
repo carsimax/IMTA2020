@@ -16,10 +16,6 @@ error_reporting(E_ALL);
 /**
  * Para que el controlador funcione de forma correcta, es necesario la llamada a los modelos necesarios en el mismo.
  */
-if (!defined(__DIR__ . "/../../controlador/sesion.php")) {
-    require(__DIR__ . "/../../controlador/sesion.php");
-    define(__DIR__ . "/../../controlador/sesion.php", 1);
-}
 if (!defined(__DIR__ . "/../../modelo/filtroacu.php")) {
     require(__DIR__ . "/../../modelo/filtroacu.php");
     define(__DIR__ . "/../../modelo/filtroacu.php", 1);

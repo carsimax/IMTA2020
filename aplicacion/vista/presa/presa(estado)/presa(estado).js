@@ -109,7 +109,6 @@ async function Consultar() {
                     ]);
                 });
                 table.destroy();
-                
                 table = $("#tablaPresa").DataTable({
                     data: data,
                     columnDefs: [
@@ -148,101 +147,7 @@ async function Consultar() {
                             title: "Año Termino",
                         },
                     ],
-                    buttons: [
-                        {
-                            extend: "excelHtml5",
-                            title: "Consulta de presas",
-                            className: "btn btn-gob btn-sm",
-                            text: "Exportar Excel",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6, 7],
-                            },
-                        },
-                        {
-                            extend: "pdfHtml5",
-                            title: "Consulta de presas",
-                            className: "btn btn-gob btn-sm",
-                            text: "Exportar PDF",
-                            messageBottom: citas,
-                            orientation: "portrait",
-                            pageSize: "A4",
-                            exportOptions: {
-                                columns: [1, 2, 3, 4, 5, 6, 7],
-                            },
-                            customize: function (doc) {
-                                doc.content.splice(0, 1);
-                                var now = new Date();
-                                var jsDate =
-                                    now.getDate() +
-                                    "-" +
-                                    (now.getMonth() + 1) +
-                                    "-" +
-                                    now.getFullYear();
-                                doc.pageMargins = [20, 70, 20, 50];
-                                doc.defaultStyle.fontSize = 10;
-                                doc.styles.tableHeader.fontSize = 10;
-                                doc["header"] = function () {
-                                    return {
-                                        columns: [
-                                            {
-                                                image: logo,
-                                                width: 200,
-                                            },
-                                            {
-                                                alignment: "left",
-                                                text: "Consulta de presas",
-                                                fontSize: 12.5,
-                                                margin: [10, 5],
-                                            },
-                                            {
-                                                alignment: "right",
-                                                fontSize: 10,
-                                                text: jsDate.toString(),
-                                            },
-                                        ],
-                                        margin: 20,
-                                    };
-                                };
-                                doc["footer"] = function (page, pages) {
-                                    return {
-                                        columns: [
-                                            {
-                                                // This is the right column
-                                                alignment: "center",
-                                                text: [
-                                                    "Página ",
-                                                    { text: page.toString() },
-                                                    " de ",
-                                                    { text: pages.toString() },
-                                                ],
-                                            },
-                                        ],
-                                        margin: [50, 0],
-                                    };
-                                };
-                                var objLayout = {};
-                                objLayout["hLineWidth"] = function (i) {
-                                    return 0.5;
-                                };
-                                objLayout["vLineWidth"] = function (i) {
-                                    return 0.5;
-                                };
-                                objLayout["hLineColor"] = function (i) {
-                                    return "#aaaaaa";
-                                };
-                                objLayout["vLineColor"] = function (i) {
-                                    return "#aaaaaa";
-                                };
-                                objLayout["paddingLeft"] = function (i) {
-                                    return 4;
-                                };
-                                objLayout["paddingRight"] = function (i) {
-                                    return 4;
-                                };
-                                doc.content[0].layout = objLayout;
-                            },
-                        },
-                    ],
+                    buttons:botonPresa,
                     language: {
                         url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
                     }
@@ -276,10 +181,6 @@ async function Consultar() {
         await Swal.close();
     }
     await Historial();
-    var session=document.getElementById("sesionStatus").value;
-    if(session!=1){
-        table.buttons().disable();
-    }
 }
 
 async function Historial() {
