@@ -815,7 +815,7 @@ async function mostrarDAcuifero() {
           tablaAcu = $("#Acu").DataTable({
             data: data,
             columnDefs: [
-              { className: 'dt-body-right', targets: [2, 3, 4, 5, 6, 7, 8, 9] },
+              { className: 'dt-body-right', targets: [3, 4, 5, 6, 7, 8, 9] },
               {
                 targets: 0,
                 data: null,

@@ -10,9 +10,9 @@ function alertaCargando(title, mensaje) {
         allowEscapeKey: false,
         showConfirmButton: false,
         allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        },
+        didOpen: () => {
+            Swal.showLoading()
+        }
     });
 }
 
