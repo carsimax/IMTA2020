@@ -324,25 +324,11 @@ $("#tablaPresa").on("click", "button", async function () {
                 ]);
             });
             tableV.destroy();
-            tableV = $("#tablaVolumen").DataTable({
-                data: data,
-                columnDefs: [
-                    { className: 'dt-body-right', targets: [1, 2] },
-                ],
-                dom: "Bfrtip",
-                columns: [
-                    {
-                        title: "Presa"
-                    },
-                    {
-                        title: "Año"
-                    },
-                    {
-                        title: "Vol. de almacenamiento (hm³)"
-                    },
-
-                ],
-                buttons: [
+            // INICIAS TU ARREGLO DE  BOTONES
+            let botones = [];
+            if (sesion == 1) { //JALAS EL VALOR DE LA SESION Y COMPARAS
+                // LA SESION ES VALIDA SE MUESTRAN LOS BOTONES, SINO SE QUEDA VACIO
+                botones = [
                     {
                         extend: "excelHtml5",
                         title: "Volumen de presas",
@@ -437,7 +423,27 @@ $("#tablaPresa").on("click", "button", async function () {
                             doc.content[0].layout = objLayout;
                         },
                     },
+                ]
+            }
+            tableV = $("#tablaVolumen").DataTable({
+                data: data,
+                columnDefs: [
+                    { className: 'dt-body-right', targets: [1, 2] },
                 ],
+                dom: "Bfrtip",
+                columns: [
+                    {
+                        title: "Presa"
+                    },
+                    {
+                        title: "Año"
+                    },
+                    {
+                        title: "Vol. de almacenamiento (hm³)"
+                    },
+
+                ],
+                buttons: botones, //SE PONE EL RESULTADO
                 language: {
                     url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
                 },
