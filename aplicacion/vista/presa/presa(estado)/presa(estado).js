@@ -152,7 +152,7 @@ async function Consultar() {
                         {
                             extend: "excelHtml5",
                             title: "Consulta de presas",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar Excel",
                             exportOptions: {
                                 columns: [1, 2, 3, 4, 5, 6, 7],
@@ -161,7 +161,7 @@ async function Consultar() {
                         {
                             extend: "pdfHtml5",
                             title: "Consulta de presas",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar PDF",
                             messageBottom: citas,
                             orientation: "portrait",

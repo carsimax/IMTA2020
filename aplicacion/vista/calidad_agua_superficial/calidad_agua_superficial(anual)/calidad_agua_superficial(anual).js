@@ -509,14 +509,14 @@ async function distribucion1(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Organismo de Cuenca Demanda Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Organismo de Cuenca Demanda Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -716,14 +716,14 @@ async function distribucion1Est(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Estado Demanda Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Estado Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -925,14 +925,14 @@ async function distribucion1Mun(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Municipio Demanda Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Municipio Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -1141,14 +1141,14 @@ async function distribucion1Estacion(query) {
               extend: "excelHtml5",
               title:
                 "Estaciones de monitoreo Demanda Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Estaciones de monitoreo Demanda Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -1351,14 +1351,14 @@ async function distribucion2(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Organismo de Cuenca Demanda Química de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Organismo de Cuenca Demanda Química de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -1558,14 +1558,14 @@ async function distribucion2Est(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Estado Demanda Química de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Estado Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -1767,14 +1767,14 @@ async function distribucion2Mun(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Municipio Demanda Química de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Municipio Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -1983,14 +1983,14 @@ async function distribucion2Estacion(query) {
               extend: "excelHtml5",
               title:
                 "Estaciones de monitoreo Demanda Química de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Estaciones de monitoreo Demanda Química de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -2193,14 +2193,14 @@ async function distribucion3(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Organismo de Cuenca de Sólidos Suspendidos Totales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Organismo de Cuenca de Sólidos Suspendidos Totales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -2399,13 +2399,13 @@ async function distribucion3Est(query) {
             {
               extend: "excelHtml5",
               title: "Distribución porcentual por Estado de Sólidos Suspendidos Totales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title: "Distribución porcentual por Estado de Sólidos Suspendidos Totales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -2606,14 +2606,14 @@ async function distribucion3Mun(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Municipio Sólidos Suspendidos Totales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Municipio Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -2822,14 +2822,14 @@ async function distribucion3Estacion(query) {
               extend: "excelHtml5",
               title:
                 "Estaciones de monitoreo Sólidos Suspendidos Totales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Estaciones de monitoreo Sólidos Suspendidos Totales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -3032,14 +3032,14 @@ async function distribucion4(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Organismo de Cuenca Coliformes fecales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Organismo de Cuenca Coliformes fecales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -3239,14 +3239,14 @@ async function distribucion4Est(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Estado Coliformes fecales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Estado Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -3448,14 +3448,14 @@ async function distribucion4Mun(query) {
               extend: "excelHtml5",
               title:
                 "Distribución porcentual por Municipio Coliformes fecales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Distribución porcentual por Municipio Bioquímica de Oxígeno",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",
@@ -3664,14 +3664,14 @@ async function distribucion4Estacion(query) {
               extend: "excelHtml5",
               title:
                 "Estaciones de monitoreo Coliformes fecales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Estaciones de monitoreo Coliformes fecales",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               //messageBottom: citas,
               orientation: "landscape",

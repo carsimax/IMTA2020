@@ -352,7 +352,7 @@ async function mostrarDOrganismo(data) {
       {
         extend: "excelHtml5",
         title: "Disponibilidad de acuíferos por Organismo de cuenca ",
-        className: "btn btn-gob btn-sm",
+        className: estiloboton,
         text: "Exportar Excel",
         exportOptions: {
           columns: [1, 2, 3, 4, 5, 6, 7, 8],
@@ -361,7 +361,7 @@ async function mostrarDOrganismo(data) {
       {
         extend: "pdfHtml5",
         title: "Consulta acuíferos por Organismo de cuenca",
-        className: "btn btn-gob btn-sm",
+        className: estiloboton,
         text: "Exportar PDF",
         messageBottom: citas,
         orientation: "portrait",
@@ -628,7 +628,7 @@ async function mostrarDEstado() {
               {
                 extend: "excelHtml5",
                 title: "Disponibilidad de acuíferos por Estado",
-                className: "btn btn-gob btn-sm",
+                className: estiloboton,
                 text: "Exportar Excel",
                 exportOptions: {
                   columns: [1, 2, 3, 4, 5, 6, 7, 8],
@@ -637,7 +637,7 @@ async function mostrarDEstado() {
               {
                 extend: "pdfHtml5",
                 title: "Disponibilidad de acuíferos por Estado",
-                className: "btn btn-gob btn-sm",
+                className: estiloboton,
                 text: "Exportar PDF",
                 messageBottom: citas,
                 orientation: "portrait",
@@ -860,7 +860,7 @@ async function mostrarDAcuifero() {
               {
                 extend: "excelHtml5",
                 title: "Disponibilidad de acuíferos",
-                className: "btn btn-gob btn-sm",
+                className: estiloboton,
                 text: "Exportar Excel",
                 exportOptions: {
                   columns: [1, 2, 3, 4, 5, 6, 7, 8],
@@ -869,7 +869,7 @@ async function mostrarDAcuifero() {
               {
                 extend: "pdfHtml5",
                 title: "Disponibilidad de acuíferos",
-                className: "btn btn-gob btn-sm",
+                className: estiloboton,
                 text: "Exportar PDF",
                 messageBottom: citas,
                 orientation: "portrait",
@@ -1108,7 +1108,7 @@ async function mostrarMunicipio() {
               {
                 extend: "excelHtml5",
                 title: "Disponibilidad de acuíferos por municipio",
-                className: "btn btn-gob btn-sm",
+                className: estiloboton,
                 text: "Exportar Excel",
                 exportOptions: {
                   columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -1117,7 +1117,7 @@ async function mostrarMunicipio() {
               {
                 extend: "pdfHtml5",
                 title: "Disponibilidad de acuíferos por municipio",
-                className: "btn btn-gob btn-sm",
+                className: estiloboton,
                 text: "Exportar PDF",
                 messageBottom: citas,
                 orientation: "portrait",

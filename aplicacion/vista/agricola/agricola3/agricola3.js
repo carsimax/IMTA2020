@@ -770,7 +770,7 @@ async function Consultar() {
             {
               extend: "excelHtml5",
               title: "Total de usuarios por año agrícola",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
           ],
@@ -803,7 +803,7 @@ async function Consultar() {
             {
               extend: "excelHtml5",
               title: "Superficie regada por año agrícola (ha)",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
           ],
@@ -836,7 +836,7 @@ async function Consultar() {
             {
               extend: "excelHtml5",
               title: "Volumen distribuido por año agrícola (miles m3)",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
           ],
@@ -869,7 +869,7 @@ async function Consultar() {
             {
               extend: "excelHtml5",
               title: "Lámina bruta por año agrícola (cm)",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
           ],

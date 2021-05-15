@@ -328,7 +328,7 @@ async function Consultar() {
                         {
                             extend: "excelHtml5",
                             title: "Superficie sembrada y cosechada por año agrícola (ha)",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar Excel",
                         },
                     ],
@@ -359,7 +359,7 @@ async function Consultar() {
                         {
                             extend: "excelHtml5",
                             title: "Producción por año agrícola (miles ton)",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar Excel",
                         },
                     ],
@@ -591,14 +591,14 @@ async function desgloce1(query) {
                             extend: "excelHtml5",
                             title:
                                 "Concentrado estatal de la estimación volumétrica por coeficientes de cultivo",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar Excel",
                         },
                         {
                             extend: "pdfHtml5",
                             title:
                                 "Concentrado estatal de la estimación volumétrica por coeficientes de cultivo",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar PDF",
                             messageBottom: citas,
                             orientation: "landscape",

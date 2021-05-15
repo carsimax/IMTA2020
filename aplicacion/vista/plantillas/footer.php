@@ -43,39 +43,44 @@
 </body>
 <!-- Modal Registro-->
 <div class="modal fade" id="RegistroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registro Sistema De Información Sobre Uso Del Agua De
-                        Riego A Nivel Nacional</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <?php require(__DIR__ . '/../login/registro.php'); ?>
-                </div>
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registro Sistema De Información Sobre Uso Del Agua De
+                    Riego A Nivel Nacional</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php require(__DIR__ . '/../login/registro.php'); ?>
             </div>
         </div>
     </div>
-    <!-- Modal Login-->
-    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesíon</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <?php require(__DIR__ . '/../login/login.php'); ?>
-                </div>
+</div>
+<!-- Modal Login-->
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesíon</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php require(__DIR__ . '/../login/login.php'); ?>
             </div>
         </div>
     </div>
+</div>
 <a id="back2Top" title="Back to top" href="#">&#10148;</a>
 <script>
+    var sesion = document.getElementById("sesionStatus").value;
+    estiloboton = "hidden";
+    if (sesion === "1") {
+        estiloboton = "btn btn-gob btn-sm";
+    }
     // Se asigna el anio actual al footer
     const legend = document.querySelector('#footer__text');
     legend.textContent = `Copyright © ${new Date().getFullYear()} todos los derechos reservados CONACyT-SADER.`

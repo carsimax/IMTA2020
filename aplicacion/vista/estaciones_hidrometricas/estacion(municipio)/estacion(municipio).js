@@ -284,7 +284,7 @@ async function generarTablaEstacionHidrometrica(data) {
             {
                 extend: "excelHtml5",
                 title: "Consulta de Estaciones Hidrométricas",
-                className: "btn btn-gob btn-sm",
+                className: estiloboton,
                 text: "Exportar Excel",
                 exportOptions: {
                     columns: [0, 1, 2, 3, 4]
@@ -293,7 +293,7 @@ async function generarTablaEstacionHidrometrica(data) {
             {
                 extend: "pdfHtml5",
                 title: "Consulta de Estaciones Hidrométricas",
-                className: "btn btn-gob btn-sm",
+                className: estiloboton,
                 text: "Exportar PDF",
                 messageBottom: citas,
                 orientation: "portrait",

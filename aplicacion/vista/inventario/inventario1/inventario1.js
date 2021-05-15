@@ -1059,13 +1059,13 @@ async function desgloce1(query) {
                             {
                                 extend: "excelHtml5",
                                 title: "Inventario de Obras Organismo de Cuenca: " + OC,
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title: "Inventario de Obras Organismo de Cuenca: " + OC,
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar PDF",
                                 messageBottom: citas,
                                 orientation: "landscape",
@@ -1482,13 +1482,13 @@ async function desgloce2() {
                         {
                             extend: "excelHtml5",
                             title: "Resumen Nacional del Inventario de Obra",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar Excel",
                         },
                         {
                             extend: "pdfHtml5",
                             title: "Resumen Nacional del Inventario de Obra",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar PDF",
                             messageBottom: citas,
                             orientation: "landscape",
@@ -2002,13 +2002,13 @@ async function desgloce3() {
                             {
                                 extend: "excelHtml5",
                                 title: "Resumen por Distrito de Riego del Inventario de Obras",
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title: "Resumen por Distrito de Riego del Inventario de Obras",
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar PDF",
                                 messageBottom: citas,
                                 orientation: "landscape",

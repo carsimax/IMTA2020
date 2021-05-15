@@ -443,14 +443,14 @@ async function desgloce1(query) {
                                 extend: "excelHtml5",
                                 title:
                                     "Concentrado estatal de la estimación volumétrica por coeficientes de cultivo",
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title:
                                     "Concentrado estatal de la estimación volumétrica por coeficientes de cultivo",
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar PDF",
                                 messageBottom: citas,
                                 orientation: "landscape",
@@ -825,7 +825,7 @@ async function desgloce2() {
                                                             (parseInt(JSON.parse(resp)) - 1) +
                                                             " - " +
                                                             JSON.parse(resp),
-                                                        className: "btn btn-gob btn-sm",
+                                                        className: estiloboton,
                                                         text: "Exportar Excel",
                                                     },
                                                     {
@@ -837,7 +837,7 @@ async function desgloce2() {
                                                             (parseInt(JSON.parse(resp)) - 1) +
                                                             " - " +
                                                             JSON.parse(resp),
-                                                        className: "btn btn-gob btn-sm",
+                                                        className: estiloboton,
                                                         text: "Exportar PDF",
                                                         messageBottom: citas,
                                                         orientation: "landscape",
@@ -1223,7 +1223,7 @@ async function desgloce3() {
                                                             (parseInt(JSON.parse(resp)) - 1) +
                                                             " - " +
                                                             JSON.parse(resp),
-                                                        className: "btn btn-gob btn-sm",
+                                                        className: estiloboton,
                                                         text: "Exportar Excel",
                                                     },
                                                     {
@@ -1235,7 +1235,7 @@ async function desgloce3() {
                                                             (parseInt(JSON.parse(resp)) - 1) +
                                                             " - " +
                                                             JSON.parse(resp),
-                                                        className: "btn btn-gob btn-sm",
+                                                        className: estiloboton,
                                                         text: "Exportar PDF",
                                                         messageBottom: citas,
                                                         orientation: "landscape",

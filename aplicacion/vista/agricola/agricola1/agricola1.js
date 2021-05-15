@@ -705,14 +705,14 @@ async function desgloce1(query) {
                             extend: "excelHtml5",
                             title:
                                 "Concentrado de producción agrícola de los distritos de riego por organismo de cuenca",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar Excel",
                         },
                         {
                             extend: "pdfHtml5",
                             title:
                                 "Concentrado de producción agrícola de los distritos de riego por organismo de cuenca",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar PDF",
                             messageBottom: citas,
                             orientation: "landscape",
@@ -1013,13 +1013,13 @@ async function desgloce2() {
                                         {
                                             extend: "excelHtml5",
                                             title: "Concentrado distrital: " + OC,
-                                            className: "btn btn-gob btn-sm",
+                                            className: estiloboton,
                                             text: "Exportar Excel",
                                         },
                                         {
                                             extend: "pdfHtml5",
                                             title: "Concentrado distrital: " + OC,
-                                            className: "btn btn-gob btn-sm",
+                                            className: estiloboton,
                                             text: "Exportar PDF",
                                             messageBottom: citas,
                                             orientation: "portrait",
@@ -1326,14 +1326,14 @@ async function desgloce3() {
                                 extend: "excelHtml5",
                                 title:
                                     "Concentrado agrícola por entidad federativa",
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title:
                                     "Concentrado agrícola por entidad federativa",
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar PDF",
                                 messageBottom: citas,
                                 orientation: "landscape",
@@ -1820,13 +1820,13 @@ async function desgloce4() {
                                         {
                                             extend: "excelHtml5",
                                             title: "Concentrado distrito " + DRS,
-                                            className: "btn btn-gob btn-sm",
+                                            className: estiloboton,
                                             text: "Exportar Excel",
                                         },
                                         {
                                             extend: "pdfHtml5",
                                             title: "Concentrado distrito " + DRS,
-                                            className: "btn btn-gob btn-sm",
+                                            className: estiloboton,
                                             text: "Exportar PDF",
                                             messageBottom: citas,
                                             orientation: "landscape",
@@ -2316,7 +2316,7 @@ async function desgloce5() {
                                             title:
                                                 "Concentrado distrito " +
                                                 JSON.parse(respC),
-                                            className: "btn btn-gob btn-sm",
+                                            className: estiloboton,
                                             text: "Exportar Excel",
                                         },
                                         {
@@ -2324,7 +2324,7 @@ async function desgloce5() {
                                             title:
                                                 "Concentrado distrito " +
                                                 JSON.parse(respC),
-                                            className: "btn btn-gob btn-sm",
+                                            className: estiloboton,
                                             text: "Exportar PDF",
                                             messageBottom: citas,
                                             orientation: "landscape",

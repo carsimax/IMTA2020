@@ -68,7 +68,7 @@ tabla = $("#example").DataTable({
         {
             extend: "excelHtml5",
             title: "Consulta títulos de concesión",
-            className: "btn btn-gob btn-sm",
+            className: estiloboton,
             text: "Exportar Excel",
             exportOptions: {
                 columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
@@ -77,7 +77,7 @@ tabla = $("#example").DataTable({
         {
             extend: "pdfHtml5",
             title: "Consulta títulos de concesión",
-            className: "btn btn-gob btn-sm",
+            className: estiloboton,
             text: "Exportar PDF",
             message: "",
             orientation: "landscape",
@@ -226,13 +226,13 @@ tablaPozo = $("#tablaPozo").DataTable({
         {
             extend: "excelHtml5",
             title: "Anexos título de concesión: ",
-            className: "btn btn-gob btn-sm",
+            className: estiloboton,
             text: "Exportar Excel",
         },
         {
             extend: "pdfHtml5",
             title: "Anexos título de concesión: ",
-            className: "btn btn-gob btn-sm",
+            className: estiloboton,
             text: "Exportar PDF",
             orientation: "landscape",
             pageSize: "A4",
@@ -530,13 +530,13 @@ $("#example").on("click", "button", async function () {
                             {
                                 extend: "excelHtml5",
                                 title: "Anexos título de concesión: " + titulo,
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title: "Anexos título de concesión: " + titulo,
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar PDF",
                                 orientation: "landscape",
                                 pageSize: "A4",
@@ -736,13 +736,13 @@ $("#example").on("click", "button", async function () {
                             {
                                 extend: "excelHtml5",
                                 title: "Anexos título de concesión: " + titulo,
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title: "Anexos título de concesión: " + titulo,
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar PDF",
                                 orientation: "landscape",
                                 pageSize: "A4",
@@ -960,13 +960,13 @@ $("#example").on("click", "button", async function () {
                             {
                                 extend: "excelHtml5",
                                 title: "Anexos título de concesión: " + titulo,
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title: "Anexos título de concesión: " + titulo,
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar PDF",
                                 orientation: "landscape",
                                 pageSize: "A3",
@@ -1162,13 +1162,13 @@ $("#example").on("click", "button", async function () {
                             {
                                 extend: "excelHtml5",
                                 title: "Anexos título de concesión: " + titulo,
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title: "Anexos título de concesión: " + titulo,
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar PDF",
                                 orientation: "portrait",
                                 pageSize: "A4",
@@ -1397,7 +1397,7 @@ async function Consultar() {
                     {
                         extend: "excelHtml5",
                         title: "Consulta títulos de concesión",
-                        className: "btn btn-gob btn-sm",
+                        className: estiloboton,
                         text: "Exportar Excel",
                         exportOptions: {
                             columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
@@ -1406,7 +1406,7 @@ async function Consultar() {
                     {
                         extend: "pdfHtml5",
                         title: "Consulta títulos de concesión",
-                        className: "btn btn-gob btn-sm",
+                        className: estiloboton,
                         text: "Exportar PDF",
                         orientation: "landscape",
                         pageSize: "A3",
@@ -1549,13 +1549,13 @@ async function Consultar() {
                     {
                         extend: "excelHtml5",
                         title: "Anexos título de concesión: ",
-                        className: "btn btn-gob btn-sm",
+                        className: estiloboton,
                         text: "Exportar Excel",
                     },
                     {
                         extend: "pdfHtml5",
                         title: "Anexos título de concesión: ",
-                        className: "btn btn-gob btn-sm",
+                        className: estiloboton,
                         text: "Exportar PDF",
                         orientation: "landscape",
                         pageSize: "A4",

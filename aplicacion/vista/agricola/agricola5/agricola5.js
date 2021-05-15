@@ -720,14 +720,14 @@ async function desgloce1(query) {
                             extend: "excelHtml5",
                             title:
                                 "Concentrado agrícola por organismo de cuenca",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar Excel",
                         },
                         {
                             extend: "pdfHtml5",
                             title:
                                 "Concentrado agrícola por organismo de cuenca",
-                            className: "btn btn-gob btn-sm",
+                            className: estiloboton,
                             text: "Exportar PDF",
                             messageBottom: citas,
                             orientation: "landscape",
@@ -1020,14 +1020,14 @@ async function desgloce2() {
                                 extend: "excelHtml5",
                                 title:
                                     "Concentrado agrícola por entidad federativa",
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar Excel",
                             },
                             {
                                 extend: "pdfHtml5",
                                 title:
                                     "Concentrado agrícola por entidad federativa",
-                                className: "btn btn-gob btn-sm",
+                                className: estiloboton,
                                 text: "Exportar PDF",
                                 messageBottom: citas,
                                 orientation: "landscape",
@@ -1362,13 +1362,13 @@ async function desgloce3() {
                                         {
                                             extend: "excelHtml5",
                                             title: "Concentrado distrital: " + OC,
-                                            className: "btn btn-gob btn-sm",
+                                            className: estiloboton,
                                             text: "Exportar Excel",
                                         },
                                         {
                                             extend: "pdfHtml5",
                                             title: "Concentrado distrital: " + OC,
-                                            className: "btn btn-gob btn-sm",
+                                            className: estiloboton,
                                             text: "Exportar PDF",
                                             messageBottom: citas,
                                             orientation: "portrait",
@@ -1873,7 +1873,7 @@ async function desgloce5() {
                                                             (parseInt(JSON.parse(resp)) - 1) +
                                                             " - " +
                                                             JSON.parse(resp),
-                                                        className: "btn btn-gob btn-sm",
+                                                        className: estiloboton,
                                                         text: "Exportar Excel",
                                                     },
                                                     {
@@ -1885,7 +1885,7 @@ async function desgloce5() {
                                                             (parseInt(JSON.parse(resp)) - 1) +
                                                             " - " +
                                                             JSON.parse(resp),
-                                                        className: "btn btn-gob btn-sm",
+                                                        className: estiloboton,
                                                         text: "Exportar PDF",
                                                         messageBottom: citas,
                                                         orientation: "landscape",
@@ -2373,7 +2373,7 @@ async function desgloce6() {
                                                             (parseInt(JSON.parse(resp)) - 1) +
                                                             " - " +
                                                             JSON.parse(resp),
-                                                        className: "btn btn-gob btn-sm",
+                                                        className: estiloboton,
                                                         text: "Exportar Excel",
                                                     },
                                                     {
@@ -2385,7 +2385,7 @@ async function desgloce6() {
                                                             (parseInt(JSON.parse(resp)) - 1) +
                                                             " - " +
                                                             JSON.parse(resp),
-                                                        className: "btn btn-gob btn-sm",
+                                                        className: estiloboton,
                                                         text: "Exportar PDF",
                                                         messageBottom: citas,
                                                         orientation: "landscape",

@@ -59,7 +59,7 @@ table = $("#tablaPresa").DataTable({
         {
             extend: "excelHtml5",
             title: "Consulta de presas",
-            className: "btn btn-gob btn-sm",
+            className: estiloboton,
             text: "Exportar Excel",
             exportOptions: {
                 columns: [1, 2, 3, 4, 5, 6, 7],
@@ -68,7 +68,7 @@ table = $("#tablaPresa").DataTable({
         {
             extend: "pdfHtml5",
             title: "Consulta de presas",
-            className: "btn btn-gob btn-sm",
+            className: estiloboton,
             text: "Exportar PDF",
             messageBottom: citas,
             orientation: "portrait",
@@ -174,7 +174,7 @@ tableV = $("#tablaVolumen").DataTable({
         {
             extend: "excelHtml5",
             title: "Volumen de presas",
-            className: "btn btn-gob btn-sm",
+            className: estiloboton,
             text: "Exportar Excel",
             exportOptions: {
                 columns: [1, 2],
@@ -183,7 +183,7 @@ tableV = $("#tablaVolumen").DataTable({
         {
             extend: "pdfHtml5",
             title: "Volumen de presas",
-            className: "btn btn-gob btn-sm",
+            className: estiloboton,
             text: "Exportar PDF",
             messageBottom: citas,
             orientation: "portrait",
@@ -332,14 +332,14 @@ $("#tablaPresa").on("click", "button", async function () {
                     {
                         extend: "excelHtml5",
                         title: "Volumen de presas",
-                        className: "btn btn-gob btn-sm",
+                        className: estiloboton,
                         text: "Exportar Excel",
 
                     },
                     {
                         extend: "pdfHtml5",
                         title: "Volumen de presas",
-                        className: "btn btn-gob btn-sm",
+                        className: estiloboton,
                         text: "Exportar PDF",
                         messageBottom: citas,
                         orientation: "portrait",

@@ -340,7 +340,7 @@
         buttons: [{
                 extend: "excelHtml5",
                 title: "Disponibilidad de acuíferos",
-                className: "btn btn-gob btn-sm",
+                className: estiloboton,
                 text: "Exportar Excel",
                 exportOptions: {
                     columns: [1, 2, 3, 4, 5, 6, 7, 8],
@@ -349,7 +349,7 @@
             {
                 extend: "pdfHtml5",
                 title: "Disponibilidad de acuíferos",
-                className: "btn btn-gob btn-sm",
+                className: estiloboton,
                 text: "Exportar PDF",
                 messageBottom: citas,
                 orientation: "portrait",

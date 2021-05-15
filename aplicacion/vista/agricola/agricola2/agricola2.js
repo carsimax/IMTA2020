@@ -606,14 +606,14 @@ async function desgloce3(query) {
               extend: "excelHtml5",
               title:
                 "Concentrado hidrométrico por organismo de cuenca",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Concentrado hidrométrico por organismo de cuenca",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               messageBottom: citas,
               orientation: "landscape",
@@ -818,14 +818,14 @@ async function desgloce4(query) {
               extend: "excelHtml5",
               title:
                 "Concentrado hidrométrico por entidad federativa",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
             {
               extend: "pdfHtml5",
               title:
                 "Concentrado hidrométrico por entidad federativa",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar PDF",
               messageBottom: citas,
               orientation: "landscape",
@@ -1684,7 +1684,7 @@ async function desgloce1(query) {
                     '-La3_T_T"></td>' +
                     "</tr>" +
                     "</tbody></table></div></div>" +
-                    '<br><input class="btn btn-gob btn-fill  btn-block" type="button" onclick="fnExcelReport(\'T8-' +
+                    '<br><input class='+estiloboton+' type="button" onclick="fnExcelReport(\'T8-' +
                     anio +
                     "-" +
                     DR +
@@ -4722,7 +4722,6 @@ function fnExcelReport(IDTABLA) {
     sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
   }
   else                 //other browser not tested on IE 11
-    sa = window.open('data:application/vnd.ms-Excel,' + encodeURIComponent(tab_text));
-
+    sa = window.open('data:application/vnd.ms-excel,' + escape(tab_text));  
   return (sa);
 }

@@ -921,7 +921,7 @@ async function Consultar() {
             {
               extend: "excelHtml5",
               title: "Superficie sembrada y cosechada por año agrícola (ha)",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
           ],
@@ -952,7 +952,7 @@ async function Consultar() {
             {
               extend: "excelHtml5",
               title: "Producción por año agrícola (miles ton)",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
           ],
@@ -984,7 +984,7 @@ async function Consultar() {
             {
               extend: "excelHtml5",
               title: "Valor de la cosecha por año agrícola (millones $)",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
           ],
@@ -1016,7 +1016,7 @@ async function Consultar() {
             {
               extend: "excelHtml5",
               title: "Rendimiento por año agrícola (ton/ha)",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
           ],
@@ -1048,7 +1048,7 @@ async function Consultar() {
             {
               extend: "excelHtml5",
               title: "P.M.R por año agrícola ($/ton)",
-              className: "btn btn-gob btn-sm",
+              className: estiloboton,
               text: "Exportar Excel",
             },
           ],
