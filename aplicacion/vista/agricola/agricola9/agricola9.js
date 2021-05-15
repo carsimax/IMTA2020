@@ -139,6 +139,9 @@ function concatQuery() {
 }
 
 async function Consultar() {
+    document.getElementById("nav-01").innerHTML = "";
+    document.getElementById("nav-02").innerHTML = "";
+    document.getElementById("nav-03").innerHTML = "";
     alertaCargando("Por favor espere", "Realizando consulta");
     $('#nav-tab-acu a[href="#nav-01"]').tab("show");
     deshabilitar();
@@ -247,7 +250,10 @@ async function concatEstado() {
  * Esta funcion muestra el desglose por Organismo de Cuenca
  */
 async function desgloce1(query) {
+
     document.getElementById("nav-01").innerHTML = "";
+    document.getElementById("nav-02").innerHTML = "";
+    document.getElementById("nav-03").innerHTML = "";
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-01").html()) {
         alertaCargando("Por favor espere", "Generando tabla");
@@ -556,6 +562,7 @@ async function desgloce1(query) {
  * Fyuncion que muestra el desgloce 3
  */
 async function desgloce2() {
+    document.getElementById("nav-02").innerHTML = "";
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-02").html()) {
         alertaCargando("Por favor espere", "Generando tabla");
@@ -954,6 +961,7 @@ async function desgloce2() {
  * Funcion Desgloce por cultivo y Cultivo
  */
 async function desgloce3() {
+    document.getElementById("nav-03").innerHTML = "";
     var Anio = $("#Anios :selected").text();
     if (!$("#nav-03").html()) {
         alertaCargando("Por favor espere", "Generando tabla");
