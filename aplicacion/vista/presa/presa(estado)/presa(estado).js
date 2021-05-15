@@ -109,6 +109,7 @@ async function Consultar() {
                     ]);
                 });
                 table.destroy();
+                
                 table = $("#tablaPresa").DataTable({
                     data: data,
                     columnDefs: [
@@ -275,6 +276,10 @@ async function Consultar() {
         await Swal.close();
     }
     await Historial();
+    var session=document.getElementById("sesionStatus").value;
+    if(session!=1){
+        table.buttons().disable();
+    }
 }
 
 async function Historial() {
