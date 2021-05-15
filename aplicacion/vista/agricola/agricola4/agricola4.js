@@ -654,7 +654,7 @@ async function Consultar() {
           "</div></div>" +
           //Titulo 6
           '<div class="col-sm-12">' +
-          "<h5>Volumen neto por año agrícola (miles de m³)*</h5> <p class='font-weight-light'>*Estimado con lámina de riego promedio</p>" +
+          "<h5>Volumen neto por año agrícola (miles de m³)*</h5> <p class='font-weight-light'>*Estimado con lámina de riego promedio.</p>" +
           '<hr class="red">' +
           "</div>" +
           //Grafica 6
@@ -668,7 +668,7 @@ async function Consultar() {
           "</div></div>" +
           //Titulo 7
           '<div class="col-sm-12">' +
-          "<h5>Volumen bruto por año agrícola (miles de m³)*</h5> <p class='font-weight-light'>*Estimado con lámina de riego promedio</p>" +
+          "<h5>Volumen bruto por año agrícola (miles de m³)**</h5> <p class='font-weight-light'>**Estimado con lámina de riego y eficiencia de conducción promedio.</p>" +
           '<hr class="red">' +
           "</div>" +
           //Grafica 7

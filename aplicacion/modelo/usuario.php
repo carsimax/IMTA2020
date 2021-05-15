@@ -21,8 +21,7 @@ require_once("dbconnection.php");
 /**
  * Class Usuario
  */
-class Usuario
-{
+class Usuario {
 
     /**
      * @var
@@ -45,267 +44,234 @@ class Usuario
     private $Verificar;
 
 
-    /**
+     /**
      * @return mixed
      */
-    public function getVerificar()
-    {
+    public function getVerificar() {
         return $this->Verificar;
     }
 
     /**
      * @param mixed $is_olvidad
      */
-    public function setVerificar($Verificar)
-    {
+    public function setVerificar($Verificar) {
         $this->Verificar = $Verificar;
     }
 
     /**
      * @return mixed
      */
-    public function getIsOlvidad()
-    {
+    public function getIsOlvidad() {
         return $this->is_olvidad;
     }
 
     /**
      * @param mixed $is_olvidad
      */
-    public function setIsOlvidad($is_olvidad)
-    {
+    public function setIsOlvidad($is_olvidad) {
         $this->is_olvidad = $is_olvidad;
     }
 
     /**
      * @return mixed
      */
-    public function getIdUsuario()
-    {
+    public function getIdUsuario() {
         return $this->id_usuario;
     }
 
     /**
      * @param mixed $id_usuario
      */
-    public function setIdUsuario($id_usuario)
-    {
+    public function setIdUsuario($id_usuario) {
         $this->id_usuario = $id_usuario;
     }
 
     /**
      * @return mixed
      */
-    public function getUsuario()
-    {
+    public function getUsuario() {
         return $this->usuario;
     }
 
     /**
      * @param mixed $usuario
      */
-    public function setUsuario($usuario)
-    {
+    public function setUsuario($usuario) {
         $this->usuario = $usuario;
     }
 
     /**
      * @return mixed
      */
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
 
     /**
      * @param mixed $nombre
      */
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
     }
 
     /**
      * @return mixed
      */
-    public function getAPaterno()
-    {
+    public function getAPaterno() {
         return $this->a_paterno;
     }
 
     /**
      * @param mixed $a_paterno
      */
-    public function setAPaterno($a_paterno)
-    {
+    public function setAPaterno($a_paterno) {
         $this->a_paterno = $a_paterno;
     }
 
     /**
      * @return mixed
      */
-    public function getAMaterno()
-    {
+    public function getAMaterno() {
         return $this->a_materno;
     }
 
     /**
      * @param mixed $a_materno
      */
-    public function setAMaterno($a_materno)
-    {
+    public function setAMaterno($a_materno) {
         $this->a_materno = $a_materno;
     }
 
     /**
      * @return mixed
      */
-    public function getFoto()
-    {
+    public function getFoto() {
         return $this->foto;
     }
 
     /**
      * @param mixed $foto
      */
-    public function setFoto($foto)
-    {
+    public function setFoto($foto) {
         $this->foto = $foto;
     }
 
     /**
      * @return mixed
      */
-    public function getCorreo()
-    {
+    public function getCorreo() {
         return $this->correo;
     }
 
     /**
      * @param mixed $correo
      */
-    public function setCorreo($correo)
-    {
+    public function setCorreo($correo) {
         $this->correo = $correo;
     }
 
     /**
      * @return mixed
      */
-    public function getContra()
-    {
+    public function getContra() {
         return $this->contra;
     }
 
     /**
      * @param mixed $contra
      */
-    public function setContra($contra)
-    {
+    public function setContra($contra) {
         $this->contra = $contra;
     }
 
     /**
      * @return mixed
      */
-    public function getIsAcuifero()
-    {
+    public function getIsAcuifero() {
         return $this->is_acuifero;
     }
 
     /**
      * @param mixed $is_acuifero
      */
-    public function setIsAcuifero($is_acuifero)
-    {
+    public function setIsAcuifero($is_acuifero) {
         $this->is_acuifero = $is_acuifero;
     }
 
     /**
      * @return mixed
      */
-    public function getIsPozo()
-    {
+    public function getIsPozo() {
         return $this->is_pozo;
     }
 
     /**
      * @param mixed $is_pozo
      */
-    public function setIsPozo($is_pozo)
-    {
+    public function setIsPozo($is_pozo) {
         $this->is_pozo = $is_pozo;
     }
 
     /**
      * @return mixed
      */
-    public function getIsEstadistico()
-    {
+    public function getIsEstadistico() {
         return $this->is_estadistico;
     }
 
     /**
      * @param mixed $is_estadistico
      */
-    public function setIsEstadistico($is_estadistico)
-    {
+    public function setIsEstadistico($is_estadistico) {
         $this->is_estadistico = $is_estadistico;
     }
 
     /**
      * @return mixed
      */
-    public function getRolId()
-    {
+    public function getRolId() {
         return $this->rol_id;
     }
 
     /**
      * @param mixed $rol_id
      */
-    public function setRolId($rol_id)
-    {
+    public function setRolId($rol_id) {
         $this->rol_id = $rol_id;
     }
 
     /**
      * @return mixed
      */
-    public function getSectorId()
-    {
+    public function getSectorId() {
         return $this->sector_id;
     }
 
     /**
      * @param mixed $sector_id
      */
-    public function setSectorId($sector_id)
-    {
+    public function setSectorId($sector_id) {
         $this->sector_id = $sector_id;
     }
 
     /**
      * @return mixed
      */
-    public function getToken()
-    {
+    public function getToken() {
         return $this->Token;
     }
 
     /**
      * @param mixed $sector_id
      */
-    public function setToken($Token)
-    {
+    public function setToken($Token) {
         $this->Token = $Token;
     }
 
     /**
      * @return int|null
      */
-    public function verificarUsuario()
-    {
+    public function verificarUsuario() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -326,8 +292,7 @@ class Usuario
     /**
      * @return int|null
      */
-    public function verificarCorreo()
-    {
+    public function verificarCorreo() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -348,8 +313,7 @@ class Usuario
     /**
      * @return mixed
      */
-    public function insert()
-    {
+    public function insert() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         $select = $db->prepare('INSERT INTO usuario(usuario, nombre, a_paterno, a_materno,correo, contra,rol_id, sector_id,is_olvidada,verificar,token) 
@@ -370,8 +334,7 @@ class Usuario
         return $registro['id'];
     }
 
-    public function insertAdmin()
-    {
+    public function insertAdmin() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         $select = $db->prepare('INSERT INTO usuario(usuario, nombre, a_paterno, a_materno,correo, contra,rol_id, sector_id,is_olvidada) 
@@ -393,8 +356,7 @@ class Usuario
     /**
      * @return Usuario|null
      */
-    public function login()
-    {
+    public function login() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -431,8 +393,7 @@ class Usuario
     /**
      * @return |null
      */
-    public function getSector()
-    {
+    public function getSector() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -453,8 +414,7 @@ class Usuario
     /**
      * @return |null
      */
-    public function getGrado()
-    {
+    public function getGrado() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -475,8 +435,7 @@ class Usuario
     /**
      * @return |null
      */
-    public function getEscuela()
-    {
+    public function getEscuela() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -497,8 +456,7 @@ class Usuario
     /**
      * @return |null
      */
-    public function getPublico()
-    {
+    public function getPublico() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -519,8 +477,7 @@ class Usuario
     /**
      * @return |null
      */
-    public function getPrivado()
-    {
+    public function getPrivado() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -541,8 +498,7 @@ class Usuario
     /**
      * @return int|mixed|null
      */
-    public function restablecer($correo)
-    {
+    public function restablecer($correo) {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -577,8 +533,7 @@ class Usuario
     /**
      * @return $this|null
      */
-    public function getUsu()
-    {
+    public function getUsu() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -618,8 +573,7 @@ class Usuario
     /**
      * @return bool
      */
-    public function update()
-    {
+    public function update() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         $select = $db->prepare('UPDATE usuario SET 
@@ -641,20 +595,7 @@ class Usuario
         return $select->execute();
     }
 
-    public function tokenVer($email, $token)
-    {
-        $pdo = new DBConnection();
-        $db = $pdo->DBConnect();
-        $select = $db->prepare('UPDATE usuario SET
-        verificar=1
-        WHERE correo=:correo AND token=:token');
-        $select->bindValue('correo', $email, PDO::PARAM_STR);
-        $select->bindValue('token', $token, PDO::PARAM_STR);
-        return $select->execute();
-    }
-
-    public function getAdmins()
-    {
+    public function getAdmins() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -671,8 +612,7 @@ class Usuario
         }
     }
 
-    public function getComentarios()
-    {
+    public function getComentarios() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -692,8 +632,7 @@ class Usuario
     /**
      * @return bool|null
      */
-    public function delete()
-    {
+    public function delete() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -706,8 +645,7 @@ class Usuario
         }
     }
 
-    public function getUsuarios()
-    {
+    public function getUsuarios() {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -724,8 +662,7 @@ class Usuario
         }
     }
 
-    public function insertComentario($comentario)
-    {
+    public function insertComentario($comentario) {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         $select = $db->prepare('INSERT INTO comentario VALUES (0,:nombre,:ap,:am,:comentario,NOW())');
@@ -735,4 +672,5 @@ class Usuario
         $select->bindValue('comentario', $comentario, PDO::PARAM_STR);
         return $select->execute();
     }
+
 }

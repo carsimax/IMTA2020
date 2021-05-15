@@ -123,7 +123,6 @@ if (!isset($_SESSION)) {
 <!--Fin del Encabezado de la pagina-->
 
 <body>
-    <input hidden="hidden" name="sesionStatus" id="sesionStatus" value="<?php echo $_SESSION['loggedin'] ?>">
     <nav class="navbar navbar-expand-lg navbar-dark bg-gob sticky-top">
         <a class="navbar-brand" href="#"><a class="navbar-brand" href="/"><i class="fas fa-home"></i> Inicio</a>
 
@@ -185,25 +184,6 @@ if (!isset($_SESSION)) {
                     </ul>
                 <?php } else { ?>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Consulta
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Pozos</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/agricola/agricola.php">Estadística Agrícola</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad del agua superficial</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones Climatológicas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones Hidrométricas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de Marginación</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario de Obras de los Distritos de Riego</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href='/aplicacion/vista/acercade.php'>Acerca de</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#LoginModal" class="trigger-btn" data-toggle="modal">Iniciar Sesión</a>
                         </li>
@@ -214,36 +194,3 @@ if (!isset($_SESSION)) {
                 <?php } ?>
             </div>
     </nav>
-    <!-- Modal Registro-->
-    <div class="modal fade" id="RegistroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registro Sistema De Información Sobre Uso Del Agua De
-                        Riego A Nivel Nacional</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <?php require(__DIR__ . '/../login/registro.php'); ?>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Login-->
-    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesíon</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <?php require(__DIR__ . '/../login/login.php'); ?>
-                </div>
-            </div>
-        </div>
-    </div>

@@ -558,7 +558,6 @@ async function desgloce1(query) {
          *
          */
         success: async function (resp) {
-            alert(resp)
             /**
              *
              * @type Array
@@ -587,7 +586,7 @@ async function desgloce1(query) {
                     numeral(Math.round(item.COS)).format("0,0"),
                     numeral(item.PROD).format("0,0.00"),
                     numeral(item.VAL).format("0,0.00"),
-                    item.VOL === null ? "" : numeral(item.VOL).format("0,0.00"),
+                    numeral(item.VOL).format("0,0.00"),
                     numeral(item.REND).format("0,0.00"),
                     numeral(Math.round(item.PMR)).format("0,0.00"),
                 ]);
@@ -598,24 +597,43 @@ async function desgloce1(query) {
                 COS += parseFloat(item.COS);
                 PROD += parseFloat(item.PROD);
                 VAL += parseFloat(item.VAL);
-                item.VOL !== null ? VOL += parseFloat(item.VOL) : null;
+                VOL += parseFloat(item.VOL);
                 REND += parseFloat(item.REND);
                 PMR += parseFloat(item.PMR);
             });
+            /**
+             * Si existen datos en la tabla
+             * Se crea una seccion de los datos
+             */
             if (data.length > 0) {
-                VOL === 0 ? VOL = "" : numeral(VOL).format("0,0.00");
+                /**
+                 * Se inserta la seccion al html
+                 */
                 $("#nav-01").append(
                     '<div style="overflow-x:auto;">' +
                     '<table id="T1" class="table table-bordered  nowrap" style="width:100%">' +
                     "<tfoot><tr>" +
+                    /**
+                     * Se colocan los totales antes obtenidos
+                     */
                     '<td style="background-color:#CCD1D1" align="center"><b>Suma Total:</b></th>' +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(SEM)).format("0,0") + "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(COS)).format("0,0") + "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(PROD).format("0,0.00") + "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' +
+                    numeral(Math.round(SEM)).format("0,0") +
+                    "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' +
+                    numeral(Math.round(COS)).format("0,0") +
+                    "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' +
+                    numeral(PROD).format("0,0.00") +
+                    "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VAL).format("0,0.00") + "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' + VOL + "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right" ><b>' + numeral(parseFloat(PROD / COS).toFixed(2)).format("0,0.00") + "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(VAL / PROD)).format("0,0.00") + "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VOL).format("0,0.00") + "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right" ><b>' +
+                    numeral(parseFloat(PROD / COS).toFixed(2)).format("0,0.00") +
+                    "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' +
+                    numeral(Math.round(VAL / PROD)).format("0,0.00") +
+                    "</b></td>" +
                     "</tr></tfoot></table>" +
                     '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                 );
@@ -864,7 +882,7 @@ async function desgloce2() {
                         numeral(Math.round(item.COS)).format("0,0"),
                         numeral(item.PROD).format("0,0.00"),
                         numeral(item.VAL).format("0,0.00"),
-                        item.VOL === null ? "" : numeral(item.VOL).format("0,0.00"),
+                        numeral(item.VOL).format("0,0.00"),
                         numeral(item.REND).format("0,0.00"),
                         numeral(Math.round(item.PMR)).format("0,0.00"),
                     ]);
@@ -875,7 +893,7 @@ async function desgloce2() {
                     COS += parseFloat(item.COS);
                     PROD += parseFloat(item.PROD);
                     VAL += parseFloat(item.VAL);
-                    item.VOL !== null ? VOL += parseFloat(item.VOL) : null;
+                    VOL += parseFloat(item.VOL);
                     REND += parseFloat(item.REND);
                     PMR += parseFloat(item.PMR);
                 });
@@ -889,7 +907,6 @@ async function desgloce2() {
                  * Si existen los datos en el array
                  */
                 if (data.length > 0) {
-                    VOL === 0 ? VOL = "" : numeral(VOL).format("0,0.00");
                     $("#nav-02").append(
                         /*
                          * Se coloca el encabezado del anio
@@ -916,7 +933,7 @@ async function desgloce2() {
                         numeral(PROD).format("0,0.00") +
                         "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VAL).format("0,0.00") + "</b></td>" +
-                        '<td style="background-color:#CCD1D1" align="right"><b>' + VOL + "</b></td>" +
+                        '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VOL).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right" ><b>' +
                         numeral(parseFloat(PROD / COS).toFixed(2)).format("0,0.00") +
                         "</b></td>" +
@@ -1227,7 +1244,10 @@ async function desgloce5() {
                                             /*
                                              * Si el anio y el distrito de riego coinciden
                                              */
-                                            if (item.anio_id === anio && Estado === item.id_estado) {
+                                            if (
+                                                item.anio_id === anio &&
+                                                Estado === item.id_estado
+                                            ) {
                                                 /*
                                                  * Se colocan los datos en el array
                                                  */
@@ -1239,7 +1259,7 @@ async function desgloce5() {
                                                     numeral(Math.round(item.COS)).format("0,0"),
                                                     numeral(Math.round(item.PROD)).format("0,0.00"),
                                                     numeral(item.VAL).format("0,0.00"),
-                                                    item.VOL === null ? "" : numeral(item.VOL).format("0,0.00"),
+                                                    numeral(item.VOL).format("0,0.00"),
                                                     numeral(item.REND).format("0,0.00"),
                                                     numeral(Math.round((item.PMR * 1000))).format("0,0.00"),
                                                 ]);
@@ -1250,7 +1270,7 @@ async function desgloce5() {
                                                 COS += parseFloat(item.COS);
                                                 PROD += parseFloat(item.PROD);
                                                 VAL += parseFloat(item.VAL);
-                                                item.VOL !== null ? VOL += parseFloat(item.VOL) : null;
+                                                VOL += parseFloat(item.VOL);
                                                 REND += parseFloat(item.REND);
                                                 PMR += parseFloat(item.PMR);
                                             }
@@ -1265,8 +1285,6 @@ async function desgloce5() {
                                          * Si el array tiene elementos
                                          */
                                         if (data.length > 0) {
-                                            VOL === 0 ? VOL = "" : numeral(VOL).format("0,0.00");
-                                            alert("El volumen es", VOL)
                                             $("#body4-" + anio + "").append(
                                                 '<div style="background-color: #621132" class="btn-gob col-sm-12 pt-3 pb-2 mb-3 border-bottom"><h4>' + Est + ', año agrícola: ' + Anio + '</h4></div>' +
                                                 /*
@@ -1293,7 +1311,7 @@ async function desgloce5() {
                                                 numeral(Math.round(PROD)).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VAL).toFixed(2)).format("0,0.00") +
-                                                '<td style="background-color:#52BE80" align="right"><b>' + VOL +
+                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VOL).toFixed(2)).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right" ><b>' +
                                                 numeral(parseFloat(PROD / COS).toFixed(2)).format(
