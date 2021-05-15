@@ -644,6 +644,17 @@ class Usuario {
             return null;
         }
     }
+    public function tokenVer($email, $token)
+    {
+        $pdo = new DBConnection();
+        $db = $pdo->DBConnect();
+        $select = $db->prepare('UPDATE usuario SET
+        verificar=1
+        WHERE correo=:correo AND token=:token');
+        $select->bindValue('correo', $email, PDO::PARAM_STR);
+        $select->bindValue('token', $token, PDO::PARAM_STR);
+        return $select->execute();
+    }
 
     public function getUsuarios() {
         $pdo = new DBConnection();
