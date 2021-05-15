@@ -558,7 +558,7 @@ async function desgloce1(query) {
          *
          */
         success: async function (resp) {
-            
+
             /**
              *
              * @type Array
@@ -583,8 +583,8 @@ async function desgloce1(query) {
                  */
                 data.push([
                     item.numero + ". " + item.OC,
-                    numeral(Math.round(item.SEM)).format("0,0"),
-                    numeral(Math.round(item.COS)).format("0,0"),
+                    numeral((item.SEM)).format("0,0.00"),
+                    numeral((item.COS)).format("0,0.00"),
                     numeral(item.PROD).format("0,0.00"),
                     numeral(item.VAL).format("0,0.00"),
                     numeral(item.VOL).format("0,0.00"),
@@ -609,8 +609,8 @@ async function desgloce1(query) {
                     '<table id="T1" class="table table-bordered  nowrap" style="width:100%">' +
                     "<tfoot><tr>" +
                     '<td style="background-color:#CCD1D1" align="center"><b>Suma Total:</b></th>' +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(SEM)).format("0,0") + "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(COS)).format("0,0") + "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(SEM).format("0,0.00") + "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(COS).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(PROD).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VAL).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VOL).format("0,0.00") + "</b></td>" +
@@ -860,8 +860,8 @@ async function desgloce2() {
                      */
                     data.push([
                         id + ". " + item.estado,
-                        numeral(Math.round(item.SEM)).format("0,0"),
-                        numeral(Math.round(item.COS)).format("0,0"),
+                        numeral((item.SEM)).format("0,0.00"),
+                        numeral((item.COS)).format("0,0.00"),
                         numeral(item.PROD).format("0,0.00"),
                         numeral(item.VAL).format("0,0.00"),
                         numeral(item.VOL).format("0,0.00"),
@@ -899,10 +899,10 @@ async function desgloce2() {
                         "<tfoot><tr>" +
                         '<td style="background-color:#CCD1D1" align="center"><b>Suma Total</b></th>' +
                         '<td style="background-color:#CCD1D1" align="right"><b>' +
-                        numeral(Math.round(SEM)).format("0,0") +
+                        numeral(SEM).format("0,0.00") +
                         "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right"><b>' +
-                        numeral(Math.round(COS)).format("0,0") +
+                        numeral(COS).format("0,0.00") +
                         "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right"><b>' +
                         numeral(PROD).format("0,0.00") +
@@ -1225,9 +1225,9 @@ async function desgloce5() {
                                                     item.municipio,
                                                     '-',
                                                     item.cultivo,
-                                                    numeral(Math.round(item.SEM)).format("0,0"),
-                                                    numeral(Math.round(item.COS)).format("0,0"),
-                                                    numeral(Math.round(item.PROD)).format("0,0.00"),
+                                                    numeral(item.SEM).format("0,0.00"),
+                                                    numeral(item.COS).format("0,0.00"),
+                                                    numeral(item.PROD).format("0,0.00"),
                                                     numeral(item.VAL).format("0,0.00"),
                                                     numeral(item.VOL).format("0,0.00"),
                                                     numeral(item.REND).format("0,0.00"),
@@ -1270,18 +1270,18 @@ async function desgloce5() {
                                                  */
                                                 '<td style="background-color:#52BE80" colspan="3" align="center"><b>Total general</b></th>' +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(SEM)).format("0,0") +
+                                                numeral(SEM).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(COS)).format("0,0") +
+                                                numeral(COS).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(PROD)).format("0,0.00") +
+                                                numeral(PROD).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VAL).toFixed(2)).format("0,0.00") +
                                                 '<td style="background-color:#52BE80" align="right"><b>' + numeral(VOL).format("0,0.00") +
                                                 "</b></td>" +
-                                                '<td style="background-color:#52BE80" align="right" ><b>' + rendimiento + "</b></td>" +
+                                                '<td style="background-color:#52BE80" align="right" ><b>' + numeral(rendimiento).format("0,0.00") + "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
                                                 numeral(Math.round(((VAL / PROD) * 1000))).format("0,0.00") +
                                                 "</b></td>" +
@@ -1434,15 +1434,11 @@ async function desgloce5() {
                                                             '<td style="background-color:#A9DFBF" colspan="2"><b>' +
                                                             group +
                                                             "</b></td>" +
-                                                            '<td style="background-color:#A9DFBF" align="right" ><b>' +
-                                                            numeral(Math.round(ss)).format("0,0") +
-                                                            "</b></td>" +
-                                                            '<td style="background-color:#A9DFBF"  align="right" ><b>' +
-                                                            numeral(Math.round(sc)).format("0,0") +
-                                                            "</b></td>" +
-                                                            '<td style="background-color:#A9DFBF"  align="right" ><b>' + numeral(Math.round(prod)).format("0,0.00") + "</b></td>" +
-                                                            '<td style="background-color:#A9DFBF"  align="right"><b>' + numeral(parseFloat(vc).toFixed(2)).format("0,0.00") +
-                                                            '<td style="background-color:#A9DFBF"  align="right"><b>' + numeral(parseFloat(SUBTOTAL_VOLUMEN).toFixed(2)).format("0,0.00") +
+                                                            '<td style="background-color:#A9DFBF" align="right" ><b>' + numeral(ss).format("0,0.00") + "</b></td>" +
+                                                            '<td style="background-color:#A9DFBF" align="right" ><b>' + numeral(sc).format("0,0.00") + "</b></td>" +
+                                                            '<td style="background-color:#A9DFBF" align="right" ><b>' + numeral(prod).format("0,0.00") + "</b></td>" +
+                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(parseFloat(vc).toFixed(2)).format("0,0.00") +
+                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(parseFloat(SUBTOTAL_VOLUMEN).toFixed(2)).format("0,0.00") +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF"  align="right"><b>' + numeral(parseFloat(rend)).format("0,0.00") + "</b></td>" +
                                                             '<td style="background-color:#A9DFBF"  align="right" ><b>' +
@@ -1734,9 +1730,9 @@ async function desgloce6() {
                                                 data.push([
                                                     item.numero + ". " + item.OC,
                                                     item.estado,
-                                                    numeral(Math.round(item.SEM)).format("0,0"),
-                                                    numeral(Math.round(item.COS)).format("0,0"),
-                                                    numeral(Math.round(item.PROD)).format("0,0.00"),
+                                                    numeral(item.SEM).format("0,0.00"),
+                                                    numeral(item.COS).format("0,0.00"),
+                                                    numeral(item.PROD).format("0,0.00"),
                                                     numeral(VAL1).format("0,0.00"),
                                                     numeral(item.VOL).format("0,0.00"),
                                                     numeral(REND1).format("0,0.00"),
@@ -1790,22 +1786,18 @@ async function desgloce6() {
                                                  */
                                                 '<td style="background-color:#52BE80" colspan="2" align="center"><b>Total General</b></td>' +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(SEM)).format("0,0") +
+                                                numeral(SEM).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(COS)).format("0,0") +
+                                                numeral(COS).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(PROD)).format("0,0.00") +
+                                                numeral(PROD).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VAL).toFixed(2)).format("0,0.00") + "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VOL).toFixed(2)).format("0,0.00") + "</b></td>" +
-                                                '<td style="background-color:#52BE80" align="right" ><b>' + rendimiento + "</b></td>" +
-                                                '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(parseFloat(PMR1).toFixed(2))).format(
-                                                    "0,0.00"
-                                                ) +
-                                                "</b></td>" +
+                                                '<td style="background-color:#52BE80" align="right" ><b>' + numeral(rendimiento).format("0,0.00") + "</b></td>" +
+                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(Math.round(parseFloat(PMR1).toFixed(2))).format("0,0.00") + "</b></td>" +
                                                 "</tr></tfoot></table>" +
                                                 '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                                             );
@@ -1813,9 +1805,6 @@ async function desgloce6() {
                                              * Inicializacion en datatables
                                              */
                                             tabla5 = $(tabla).DataTable({
-                                                /*
-                                                 * Creacion de las columnas
-                                                 */
                                                 columns: [
                                                     {
                                                         title: "Organismo de cuenca",
@@ -1922,13 +1911,13 @@ async function desgloce6() {
                                                             group +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right" ><b>' +
-                                                            numeral(Math.round(ss)).format("0,0") +
+                                                            numeral(ss).format("0,0.00") +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right" ><b>' +
-                                                            numeral(Math.round(sc)).format("0,0") +
+                                                            numeral(sc).format("0,0.00") +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right" ><b>' +
-                                                            numeral(Math.round(prod)).format("0,0.00") +
+                                                            numeral(prod).format("0,0.00") +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(parseFloat(vc).toFixed(2)).format("0,0.00") + "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(parseFloat(SUBTOTAL_VOL).toFixed(2)).format("0,0.00") + "</b></td>" +

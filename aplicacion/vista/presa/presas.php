@@ -42,7 +42,7 @@ $filtros = $registros->getPresas();
             </div>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
-            <div id="divFiltro">
+                <div id="divFiltro">
                 </div>
             </div>
             <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
@@ -66,7 +66,15 @@ $filtros = $registros->getPresas();
             </div>
             <div class="col-sm" id="pantalla2">
                 <hr>
+                <div class="col-sm ml-2">
+                    <h4>Glosario</h4>
+                    <ul class="ml-4">
+                        <li><b>NAMO: </b>Nivel de Aguas Máximas Ordinarias.</li>
+                        <li><b>NAME: </b>Nivel de Aguas Máximas Extraordinarias.</li>
+                    </ul>
+                </div>
                 <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
+
             </div>
         </main>
     </div>
