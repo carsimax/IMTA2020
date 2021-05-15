@@ -637,8 +637,7 @@ async function desgloce1(query) {
                     numeral(Math.round(VAL / PROD)).format("0,0.00") +
                     "</b></td>" +
                     "</tr></tfoot></table>" +
-                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>' +
-                    '<p class="font-weight-light mt-3">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
+                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                 );
                 /**
                  *
@@ -671,7 +670,7 @@ async function desgloce1(query) {
                             title: "Volumen neto (miles de m³)*",
                         },
                         {
-                            title: "Volumen bruto (miles de m³)**",
+                            title: "Volumen bruto (miles de m³)*",
                         },
                         {
                             title: "Rendimiento (ton/ha)",
@@ -845,6 +844,7 @@ async function desgloce2() {
         /**
          * Ajax que oobtiene los datos a mostrar en el desgloce 2
          */
+        alert(cadena)
         $.ajax({
             type: "POST",
             url: "/aplicacion/controlador/mapa.php",
@@ -949,8 +949,7 @@ async function desgloce2() {
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + totalRendimiento + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(parseFloat(VAL / PROD).toFixed(2))).format("0,0.00") + "</b></td>" +
                                     "</tr></tfoot></table>" +
-                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>' +
-                                    '<p class="font-weight-light mt-3">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
+                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
 
                                 );
                                 /*
@@ -980,7 +979,7 @@ async function desgloce2() {
                                             title: "Volumen neto (miles de m³)*",
                                         },
                                         {
-                                            title: "Volumen bruto (miles de m³)**",
+                                            title: "Volumen bruto (miles de m³)*",
                                         },
                                         {
                                             title: "Rendimiento (ton/ha)",
@@ -1260,8 +1259,7 @@ async function desgloce3() {
                         "</b></td>" +
                         "</tr></tfoot></table>" +
                         "</div>" +
-                        '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>' +
-                        '<p class="font-weight-light mt-3">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
+                        '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                     );
                     /*
                      * Se crea la instancia de datatables
@@ -1290,7 +1288,7 @@ async function desgloce3() {
                                 title: "Volumen neto (miles de m³)*",
                             },
                             {
-                                title: "Volumen bruto (miles de m³)**",
+                                title: "Volumen bruto (miles de m³)*",
                             },
                             {
                                 title: "Rendimiento (ton/ha)",
@@ -1600,8 +1598,7 @@ async function desgloce4() {
                                     numeral(Math.round(VAL / PROD)).format("0,0.00") +
                                     "</b></td>" +
                                     "</tr></tfoot></table>" +
-                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>' +
-                                    '<p class="font-weight-light mt-3">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
+                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
 
                                 );
                                 /*
@@ -1637,7 +1634,7 @@ async function desgloce4() {
                                             title: "Volumen neto (miles de m³)*",
                                         },
                                         {
-                                            title: "Volumen bruto (miles de m³)**",
+                                            title: "Volumen bruto (miles de m³)*",
                                         },
                                         {
                                             title: "Rendimiento (ton/ha)",
@@ -2132,8 +2129,7 @@ async function desgloce5() {
                                     ) +
                                     "</b></td>" +
                                     "</tr></tfoot></table>" +
-                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>' +
-                                    '<p class="font-weight-light mt-3">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
+                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
                                 );
                                 /*
                                  * Inicializacion en datatables
@@ -2165,7 +2161,7 @@ async function desgloce5() {
                                             title: "Volumen neto (miles de m³)*",
                                         },
                                         {
-                                            title: "Volumen bruto (miles de m³)**",
+                                            title: "Volumen bruto (miles de m³)*",
                                         },
                                         {
                                             title: "Rendimiento (ton/ha)",
