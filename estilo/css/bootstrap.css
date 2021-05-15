@@ -11166,3 +11166,6 @@ th {text-align:center}
   height: 30%;
   margin: auto;
 }
+.hidden {
+  display: none;
+}
