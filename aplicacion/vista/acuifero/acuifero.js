@@ -801,6 +801,7 @@ async function mostrarDAcuifero() {
           $.each(Acuiferos, function (index, item) {
             data.push([
               item,
+              item.Estado,
               item.Acuifero,
               numeral(Number.parseFloat(item.R)).format("0,0.00"),
               numeral(Number.parseFloat(item.DNC)).format("0,0.00"),
@@ -808,13 +809,13 @@ async function mostrarDAcuifero() {
               numeral(Number.parseFloat(item.VEALA)).format("0,0.00"),
               numeral(Number.parseFloat(item.VAPTYR)).format("0,0.00"),
               numeral(Number.parseFloat(item.VAPRH)).format("0,0.00"),
-              numeral(Number.parseFloat(item.DMA)).format("0,0.00"),
+              numeral(Number.parseFloat(item.DMA)).format("0,0.00")
             ]);
           });
           tablaAcu = $("#Acu").DataTable({
             data: data,
             columnDefs: [
-              { className: 'dt-body-right', targets: [2, 3, 4, 5, 6, 7, 8] },
+              { className: 'dt-body-right', targets: [2, 3, 4, 5, 6, 7, 8, 9] },
               {
                 targets: 0,
                 data: null,
@@ -826,6 +827,9 @@ async function mostrarDAcuifero() {
             columns: [
               {
                 title: "Gráfica",
+              },
+              {
+                title: "Estado",
               },
               {
                 title: "Acuífero",
