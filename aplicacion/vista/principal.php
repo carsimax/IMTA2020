@@ -136,7 +136,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                             </div>
                             <div class="img-container">
                                 <a href="/aplicacion/vista/inventario/inventario.php">
-                                    <img class="img-fluid" src="/imagenes/Inventario.png" alt="Inventario de Obras de los Distritos de Riego" title="Inventario de Obras de los Distritos de Riego">
+                                    <img class="img-fluid" src="/imagenes/inventario.png" alt="Inventario de Obras de los Distritos de Riego" title="Inventario de Obras de los Distritos de Riego">
                                 </a>
                             </div>
                             <div class="card-body text-justify d-flex justify-content-between flex-column">
