@@ -1013,685 +1013,1354 @@ async function desgloce1(query) {
                   /*
                    * Se inserta la tabla por html
                    */
-                  $("#body-" + anio + "").append(
-                    '<div style="overflow-x:auto;">' +
-                    '<table id="T8-' +
-                    anio +
-                    "-" +
-                    DR +
-                    '" class="display compact nowrap" style="width:100%" border="1">' +
-                    "<thead>" +
-                    '<tr><td colspan="13">Concentrado Distrital.</td><td colspan="3" align="right">Año agrícola : ' +
-                    (parseInt(JSON.parse(resp)) - 1) +
-                    "/" +
-                    JSON.parse(resp) +
-                    " </td></tr>" +
-                    '<tr><td colspan="16" align="right">Distrito de Riego: ' +
-                    DRS +
-                    " </td></tr>" +
-                    "<tr>" +
-                    '<td style="background-color:#CCD1D1" rowspan="2"></td>' +
-                    '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Gravedad Presas</b></td>' +
-                    '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Gravedad Derivación</b></td>' +
-                    '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Bombeo Corrientes</b></td>' +
-                    '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Bombeo Pozos</b></td>' +
-                    '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Resumen</b></td>' +
-                    "</tr><tr>" +
-                    '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
-                    '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
-                    '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
-                    '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
-                    '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
-                    "</tr></thead>" +
-                    "<tbody>" +
-                    '<tr><td style="background-color:#EB984E" colspan="16"><b>   Área física en el que se obtuvo solo un cultivo en el año agrícola</b></td></tr>' +
-                    "<tr>" +
-                    "<td>Número de usuarios</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_T_E"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_T_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU_T_T"></td>' +
-                    "</tr>" +
-                    "<tr>" +
-                    "<td>Superfice regada (ha)</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_T_E"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_T_P"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR_T_T"></td>' +
-                    "</tr>" +
-                    "<tr>" +
-                    "<td>Vol. Dist. (miles m³)</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_T_E"></td><td align="right"  id="' +
-                    anio +
-                    DR +
-                    '-VD_T_P"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD_T_T"></td>' +
-                    "</tr>" +
-                    "<tr>" +
-                    "<td>Lámina bruta (cm)</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_T_E"></td><td align="right"  id="' +
-                    anio +
-                    DR +
-                    '-La_T_P"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La_T_T"></td>' +
-                    "</tr>" +
-                    '<tr><td style="background-color:#EB984E" colspan="16"><b>Área física que se sembró y cosechó dos veces en el año agrícola</b></td></tr>' +
-                    "<tr>" +
-                    "<td>Número de usuarios</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_T_E"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_T_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU2_T_T"></td>' +
-                    "</tr>" +
-                    "<tr>" +
-                    "<td>Superfice regada (ha)</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_T_E"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_T_P"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR2_T_T"></td>' +
-                    "</tr>" +
-                    "<tr>" +
-                    "<td>Vol. Dist. (miles m³)</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_T_E"></td><td align="right"  id="' +
-                    anio +
-                    DR +
-                    '-VD2_T_P"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD2_T_T"></td>' +
-                    "</tr>" +
-                    "<tr>" +
-                    "<td>Lámina bruta (cm)</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_T_E"></td><td align="right"  id="' +
-                    anio +
-                    DR +
-                    '-La2_T_P"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La2_T_T"></td>' +
-                    "</tr>" +
-                    '<tr><td style="background-color:#EB984E" colspan="16"><b>Área física total regada en el año agrícola</b></td></tr>' +
-                    "<tr>" +
-                    "<td>Número de usuarios</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_T_E"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_T_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-NU3_T_T"></td>' +
-                    "</tr>" +
-                    "<tr>" +
-                    "<td>Superfice regada (ha)</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_T_E"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_T_P"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-SR3_T_T"></td>' +
-                    "</tr>" +
-                    "<tr>" +
-                    "<td>Vol. Dist. (miles m³)</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_T_E"></td><td align="right"  id="' +
-                    anio +
-                    DR +
-                    '-VD3_T_P"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-VD3_T_T"></td>' +
-                    "</tr>" +
-                    "<tr>" +
-                    "<td>Lámina bruta (cm)</td>" +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_GP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_GP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_GP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_GD_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_GD_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_GD_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_BC_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_BC_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_BC_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_BP_E"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_BP_P"></td><td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_BP_T"></td>' +
-                    '<td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_T_E"></td><td align="right"  id="' +
-                    anio +
-                    DR +
-                    '-La3_T_P"></td> <td align="right" id="' +
-                    anio +
-                    DR +
-                    '-La3_T_T"></td>' +
-                    "</tr>" +
-                    "</tbody></table></div></div>" +
-                    '<br><input class='+estiloboton+' type="button" onclick="fnExcelReport(\'T8-' +
-                    anio +
-                    "-" +
-                    DR +
-                    "', '" +
-                    DRS +
-                    '\')" value="Exportar Excel"><hr>'
-                  );
+                  if (sesion === "1") {
+                    $("#body-" + anio + "").append(
+                      '<div style="overflow-x:auto;">' +
+                      '<table id="T8-' +
+                      anio +
+                      "-" +
+                      DR +
+                      '" class="display compact nowrap" style="width:100%" border="1">' +
+                      "<thead>" +
+                      '<tr><td colspan="13">Concentrado Distrital.</td><td colspan="3" align="right">Año agrícola : ' +
+                      (parseInt(JSON.parse(resp)) - 1) +
+                      "/" +
+                      JSON.parse(resp) +
+                      " </td></tr>" +
+                      '<tr><td colspan="16" align="right">Distrito de Riego: ' +
+                      DRS +
+                      " </td></tr>" +
+                      "<tr>" +
+                      '<td style="background-color:#CCD1D1" rowspan="2"></td>' +
+                      '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Gravedad Presas</b></td>' +
+                      '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Gravedad Derivación</b></td>' +
+                      '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Bombeo Corrientes</b></td>' +
+                      '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Bombeo Pozos</b></td>' +
+                      '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Resumen</b></td>' +
+                      "</tr><tr>" +
+                      '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
+                      '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
+                      '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
+                      '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
+                      '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
+                      "</tr></thead>" +
+                      "<tbody>" +
+                      '<tr><td style="background-color:#EB984E" colspan="16"><b>   Área física en el que se obtuvo solo un cultivo en el año agrícola</b></td></tr>' +
+                      "<tr>" +
+                      "<td>Número de usuarios</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_T_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Superfice regada (ha)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Vol. Dist. (miles m³)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-VD_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Lámina bruta (cm)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-La_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_T_T"></td>' +
+                      "</tr>" +
+                      '<tr><td style="background-color:#EB984E" colspan="16"><b>Área física que se sembró y cosechó dos veces en el año agrícola</b></td></tr>' +
+                      "<tr>" +
+                      "<td>Número de usuarios</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_T_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Superfice regada (ha)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Vol. Dist. (miles m³)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-VD2_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Lámina bruta (cm)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-La2_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_T_T"></td>' +
+                      "</tr>" +
+                      '<tr><td style="background-color:#EB984E" colspan="16"><b>Área física total regada en el año agrícola</b></td></tr>' +
+                      "<tr>" +
+                      "<td>Número de usuarios</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_T_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Superfice regada (ha)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Vol. Dist. (miles m³)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-VD3_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Lámina bruta (cm)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-La3_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_T_T"></td>' +
+                      "</tr>" +
+                      "</tbody></table></div></div>" +
+                      '<br><input class="btn btn-primary btn-fill  btn-block" type="button" onclick="tableToExcel(\'T8-' + anio + '-' + DR + '\', \'' + DRS + '\')" value="Exportar Excel">' +
+                      '<hr>');
+                  }else{
+                    $("#body-" + anio + "").append(
+                      '<div style="overflow-x:auto;">' +
+                      '<table id="T8-' +
+                      anio +
+                      "-" +
+                      DR +
+                      '" class="display compact nowrap" style="width:100%" border="1">' +
+                      "<thead>" +
+                      '<tr><td colspan="13">Concentrado Distrital.</td><td colspan="3" align="right">Año agrícola : ' +
+                      (parseInt(JSON.parse(resp)) - 1) +
+                      "/" +
+                      JSON.parse(resp) +
+                      " </td></tr>" +
+                      '<tr><td colspan="16" align="right">Distrito de Riego: ' +
+                      DRS +
+                      " </td></tr>" +
+                      "<tr>" +
+                      '<td style="background-color:#CCD1D1" rowspan="2"></td>' +
+                      '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Gravedad Presas</b></td>' +
+                      '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Gravedad Derivación</b></td>' +
+                      '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Bombeo Corrientes</b></td>' +
+                      '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Bombeo Pozos</b></td>' +
+                      '<td style="background-color:#CCD1D1" colspan="3" align="center"><b>Resumen</b></td>' +
+                      "</tr><tr>" +
+                      '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
+                      '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
+                      '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
+                      '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
+                      '<td style="background-color:#CCD1D1" align="center"><b>Ejidal</b></td><td style="background-color:#CCD1D1" align="center"><b>Privada</b></td><td style="background-color:#CCD1D1" align="center"><b>Total</b></td>' +
+                      "</tr></thead>" +
+                      "<tbody>" +
+                      '<tr><td style="background-color:#EB984E" colspan="16"><b>   Área física en el que se obtuvo solo un cultivo en el año agrícola</b></td></tr>' +
+                      "<tr>" +
+                      "<td>Número de usuarios</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_T_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Superfice regada (ha)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Vol. Dist. (miles m³)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-VD_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Lámina bruta (cm)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-La_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La_T_T"></td>' +
+                      "</tr>" +
+                      '<tr><td style="background-color:#EB984E" colspan="16"><b>Área física que se sembró y cosechó dos veces en el año agrícola</b></td></tr>' +
+                      "<tr>" +
+                      "<td>Número de usuarios</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_T_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU2_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Superfice regada (ha)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR2_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Vol. Dist. (miles m³)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-VD2_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD2_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Lámina bruta (cm)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-La2_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La2_T_T"></td>' +
+                      "</tr>" +
+                      '<tr><td style="background-color:#EB984E" colspan="16"><b>Área física total regada en el año agrícola</b></td></tr>' +
+                      "<tr>" +
+                      "<td>Número de usuarios</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_T_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-NU3_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Superfice regada (ha)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_T_E"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-SR3_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Vol. Dist. (miles m³)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-VD3_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-VD3_T_T"></td>' +
+                      "</tr>" +
+                      "<tr>" +
+                      "<td>Lámina bruta (cm)</td>" +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GD_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GD_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_GD_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BC_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BC_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BC_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BP_E"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BP_P"></td><td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_BP_T"></td>' +
+                      '<td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_T_E"></td><td align="right"  id="' +
+                      anio +
+                      DR +
+                      '-La3_T_P"></td> <td align="right" id="' +
+                      anio +
+                      DR +
+                      '-La3_T_T"></td>' +
+                      "</tr>" +
+                      "</tbody></table></div></div>" +
+                      '<hr>');
+                  }
                   /**
                    * Se colocan los datos existentes en la tabla
                    */
@@ -4722,6 +5391,6 @@ function fnExcelReport(IDTABLA) {
     sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
   }
   else                 //other browser not tested on IE 11
-    sa = window.open('data:application/vnd.ms-excel,' + escape(tab_text));  
+    sa = window.open('data:application/vnd.ms-excel,' + escape(tab_text));
   return (sa);
 }
