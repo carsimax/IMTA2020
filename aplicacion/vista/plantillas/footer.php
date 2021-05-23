@@ -78,8 +78,18 @@
 <script>
     var sesion = document.getElementById("sesionStatus").value;
     estiloboton = "hidden";
+    estiloboton2 = "hidden";
     if (sesion === "1") {
         estiloboton = "btn btn-gob btn-sm";
+        estiloboton2 = "btn btn-primary btn-fill  btn-block";
+    } else {
+        Swal.fire({
+            title: 'Bienvenido',
+            text: "El Sistema de Información Sobre el Uso del Agua de Riego en la Agricultura Nacional es una plataforma de uso libre, lo invitamos a registrarse para poder tener las opciones de exportación de datos habilitados.",
+            icon: 'info',
+            confirmButtonText: 'Cerrar'
+        })
+
     }
     // Se asigna el anio actual al footer
     const legend = document.querySelector('#footer__text');

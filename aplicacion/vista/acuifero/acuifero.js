@@ -308,6 +308,7 @@ async function Historial() {
 
 async function mostrarDOrganismo(data) {
   tablaOC = $("#OC").DataTable({
+    "order": [[1, "asc"]],
     data: data,
     columnDefs: [
       { className: 'dt-body-right', targets: [2, 3, 4, 5, 6, 7, 8] },
@@ -584,6 +585,7 @@ async function mostrarDEstado() {
             ]);
           });
           tablaEst = $("#Est").DataTable({
+            "order": [[1, "asc"]],
             data: data,
             columnDefs: [
               { className: 'dt-body-right', targets: [2, 3, 4, 5, 6, 7, 8] },
@@ -813,6 +815,7 @@ async function mostrarDAcuifero() {
             ]);
           });
           tablaAcu = $("#Acu").DataTable({
+            "order": [[1, "asc"],[2, "asc"]],
             data: data,
             columnDefs: [
               { className: 'dt-body-right', targets: [3, 4, 5, 6, 7, 8, 9] },
@@ -1061,6 +1064,7 @@ async function mostrarMunicipio() {
             ]);
           });
           tablaMun = $("#Mun").DataTable({
+            "order": [[1, "asc"], [2, "asc"]],
             data: data,
             columnDefs: [
               { className: 'dt-body-right', targets: [3, 4, 5, 6, 7, 8, 9] },
