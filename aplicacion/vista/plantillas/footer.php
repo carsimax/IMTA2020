@@ -85,9 +85,9 @@
     } else {
         Swal.fire({
             title: 'Bienvenido',
-            text: "El Sistema de Información Sobre el Uso del Agua de Riego en la Agricultura Nacional es una plataforma de uso libre, lo invitamos a registrarse para poder tener las opciones de exportación de datos habilitados.",
+            text: "El Sistema de Información Sobre el Uso del Agua de Riego en la Agricultura Nacional (SISUAR) es una plataforma de uso libre, lo invitamos a registrarse para poder tener habilitadas las opciones de exportación de datos.",
             icon: 'info',
-            confirmButtonText: 'Cerrar'
+            confirmButtonText: 'Entrar'
         })
 
     }

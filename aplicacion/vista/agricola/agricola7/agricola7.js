@@ -604,6 +604,7 @@ async function desgloce1(query) {
             });
             if (data.length > 0) {
                 const rendimiento = truncar((PROD / COS));
+                const pmr = truncar((VAL / PROD));
                 $("#nav-01").append(
                     '<div style="overflow-x:auto;">' +
                     '<table id="T1" class="table table-bordered  nowrap" style="width:100%">' +
@@ -615,7 +616,7 @@ async function desgloce1(query) {
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VAL).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VOL).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right" ><b>' + rendimiento + "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral((VAL / PROD)).format("0,0.00") + "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' + pmr + "</b></td>" +
                     "</tr></tfoot></table>" +
                     '</div> <p class="font-weight-bold mt-3">*Estimado con lámina de riego promedio.</p>'
                 );
@@ -910,9 +911,7 @@ async function desgloce2() {
                         '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VAL).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VOL).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right" ><b>' + rendimiento + "</b></td>" +
-                        '<td style="background-color:#CCD1D1" align="right"><b>' +
-                        numeral((VAL / PROD)).format("0,0.00") +
-                        "</b></td>" +
+                        '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(truncar(VAL / PROD)).format("0,0.00") + "</b></td>" +
                         "</tr></tfoot></table>" +
                         "</div>" +
                         '</div> <p class="font-weight-bold mt-3">*Estimado con lámina de riego promedio.</p>'
@@ -1283,7 +1282,7 @@ async function desgloce5() {
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right" ><b>' + numeral(rendimiento).format("0,0.00") + "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral((((VAL / PROD) * 1000))).format("0,0.00") +
+                                                numeral((truncar((VAL / PROD) * 1000))).format("0,0.00") +
                                                 "</b></td>" +
                                                 "</tr></tfoot></table>" +
                                                 '</div> <p class="font-weight-bold mt-3">*Estimado con lámina de riego promedio.</p>'
@@ -1421,7 +1420,7 @@ async function desgloce5() {
                                                          * @type Number
                                                          * Obtener el PMR
                                                          */
-                                                        var pmr = (vc / prod) * 1000;
+                                                        var pmr = truncar((vc / prod) * 1000);
                                                         /**
                                                          * Si algun dato no es un numero
                                                          */
@@ -1438,7 +1437,7 @@ async function desgloce5() {
                                                             '<td style="background-color:#A9DFBF" align="right" ><b>' + numeral(sc).format("0,0.00") + "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right" ><b>' + numeral(prod).format("0,0.00") + "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(vc).format("0,0.00") +
-                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(SUBTOTAL_VOLUMEN).format("0,0.00") +"</b></td>" +
+                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(SUBTOTAL_VOLUMEN).format("0,0.00") + "</b></td>" +
                                                             '<td style="background-color:#A9DFBF"  align="right"><b>' + numeral((rend)).format("0,0.00") + "</b></td>" +
                                                             '<td style="background-color:#A9DFBF"  align="right" ><b>' + numeral(truncar(pmr)).format("0,0.00") + "</b></td>"
                                                         );
@@ -1733,7 +1732,7 @@ async function desgloce6() {
                                                     numeral(VAL1).format("0,0.00"),
                                                     numeral(item.VOL).format("0,0.00"),
                                                     numeral(REND1).format("0,0.00"),
-                                                    numeral((PMR1 * 1000)).format("0,0.00"),
+                                                    numeral((PMR1)).format("0,0.00"),
                                                 ]);
                                                 /*
                                                  * Se colocan el acumulado
@@ -1758,7 +1757,7 @@ async function desgloce6() {
                                         if (data.length > 0) {
 
                                             const rendimiento = truncar((PROD / COS));
-                                            var PMR1 = VAL / PROD * 1000;
+                                            var PMR1 = truncar(VAL / PROD);
                                             if (!isFinite(rendimiento)) rendimiento = 0;
                                             if (!isFinite(PMR1)) PMR1 = 0;
                                             /*
@@ -1897,7 +1896,7 @@ async function desgloce6() {
                                                             }, 0);
 
                                                         var rend = prod / sc;
-                                                        var pmr = (vc / prod) * 1000;
+                                                        var pmr = (vc / prod);
                                                         if (!isFinite(rend)) rend = 0;
                                                         if (!isFinite(pmr)) pmr = 0;
                                                         /*
