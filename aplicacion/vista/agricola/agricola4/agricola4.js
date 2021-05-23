@@ -723,10 +723,10 @@ async function Consultar() {
               "0,0.00"
             ),
           ]);
-          pmr.push(Math.round(item.VAL / item.PROD));
+          pmr.push((item.VAL / item.PROD));
           t5.push([
             item.anio,
-            numeral(Math.round(item.VAL / item.PROD)).format("0,0.00"),
+            numeral((item.VAL / item.PROD)).format("0,0.00"),
           ]);
 
           vol_neto.push(parseFloat(item.VOL_NETO).toFixed(2));

@@ -39,7 +39,13 @@ $filtros = $registros->getPozos();
             <div class="col-md">
                 <p class="bold">Pozos</p>
                 <p class="font-weight-normal">Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
-                <p class="font-weight-light"><span><b>Nota* </b></span> En algunos casos la consulta puede tardar en función del número de concesiones seleccionadas.</p>
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <b>Nota*</b> <span class="font-weight-light">En algunos casos la consulta puede tardar en función del número de concesiones seleccionadas.</span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
             </div>
             <!--Seccion Para Seleccionr el Filtro-->
             <div class="col-sm" id="filtros">

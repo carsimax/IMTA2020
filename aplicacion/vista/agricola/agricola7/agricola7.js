@@ -589,7 +589,7 @@ async function desgloce1(query) {
                     numeral(item.VAL).format("0,0.00"),
                     numeral(item.VOL).format("0,0.00"),
                     numeral(item.REND).format("0,0.00"),
-                    numeral(Math.round(item.PMR)).format("0,0.00"),
+                    numeral((item.PMR)).format("0,0.00"),
                 ]);
                 /**
                  * Se suma el acumulado para sacar el total
@@ -615,9 +615,9 @@ async function desgloce1(query) {
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VAL).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VOL).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right" ><b>' + rendimiento + "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(VAL / PROD)).format("0,0.00") + "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral((VAL / PROD)).format("0,0.00") + "</b></td>" +
                     "</tr></tfoot></table>" +
-                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
+                    '</div> <p class="font-weight-bold mt-3">*Estimado con lámina de riego promedio.</p>'
                 );
                 /**
                  *
@@ -866,7 +866,7 @@ async function desgloce2() {
                         numeral(item.VAL).format("0,0.00"),
                         numeral(item.VOL).format("0,0.00"),
                         numeral(item.REND).format("0,0.00"),
-                        numeral(Math.round(item.PMR)).format("0,0.00"),
+                        numeral((item.PMR)).format("0,0.00"),
                     ]);
                     /*
                      * Se colocan los acumulados
@@ -911,11 +911,11 @@ async function desgloce2() {
                         '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VOL).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right" ><b>' + rendimiento + "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right"><b>' +
-                        numeral(Math.round(VAL / PROD)).format("0,0.00") +
+                        numeral((VAL / PROD)).format("0,0.00") +
                         "</b></td>" +
                         "</tr></tfoot></table>" +
                         "</div>" +
-                        '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
+                        '</div> <p class="font-weight-bold mt-3">*Estimado con lámina de riego promedio.</p>'
                     );
                     /*
                      * Se crea la instancia de datatables
@@ -1231,7 +1231,7 @@ async function desgloce5() {
                                                     numeral(item.VAL).format("0,0.00"),
                                                     numeral(item.VOL).format("0,0.00"),
                                                     numeral(item.REND).format("0,0.00"),
-                                                    numeral(Math.round((item.PMR * 1000))).format("0,0.00"),
+                                                    numeral(((item.PMR * 1000))).format("0,0.00"),
                                                 ]);
                                                 /*
                                                  * Se suman los acumulados
@@ -1278,15 +1278,15 @@ async function desgloce5() {
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
                                                 numeral(PROD).format("0,0.00") +
                                                 "</b></td>" +
-                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VAL).toFixed(2)).format("0,0.00") +
+                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(VAL).format("0,0.00") +
                                                 '<td style="background-color:#52BE80" align="right"><b>' + numeral(VOL).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right" ><b>' + numeral(rendimiento).format("0,0.00") + "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(((VAL / PROD) * 1000))).format("0,0.00") +
+                                                numeral((((VAL / PROD) * 1000))).format("0,0.00") +
                                                 "</b></td>" +
                                                 "</tr></tfoot></table>" +
-                                                '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
+                                                '</div> <p class="font-weight-bold mt-3">*Estimado con lámina de riego promedio.</p>'
                                             );
                                             /*
                                              * Se inicializa en datables
@@ -1437,13 +1437,10 @@ async function desgloce5() {
                                                             '<td style="background-color:#A9DFBF" align="right" ><b>' + numeral(ss).format("0,0.00") + "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right" ><b>' + numeral(sc).format("0,0.00") + "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right" ><b>' + numeral(prod).format("0,0.00") + "</b></td>" +
-                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(parseFloat(vc).toFixed(2)).format("0,0.00") +
-                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(parseFloat(SUBTOTAL_VOLUMEN).toFixed(2)).format("0,0.00") +
-                                                            "</b></td>" +
-                                                            '<td style="background-color:#A9DFBF"  align="right"><b>' + numeral(parseFloat(rend)).format("0,0.00") + "</b></td>" +
-                                                            '<td style="background-color:#A9DFBF"  align="right" ><b>' +
-                                                            numeral(Math.round(pmr)).format("0,0.00") +
-                                                            "</b></td>"
+                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(vc).format("0,0.00") +
+                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(SUBTOTAL_VOLUMEN).format("0,0.00") +"</b></td>" +
+                                                            '<td style="background-color:#A9DFBF"  align="right"><b>' + numeral((rend)).format("0,0.00") + "</b></td>" +
+                                                            '<td style="background-color:#A9DFBF"  align="right" ><b>' + numeral(truncar(pmr)).format("0,0.00") + "</b></td>"
                                                         );
                                                     },
                                                 },
@@ -1736,7 +1733,7 @@ async function desgloce6() {
                                                     numeral(VAL1).format("0,0.00"),
                                                     numeral(item.VOL).format("0,0.00"),
                                                     numeral(REND1).format("0,0.00"),
-                                                    numeral(Math.round((PMR1 * 1000))).format("0,0.00"),
+                                                    numeral((PMR1 * 1000)).format("0,0.00"),
                                                 ]);
                                                 /*
                                                  * Se colocan el acumulado
@@ -1794,12 +1791,12 @@ async function desgloce6() {
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
                                                 numeral(PROD).format("0,0.00") +
                                                 "</b></td>" +
-                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VAL).toFixed(2)).format("0,0.00") + "</b></td>" +
-                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VOL).toFixed(2)).format("0,0.00") + "</b></td>" +
+                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(VAL).format("0,0.00") + "</b></td>" +
+                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(VOL).format("0,0.00") + "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right" ><b>' + numeral(rendimiento).format("0,0.00") + "</b></td>" +
-                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(Math.round(parseFloat(PMR1).toFixed(2))).format("0,0.00") + "</b></td>" +
+                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(PMR1).format("0,0.00") + "</b></td>" +
                                                 "</tr></tfoot></table>" +
-                                                '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>'
+                                                '</div> <p class="font-weight-bold mt-3">*Estimado con lámina de riego promedio.</p>'
                                             );
                                             /*
                                              * Inicializacion en datatables
@@ -1919,11 +1916,11 @@ async function desgloce6() {
                                                             '<td style="background-color:#A9DFBF" align="right" ><b>' +
                                                             numeral(prod).format("0,0.00") +
                                                             "</b></td>" +
-                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(parseFloat(vc).toFixed(2)).format("0,0.00") + "</b></td>" +
-                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(parseFloat(SUBTOTAL_VOL).toFixed(2)).format("0,0.00") + "</b></td>" +
+                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(vc).format("0,0.00") + "</b></td>" +
+                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(SUBTOTAL_VOL).format("0,0.00") + "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(truncar(PROD / COS)).format("0,0.00") + "</b></td>" +
                                                             '<td style="background-color:#A9DFBF"align="right" ><b>' +
-                                                            numeral(Math.round(pmr)).format("0,0.00") +
+                                                            numeral(truncar(pmr)).format("0,0.00") +
                                                             "</b></td>"
                                                         );
                                                     },

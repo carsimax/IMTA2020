@@ -590,7 +590,7 @@ async function desgloce1(query) {
                     numeral(item.VOL_NETO).format("0,0.00"),
                     numeral(item.VOL_BRUTO).format("0,0.00"),
                     numeral(item.REND).format("0,0.00"),
-                    numeral(Math.round(item.PMR)).format("0,0.00"),
+                    numeral(item.PMR).format("0,0.00"),
                 ]);
                 SEM += parseFloat(item.SEM);
                 COS += parseFloat(item.COS);
@@ -621,10 +621,10 @@ async function desgloce1(query) {
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_NETO).toFixed(2)).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_BRUTO).toFixed(2)).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right" ><b>' + numeral(rendimiento).format("0,0.00") + "</b></td>" +
-                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(VAL / PROD)).format("0,0.00") + "</b></td>" +
+                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(truncar(VAL / PROD)).format("0,0.00") + "</b></td>" +
                     "</tr></tfoot></table>" +
-                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>' +
-                    '<p class="font-weight-light mt-3">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
+                    '</div> <p class="font-weight-bold mt-3 mb-0">*Estimado con lámina de riego promedio.</p>' +
+                    '<p class="font-weight-bold">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
                 );
                 /**
                  *
@@ -887,7 +887,7 @@ async function desgloce2() {
                                         numeral(item.VOL_NETO).format("0,0.00"),
                                         numeral(item.VOL_BRUTO).format("0,0.00"),
                                         numeral(item.REND).format("0,0.00"),
-                                        numeral(Math.round(item.PMR)).format("0,0.00"),
+                                        numeral(item.PMR).format("0,0.00"),
                                     ]);
                                     /*
                                      * Se suman los acumulados
@@ -933,10 +933,10 @@ async function desgloce2() {
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_NETO).toFixed(2)).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(parseFloat(VOL_BRUTO).toFixed(2)).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(totalRendimiento).format("0,0.00") + "</b></td>" +
-                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(parseFloat(VAL / PROD).toFixed(2))).format("0,0.00") + "</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(truncar(parseFloat(VAL / PROD))).format("0,0.00") + "</b></td>" +
                                     "</tr></tfoot></table>" +
-                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>' +
-                                    '<p class="font-weight-light mt-3">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
+                                    '</div> <p class="font-weight-bold mt-3 mb-0">*Estimado con lámina de riego promedio.</p>' +
+                                    '<p class="font-weight-bold">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
 
                                 );
                                 /*
@@ -1187,7 +1187,7 @@ async function desgloce3() {
                         numeral(item.VOL_NETO).format("0,0.00"),
                         numeral(item.VOL_BRUTO).format("0,0.00"),
                         numeral(item.REND).format("0,0.00"),
-                        numeral(Math.round(item.PMR)).format("0,0.00"),
+                        numeral(item.PMR).format("0,0.00"),
                     ]);
                     /*
                      * Se colocan los acumulados
@@ -1242,12 +1242,12 @@ async function desgloce3() {
                         numeral(truncar((PROD / COS))).format("0,0.00") +
                         "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right"><b>' +
-                        numeral(Math.round(VAL / PROD)).format("0,0.00") +
+                        numeral(truncar(VAL / PROD)).format("0,0.00") +
                         "</b></td>" +
                         "</tr></tfoot></table>" +
                         "</div>" +
-                        '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>' +
-                        '<p class="font-weight-light mt-3">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
+                        '</div> <p class="font-weight-bold mt-3 mb-0">*Estimado con lámina de riego promedio.</p>' +
+                        '<p class="font-weight-bold">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
                     );
                     /*
                      * Se crea la instancia de datatables
@@ -1528,7 +1528,7 @@ async function desgloce4() {
                                         numeral(item.VOL_NETO).format("0,0.00"),
                                         numeral(item.VOL_BRUTO).format("0,0.00"),
                                         numeral(item.REND).format("0,0.00"),
-                                        numeral(Math.round(item.PMR)).format("0,0.00"),
+                                        numeral(item.PMR).format("0,0.00"),
                                     ]);
                                     /*
                                      * Se suman los acumulados
@@ -1580,12 +1580,10 @@ async function desgloce4() {
                                     '<td style="background-color:#52BE80" align="right" ><b>' +
                                     numeral(truncar(PROD / COS)).format("0,0.00") +
                                     "</b></td>" +
-                                    '<td style="background-color:#52BE80" align="right"><b>' +
-                                    numeral(Math.round(VAL / PROD)).format("0,0.00") +
-                                    "</b></td>" +
+                                    '<td style="background-color:#52BE80" align="right"><b>' +numeral(truncar(VAL / PROD)).format("0,0.00") +"</b></td>" +
                                     "</tr></tfoot></table>" +
-                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>' +
-                                    '<p class="font-weight-light mt-3">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
+                                    '</div> <p class="font-weight-bold mt-3 mb-0">*Estimado con lámina de riego promedio.</p>' +
+                                    '<p class="font-weight-bold">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
 
                                 );
                                 /*
@@ -1779,7 +1777,7 @@ async function desgloce4() {
                                                 ) +
                                                 "</b></td>" +
                                                 '<td style="background-color:#A9DFBF"  align="right" ><b>' +
-                                                numeral(Math.round(pmr)).format("0,0.00") +
+                                                numeral((pmr)).format("0,0.00") +
                                                 "</b></td>"
                                             );
                                         },
@@ -2048,7 +2046,7 @@ async function desgloce5() {
                                         numeral(item.VOL_NETO).format("0,0.00"),
                                         numeral(item.VOL_BRUTO).format("0,0.00"),
                                         numeral(REND1).format("0,0.00"),
-                                        numeral(Math.round(PMR1)).format("0,0.00"),
+                                        numeral((PMR1)).format("0,0.00"),
                                     ]);
                                     /*
                                      * Se colocan el acumulado
@@ -2100,11 +2098,11 @@ async function desgloce5() {
                                     '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VOL_NETO).toFixed(2)).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#52BE80" align="right"><b>' + numeral(parseFloat(VOL_BRUTO).toFixed(2)).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#52BE80" align="right" ><b>' + numeral((truncar(PROD/COS))).format("0,0.00") + "</b></td>" +
-                                    '<td style="background-color:#52BE80" align="right"><b>' + numeral(Math.round(parseFloat(PMR1).toFixed(2))).format("0,0.00") +
+                                    '<td style="background-color:#52BE80" align="right"><b>' + numeral((parseFloat(PMR1))).format("0,0.00") +
                                     "</b></td>" +
                                     "</tr></tfoot></table>" +
-                                    '</div> <p class="font-weight-light mt-3">*Estimado con lámina de riego promedio.</p>' +
-                                    '<p class="font-weight-light mt-3">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
+                                    '</div> <p class="font-weight-bold mt-3 mb-0">*Estimado con lámina de riego promedio.</p>' +
+                                    '<p class="font-weight-bold">**Estimado con lámina de riego y eficiencia de conducción promedio.</p>'
                                 );
                                 /*
                                  * Inicializacion en datatables
@@ -2259,7 +2257,7 @@ async function desgloce5() {
                                                 "</b></td>" +
                                                 '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(rend).format("0,0.00") + "</b></td>" +
                                                 '<td style="background-color:#A9DFBF"align="right" ><b>' +
-                                                numeral(Math.round(pmr)).format("0,0.00") +
+                                                numeral((pmr)).format("0,0.00") +
                                                 "</b></td>"
                                             );
                                         },

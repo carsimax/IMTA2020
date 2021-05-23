@@ -113,8 +113,7 @@ $('#Prioridad').change(async function () {
         document.getElementById("botonMapa").innerHTML = "";
         $("#botonMapa").append('<i class="fa fa-table my-float"></i><b> Ver Tablas</b>');
         var val = $('[name="filtro"]:checked').val();
-
-        if (val === "agricola9") {
+        if (val === "Agricola9") {
             await loadShape2();
         } else {
             if (!map.hasLayer(OCSelect)) {
@@ -227,7 +226,6 @@ async function loadShape2() {
     getEst_SIG(function () {
         getMuni_SIG(function () {
             var overlays = {
-                "Organismos de Cuenca": GroupoOCSelect,
                 "Estados": GroupoEstSelect,
                 "Municipios": GroupoMunSelect,
             }

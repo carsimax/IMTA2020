@@ -49,7 +49,9 @@ $filtros = $registros->getPresas();
             <!--Resultado-->
             <div class="col-sm" id="pantalla">
                 <div class="col-sm" id="tabla">
+                    <p class="font-weight-bold">*Para ver la información volumétrica de cada presa dar click en el botón de ver detalle.</p>
                     <div class="row">
+
                         <div class="col-sm">
                             <table id="tablaPresa" class="table table-bordered responsive nowrap" style="width:100%"></table>
                         </div>

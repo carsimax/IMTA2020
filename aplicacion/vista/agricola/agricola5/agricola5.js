@@ -612,7 +612,7 @@ async function desgloce1(query) {
                     numeral(item.PROD).format("0,0.00"),
                     numeral(item.VAL).format("0,0.00"),
                     numeral(item.REND).format("0,0.00"),
-                    numeral(Math.round(item.PMR)).format("0,0.00"),
+                    numeral((item.PMR)).format("0,0.00"),
                 ]);
                 /**
                  * Se suma el acumulado para sacar el total
@@ -654,7 +654,7 @@ async function desgloce1(query) {
                     "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right" ><b>' + numeral(truncar(PROD / COS)).format("0,0.00") + "</b></td>" +
                     '<td style="background-color:#CCD1D1" align="right"><b>' +
-                    numeral(Math.round(VAL / PROD)).format("0,0.00") +
+                    numeral(truncar(VAL / PROD)).format("0,0.00") +
                     "</b></td>" +
                     "</tr></tfoot></table>" +
                     '</div>'
@@ -902,7 +902,7 @@ async function desgloce2() {
                         numeral(item.PROD).format("0,0.00"),
                         numeral(item.VAL).format("0,0.00"),
                         numeral(item.REND).format("0,0.00"),
-                        numeral(Math.round(item.PMR)).format("0,0.00"),
+                        numeral((item.PMR)).format("0,0.00"),
                     ]);
                     /*
                      * Se colocan los acumulados
@@ -953,7 +953,7 @@ async function desgloce2() {
                         "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right" ><b>' + numeral(truncar(PROD / COS)).format("0,0.00") + "</b></td>" +
                         '<td style="background-color:#CCD1D1" align="right"><b>' +
-                        numeral(Math.round(VAL / PROD)).format("0,0.00") +
+                        numeral(truncar(VAL / PROD)).format("0,0.00") +
                         "</b></td>" +
                         "</tr></tfoot></table>" +
                         "</div>" +
@@ -1228,7 +1228,7 @@ async function desgloce3() {
                                         numeral(item.PROD).format("0,0.00"),
                                         numeral(item.VAL).format("0,0.00"),
                                         numeral(item.REND).format("0,0.00"),
-                                        numeral(Math.round(item.PMR)).format("0,0.00"),
+                                        numeral((item.PMR)).format("0,0.00"),
                                     ]);
                                     /*
                                      * Se suman los acumulados
@@ -1272,7 +1272,7 @@ async function desgloce3() {
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(PROD).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VAL).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right" ><b>' + numeral(truncar(PROD / COS)).format("0,0.00") + "</b></td>" +
-                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(Math.round(parseFloat(VAL / PROD).toFixed(2))).format("0,0.00") +"</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeraltruncar(VAL / PROD).format("0,0.00") + "</b></td>" +
                                     "</tr></tfoot></table>" +
                                     '</div>'
                                 );
@@ -1595,7 +1595,7 @@ async function desgloce5() {
                                                     numeral(item.PROD).format("0,0.00"),
                                                     numeral(item.VAL).format("0,0.00"),
                                                     numeral(item.REND).format("0,0.00"),
-                                                    numeral(Math.round((item.PMR * 1000))).format("0,0.00"),
+                                                    numeral(((item.PMR * 1000))).format("0,0.00"),
                                                 ]);
                                                 /*
                                                  * Se suman los acumulados
@@ -1637,22 +1637,19 @@ async function desgloce5() {
                                                  */
                                                 '<td style="background-color:#52BE80" colspan="3" align="center"><b>Total general</b></th>' +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(SEM)).format("0,0.00") +
+                                                numeral((SEM)).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(COS)).format("0,0.00") +
+                                                numeral((COS)).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
                                                 numeral(PROD).format("0,0.00") +
                                                 "</b></td>" +
-                                                '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(parseFloat(VAL).toFixed(2)).format(
-                                                    "0,0.00"
-                                                ) +
+                                                '<td style="background-color:#52BE80" align="right"><b>' + numeral(VAL).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right" ><b>' + numeral(truncar(PROD / COS)).format("0,0.00") + "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(((VAL / PROD) * 1000))).format("0,0.00") +
+                                                numeral(((truncar(VAL / PROD) * 1000))).format("0,0.00") +
                                                 "</b></td>" +
                                                 "</tr></tfoot></table>" +
                                                 '</div>'
@@ -1800,9 +1797,7 @@ async function desgloce5() {
                                                             numeral(prod).format("0,0.00") +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF"  align="right"><b>' +
-                                                            numeral(parseFloat(vc).toFixed(2)).format(
-                                                                "0,0.00"
-                                                            ) +
+                                                            numeral((vc)).format("0,0.00") +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF"  align="right"><b>' +
                                                             numeral(parseFloat(rend)).format(
@@ -1810,7 +1805,7 @@ async function desgloce5() {
                                                             ) +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF"  align="right" ><b>' +
-                                                            numeral(Math.round(pmr)).format("0,0.00") +
+                                                            numeral((pmr)).format("0,0.00") +
                                                             "</b></td>"
                                                         );
                                                     },
@@ -2119,7 +2114,7 @@ async function desgloce6() {
                                                     numeral(item.PROD).format("0,0.00"),
                                                     numeral(VAL1).format("0,0.00"),
                                                     numeral(REND1).format("0,0.00"),
-                                                    numeral(Math.round((PMR1 * 1000))).format("0,0.00"),
+                                                    numeral(((PMR1 * 1000))).format("0,0.00"),
                                                 ]);
                                                 /*
                                                  * Se colocan el acumulado
@@ -2142,7 +2137,7 @@ async function desgloce6() {
                                          */
                                         if (data.length > 0) {
                                             var REND1 = truncar(PROD / COS);
-                                            var PMR1 = (VAL / PROD) * 1000;
+                                            var PMR1 = truncar(VAL / PROD) * 1000;
                                             if (!isFinite(REND1)) REND1 = 0;
                                             if (!isFinite(PMR1)) PMR1 = 0;
                                             /*
@@ -2178,15 +2173,13 @@ async function desgloce6() {
                                                 numeral(PROD).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(parseFloat(VAL).toFixed(2)).format("0,0.00") +
+                                                numeral(VAL).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right" ><b>' +
                                                 numeral(REND1).format("0,0.00") +
                                                 "</b></td>" +
                                                 '<td style="background-color:#52BE80" align="right"><b>' +
-                                                numeral(Math.round(parseFloat(PMR1).toFixed(2))).format(
-                                                    "0,0.00"
-                                                ) +
+                                                numeral(PMR1).format("0,0.00") +
                                                 "</b></td>" +
                                                 "</tr></tfoot></table>" +
                                                 '</div>'
@@ -2299,10 +2292,7 @@ async function desgloce6() {
                                                             '<td style="background-color:#A9DFBF" align="right" ><b>' +
                                                             numeral(prod).format("0,0.00") +
                                                             "</b></td>" +
-                                                            '<td style="background-color:#A9DFBF" align="right"><b>' +
-                                                            numeral(parseFloat(vc).toFixed(2)).format(
-                                                                "0,0.00"
-                                                            ) +
+                                                            '<td style="background-color:#A9DFBF" align="right"><b>' + numeral(vc).format("0,0.00") +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF" align="right"><b>' +
                                                             numeral(parseFloat(rend)).format(
@@ -2310,7 +2300,7 @@ async function desgloce6() {
                                                             ) +
                                                             "</b></td>" +
                                                             '<td style="background-color:#A9DFBF"align="right" ><b>' +
-                                                            numeral(Math.round(pmr)).format("0,0.00") +
+                                                            numeral((pmr)).format("0,0.00") +
                                                             "</b></td>"
                                                         );
                                                     },
@@ -2563,10 +2553,10 @@ async function grafica1(query2) {
                              */
                             backgroundColor: ["#E67E22", "#E74C3C", "#F4D03F", "#154360"],
                             data: [
-                                ((PER * 100) / total).toFixed(2),
+                                ((PER * 100) / total),
 
-                                ((OI * 100) / total).toFixed(2),
-                                ((PV * 100) / total).toFixed(2),
+                                ((OI * 100) / total),
+                                ((PV * 100) / total),
                             ],
                         },
                     ],
