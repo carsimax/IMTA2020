@@ -1891,4 +1891,8 @@ function crearMapa() {
         attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
+    var sesion = document.getElementById("sesionStatus").value;
+    if (sesion === "1") {
+        L.control.browserPrint().addTo(map);
+    }
 }

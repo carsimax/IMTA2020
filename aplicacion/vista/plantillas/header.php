@@ -80,6 +80,9 @@ if (!isset($_SESSION)) {
     <script src="/estilo/js/animatescroll.js"></script>
     <script src="/estilo/js/jquery.redirect.min.js"></script>
     <script src="/estilo/js/moment.js"></script>
+    <script src="/estilo/js/print.js"></script>
+    <script src="/estilo/js/print.utils.js"></script>
+    <script src="/estilo/js/print.sizes.js"></script>
     <!-- <script src="/estilo/js/sweetalert.min.js"></script> -->
     <script src="/estilo/js/logo.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
