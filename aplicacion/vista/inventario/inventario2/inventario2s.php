@@ -3,7 +3,7 @@
         <h3>Índice</h3>
     </div>
     <ul>
-        <li>1.1. Inventario de Obras Por Organismo de Cuenca.</li>
+        <li>1.1. Inventario de Obras por Módulo de Riego.</li>
         <li>1.2. Resumen Nacional del Inventario de Obras.</li>
         <li>1.3. Resumen por Distrito de Riego del Inventario de Obras.</li>
         <!--<li>1.4. Distribución de la superficie cosechada</li>
