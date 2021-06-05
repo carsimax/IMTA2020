@@ -4,8 +4,8 @@
     </div>
     <ul>
         <li>1.1. Inventario de Obras por Módulo de Riego.</li>
-        <li>1.2. Resumen Nacional del Inventario de Obras.</li>
-        <li>1.3. Resumen por Distrito de Riego del Inventario de Obras.</li>
+        <li>1.2. Resumen Nacional.</li>
+        <li>1.3. Resumen por Distrito de Riego.</li>
         <!--<li>1.4. Distribución de la superficie cosechada</li>
         <li>1.5. Estadística agrícola por distrito de riego</li>
         <li>1.6. Concentrado nacional por cultivo</li>-->

@@ -781,7 +781,7 @@ async function desgloce1(query) {
                                 title: "Distrito de Riego",
                             },
                             {
-                                title: "Modulo",
+                                title: "Módulo",
                             },
                             {
                                 title: "Fuente",
@@ -1453,7 +1453,7 @@ async function desgloce2() {
                     '</tr>' +
                     //Edificios
                     '<tr>' +
-                    '<td>Edificiosa</td>' +
+                    '<td>Edificios</td>' +
                     '<td>pza</td>' +
                     '<td align="right">' + numeral(Math.round(edificios_casetas)).format("0,0") + '</td>' +
                     '</tr>' +

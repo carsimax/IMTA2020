@@ -53,7 +53,7 @@ $Organismos= $registros->getDistritos();
         </select>
     </div>
     <div class="col-sm">
-        <label>Modulos:</label>
+        <label>Módulos:</label>
         <select name="Modulos[]" onchange="Modulos()" multiple id="Modulos">
         </select>
     </div>
