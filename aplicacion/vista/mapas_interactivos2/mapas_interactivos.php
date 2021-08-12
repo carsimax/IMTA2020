@@ -56,37 +56,22 @@ $Estados = $registros->getTodos();
       <!--Resultado-->
       <div class="col-sm" id="pantalla">
         <br>
-        <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
-          <h3>Condición de los Suelos</h3>
-        </div>
         <div id="mapa1">
         </div>
         <br>
-        <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
-          <h3>Fuentes de Abastecimiento de Agua de Riego</h3>
-        </div>
         <div id="mapa2">
         </div>
         <br>
-        <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
-          <h3>Principales Cultivos Agrícolas y Volumen de Riego</h3>
-        </div>
         <div id="mapa3">
         </div>
         <br>
-        <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
-          <h3>Superficie Agrícola de Riego</h3>
-        </div>
         <div id="mapa4">
         </div>
         <br>
-        <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
-          <h3>Tipos de Vegetación</h3>
-        </div>
         <div id="mapa5">
         </div>
+        <br>
       </div>
-
     </main>
   </div>
 </div>
