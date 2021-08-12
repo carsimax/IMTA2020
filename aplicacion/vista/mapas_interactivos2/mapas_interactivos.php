@@ -12,10 +12,10 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
-require_once(__DIR__ . "/../../modelo/filtroacu.php");
 require_once(__DIR__ . "/../plantillas/header.php");
-
+require_once(__DIR__ . "/../../modelo/estado.php");
+$registros = new Estado();
+$Estados = $registros->getTodos();
 ?>
 <div class="container-fluid">
   <div class="row">
@@ -30,31 +30,75 @@ require_once(__DIR__ . "/../plantillas/header.php");
       </div>
       <div class="col-md">
         <p class="bold">Mapas interactivos</p>
-        <p class="font-weight-normal">Consulta los mapas interactivos de superficies agrícolas bajo riego, cultivos agrícolas por ciclo y volumen de riego, fuentes de abastecimiento, tipos de vegetación y condición de suelos. </p>
+        <p class="font-weight-normal">Consulta los mapas interactivos de superficies agrícolas bajo riego, cultivos
+          agrícolas por ciclo y volumen de riego, fuentes de abastecimiento, tipos de vegetación y condición de suelos.
+        </p>
       </div>
       <!--Seccion del Filtro-->
       <div class="col-sm" id="SeccionFiltro">
         <div id="divFiltro">
+          <div class="row">
+            <div class="col-sm">
+              <label>Estados:</label>
+              <select class="form-control green" onchange="CambiarMapa()" id="Estado">
+                <?php
+                    foreach ($Estados as $Estado) {
+                    ?>
+                <option value="<?php echo $Estado['id_estado'] ?>">
+                  <?php echo $Estado['nombre'] ?>
+                </option>
+                <?php } ?>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
-      
       <!--Resultado-->
       <div class="col-sm" id="pantalla">
-        <iframe src="Data_Estados/Aguascalientes/Mapa1/index.html" frameborder="0" width="100%"></iframe>
+        <br>
+        <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+          <h3>Condición de los Suelos</h3>
+        </div>
+        <div id="mapa1">
+        </div>
+        <br>
+        <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+          <h3>Fuentes de Abastecimiento de Agua de Riego</h3>
+        </div>
+        <div id="mapa2">
+        </div>
+        <br>
+        <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+          <h3>Principales Cultivos Agrícolas y Volumen de Riego</h3>
+        </div>
+        <div id="mapa3">
+        </div>
+        <br>
+        <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+          <h3>Superficie Agrícola de Riego</h3>
+        </div>
+        <div id="mapa4">
+        </div>
+        <br>
+        <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+          <h3>Tipos de Vegetación</h3>
+        </div>
+        <div id="mapa5">
+        </div>
       </div>
-      <div class="col-sm" id="pantalla2">
-        <hr>
-        <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
-      </div>
+
     </main>
   </div>
 </div>
 <br>
 <?php require_once(__DIR__ . "/../plantillas/footer.php"); ?>
 <!--Script de chartJS-->
-<script src="gpresa.js"></script>
-<script src="presa.js"></script>
-<script src="/sig/capas.js"></script>
+<script src="mapa.js"></script>
 <script>
   $('#referencias').hide();
+  function ready() {
+    CambiarMapa();
+  }
+
+  document.addEventListener("DOMContentLoaded", ready);
 </script>
