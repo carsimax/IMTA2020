@@ -42,11 +42,11 @@ $Estados = $registros->getTodos();
               <label>Estados:</label>
               <select class="form-control green" onchange="CambiarMapa()" id="Estado">
                 <?php
-                    foreach ($Estados as $Estado) {
-                    ?>
-                <option value="<?php echo $Estado['id_estado'] ?>">
-                  <?php echo $Estado['nombre'] ?>
-                </option>
+                foreach ($Estados as $Estado) {
+                ?>
+                  <option value="<?php echo $Estado['id_estado'] ?>">
+                    <?php echo $Estado['nombre'] ?>
+                  </option>
                 <?php } ?>
               </select>
             </div>
@@ -54,23 +54,67 @@ $Estados = $registros->getTodos();
         </div>
       </div>
       <!--Resultado-->
+      <br>
       <div class="col-sm" id="pantalla">
-        <br>
-        <div id="mapa1">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Superficie Agrícola de Riego</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Principales Cultivos Agrícolas y Volumen de Riego</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">Fuentes de Abastecimiento de Agua de Riego</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">Tipos de Vegetación</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab5-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab5" aria-selected="false">Condición de los Suelos</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+            <br>
+            <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+              <h3>Superficie Agrícola de Riego</h3>
+            </div>
+            <div id="mapa1">
+            </div>
+          </div>
+          <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+            <br>
+            <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+              <h3>Principales Cultivos Agrícolas y Volumen de Riego</h3>
+            </div>
+            <div id="mapa2">
+            </div>
+          </div>
+          <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+            <br>
+            <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+              <h3>Fuentes de Abastecimiento de Agua de Riego</h3>
+            </div>
+            <div id="mapa3">
+            </div>
+          </div>
+          <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+            <br>
+            <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+              <h3>Tipos de Vegetación</h3>
+            </div>
+            <div id="mapa4">
+            </div>
+          </div>
+          <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
+            <br>
+            <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+              <h3>Condición de los Suelos</h3>
+            </div>
+            <div id="mapa5">
+            </div>
+          </div>
         </div>
-        <br>
-        <div id="mapa2">
-        </div>
-        <br>
-        <div id="mapa3">
-        </div>
-        <br>
-        <div id="mapa4">
-        </div>
-        <br>
-        <div id="mapa5">
-        </div>
-        <br>
       </div>
     </main>
   </div>
@@ -81,6 +125,7 @@ $Estados = $registros->getTodos();
 <script src="mapa.js"></script>
 <script>
   $('#referencias').hide();
+
   function ready() {
     CambiarMapa();
   }

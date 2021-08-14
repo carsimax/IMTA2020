@@ -17,6 +17,6 @@ function CambiarMapa() {
     $("#mapa1").append('<iframe src="Data_Estados/'+id+'/Mapa1/index.html" width="100%" height="100%"></iframe>');
     $("#mapa2").append('<iframe src="Data_Estados/'+id+'/Mapa2/index.html" width="100%" height="100%"></iframe>');
     $("#mapa3").append('<iframe src="Data_Estados/'+id+'/Mapa3/index.html" width="100%" height="100%"></iframe>');
-    $("#mapa3").append('<iframe src="Data_Estados/'+id+'/Mapa4/index.html" width="100%" height="100%"></iframe>');
-    $("#mapa3").append('<iframe src="Data_Estados/'+id+'/Mapa5/index.html" width="100%" height="100%"></iframe>');
+    $("#mapa4").append('<iframe src="Data_Estados/'+id+'/Mapa4/index.html" width="100%" height="100%"></iframe>');
+    $("#mapa5").append('<iframe src="Data_Estados/'+id+'/Mapa5/index.html" width="100%" height="100%"></iframe>');
 }
