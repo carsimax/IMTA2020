@@ -70,7 +70,7 @@ $Estados = $registros->getTodos();
             <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">Tipos de Vegetación</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="tab5-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab5" aria-selected="false">Condición de los Suelos</a>
+            <a class="nav-link" id="tab5-tab" data-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="false">Condición de los Suelos</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
