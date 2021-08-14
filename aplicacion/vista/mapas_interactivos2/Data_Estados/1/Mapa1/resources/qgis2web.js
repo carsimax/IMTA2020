@@ -34,7 +34,7 @@ var map = new ol.Map({
 var layerSwitcher = new ol.control.LayerSwitcher({tipLabel: "Layers"});
 map.addControl(layerSwitcher);
 
-map.getView().fit([-11502721.275436, 2451186.096755, -11260312.633174, 2580930.153738], map.getSize());
+map.getView().fit([-11492322.384449, 2451415.717825, -11270851.077017, 2597377.781932], map.getSize());
 
 var NO_POPUP = 0
 var ALL_FIELDS = 1
@@ -349,17 +349,6 @@ map.on('singleclick', function(evt) {
 
 
 
-
-var geocoder = new Geocoder('nominatim', {
-  provider: 'osm',
-  lang: 'en-US',
-  placeholder: 'Search for ...',
-  limit: 5,
-  keepOpen: true
-});
-map.addControl(geocoder);
-
-document.getElementsByClassName('gcd-gl-btn')[0].className += ' fa fa-search';
 
 var attributionComplete = false;
 map.on("rendercomplete", function(evt) {

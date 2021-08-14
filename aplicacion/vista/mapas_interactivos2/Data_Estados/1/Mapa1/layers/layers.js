@@ -4,7 +4,7 @@ var wms_layers = [];
         var lyr_GoogleSatellite_0 = new ol.layer.Tile({
             'title': 'Google Satellite',
             'type': 'base',
-            'opacity': 1.000000,
+            'opacity': 1,
             
             
             source: new ol.source.XYZ({
@@ -40,38 +40,34 @@ var lyr_Lmitemunicipal_2 = new ol.layer.Vector({
                 interactive: true,
                 title: '<img src="styles/legend/Lmitemunicipal_2.png" /> Límite municipal'
             });
-var format_Sinevidenciadedegradacin_3 = new ol.format.GeoJSON();
-var features_Sinevidenciadedegradacin_3 = format_Sinevidenciadedegradacin_3.readFeatures(json_Sinevidenciadedegradacin_3, 
+var format_UnidadesdeRiego_3 = new ol.format.GeoJSON();
+var features_UnidadesdeRiego_3 = format_UnidadesdeRiego_3.readFeatures(json_UnidadesdeRiego_3, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_Sinevidenciadedegradacin_3 = new ol.source.Vector({
+var jsonSource_UnidadesdeRiego_3 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_Sinevidenciadedegradacin_3.addFeatures(features_Sinevidenciadedegradacin_3);
-var lyr_Sinevidenciadedegradacin_3 = new ol.layer.Vector({
+jsonSource_UnidadesdeRiego_3.addFeatures(features_UnidadesdeRiego_3);
+var lyr_UnidadesdeRiego_3 = new ol.layer.Vector({
                 declutter: true,
-                source:jsonSource_Sinevidenciadedegradacin_3, 
-                style: style_Sinevidenciadedegradacin_3,
+                source:jsonSource_UnidadesdeRiego_3, 
+                style: style_UnidadesdeRiego_3,
                 interactive: true,
-                title: '<img src="styles/legend/Sinevidenciadedegradacin_3.png" /> Sin evidencia de degradación'
+                title: '<img src="styles/legend/UnidadesdeRiego_3.png" /> Unidades de Riego'
             });
-var format_GradodeDegradacin_4 = new ol.format.GeoJSON();
-var features_GradodeDegradacin_4 = format_GradodeDegradacin_4.readFeatures(json_GradodeDegradacin_4, 
+var format_DistritosdeRiego_4 = new ol.format.GeoJSON();
+var features_DistritosdeRiego_4 = format_DistritosdeRiego_4.readFeatures(json_DistritosdeRiego_4, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_GradodeDegradacin_4 = new ol.source.Vector({
+var jsonSource_DistritosdeRiego_4 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_GradodeDegradacin_4.addFeatures(features_GradodeDegradacin_4);
-var lyr_GradodeDegradacin_4 = new ol.layer.Vector({
+jsonSource_DistritosdeRiego_4.addFeatures(features_DistritosdeRiego_4);
+var lyr_DistritosdeRiego_4 = new ol.layer.Vector({
                 declutter: true,
-                source:jsonSource_GradodeDegradacin_4, 
-                style: style_GradodeDegradacin_4,
+                source:jsonSource_DistritosdeRiego_4, 
+                style: style_DistritosdeRiego_4,
                 interactive: true,
-    title: 'Grado de Degradación<br />\
-    <img src="styles/legend/GradodeDegradacin_4_0.png" /> Extremo<br />\
-    <img src="styles/legend/GradodeDegradacin_4_1.png" /> Fuerte<br />\
-    <img src="styles/legend/GradodeDegradacin_4_2.png" /> Ligero<br />\
-    <img src="styles/legend/GradodeDegradacin_4_3.png" /> Moderado<br />'
-        });
+                title: '<img src="styles/legend/DistritosdeRiego_4.png" /> Distritos de Riego'
+            });
 var format_Municipios_5 = new ol.format.GeoJSON();
 var features_Municipios_5 = format_Municipios_5.readFeatures(json_Municipios_5, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
@@ -101,27 +97,27 @@ var lyr_Poblaciones_6 = new ol.layer.Vector({
                 title: '<img src="styles/legend/Poblaciones_6.png" /> Poblaciones'
             });
 var group_Aguascalientes = new ol.layer.Group({
-                                layers: [lyr_GoogleSatellite_0,lyr_Lmiteestatal_1,lyr_Lmitemunicipal_2,lyr_Sinevidenciadedegradacin_3,lyr_GradodeDegradacin_4,lyr_Municipios_5,lyr_Poblaciones_6,],
+                                layers: [lyr_GoogleSatellite_0,lyr_Lmiteestatal_1,lyr_Lmitemunicipal_2,lyr_UnidadesdeRiego_3,lyr_DistritosdeRiego_4,lyr_Municipios_5,lyr_Poblaciones_6,],
                                 title: "Aguascalientes"});
 
-lyr_GoogleSatellite_0.setVisible(true);lyr_Lmiteestatal_1.setVisible(true);lyr_Lmitemunicipal_2.setVisible(true);lyr_Sinevidenciadedegradacin_3.setVisible(true);lyr_GradodeDegradacin_4.setVisible(true);lyr_Municipios_5.setVisible(true);lyr_Poblaciones_6.setVisible(true);
+lyr_GoogleSatellite_0.setVisible(true);lyr_Lmiteestatal_1.setVisible(true);lyr_Lmitemunicipal_2.setVisible(true);lyr_UnidadesdeRiego_3.setVisible(true);lyr_DistritosdeRiego_4.setVisible(true);lyr_Municipios_5.setVisible(true);lyr_Poblaciones_6.setVisible(true);
 var layersList = [group_Aguascalientes];
 lyr_Lmiteestatal_1.set('fieldAliases', {'CVE_ENT': 'CVE_ENT', 'NOM_ENT': 'NOM_ENT', 'CAPITAL': 'CAPITAL', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', });
 lyr_Lmitemunicipal_2.set('fieldAliases', {'CVEGEO': 'CVEGEO', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_ENT': 'NOM_ENT', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', 'NOM_MUN': 'NOM_MUN', });
-lyr_Sinevidenciadedegradacin_3.set('fieldAliases', {'CVEGEO': 'CVEGEO', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_ENT': 'NOM_ENT', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', 'NOM_MUN': 'NOM_MUN', });
-lyr_GradodeDegradacin_4.set('fieldAliases', {'TIPO': 'TIPO', 'GRADO': 'GRADO', 'causa': 'causa', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_MUN': 'NOM_MUN', 'ENTMUN': 'ENTMUN', });
+lyr_UnidadesdeRiego_3.set('fieldAliases', {'TIPO': 'TIPO', 'nom_dtt': 'nom_dtt', 'nom_dr': 'nom_dr', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_MUN': 'NOM_MUN', 'ENTMUN': 'ENTMUN', 'Area_ha': 'Area_ha', });
+lyr_DistritosdeRiego_4.set('fieldAliases', {'TIPO': 'TIPO', 'nom_dr': 'nom_dr', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_MUN': 'NOM_MUN', 'ENTMUN': 'ENTMUN', 'Area_ha': 'Area_ha', });
 lyr_Municipios_5.set('fieldAliases', {'CVEGEO': 'CVEGEO', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_ENT': 'NOM_ENT', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', 'NOM_MUN': 'NOM_MUN', });
 lyr_Poblaciones_6.set('fieldAliases', {'NO': 'NO', 'LATITUD': 'LATITUD', 'LONGITUD': 'LONGITUD', 'POBLACION': 'POBLACION', 'Capital': 'Capital', 'CDAD': 'CDAD', 'CIUDAD': 'CIUDAD', });
 lyr_Lmiteestatal_1.set('fieldImages', {'CVE_ENT': 'TextEdit', 'NOM_ENT': 'TextEdit', 'CAPITAL': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'Range', 'COV_ID': 'Range', });
 lyr_Lmitemunicipal_2.set('fieldImages', {'CVEGEO': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_ENT': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'TextEdit', 'COV_ID': 'TextEdit', 'NOM_MUN': 'TextEdit', });
-lyr_Sinevidenciadedegradacin_3.set('fieldImages', {'CVEGEO': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_ENT': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'TextEdit', 'COV_ID': 'TextEdit', 'NOM_MUN': 'TextEdit', });
-lyr_GradodeDegradacin_4.set('fieldImages', {'TIPO': 'TextEdit', 'GRADO': 'TextEdit', 'causa': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_MUN': 'TextEdit', 'ENTMUN': 'TextEdit', });
+lyr_UnidadesdeRiego_3.set('fieldImages', {'TIPO': 'TextEdit', 'nom_dtt': 'TextEdit', 'nom_dr': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_MUN': 'TextEdit', 'ENTMUN': 'TextEdit', 'Area_ha': 'TextEdit', });
+lyr_DistritosdeRiego_4.set('fieldImages', {'TIPO': 'TextEdit', 'nom_dr': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_MUN': 'TextEdit', 'ENTMUN': 'TextEdit', 'Area_ha': 'TextEdit', });
 lyr_Municipios_5.set('fieldImages', {'CVEGEO': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_ENT': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'TextEdit', 'COV_ID': 'TextEdit', 'NOM_MUN': 'TextEdit', });
 lyr_Poblaciones_6.set('fieldImages', {'NO': 'Range', 'LATITUD': 'TextEdit', 'LONGITUD': 'TextEdit', 'POBLACION': 'TextEdit', 'Capital': 'TextEdit', 'CDAD': 'TextEdit', 'CIUDAD': 'TextEdit', });
 lyr_Lmiteestatal_1.set('fieldLabels', {});
 lyr_Lmitemunicipal_2.set('fieldLabels', {});
-lyr_Sinevidenciadedegradacin_3.set('fieldLabels', {});
-lyr_GradodeDegradacin_4.set('fieldLabels', {});
+lyr_UnidadesdeRiego_3.set('fieldLabels', {});
+lyr_DistritosdeRiego_4.set('fieldLabels', {});
 lyr_Municipios_5.set('fieldLabels', {});
 lyr_Poblaciones_6.set('fieldLabels', {});
 lyr_Poblaciones_6.on('precompose', function(evt) {
