@@ -28,7 +28,7 @@ $Estados = $registros->getTodos();
 
     .mapa__banner {
       height: 100%;
-      width: 350px;
+      width: 300px;
     }
 
     .mapa__interactivo {
