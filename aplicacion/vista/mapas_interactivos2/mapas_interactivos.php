@@ -18,6 +18,24 @@ $registros = new Estado();
 $Estados = $registros->getTodos();
 ?>
 <div class="container-fluid">
+  <style>
+    .mapa__interactivo__container {
+      height: 750px;
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+    }
+
+    .mapa__banner {
+      height: 100%;
+      width: 350px;
+    }
+
+    .mapa__interactivo {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
   <div class="row">
     <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-md-4">
       <!--Encabezado-->
@@ -79,15 +97,20 @@ $Estados = $registros->getTodos();
             <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
               <h3>Superficie Agrícola de Riego</h3>
             </div>
-            <div id="mapa1">
+            <div class="mapa__interactivo__container">
+              <img src="./Data_Estados/1/Mapa1/banner.jpg" class="mapa__banner">
+              <div id="mapa1" class="mapa__interactivo"></div>
             </div>
+
           </div>
           <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
             <br>
             <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
               <h3>Principales Cultivos Agrícolas y Volumen de Riego</h3>
             </div>
-            <div id="mapa2">
+            <div class="mapa__interactivo__container">
+              <img src="./Data_Estados/1/Mapa2/banner.jpg" class="mapa__banner">
+              <div id="mapa2" class="mapa__interactivo"></div>
             </div>
           </div>
           <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
@@ -95,7 +118,9 @@ $Estados = $registros->getTodos();
             <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
               <h3>Fuentes de Abastecimiento de Agua de Riego</h3>
             </div>
-            <div id="mapa3">
+            <div class="mapa__interactivo__container">
+              <img src="./Data_Estados/1/Mapa3/banner.jpg" class="mapa__banner">
+              <div id="mapa3" class="mapa__interactivo"></div>
             </div>
           </div>
           <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
@@ -103,7 +128,9 @@ $Estados = $registros->getTodos();
             <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
               <h3>Tipos de Vegetación</h3>
             </div>
-            <div id="mapa4">
+            <div class="mapa__interactivo__container">
+              <img src="./Data_Estados/1/Mapa4/banner.jpg" class="mapa__banner">
+              <div id="mapa4" class="mapa__interactivo"></div>
             </div>
           </div>
           <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
@@ -111,7 +138,9 @@ $Estados = $registros->getTodos();
             <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
               <h3>Condición de los Suelos</h3>
             </div>
-            <div id="mapa5">
+            <div class="mapa__interactivo__container">
+              <img src="./Data_Estados/1/Mapa5/banner.jpg" class="mapa__banner">
+              <div id="mapa5" class="mapa__interactivo"></div>
             </div>
           </div>
         </div>
@@ -129,6 +158,5 @@ $Estados = $registros->getTodos();
   function ready() {
     CambiarMapa();
   }
-
   document.addEventListener("DOMContentLoaded", ready);
 </script>
