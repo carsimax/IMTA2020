@@ -40,19 +40,19 @@ var lyr_Lmitemunicipal_2 = new ol.layer.Vector({
                 interactive: true,
                 title: '<img src="styles/legend/Lmitemunicipal_2.png" /> Límite municipal'
             });
-var format_SinEvidenciadeDegradacin_3 = new ol.format.GeoJSON();
-var features_SinEvidenciadeDegradacin_3 = format_SinEvidenciadeDegradacin_3.readFeatures(json_SinEvidenciadeDegradacin_3, 
+var format_SinPresenciadeDegradacin_3 = new ol.format.GeoJSON();
+var features_SinPresenciadeDegradacin_3 = format_SinPresenciadeDegradacin_3.readFeatures(json_SinPresenciadeDegradacin_3, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_SinEvidenciadeDegradacin_3 = new ol.source.Vector({
+var jsonSource_SinPresenciadeDegradacin_3 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_SinEvidenciadeDegradacin_3.addFeatures(features_SinEvidenciadeDegradacin_3);
-var lyr_SinEvidenciadeDegradacin_3 = new ol.layer.Vector({
+jsonSource_SinPresenciadeDegradacin_3.addFeatures(features_SinPresenciadeDegradacin_3);
+var lyr_SinPresenciadeDegradacin_3 = new ol.layer.Vector({
                 declutter: true,
-                source:jsonSource_SinEvidenciadeDegradacin_3, 
-                style: style_SinEvidenciadeDegradacin_3,
+                source:jsonSource_SinPresenciadeDegradacin_3, 
+                style: style_SinPresenciadeDegradacin_3,
                 interactive: true,
-                title: '<img src="styles/legend/SinEvidenciadeDegradacin_3.png" /> Sin Evidencia de Degradación'
+                title: '<img src="styles/legend/SinPresenciadeDegradacin_3.png" /> Sin Presencia de Degradación'
             });
 var format_GradodeDegradacin_4 = new ol.format.GeoJSON();
 var features_GradodeDegradacin_4 = format_GradodeDegradacin_4.readFeatures(json_GradodeDegradacin_4, 
@@ -100,27 +100,27 @@ var lyr_Poblaciones_6 = new ol.layer.Vector({
                 interactive: true,
                 title: '<img src="styles/legend/Poblaciones_6.png" /> Poblaciones'
             });
-var group_CDMX = new ol.layer.Group({
-                                layers: [lyr_GoogleSatellite_0,lyr_Lmiteestatal_1,lyr_Lmitemunicipal_2,lyr_SinEvidenciadeDegradacin_3,lyr_GradodeDegradacin_4,lyr_Municipios_5,lyr_Poblaciones_6,],
-                                title: "CDMX"});
+var group_Coahuila = new ol.layer.Group({
+                                layers: [lyr_GoogleSatellite_0,lyr_Lmiteestatal_1,lyr_Lmitemunicipal_2,lyr_SinPresenciadeDegradacin_3,lyr_GradodeDegradacin_4,lyr_Municipios_5,lyr_Poblaciones_6,],
+                                title: "Coahuila"});
 
-lyr_GoogleSatellite_0.setVisible(true);lyr_Lmiteestatal_1.setVisible(true);lyr_Lmitemunicipal_2.setVisible(true);lyr_SinEvidenciadeDegradacin_3.setVisible(true);lyr_GradodeDegradacin_4.setVisible(true);lyr_Municipios_5.setVisible(true);lyr_Poblaciones_6.setVisible(true);
-var layersList = [group_CDMX];
+lyr_GoogleSatellite_0.setVisible(true);lyr_Lmiteestatal_1.setVisible(true);lyr_Lmitemunicipal_2.setVisible(true);lyr_SinPresenciadeDegradacin_3.setVisible(true);lyr_GradodeDegradacin_4.setVisible(true);lyr_Municipios_5.setVisible(true);lyr_Poblaciones_6.setVisible(true);
+var layersList = [group_Coahuila];
 lyr_Lmiteestatal_1.set('fieldAliases', {'CVE_ENT': 'CVE_ENT', 'NOM_ENT': 'NOM_ENT', 'CAPITAL': 'CAPITAL', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', });
-lyr_Lmitemunicipal_2.set('fieldAliases', {'OBJECTID': 'OBJECTID', 'CVEGEO': 'CVEGEO', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_ENT': 'NOM_ENT', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', 'NOM_MUN': 'NOM_MUN', 'Shape_Leng': 'Shape_Leng', 'Shape_Area': 'Shape_Area', });
-lyr_SinEvidenciadeDegradacin_3.set('fieldAliases', {'OBJECTID': 'OBJECTID', 'CVEGEO': 'CVEGEO', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_ENT': 'NOM_ENT', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', 'NOM_MUN': 'NOM_MUN', 'Shape_Leng': 'Shape_Leng', 'Shape_Area': 'Shape_Area', });
+lyr_Lmitemunicipal_2.set('fieldAliases', {'CVEGEO': 'CVEGEO', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_ENT': 'NOM_ENT', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', 'NOM_MUN': 'NOM_MUN', });
+lyr_SinPresenciadeDegradacin_3.set('fieldAliases', {'CVEGEO': 'CVEGEO', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_ENT': 'NOM_ENT', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', 'NOM_MUN': 'NOM_MUN', });
 lyr_GradodeDegradacin_4.set('fieldAliases', {'TIPO': 'TIPO', 'GRADO': 'GRADO', 'causa': 'causa', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_MUN': 'NOM_MUN', 'ENTMUN': 'ENTMUN', });
-lyr_Municipios_5.set('fieldAliases', {'OBJECTID': 'OBJECTID', 'CVEGEO': 'CVEGEO', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_ENT': 'NOM_ENT', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', 'NOM_MUN': 'NOM_MUN', 'Shape_Leng': 'Shape_Leng', 'Shape_Area': 'Shape_Area', });
+lyr_Municipios_5.set('fieldAliases', {'CVEGEO': 'CVEGEO', 'CVE_ENT': 'CVE_ENT', 'CVE_MUN': 'CVE_MUN', 'NOM_ENT': 'NOM_ENT', 'AREA': 'AREA', 'PERIMETER': 'PERIMETER', 'COV_': 'COV_', 'COV_ID': 'COV_ID', 'NOM_MUN': 'NOM_MUN', });
 lyr_Poblaciones_6.set('fieldAliases', {'NO': 'NO', 'LATITUD': 'LATITUD', 'LONGITUD': 'LONGITUD', 'POBLACION': 'POBLACION', 'Capital': 'Capital', 'CDAD': 'CDAD', 'CIUDAD': 'CIUDAD', });
 lyr_Lmiteestatal_1.set('fieldImages', {'CVE_ENT': 'TextEdit', 'NOM_ENT': 'TextEdit', 'CAPITAL': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'Range', 'COV_ID': 'Range', });
-lyr_Lmitemunicipal_2.set('fieldImages', {'OBJECTID': 'TextEdit', 'CVEGEO': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_ENT': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'TextEdit', 'COV_ID': 'TextEdit', 'NOM_MUN': 'TextEdit', 'Shape_Leng': 'TextEdit', 'Shape_Area': 'TextEdit', });
-lyr_SinEvidenciadeDegradacin_3.set('fieldImages', {'OBJECTID': 'TextEdit', 'CVEGEO': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_ENT': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'TextEdit', 'COV_ID': 'TextEdit', 'NOM_MUN': 'TextEdit', 'Shape_Leng': 'TextEdit', 'Shape_Area': 'TextEdit', });
+lyr_Lmitemunicipal_2.set('fieldImages', {'CVEGEO': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_ENT': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'TextEdit', 'COV_ID': 'TextEdit', 'NOM_MUN': 'TextEdit', });
+lyr_SinPresenciadeDegradacin_3.set('fieldImages', {'CVEGEO': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_ENT': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'TextEdit', 'COV_ID': 'TextEdit', 'NOM_MUN': 'TextEdit', });
 lyr_GradodeDegradacin_4.set('fieldImages', {'TIPO': 'TextEdit', 'GRADO': 'TextEdit', 'causa': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_MUN': 'TextEdit', 'ENTMUN': 'TextEdit', });
-lyr_Municipios_5.set('fieldImages', {'OBJECTID': 'TextEdit', 'CVEGEO': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_ENT': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'TextEdit', 'COV_ID': 'TextEdit', 'NOM_MUN': 'TextEdit', 'Shape_Leng': 'TextEdit', 'Shape_Area': 'TextEdit', });
+lyr_Municipios_5.set('fieldImages', {'CVEGEO': 'TextEdit', 'CVE_ENT': 'TextEdit', 'CVE_MUN': 'TextEdit', 'NOM_ENT': 'TextEdit', 'AREA': 'TextEdit', 'PERIMETER': 'TextEdit', 'COV_': 'TextEdit', 'COV_ID': 'TextEdit', 'NOM_MUN': 'TextEdit', });
 lyr_Poblaciones_6.set('fieldImages', {'NO': 'Range', 'LATITUD': 'TextEdit', 'LONGITUD': 'TextEdit', 'POBLACION': 'TextEdit', 'Capital': 'TextEdit', 'CDAD': 'TextEdit', 'CIUDAD': 'TextEdit', });
 lyr_Lmiteestatal_1.set('fieldLabels', {});
 lyr_Lmitemunicipal_2.set('fieldLabels', {});
-lyr_SinEvidenciadeDegradacin_3.set('fieldLabels', {});
+lyr_SinPresenciadeDegradacin_3.set('fieldLabels', {});
 lyr_GradodeDegradacin_4.set('fieldLabels', {});
 lyr_Municipios_5.set('fieldLabels', {});
 lyr_Poblaciones_6.set('fieldLabels', {});
