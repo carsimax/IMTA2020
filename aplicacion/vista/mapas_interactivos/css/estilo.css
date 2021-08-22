@@ -1,0 +1,55 @@
+
+.cont{
+    width: 1200px;
+    margin: auto;
+    background: rgb(255, 255, 255);
+    color: rgb(39, 174, 252);
+    padding: 20px 15px 50px 50px;
+    border-radius: 1px;
+    box-shadow: 0 10px 10px 0px rgba(230, 227, 227, 0.8);
+}
+
+.cont .titulo{
+    font-size: 3.5ex;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#pestanas {
+    float: top;
+    font-size: 2ex;
+    font-weight: bold;
+}
+
+#pestanas ul{
+    margin-left: -40px;    
+}
+
+#pestanas li{
+    list-style-type: none;
+    float: left;
+    text-align: center;
+    margin: 0px 2px -2px -0px;
+    background: darkgrey;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 5px;
+    border: 2px solid rgb(42, 6, 250);
+    border-bottom: dimgray;
+    padding: 0px 20px 0px 20px;
+}
+
+#pestanas a:link{
+    text-decoration: none;
+    color: rgb(46, 67, 255);
+}
+
+#contenidopestanas{
+    clear: both;  
+    background: rgb(243, 243, 243);
+    padding: 0px 0px 0px 0px;
+    border-radius: 0px;
+    border-top-left-radius: 0px;
+    border: 2px solid rgb(10, 124, 255);
+    width: 1200x;
+}

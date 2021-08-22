@@ -127,6 +127,12 @@ if (!isset($_SESSION)) {
         });
         /*Scroll to top when arrow up clicked END*/
     </script>
+    <style type="text/css" media="screen">
+        iframe {
+            width: 1641px;
+            height: 600px;
+        }
+    </style>
 </head>
 <!--Fin del Encabezado de la pagina-->
 

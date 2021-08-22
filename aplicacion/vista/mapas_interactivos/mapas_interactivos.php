@@ -1,20 +1,20 @@
-<?php
+<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/cambiarPestanna.js"></script>
 
-/**
- * Copyright (c) 2019.
- * Universidad Politécnica del Estado de Morelos.
- * Maximiliano Carsi Castrejón.
- * Jorge Calderon Peralta.
- * Ingeniería en informática IIF – 10A.
- * Sistema de Información Sobre el Uso de Agua de Riego en la Agricultura Nacional.
- */
+<?php
 //Variables para depurar y ver los errores de ejecución dentro del servidor apache.
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once(__DIR__ . "/../../modelo/filtroacu.php");
 require_once(__DIR__ . "/../plantillas/header.php");
+require_once(__DIR__ . "/../../modelo/estado.php");
+/**
+ * Obtenemos los registros de los estados
+ */
+$registros = new Estado();
+$estados = $registros->getTodos();
 
 ?>
 <div class="container-fluid">
@@ -29,7 +29,7 @@ require_once(__DIR__ . "/../plantillas/header.php");
         </nav>
       </div>
       <div class="col-md">
-        <p class="bold">Mapas interactivos</p>
+        <p class="bold">Mapas interactivos (EN CONTRUCCIÓN)</p>
         <p class="font-weight-normal">Consulta los mapas interactivos de superficies agrícolas bajo riego, cultivos agrícolas por ciclo y volumen de riego, fuentes de abastecimiento, tipos de vegetación y condición de suelos. </p>
       </div>
       <!--Seccion del Filtro-->
@@ -37,11 +37,88 @@ require_once(__DIR__ . "/../plantillas/header.php");
         <div id="divFiltro">
         </div>
       </div>
-      
+
+     <script>
+     const nombre_mapas=["Aguascalientes","Baja California","Baja California Sur","Campeche","Coahuila","Colima","Chiapas","Chihuahua","Ciudad de M�xico","Durango","Guanajuato","Guerrero","Hidalgo","Jalisco","M�xico","Michoac�n de Ocampo","Morelos","Nayarit","Nuevo Le�nn","Oaxaca","Puebla","Quer�taro","Quintana Roo","San Luis Potos�","Sinaloa","Sonora","Tabasco","Tamaulipas","Tlaxcala","Veracruz","Yucat�n","Zacatecas"];
+     
+     function estadoChange(selected) {
+        if (selected.value!=null)
+        {
+            var indice=parseInt(selected.value)-1;	
+	    var nomArchivo="./mapas/"+nombre_mapas[indice];
+	    document.getElementById("mapa1").src=nomArchivo+".jpg";
+	    document.getElementById("mapa2").src=nomArchivo+"_2.jpg";
+	    document.getElementById("mapa3").src=nomArchivo+"_3.jpg";
+	    document.getElementById("mapa4").src=nomArchivo+"_4.jpg";
+	    document.getElementById("mapa5").src=nomArchivo+"_5.jpg";
+        }
+    }
+    </script>
+
+      <div class="col-md-4" id="divEstado" align="center">
+        <label>Estado:</label>
+        <select class="form-control" onchange="estadoChange(this)" id="Estados">
+        <?php
+	$primero=true;
+        foreach ($estados as $Estado) {
+            ?>
+	    <option value="<?php echo $Estado['id_estado']; echo($primero?'" selected':'"'); ?>><?php echo $Estado['nombre'] ?> </option>
+            <?php
+	    $primero=false;
+	    }
+        ?>
+        </select>
+	<p>
+    </div>
       <!--Resultado-->
       <div class="col-sm" id="pantalla">
-   
+      <!-- body onload="javascript:cambiarPestanna(pestanas,pestana1);" -->
+      <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <div class="cont" >
+        <!--
+            <div id="pestanas">
+                <ul id=lista>
+                    <li id="pestana1"><a href='javascript:cambiarPestanna(pestanas,pestana1);'>Superficies agrícolas bajo riego</a></li>
+                    <li id="pestana2"><a href='javascript:cambiarPestanna(pestanas,pestana2);'>Cultivos agrícolas</a></li>
+                    <li id="pestana3"><a href='javascript:cambiarPestanna(pestanas,pestana3);'>Fuentes de abastecimiento</a></li>
+                    <li id="pestana4"><a href='javascript:cambiarPestanna(pestanas,pestana4);'>Tipos de vegetación</a></li>
+                    <li id="pestana5"><a href='javascript:cambiarPestanna(pestanas,pestana5);'>Condición suelos</a></li>
+                </ul>
+            </div>
+            -->
+	    
+            <div id="contenidopestanas" align="center">
+                <div id="cpestana1">
+                  <img id="mapa1" src="./mapas/Aguascalientes.jpg" width="748" height="530"> <p>
+                </div>
+                <div id="cpestana2">
+                  <img id="mapa2" src="./mapas/Aguascalientes_2.jpg"  width="1169" height="827"> <p>
+                </div>
+                <div id="cpestana3">
+                  <img id="mapa3" src="./mapas/Aguascalientes_3.jpg"  width="1169" height="827"> <p>
+                </div>
+                <div id="cpestana4">
+                  <img id="mapa4" src="./mapas/Aguascalientes_4.jpg"  width="1169" height="827"> <p>
+                </div>
+                <div id="cpestana4">
+                  <img id="mapa5" src="./mapas/Aguascalientes_5.jpg"  width="1169" height="827"> <p>
+                </div>
+
+            </div>
+        </div>
+    <!--/body>
       </div>
+
+<script>
+
+// Create a new 'change' event
+var event = new Event('change');
+
+    // Dispatch it.
+    document.getElementById('Estados').dispatchEvent(event);
+
+    //cambiarPestanna(pestanas,pestana1);
+</script>
       <div class="col-sm" id="pantalla2">
         <hr>
         <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>

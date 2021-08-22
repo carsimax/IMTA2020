@@ -1,0 +1,265 @@
+/*
+ * Copyright (c) 2019.
+ * Universidad Politécnica del Estado de Morelos.
+ * Maximiliano Carsi Castrejón.
+ * Jorge Calderon Peralta.
+ * Ingeniería en informática IIF – 10A.
+ * Sistema de Información Sobre el Uso de Agua de Riego en la Agricultura Nacional.
+ */
+
+// Se aplica estilo a los selects
+setEstiloSelect('#Organismos', 'Organismos de Cuenca', 'Buscar Organismo');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
+setEstiloSelect('#Presas', 'Presas', 'Buscar Presa');
+
+async function Organismos() {
+    await limpiarOrganismos();
+    const query = await concatOrganismo();
+    if (query !== "") {
+        const cadena = "query=" + query + "&Accion=Estados";
+        var data = [];
+        $.ajax({
+            type: "POST",
+            url: "/aplicacion/controlador/mapa.php",
+            data: cadena,
+            success: function (resp) {
+                $.each(JSON.parse(resp), function (index, item) {
+                    data.push({
+                        name: item.estado,
+                        value: item.id_estado,
+                        checked: false,
+                    });
+                });
+                $("#Estados").multiselect("loadOptions", data);
+            },
+        });
+    }
+}
+
+function Estados() {
+    isFormCompleted('#Estados');
+}
+
+async function loadShape() {
+    await map.off();
+    await map.remove();
+    crearMapa();
+    alertaCargando("Por favor espere", "Cargando mapa geoespacial");
+    getOC_SIG(function () {
+        getEst_SIG(function () {
+            getPresa_SIG(function () {
+                var overlays = {
+                    "Organismos de Cuenca": GroupoOCSelect,
+                    "Estados": GroupoEstSelect,
+                    "Presas": GroupoPresaSelect,
+                }
+                var lc = L.control.layers(null, overlays);
+                lc.addTo(map);
+                Swal.close();
+            });
+        });
+    });
+}
+
+async function Consultar() {
+    alertaCargando("Por favor espere", "Realizando consulta");
+    deshabilitar();
+    var OC = "(";
+    var Est = "(";
+    await $("#Organismos option:selected")
+        .each(async function () {
+            OC += "id_organismo=" + $(this).val() + " or ";
+        })
+        .promise()
+        .always(async function () {
+            OC = OC.slice(0, -3);
+            OC += ")";
+        });
+
+    await $("#Estados option:selected")
+        .each(async function () {
+            Est += "id_estado=" + $(this).val() + " or ";
+        })
+        .promise()
+        .always(async function () {
+            Est = Est.slice(0, -3);
+            Est += ")";
+        });
+    if (OC !== "" && Est !== "") {
+        //Se obtiene la cita con la información de las presas
+        data = "Accion=getCitaConsulta&modulo_id=2";
+        citas = construirReferencias(data, false);
+        var query = "query=" + Est + "&Accion=Presas";
+        data = [];
+        $.ajax({
+            type: "POST",
+            url: "/aplicacion/controlador/mapa.php",
+            data: query,
+            success: async function (resp) {
+                $.each(JSON.parse(resp), function (index, item) {
+                    data.push([
+                        item.id_presa,
+                        item.nombre_oficial,
+                        item.corriente,
+                        numeral(Number.parseFloat(item.alt_cort)).format("0,0.00"),
+                        numeral(Number.parseFloat(item.cap_name)).format("0,0.00"),
+                        numeral(Number.parseFloat(item.cap_namo)).format("0,0.00"),
+                        item.estado,
+                        item.anio_term,
+                    ]);
+                });
+                table.destroy();
+                table = $("#tablaPresa").DataTable({
+                    data: data,
+                    columnDefs: [
+                        { className: 'dt-body-right', targets: [3, 4, 5, 7] },
+                        {
+                            targets: 0,
+                            data: null,
+                            defaultContent:
+                                '<button class="btn btn-gob text-ligth  btn-block"><i class="fas fa-water"></i></button>',
+                        },
+                    ],
+                    dom: "Bfrtip",
+                    columns: [
+                        {
+                            title: "Ver detalle",
+                        },
+                        {
+                            title: "Nombre Oficial",
+                        },
+                        {
+                            title: "Corriente",
+                        },
+                        {
+                            title: "Altura de la cortina (m)"
+                        },
+                        {
+                            title: "Capacidad al NAME (hm³)",
+                        },
+                        {
+                            title: "Capacidad al NAMO (hm³)",
+                        },
+                        {
+                            title: "Estado",
+                        },
+                        {
+                            title: "Año Termino",
+                        },
+                    ],
+                    buttons:botonPresa,
+                    language: {
+                        url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+                    }
+                });
+                //Verifica si el mapa es prioridad
+                var x = $('#Prioridad').prop('checked');
+                if (x == false) {
+                    if (!map.hasLayer(OCSelect)) {
+                        //Recargamos el mapa
+                        var callBack = async function () {
+                            document.getElementById("map").style.display = "block";
+                            setTimeout(function () {
+                                map.invalidateSize();
+                            }, 100);
+                        };
+                        map.whenReady(callBack);
+                        await loadShape();
+                    }
+                }
+            },
+        }).always(async function () {
+            habilitar();
+            await Swal.close();
+        });
+    } else {
+        habilitar();
+        await $("#pantalla").hide();
+        await $("#pantalla2").hide();
+        await $("#divPrioridad").hide();
+        $("#botonMapa").hide();
+        await Swal.close();
+    }
+    await Historial();
+}
+
+async function Historial() {
+    //Guardamos en es historial
+    cadena = "Modulo=Presas" + "&Accion=Historial";
+    $.ajax({
+        type: "POST",
+        url: "/aplicacion/controlador/mapa.php",
+        data: cadena,
+        //Si el controlador devuelve una respuesta
+        success: function (resp) {
+            return true;
+        },
+    });
+}
+
+/**
+ * Funcion que limpia la capa de organimos asi como de las capas que dependen directamente de ellas
+ */
+async function limpiarOrganismos() {
+    $("#Estados").multiselect("reset");
+    await limpiarEstados();
+}
+
+/**
+ * Funcion para limpiar la capa de estados
+ */
+async function limpiarEstados() {
+    map.off();
+    map.remove();
+    crearMapa();
+    table.clear().draw();
+    tableV.clear().draw();
+    $("#pantalla").hide();
+    $("#botonMapa").hide();
+    $("#pantalla2").hide();
+    $("#divPrioridad").hide();
+}
+
+
+async function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function deshabilitar() {
+    $("#consultar").prop("disabled", true);
+    $("#pantalla").hide();
+    $("#pantalla2").hide();
+    $("#divPrioridad").hide();
+    $("#botonMapa").hide();
+}
+
+function habilitar() {
+    $("#consultar").prop("disabled", false);
+    $("#pantalla").show();
+    $("#pantalla2").show();
+    $("#divPrioridad").show();
+    $("#botonMapa").show();
+}
+
+/**
+ * Funcion que concatena la cadena de los acuiferos seleccionadoss
+ * @returns {Promise<string>}
+ */
+async function concatOrganismo() {
+    var query = "";
+    $("#Organismos option:selected").each(function () {
+        query += "organismo_id=" + $(this).val() + " or ";
+    });
+    query = query.slice(0, -3);
+    return query;
+}
+
+
+async function concatEstado() {
+    var query = "";
+    $("#Estados option:selected").each(function () {
+        query += "edo_id=" + $(this).val() + " or ";
+    });
+    query = query.slice(0, -3);
+    return query;
+}
