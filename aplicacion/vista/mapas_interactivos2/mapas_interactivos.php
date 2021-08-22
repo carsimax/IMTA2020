@@ -28,12 +28,24 @@ $Estados = $registros->getTodos();
 
     .mapa__banner {
       height: 100%;
-      width: 300px;
+      width: 350px;
     }
 
     .mapa__interactivo {
       width: 100%;
       height: 100%;
+    }
+
+    @media (max-width: 375px) {
+      .mapa__interactivo__container {
+        flex-direction: column-reverse;
+        height: auto;
+        overflow: auto;
+      }
+
+      .mapa__interactivo {
+        height: 500px;
+      }
     }
   </style>
   <div class="row">
@@ -98,10 +110,9 @@ $Estados = $registros->getTodos();
               <h3>Superficie Agrícola de Riego</h3>
             </div>
             <div class="mapa__interactivo__container">
-              <img src="./Data_Estados/1/Mapa1/banner.jpg" class="mapa__banner">
+              <div id="banner1"></div>
               <div id="mapa1" class="mapa__interactivo"></div>
             </div>
-
           </div>
           <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
             <br>
@@ -109,7 +120,7 @@ $Estados = $registros->getTodos();
               <h3>Principales Cultivos Agrícolas y Volumen de Riego</h3>
             </div>
             <div class="mapa__interactivo__container">
-              <img src="./Data_Estados/1/Mapa2/banner.jpg" class="mapa__banner">
+              <div id="banner2"></div>
               <div id="mapa2" class="mapa__interactivo"></div>
             </div>
           </div>
@@ -119,7 +130,7 @@ $Estados = $registros->getTodos();
               <h3>Fuentes de Abastecimiento de Agua de Riego</h3>
             </div>
             <div class="mapa__interactivo__container">
-              <img src="./Data_Estados/1/Mapa3/banner.jpg" class="mapa__banner">
+              <div id="banner3"></div>
               <div id="mapa3" class="mapa__interactivo"></div>
             </div>
           </div>
@@ -129,7 +140,7 @@ $Estados = $registros->getTodos();
               <h3>Tipos de Vegetación</h3>
             </div>
             <div class="mapa__interactivo__container">
-              <img src="./Data_Estados/1/Mapa4/banner.jpg" class="mapa__banner">
+              <div id="banner4"></div>
               <div id="mapa4" class="mapa__interactivo"></div>
             </div>
           </div>
@@ -139,7 +150,7 @@ $Estados = $registros->getTodos();
               <h3>Condición de los Suelos</h3>
             </div>
             <div class="mapa__interactivo__container">
-              <img src="./Data_Estados/1/Mapa5/banner.jpg" class="mapa__banner">
+              <div id="banner5"></div>
               <div id="mapa5" class="mapa__interactivo"></div>
             </div>
           </div>
