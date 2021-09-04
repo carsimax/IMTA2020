@@ -79,16 +79,16 @@ $Estados = $registros->getTodos();
             <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Superficie Agrícola de Riego</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Principales Cultivos Agrícolas y Volumen de Riego</a>
+            <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false" onclick="Mapa2()">Principales Cultivos Agrícolas y Volumen de Riego</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">Fuentes de Abastecimiento de Agua de Riego</a>
+            <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false" onclick="Mapa3()">Fuentes de Abastecimiento de Agua de Riego</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">Tipos de Vegetación</a>
+            <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false" onclick="Mapa4()">Tipos de Vegetación</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="tab5-tab" data-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="false">Condición de los Suelos</a>
+            <a class="nav-link" id="tab5-tab" data-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="false" onclick="Mapa5()">Condición de los Suelos</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -98,7 +98,7 @@ $Estados = $registros->getTodos();
               <h3>Superficie Agrícola de Riego</h3>
             </div>
             <div class="mapa__interactivo__container">
-              <img src="./Data_Estados/1/Mapa1/banner.jpg" class="mapa__banner">
+              <div id="img1"></div>
               <div id="mapa1" class="mapa__interactivo"></div>
             </div>
 
@@ -109,7 +109,7 @@ $Estados = $registros->getTodos();
               <h3>Principales Cultivos Agrícolas y Volumen de Riego</h3>
             </div>
             <div class="mapa__interactivo__container">
-              <img src="./Data_Estados/1/Mapa2/banner.jpg" class="mapa__banner">
+              <div id="img2"></div>
               <div id="mapa2" class="mapa__interactivo"></div>
             </div>
           </div>
@@ -119,7 +119,7 @@ $Estados = $registros->getTodos();
               <h3>Fuentes de Abastecimiento de Agua de Riego</h3>
             </div>
             <div class="mapa__interactivo__container">
-              <img src="./Data_Estados/1/Mapa3/banner.jpg" class="mapa__banner">
+              <div id="img3"></div>
               <div id="mapa3" class="mapa__interactivo"></div>
             </div>
           </div>
@@ -129,7 +129,7 @@ $Estados = $registros->getTodos();
               <h3>Tipos de Vegetación</h3>
             </div>
             <div class="mapa__interactivo__container">
-              <img src="./Data_Estados/1/Mapa4/banner.jpg" class="mapa__banner">
+              <div id="img4"></div>
               <div id="mapa4" class="mapa__interactivo"></div>
             </div>
           </div>
@@ -139,7 +139,7 @@ $Estados = $registros->getTodos();
               <h3>Condición de los Suelos</h3>
             </div>
             <div class="mapa__interactivo__container">
-              <img src="./Data_Estados/1/Mapa5/banner.jpg" class="mapa__banner">
+              <div id="img5"></div>
               <div id="mapa5" class="mapa__interactivo"></div>
             </div>
           </div>
