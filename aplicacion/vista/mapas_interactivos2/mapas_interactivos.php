@@ -20,7 +20,7 @@ $Estados = $registros->getTodos();
 <div class="container-fluid">
   <style>
     .mapa__interactivo__container {
-      height: 750px;
+      height: 672px;
       overflow: hidden;
       width: 100%;
       display: flex;
@@ -28,7 +28,9 @@ $Estados = $registros->getTodos();
 
     .mapa__banner {
       height: 100%;
-      width: 300px;
+      width: 220px;
+      background: green;
+      object-fit: cover;
     }
 
     .mapa__interactivo {
