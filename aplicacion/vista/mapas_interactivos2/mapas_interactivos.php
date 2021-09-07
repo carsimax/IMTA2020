@@ -29,13 +29,24 @@ $Estados = $registros->getTodos();
     .mapa__banner {
       height: 100%;
       width: 220px;
-      background: green;
-      object-fit: cover;
+      object-fit: fill;
     }
 
     .mapa__interactivo {
       width: 100%;
       height: 100%;
+    }
+
+    @media (max-width: 375px) {
+      .mapa__interactivo__container {
+        flex-direction: column-reverse;
+        height: auto;
+        overflow: auto;
+      }
+
+      .mapa__interactivo {
+        height: 500px;
+      }
     }
   </style>
   <div class="row">

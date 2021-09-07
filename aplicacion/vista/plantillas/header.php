@@ -28,11 +28,9 @@ if (!isset($_SESSION)) {
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
     <!--Toggles-->
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
-        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
     <!--Botones DataTables-->
@@ -90,7 +88,7 @@ if (!isset($_SESSION)) {
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 
     <script>
-        $(window).on("change", function () {
+        $(window).on("change", function() {
             $.fn.dataTable.tables({
                 visible: true,
                 api: true
@@ -98,7 +96,7 @@ if (!isset($_SESSION)) {
             //console.log("Acomodado");
         });
 
-        $(window).on("resize", function () {
+        $(window).on("resize", function() {
             $.fn.dataTable.tables({
                 visible: true,
                 api: true
@@ -107,7 +105,7 @@ if (!isset($_SESSION)) {
         });
 
         /*Scroll to top when arrow up clicked BEGIN*/
-        $(window).scroll(function () {
+        $(window).scroll(function() {
             var height = $(window).scrollTop();
             if (height > 100) {
                 $('#back2Top').fadeIn();
@@ -115,8 +113,8 @@ if (!isset($_SESSION)) {
                 $('#back2Top').fadeOut();
             }
         });
-        $(document).ready(function () {
-            $("#back2Top").click(function (event) {
+        $(document).ready(function() {
+            $("#back2Top").click(function(event) {
                 event.preventDefault();
                 $("html, body").animate({
                     scrollTop: 0
@@ -129,8 +127,8 @@ if (!isset($_SESSION)) {
     </script>
     <style type="text/css" media="screen">
         iframe {
-            width: 1641px;
-            height: 600px;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -140,31 +138,30 @@ if (!isset($_SESSION)) {
     <input hidden="hidden" name="sesionStatus" id="sesionStatus" value="<?php echo $_SESSION['loggedin'] ?>">
     <nav class="navbar navbar-expand-lg navbar-dark bg-gob sticky-top">
         <a class="navbar-brand" href="#"><a class="navbar-brand" href="/"><i class="fas fa-home"></i> Inicio</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <?php
                 if (isset($_SESSION['loggedin'])) {
                 ?>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="navbar-brand" href="/">
-                            <!--<i class="fas fa-home"></i>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="navbar-brand" href="/">
+                                <!--<i class="fas fa-home"></i>
                                 Plataforma Web Informativa Sobre Usos de Agua en la Agricultura Nacional-->
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/aplicacion/vista/perfil/perfil.php">
-                            <?php echo $_SESSION['Nombre'] ?>
-                            <?php echo $_SESSION['A_Paterno'] ?>
-                            <?php echo $_SESSION['A_Materno'] ?>
-                        </a>
-                    </li>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/aplicacion/vista/perfil/perfil.php">
+                                <?php echo $_SESSION['Nombre'] ?>
+                                <?php echo $_SESSION['A_Paterno'] ?>
+                                <?php echo $_SESSION['A_Materno'] ?>
+                            </a>
+                        </li>
 
-                    <li class="nav-item dropdown">
-                        <?php
+                        <li class="nav-item dropdown">
+                            <?php
                             switch ($_SESSION['Rol_ID']) {
                                 case '1':
                                     require_once 'sudo.php';
@@ -174,81 +171,71 @@ if (!isset($_SESSION)) {
                                     break;
                             }
                             ?>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Consulta
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Pozos</a>
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/agricola/agricola.php">Estadística
-                                Agrícola</a>
-                            <a class="dropdown-item-gob"
-                                href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad
-                                del agua superficial</a>
-                            <a class="dropdown-item-gob"
-                                href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones
-                                Climatológicas</a>
-                            <a class="dropdown-item-gob"
-                                href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones
-                                Hidrométricas</a>
-                            <a class="dropdown-item-gob"
-                                href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de
-                                Marginación</a>
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario
-                                de Obras de los Distritos de Riego</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href='/aplicacion/vista/acercade.php'>Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="logout" href="#" onclick="logout();">Cerrar Sesión</a>
-                    </li>
-                </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Consulta
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Pozos</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/agricola/agricola.php">Estadística
+                                    Agrícola</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad
+                                    del agua superficial</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones
+                                    Climatológicas</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones
+                                    Hidrométricas</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de
+                                    Marginación</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario
+                                    de Obras de los Distritos de Riego</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/aplicacion/vista/acercade.php'>Acerca de</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="logout" href="#" onclick="logout();">Cerrar Sesión</a>
+                        </li>
+                    </ul>
                 <?php } else { ?>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Consulta
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Pozos</a>
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/agricola/agricola.php">Estadística
-                                Agrícola</a>
-                            <a class="dropdown-item-gob"
-                                href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad
-                                del agua superficial</a>
-                            <a class="dropdown-item-gob"
-                                href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones
-                                Climatológicas</a>
-                            <a class="dropdown-item-gob"
-                                href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones
-                                Hidrométricas</a>
-                            <a class="dropdown-item-gob"
-                                href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de
-                                Marginación</a>
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario
-                                de Obras de los Distritos de Riego</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href='/aplicacion/vista/acercade.php'>Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#LoginModal" class="trigger-btn" data-toggle="modal">Iniciar
-                            Sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#RegistroModal" class="trigger-btn" data-toggle="modal">Regístrate</a>
-                    </li>
-                </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Consulta
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Pozos</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/agricola/agricola.php">Estadística
+                                    Agrícola</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad
+                                    del agua superficial</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones
+                                    Climatológicas</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones
+                                    Hidrométricas</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de
+                                    Marginación</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario
+                                    de Obras de los Distritos de Riego</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/aplicacion/vista/acercade.php'>Acerca de</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#LoginModal" class="trigger-btn" data-toggle="modal">Iniciar
+                                Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#RegistroModal" class="trigger-btn" data-toggle="modal">Regístrate</a>
+                        </li>
+                    </ul>
                 <?php } ?>
             </div>
     </nav>
