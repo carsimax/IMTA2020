@@ -29,7 +29,6 @@ $Estados = $registros->getTodos();
     .mapa__banner {
       height: 100%;
       width: 220px;
-      object-fit: fill;
     }
 
     .mapa__interactivo {
@@ -46,6 +45,11 @@ $Estados = $registros->getTodos();
 
       .mapa__interactivo {
         height: 500px;
+      }
+
+      .mapa__banner {
+        width: 100%;
+        object-fit: cover;
       }
     }
   </style>
@@ -114,7 +118,7 @@ $Estados = $registros->getTodos();
               <div id="img1"></div>
               <div id="mapa1" class="mapa__interactivo"></div>
             </div>
-
+            <div class='d-flex flex-row-reverse mt-2' id='download_mapa_1'></div>
           </div>
           <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
             <br>
@@ -125,6 +129,7 @@ $Estados = $registros->getTodos();
               <div id="img2"></div>
               <div id="mapa2" class="mapa__interactivo"></div>
             </div>
+            <div class='d-flex flex-row-reverse mt-2' id='download_mapa_2'></div>
           </div>
           <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
             <br>
@@ -135,6 +140,7 @@ $Estados = $registros->getTodos();
               <div id="img3"></div>
               <div id="mapa3" class="mapa__interactivo"></div>
             </div>
+            <div class='d-flex flex-row-reverse mt-2' id='download_mapa_3'></div>
           </div>
           <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
             <br>
@@ -145,6 +151,7 @@ $Estados = $registros->getTodos();
               <div id="img4"></div>
               <div id="mapa4" class="mapa__interactivo"></div>
             </div>
+            <div class='d-flex flex-row-reverse mt-2' id='download_mapa_4'></div>
           </div>
           <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
             <br>
@@ -155,6 +162,7 @@ $Estados = $registros->getTodos();
               <div id="img5"></div>
               <div id="mapa5" class="mapa__interactivo"></div>
             </div>
+            <div class='d-flex flex-row-reverse mt-2' id='download_mapa_5'></div>
           </div>
         </div>
       </div>

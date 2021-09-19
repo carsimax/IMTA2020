@@ -32,13 +32,13 @@ $filtros = $registros->getPozos();
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Consulta de Información</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Pozos</li>
+                        <li class="breadcrumb-item active" aria-current="page">Títulos de concesión</li>
                     </ol>
                 </nav>
             </div>
             <div class="col-md">
-                <p class="bold">Pozos</p>
-                <p class="font-weight-normal">Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+                <p class="bold">Títulos de concesión</p>
+                <p class="font-weight-normal">Consulta los Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
                 <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <b>Nota*</b> <span class="font-weight-light">En algunos casos la consulta puede tardar en función del número de concesiones seleccionadas.</span>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

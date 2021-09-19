@@ -179,7 +179,7 @@ if (!isset($_SESSION)) {
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Pozos</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/agricola/agricola.php">Estadística
                                     Agrícola</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad

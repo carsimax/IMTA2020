@@ -139,6 +139,7 @@ function getOC_SIG(callback) {
          * Una vez construido el JSON se manda este al MAPA de Leaflet
          */
         OCSelect = L.geoJson(OCSHP, {
+
             /**
              * Se establece el estilo de la capa
              */
@@ -365,6 +366,10 @@ function getEst_SIG(callback) {
             });
         },
     }).always(function () {
+        // console.log(EstadosSHP)
+        // alert(JSON.stringify(EstadosSHP));
+        // alert('111111111111111111');
+
         EstSelect = L.geoJson(EstadosSHP, {
             style: colorEstado,
             onEachFeature: function popUp(f, l) {

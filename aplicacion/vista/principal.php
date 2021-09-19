@@ -58,11 +58,11 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 my-3">
                         <div class="card h-100">
                             <div class="card-header py-3">
-                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/pozo/pozos.php">Pozos</a></h5>
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a></h5>
                             </div>
                             <a href="/aplicacion/vista/pozo/pozos.php"><img class="img-fluid" src="/imagenes/pozo.png" alt="Títulos de conseción" title="Pozos"></a>
                             <div class="card-body text-justify d-flex justify-content-between flex-column">
-                                <p class="font-weight-normal">Consulta los diferentes tipos de Pozos por medio de Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+                                <p class="font-weight-normal">Consulta los Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
                                 <a href="/aplicacion/vista/pozo/pozos.php" class="btn btn-block btn-primary">Consultar</a>
                             </div>
                         </div>
@@ -151,7 +151,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">Consulta en mapas interactivos</a></h5>
                             </div>
                             <div class="img-container">
-                                <a href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">
+                                <a href="/aplicacion/vista/mapas_interactivos2/mapas_interactivos.php">
                                     <img class="img-fluid" src="/imagenes/mapa_interactivo.png" alt="Consulta en mapas interactivos" title="Consulta en mapas interactivos">
                                 </a>
                             </div>
