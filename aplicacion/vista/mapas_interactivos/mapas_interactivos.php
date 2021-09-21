@@ -1,23 +1,58 @@
-<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/cambiarPestanna.js"></script>
-
 <?php
+
+/**
+ * Copyright (c) 2019.
+ * Universidad Politécnica del Estado de Morelos.
+ * Maximiliano Carsi Castrejón.
+ * Jorge Calderon Peralta.
+ * Ingeniería en informática IIF – 10A.
+ * Sistema de Información Sobre el Uso de Agua de Riego en la Agricultura Nacional.
+ */
 //Variables para depurar y ver los errores de ejecución dentro del servidor apache.
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
 require_once(__DIR__ . "/../plantillas/header.php");
 require_once(__DIR__ . "/../../modelo/estado.php");
-/**
- * Obtenemos los registros de los estados
- */
 $registros = new Estado();
-$estados = $registros->getTodos();
-
+$Estados = $registros->getTodos();
 ?>
 <div class="container-fluid">
+  <style>
+    .mapa__interactivo__container {
+      height: 672px;
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+    }
+
+    .mapa__banner {
+      height: 100%;
+      width: 220px;
+    }
+
+    .mapa__interactivo {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 375px) {
+      .mapa__interactivo__container {
+        flex-direction: column-reverse;
+        height: auto;
+        overflow: auto;
+      }
+
+      .mapa__interactivo {
+        height: 500px;
+      }
+
+      .mapa__banner {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  </style>
   <div class="row">
     <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-md-4">
       <!--Encabezado-->
@@ -29,132 +64,120 @@ $estados = $registros->getTodos();
         </nav>
       </div>
       <div class="col-md">
-        <p class="bold">Mapas interactivos (EN CONTRUCCIÓN)</p>
-        <p class="font-weight-normal">Consulta los mapas interactivos de superficies agrícolas bajo riego, cultivos agrícolas por ciclo y volumen de riego, fuentes de abastecimiento, tipos de vegetación y condición de suelos. </p>
+        <p class="bold">Mapas interactivos</p>
+        <p class="font-weight-normal">Consulta los mapas interactivos de superficies agrícolas bajo riego, cultivos
+          agrícolas por ciclo y volumen de riego, fuentes de abastecimiento, tipos de vegetación y condición de suelos.
+        </p>
       </div>
       <!--Seccion del Filtro-->
       <div class="col-sm" id="SeccionFiltro">
         <div id="divFiltro">
+          <div class="row">
+            <div class="col-sm">
+              <label>Estados:</label>
+              <select class="form-control green" onchange="CambiarMapa()" id="Estado">
+                <?php
+                foreach ($Estados as $Estado) {
+                ?>
+                  <option value="<?php echo $Estado['id_estado'] ?>">
+                    <?php echo $Estado['nombre'] ?>
+                  </option>
+                <?php } ?>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
-
-     <script>
-     const nombre_mapas=["Aguascalientes","Baja California","Baja California Sur","Campeche","Coahuila","Colima","Chiapas","Chihuahua","Ciudad de M�xico","Durango","Guanajuato","Guerrero","Hidalgo","Jalisco","M�xico","Michoac�n de Ocampo","Morelos","Nayarit","Nuevo Le�nn","Oaxaca","Puebla","Quer�taro","Quintana Roo","San Luis Potos�","Sinaloa","Sonora","Tabasco","Tamaulipas","Tlaxcala","Veracruz","Yucat�n","Zacatecas"];
-     
-     function estadoChange(selected) {
-        if (selected.value!=null)
-        {
-            var indice=parseInt(selected.value)-1;	
-	    var nomArchivo="./mapas/"+nombre_mapas[indice];
-	    document.getElementById("mapa1").src=nomArchivo+".jpg";
-	    document.getElementById("mapa2").src=nomArchivo+"_2.jpg";
-	    document.getElementById("mapa3").src=nomArchivo+"_3.jpg";
-	    document.getElementById("mapa4").src=nomArchivo+"_4.jpg";
-	    document.getElementById("mapa5").src=nomArchivo+"_5.jpg";
-        }
-    }
-    </script>
-
-      <div class="col-md-4" id="divEstado" align="center">
-        <label>Estado:</label>
-        <select class="form-control" onchange="estadoChange(this)" id="Estados">
-        <?php
-	$primero=true;
-        foreach ($estados as $Estado) {
-            ?>
-	    <option value="<?php echo $Estado['id_estado']; echo($primero?'" selected':'"'); ?>><?php echo $Estado['nombre'] ?> </option>
-            <?php
-	    $primero=false;
-	    }
-        ?>
-        </select>
-	<p>
-    </div>
       <!--Resultado-->
+      <br>
       <div class="col-sm" id="pantalla">
-      <!-- body onload="javascript:cambiarPestanna(pestanas,pestana1);" -->
-      <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-        <div class="cont" >
-        <!--
-            <div id="pestanas">
-                <ul id=lista>
-                    <li id="pestana1"><a href='javascript:cambiarPestanna(pestanas,pestana1);'>Superficies agrícolas bajo riego</a></li>
-                    <li id="pestana2"><a href='javascript:cambiarPestanna(pestanas,pestana2);'>Cultivos agrícolas</a></li>
-                    <li id="pestana3"><a href='javascript:cambiarPestanna(pestanas,pestana3);'>Fuentes de abastecimiento</a></li>
-                    <li id="pestana4"><a href='javascript:cambiarPestanna(pestanas,pestana4);'>Tipos de vegetación</a></li>
-                    <li id="pestana5"><a href='javascript:cambiarPestanna(pestanas,pestana5);'>Condición suelos</a></li>
-                </ul>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Superficie Agrícola de Riego</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false" onclick="Mapa2()">Principales Cultivos Agrícolas y Volumen de Riego</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false" onclick="Mapa3()">Fuentes de Abastecimiento de Agua de Riego</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false" onclick="Mapa4()">Tipos de Vegetación</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab5-tab" data-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="false" onclick="Mapa5()">Condición de los Suelos</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+            <br>
+            <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+              <h3>Superficie Agrícola de Riego</h3>
             </div>
-            -->
-	    
-            <div id="contenidopestanas" align="center">
-                <div id="cpestana1">
-                  <img id="mapa1" src="./mapas/Aguascalientes.jpg" width="748" height="530"> <p>
-                </div>
-                <div id="cpestana2">
-                  <img id="mapa2" src="./mapas/Aguascalientes_2.jpg"  width="1169" height="827"> <p>
-                </div>
-                <div id="cpestana3">
-                  <img id="mapa3" src="./mapas/Aguascalientes_3.jpg"  width="1169" height="827"> <p>
-                </div>
-                <div id="cpestana4">
-                  <img id="mapa4" src="./mapas/Aguascalientes_4.jpg"  width="1169" height="827"> <p>
-                </div>
-                <div id="cpestana4">
-                  <img id="mapa5" src="./mapas/Aguascalientes_5.jpg"  width="1169" height="827"> <p>
-                </div>
-
+            <div class="mapa__interactivo__container">
+              <div id="img1"></div>
+              <div id="mapa1" class="mapa__interactivo"></div>
             </div>
+            <div class='d-flex flex-row-reverse mt-2' id='download_mapa_1'></div>
+          </div>
+          <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+            <br>
+            <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+              <h3>Principales Cultivos Agrícolas y Volumen de Riego</h3>
+            </div>
+            <div class="mapa__interactivo__container">
+              <div id="img2"></div>
+              <div id="mapa2" class="mapa__interactivo"></div>
+            </div>
+            <div class='d-flex flex-row-reverse mt-2' id='download_mapa_2'></div>
+          </div>
+          <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+            <br>
+            <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+              <h3>Fuentes de Abastecimiento de Agua de Riego</h3>
+            </div>
+            <div class="mapa__interactivo__container">
+              <div id="img3"></div>
+              <div id="mapa3" class="mapa__interactivo"></div>
+            </div>
+            <div class='d-flex flex-row-reverse mt-2' id='download_mapa_3'></div>
+          </div>
+          <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+            <br>
+            <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+              <h3>Tipos de Vegetación</h3>
+            </div>
+            <div class="mapa__interactivo__container">
+              <div id="img4"></div>
+              <div id="mapa4" class="mapa__interactivo"></div>
+            </div>
+            <div class='d-flex flex-row-reverse mt-2' id='download_mapa_4'></div>
+          </div>
+          <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
+            <br>
+            <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
+              <h3>Condición de los Suelos</h3>
+            </div>
+            <div class="mapa__interactivo__container">
+              <div id="img5"></div>
+              <div id="mapa5" class="mapa__interactivo"></div>
+            </div>
+            <div class='d-flex flex-row-reverse mt-2' id='download_mapa_5'></div>
+          </div>
         </div>
-    <!--/body>
-      </div>
-
-<script>
-
-// Create a new 'change' event
-var event = new Event('change');
-
-    // Dispatch it.
-    document.getElementById('Estados').dispatchEvent(event);
-
-    //cambiarPestanna(pestanas,pestana1);
-</script>
-      <div class="col-sm" id="pantalla2">
-        <hr>
-        <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
-
       </div>
     </main>
   </div>
 </div>
 <br>
-<!-- Modal -->
-<a hidden href="#" id="botonMapa" onclick="cargarMapa();" data-toggle="modal" data-target="#exampleModal" class="float"><i class="fa fa-map my-float"></i><b> Ver Mapa</b></a>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Mapa Geoespacial</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="SeccionModal">
-        <div id="map"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-gob" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <?php require_once(__DIR__ . "/../plantillas/footer.php"); ?>
 <!--Script de chartJS-->
-<script src="gpresa.js"></script>
-<script src="presa.js"></script>
-<script src="/sig/capas.js"></script>
+<script src="mapa.js"></script>
 <script>
   $('#referencias').hide();
+
+  function ready() {
+    CambiarMapa();
+  }
+  document.addEventListener("DOMContentLoaded", ready);
 </script>

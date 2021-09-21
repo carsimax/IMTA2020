@@ -60,9 +60,7 @@ $filtros = $registros->getPozos();
             <hr>
             <!--Seccion del Filtro-->
             <div class="col-sm" id="SeccionFiltro">
-                <div id="divFiltro">
-
-                </div>
+                <div id="divFiltro"></div>
             </div>
             <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
             <div class="col-sm" id="pantalla">

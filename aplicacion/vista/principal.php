@@ -151,7 +151,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                                 <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">Consulta en mapas interactivos</a></h5>
                             </div>
                             <div class="img-container">
-                                <a href="/aplicacion/vista/mapas_interactivos2/mapas_interactivos.php">
+                                <a href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">
                                     <img class="img-fluid" src="/imagenes/mapa_interactivo.png" alt="Consulta en mapas interactivos" title="Consulta en mapas interactivos">
                                 </a>
                             </div>
