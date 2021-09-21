@@ -1,4 +1,5 @@
 <div class="col-sm" id="tabla">
+    
     <div class="col-sm-12 pt-3 pb-2 mb-3 border-bottom">
         <h3>Índice</h3>
     </div>
