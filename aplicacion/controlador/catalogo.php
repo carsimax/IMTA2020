@@ -189,9 +189,6 @@ function Actualizar()
     $Catalogo->setCita(filter_input(INPUT_GET, "cita"));
     $Catalogo->setModulo_id(filter_input(INPUT_GET, "modulo_id"));
     $Catalogo->setAnio_id(filter_input(INPUT_GET, "anio_id"));
-    /**
-     * Si se actualizó correctamente
-     */
     if ($Catalogo->Update() != null) {
         echo 'OK';
     } else {
