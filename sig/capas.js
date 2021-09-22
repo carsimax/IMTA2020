@@ -541,10 +541,10 @@ function getAcu_SIG(callback) {
                         data: data_oc,
                         success: function (acuifero) {
                             $.each(JSON.parse(acuifero), function (index, item) {
-                                if (item.dma>=0) {
-                                    dispo='Con disponibilidad'
-                                }else{
+                                if (item.dma<0) {
                                     dispo='Sin disponibilidad'
+                                }else{
+                                    dispo='Con disponibilidad'
                                 }
                                 contenido =
                                     '<table class="table table-bordered"><thead><tr><th scope="col">Campo</th><th scope="col">Valor</th></tr></thead>' +
