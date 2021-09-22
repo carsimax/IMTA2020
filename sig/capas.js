@@ -531,6 +531,7 @@ function getAcu_SIG(callback) {
     }).always(function () {
         AcuSelect = L.geoJson(AcuiferoSHP, {
             onEachFeature: function popUp(f, l) {
+                var dispo='';
                 if (f.properties) {
                     var out = [];
                     var data_oc = "query=" + f.properties.id_acuif + "&Accion=Acuifero";
@@ -540,6 +541,11 @@ function getAcu_SIG(callback) {
                         data: data_oc,
                         success: function (acuifero) {
                             $.each(JSON.parse(acuifero), function (index, item) {
+                                if (item.dma>=0) {
+                                    dispo='Con disponibilidad'
+                                }else{
+                                    dispo='Sin disponibilidad'
+                                }
                                 contenido =
                                     '<table class="table table-bordered"><thead><tr><th scope="col">Campo</th><th scope="col">Valor</th></tr></thead>' +
                                     '<tbody>' +
@@ -570,14 +576,14 @@ function getAcu_SIG(callback) {
                                     //dma
                                     '<tr><th scope="row">DMA (hm³)</th><td>' + Number.parseFloat(item.dma).toFixed(2) + '</td></tr>' +
                                     //dma
-                                    '<tr><th scope="row">Disponibilidad</th><td>' + f.properties.dispon + '</td></tr>' +
+                                    '<tr><th scope="row">Disponibilidad</th><td>' + dispo + '</td></tr>' +
                                     '</tbody></table>';
 
                             });
                         }
                     }).always(function () {
                         l.bindPopup(contenido);
-                        if (f.properties.dispon === "Con disponibilidad") {
+                        if (dispo === "Con disponibilidad") {
                             l.setStyle({
                                 weight: 1,
                                 color: "#000",
