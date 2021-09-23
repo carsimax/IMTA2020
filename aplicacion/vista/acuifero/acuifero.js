@@ -866,7 +866,7 @@ async function mostrarDAcuifero() {
                 className: estiloboton,
                 text: "Exportar Excel",
                 exportOptions: {
-                  columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                  columns: [1, 2, 3, 4, 5, 6, 7, 8,9],
                 },
               },
               {
@@ -878,7 +878,7 @@ async function mostrarDAcuifero() {
                 orientation: "portrait",
                 pageSize: "A4",
                 exportOptions: {
-                  columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                  columns: [1, 2, 3, 4, 5, 6, 7, 8,9],
                 },
                 customize: function (doc) {
                   //Remove the title created by datatTables
