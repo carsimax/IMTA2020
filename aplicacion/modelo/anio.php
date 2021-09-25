@@ -94,7 +94,7 @@ class Anio {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT * FROM anio where anio NOT IN("2019") AND anio NOT IN("2018") order by anio desc;');
+            $select = $db->prepare('SELECT * FROM anio where anio NOT IN("2019") order by anio desc;');
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;
@@ -135,7 +135,7 @@ class Anio {
             anio.anio_agricola
             FROM siembra_distrito
             INNER JOIN anio on anio.id_anio=siembra_distrito.anio_id
-            where anio NOT IN("2019") AND anio NOT IN("2018")
+            where anio NOT IN("2019")
             GROUP BY anio ORDER BY anio DESC');
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -159,7 +159,7 @@ class Anio {
             anio.anio_agricola
             FROM volumen_distrito
             INNER JOIN anio on anio.id_anio=volumen_distrito.anio_id
-            where anio NOT IN("2019") AND anio NOT IN("2018")
+            where anio NOT IN("2019")
             GROUP BY anio ORDER BY anio DESC');
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -208,7 +208,7 @@ class Anio {
             anio.anio_agricola
             FROM produccion_dtt
             INNER JOIN anio on anio.id_anio=produccion_dtt.anioagricola_id
-            where anio NOT IN("2019") AND anio NOT IN("2018")
+            where anio NOT IN("2019")
             GROUP BY anio order by anio desc;');
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
