@@ -1723,13 +1723,14 @@ async function habilitar() {
     $("#divPrioridad").show();
 }
 
-function CambioTipo() {
+function municipios() {
     $val = $("#Tipos").val();
     if ($val == 1) {
         $("#divAcuifero").show();
     } else {
         $("#divAcuifero").hide();
     }
+    $("#Organismos").multiselect("reset2");
     limpiarOrganismos();
 }
 
@@ -1824,6 +1825,82 @@ async function getTitulo() {
 
 }
 
+async function getUsos() {
+    var S_acuifero = $("#Acuiferos option:selected").val();
+    $val = $("#Tipos").val();
+    if ($val == 1 && S_acuifero == 0) {
+    } else {
+        alertaCargando("Por favor espere", "Cargando datos");
+        var query = "(";
+        //Estados
+        if ($("#Estados option:selected").val() != null) {
+            //Se recorre el select de tipos.
+            $("#Estados option:selected").each(function () {
+                query += "estado_id=" + $(this).val() + " or ";
+            });
+        }
+        if ($("#Municipios option:selected").val() != null) {
+            query = query.slice(0, -4);
+            query += ") AND (";
+            $("#Municipios option:selected").each(function () {
+                query += "municipio_id=" + $(this).val() + " or ";
+            });
+        }
+        if ($("#Acuiferos option:selected").val() != null && $val == 1) {
+            query = query.slice(0, -4);
+            query += ") AND (";
+            $("#Acuiferos option:selected").each(function () {
+                query += "acuifero_id=" + $(this).val() + " or ";
+            });
+        }
+        //Tipos
+        if ($("#Tipos option:selected").val() != null) {
+            query = query.slice(0, -4);
+            query += ") AND (";
+            //Se recorre el select de tipos.
+            $("#Tipos option:selected").each(function () {
+                query += "tipo_id=" + $(this).val() + " or ";
+            });
+        }
+        query = query.slice(0, -4);
+        query += ") GROUP BY uso_id";
+        //Se resetean las concesiones
+        //console.log(query);
+        $("#Concesiones").multiselect("reset");
+        const cadena = "query=" + query + "&Accion=TituloAcu4";
+        var data = [];
+        $.ajax({
+            type: "POST",
+            url: "/aplicacion/controlador/titulo.php",
+            data: cadena,
+            /**
+             * @param resp
+             * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
+             */
+            success: function (resp) {
+                console.log(resp);
+                /**
+                 * Primero se recorre el array con todos los estados devueltos por el controlador.
+                 */
+                $.each(JSON.parse(resp), function (index, item) {
+                    data.push(
+                        '<option value="' +
+                        item.uso_id +
+                        '">' +
+                        item.uso +
+                        "</option>"
+                    );
+                    $("#Usos").html(data.join(""));
+                    $("#Usos").multiselect("reload");
+                });
+            },
+        }).always(function () {
+            Swal.close();
+        });
+    }
+
+}
+
 async function concatConsesion() {
     var query = "(";
     //Se recorre el select de acuiferos.
@@ -1885,3 +1962,4 @@ $('#Prioridad').change(async function () {
         }
     }
 });
+
