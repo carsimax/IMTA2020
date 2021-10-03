@@ -23,7 +23,8 @@ require_once("dbconnection.php");
 /**
  * Class Concesion
  */
-class Titulo {
+class Titulo
+{
 
     private $id_titulo;
     private $uso_id;
@@ -167,12 +168,13 @@ class Titulo {
         $this->fecha_reg = $fecha_reg;
     }
 
-  
 
-        /**
+
+    /**
      * @return array|null
      */
-    public function getTodos($query){
+    public function getTodos($query)
+    {
         $pdo = new DBConnection();
         $db = $pdo->DBConnect();
         try {
@@ -189,7 +191,7 @@ class Titulo {
             INNER JOIN acuifero on acuifero.id_acuifero=titulo.acuifero_id
             INNER JOIN estado on estado.id_estado=titulo.estado_id
             INNER JOIN municipio on municipio.id_municipio=titulo.muni_id
-            WHERE '. $query);
+            WHERE ' . $query);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;
@@ -231,17 +233,20 @@ class Titulo {
             $db->beginTransaction();
             $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false);
             $select = $db->prepare('
-                    SELECT 
-	pozo.titulo_id,
-	pozo.estado_Id,
-	pozo.municipio_id,
-	pozo.acuifero_id,
-	pozo.tipo_id,
-	titulo.uso_id,
-                  titulo.titular
-	FROM pozo 
-	INNER JOIN titulo on titulo.id_titulo=pozo.titulo_id
-	WHERE' . $query);
+            SELECT 
+            pozo.titulo_id,
+            pozo.estado_Id,
+            pozo.municipio_id,
+            pozo.acuifero_id,
+            pozo.tipo_id,
+            titulo.uso_id,
+            titulo.titular,
+            titulo.uso_id,
+            uso.uso
+            FROM pozo 
+            INNER JOIN titulo on titulo.id_titulo=pozo.titulo_id
+            INNER JOIN uso on uso.id_uso=titulo.uso_id
+            WHERE' . $query);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;
@@ -308,20 +313,20 @@ class Titulo {
         $db = $pdo->DBConnect();
         try {
             $select = $db->prepare(''
-                    . 'INSERT INTO titulo VALUES('
-                    . ':id_titulo, '
-                    . ':uso_id, '
-                    . ':titular, '
-                    . ':vol_total, '
-                    . ':anexos_sup, '
-                    . ':vol_sup, '
-                    . ':anexos_sub, '
-                    . ':vol_sub, '
-                    . ':p_descarga, '
-                    . ':vol_desc, '
-                    . ':z_federales, '
-                    . ':superficie, '
-                    . ':fecha_reg)');
+                . 'INSERT INTO titulo VALUES('
+                . ':id_titulo, '
+                . ':uso_id, '
+                . ':titular, '
+                . ':vol_total, '
+                . ':anexos_sup, '
+                . ':vol_sup, '
+                . ':anexos_sub, '
+                . ':vol_sub, '
+                . ':p_descarga, '
+                . ':vol_desc, '
+                . ':z_federales, '
+                . ':superficie, '
+                . ':fecha_reg)');
             //Colocamos los datos
             $select->bindValue('id_titulo', $this->getId_titulo(), PDO::PARAM_STR);
             $select->bindValue('uso_id', $this->getUso_id(), PDO::PARAM_INT);
@@ -336,8 +341,7 @@ class Titulo {
             $select->bindValue('z_federales', $this->getZonas_fed_amp_titulo(), PDO::PARAM_INT);
             $select->bindValue('superficie', $this->getSupeficie(), PDO::PARAM_STR);
             $select->bindValue('fecha_reg', $this->getFecha_reg(), PDO::PARAM_STR);
-            if ($select->execute())
-            {
+            if ($select->execute()) {
                 $select = $db->prepare('INSERT INTO tabla_version VALUES(0,NOW(),:cadena)');
                 $cadena = "El administrador " . $_SESSION['ID_Usuario'] . " Insertó el titulo " . $this->getId_titulo() . " en la tabla titulo";
                 $select->bindValue('cadena', $cadena, PDO::PARAM_STR);
@@ -392,22 +396,22 @@ class Titulo {
     public function Update()
     {
         $pdo = new DBConnection();
-        $db = $pdo->DBConnect(); 
+        $db = $pdo->DBConnect();
         try {
             $select = $db->prepare('UPDATE titulo SET '
-                    . 'uso_id=:uso_id,'
-                    . 'titular=:titular,'
-                    . 'vol_total=:vol_total,'
-                    . 'anexos_sup=:anexos_sup,'
-                    . 'vol_sup=:vol_sup,'
-                    . 'anexos_sub=:anexos_sub,'
-                    . 'vol_sub=:vol_sub,'
-                    . 'p_descarga=:p_descarga,'
-                    . 'vol_desc=:vol_desc,'
-                    . 'z_federales=:z_federales,'
-                    . 'superficie=:superficie,'
-                    . 'fecha_reg=:fecha_reg '
-                    . 'WHERE id_titulo=:id_titulo');
+                . 'uso_id=:uso_id,'
+                . 'titular=:titular,'
+                . 'vol_total=:vol_total,'
+                . 'anexos_sup=:anexos_sup,'
+                . 'vol_sup=:vol_sup,'
+                . 'anexos_sub=:anexos_sub,'
+                . 'vol_sub=:vol_sub,'
+                . 'p_descarga=:p_descarga,'
+                . 'vol_desc=:vol_desc,'
+                . 'z_federales=:z_federales,'
+                . 'superficie=:superficie,'
+                . 'fecha_reg=:fecha_reg '
+                . 'WHERE id_titulo=:id_titulo');
             //Colocamos los datos
             $select->bindValue('id_titulo', $this->getId_titulo(), PDO::PARAM_STR);
             $select->bindValue('uso_id', $this->getUso_id(), PDO::PARAM_INT);
@@ -422,8 +426,7 @@ class Titulo {
             $select->bindValue('z_federales', $this->getZonas_fed_amp_titulo(), PDO::PARAM_INT);
             $select->bindValue('superficie', $this->getSupeficie(), PDO::PARAM_STR);
             $select->bindValue('fecha_reg', $this->getFecha_reg(), PDO::PARAM_STR);
-            if ($select->execute())
-            {
+            if ($select->execute()) {
                 $select = $db->prepare('INSERT INTO tabla_version VALUES(0,NOW(),:cadena)');
                 $cadena = "El administrador " . $_SESSION['ID_Usuario'] . " Actualizó el titulo " . $this->getId_titulo() . " en la tabla titulo";
                 $select->bindValue('cadena', $cadena, PDO::PARAM_STR);
@@ -445,8 +448,7 @@ class Titulo {
             $select = $db->prepare('DELETE FROM titulo WHERE id_titulo=:id_titulo');
             //Colocamos los datos
             $select->bindValue('id_titulo', $this->getId_titulo(), PDO::PARAM_STR);
-            if ($select->execute())
-            {
+            if ($select->execute()) {
                 $select = $db->prepare('INSERT INTO tabla_version VALUES(0,NOW(),:cadena)');
                 $cadena = "El administrador " . $_SESSION['ID_Usuario'] . " Eliminó el titulo " . $this->getId_titulo() . " en la tabla titulo";
                 $select->bindValue('cadena', $cadena, PDO::PARAM_STR);
@@ -476,5 +478,4 @@ class Titulo {
             return null;
         }
     }
-
 }

@@ -10,6 +10,8 @@
 //Se aplcia el estilo a los selects 
 setEstiloSelect('#Usos', 'Usos', 'Buscar Uso');
 setEstiloSelect('#Concesiones', 'Concesiones', 'Buscar Concesión');
+setEstiloSelect('#Organismos', 'Organismos', 'Buscar Organizmo');
+setEstiloSelect('#Estados', 'Estados', 'Buscar Estado');
 
 
 /**
@@ -44,9 +46,6 @@ async function Organismos() {
              */
             success: function (resp) {
                 $("#Estados").empty();
-                data.push(
-                    "<option disabled selected value> -- Seleccione una opción -- </option>"
-                );
                 $.each(JSON.parse(resp), function (index, item) {
                     /**
                      * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de acuiferos
@@ -129,6 +128,7 @@ async function Estados() {
                 $("#Acuiferos").multiselect("reload");
             },
         }).always(function () {
+            getUsos();
             Swal.close();
         });
     } else {
@@ -185,12 +185,41 @@ async function limpiarAcuifero() {
     $("#pantalla2").hide();
     $("#divPrioridad").hide();
     $("#Concesiones").multiselect("reset");
-    $("#Usos").multiselect("reset2");
+    $("#Usos").multiselect("reset");
     //$("#Concesiones").empty();
     /**
      * Se limpia la tabla de acuiferos
      */
 }
+async function limpiarAcuifero2() {
+    //Se valida para asignarle el la clase green
+    if ($('#Acuiferos').val() === null) {
+        $('#Acuiferos').removeClass('green');
+    } else {
+        $('#Acuiferos').addClass('green');
+    }
+
+    /**
+     * Limpia su porpia capa
+     */
+    map.off();
+    map.remove();
+    crearMapa();
+    tabla.clear().draw();
+    tablaPozo.clear().draw();
+    $("#pantalla").hide();
+    $("#botonMapa").hide();
+    $("#pantalla2").hide();
+    $("#divPrioridad").hide();
+    $("#Concesiones").multiselect("reset");
+    $("#Usos").multiselect("reset");
+    getUsos();
+    //$("#Concesiones").empty();
+    /**
+     * Se limpia la tabla de acuiferos
+     */
+}
+
 
 //Se valida el valor del select de titulos para poder habilitar el boton de consulta
 async function Concesiones() {

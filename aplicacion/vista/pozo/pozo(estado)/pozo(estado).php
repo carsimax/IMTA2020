@@ -46,8 +46,7 @@ $Usos = $registros->getTodos();
     </div>
     <div class="col-sm">
         <label>Organismo de Cuenca:</label>
-        <select class="form-control" onchange="Organismos()" id="Organismos">
-            <option disabled selected value> -- Seleccione una opción -- </option>
+        <select class="form-control" onchange="Organismos()" multiple id="Organismos" name="Organismos[]">
             <?php
             foreach ($Organismos as $Organismo) {
             ?>
@@ -58,8 +57,7 @@ $Usos = $registros->getTodos();
 
     <div class="col-sm" id="divEstado">
         <label>Estado:</label>
-        <select class="form-control" onchange="Estados()" id="Estados">
-            <option disabled selected value> -- Seleccione una opción -- </option>
+        <select class="form-control" onchange="Estados()" multiple id="Estados" name="Estados[]">
         </select>
     </div>
     <!--Fin del Select de los Estados-->
@@ -74,11 +72,6 @@ $Usos = $registros->getTodos();
         <!--Select del Tipo de Pozo-->
         <label>Uso del Título:</label>
         <select onchange="getTitulo()" name="Usos[]" multiple id="Usos">
-            <?php
-            foreach ($Usos as $Uso) {
-            ?>
-                <option value="<?php echo $Uso['id_uso']; ?>"><?php echo $Uso['uso']; ?></option>
-            <?php } ?>
         </select>
     </div>
 
