@@ -1723,7 +1723,7 @@ async function habilitar() {
     $("#divPrioridad").show();
 }
 
-function municipios() {
+function CambioTipo() {
     $val = $("#Tipos").val();
     if ($val == 1) {
         $("#divAcuifero").show();
