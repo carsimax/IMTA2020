@@ -10,6 +10,7 @@ $(document).ready(async function () {
     $("#divPrioridad").hide();
     $("#botonMapa").hide();
     $("#referencias").hide();
+    $("#download_shapefile").hide();
     crearMapa();
 });
 /**
@@ -38,6 +39,7 @@ $(document).on("change", "input[type=radio]", async function () {
         document.getElementById("divFiltro").innerHTML = "";
         document.getElementById("pantalla").innerHTML = "";
         $("#referencias").hide();
+        $("#download_shapefile").hide();
         document.getElementById("lista").innerHTML = "";
     }
     /**
@@ -64,11 +66,13 @@ $(document).on("change", "input[type=radio]", async function () {
     await $("#divPrioridad").hide();
     await $("#botonMapa").hide();
     await $("#referencias").hide();
+    $("#download_shapefile").hide();
 });
 
 $('#Prioridad').change(async function () {
     var x = $(this).prop('checked');
     if (x) {
+        document.getElementById("download_shapefile").style.display = "none";
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#SeccionModal');
         $('#tabla').detach().appendTo('#pantalla');
@@ -81,6 +85,7 @@ $('#Prioridad').change(async function () {
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#pantalla');
         $('#tabla').detach().appendTo('#SeccionModal');
+        document.getElementById("download_shapefile").style.display = "block";
         //Recargamos el mapa
         var callBack = async function () {
             document.getElementById("map").style.display = "block";
@@ -110,6 +115,7 @@ async function deshabilitar() {
     $("#pantalla").hide();
     $("#divPrioridad").hide();
     $("#botonMapa").hide();
+    $("#download_shapefile").hide();
 }
 
 /**

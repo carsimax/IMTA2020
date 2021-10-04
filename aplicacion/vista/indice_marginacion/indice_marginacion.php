@@ -59,6 +59,9 @@ $filtros = $registros->getFiltrosMarginacion(); ?>
             </div>
             <hr>
             <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
+            <div class="text-right" id="download_shapefile" style="display: none; margin-bottom:10px; margin-right:15px">
+                <a onclick="getShapefiles('Índice_Marginación')" id="button_download_shapefile" class="btn btn-gob" style="color: white;">Descargar Capas</a>
+            </div>
             <!--Resultado-->
             <div class="container-fluid" id="pantalla">
                 <div class="row" id='tabla'>
@@ -76,6 +79,7 @@ $filtros = $registros->getFiltrosMarginacion(); ?>
 
             </div>
             <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
+            <div id="geoJSON" style="display: none;"></div>
         </main>
     </div>
     <br>
@@ -107,3 +111,4 @@ $filtros = $registros->getFiltrosMarginacion(); ?>
 <!--Script de chartJS-->
 <script src="indice.js"></script>
 <script defer src="/sig/capas.js"></script>
+<script defer src="/aplicacion/vista/getShapefiles.js"></script>

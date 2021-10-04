@@ -46,6 +46,9 @@ $filtros = $registros->getPresas();
                 </div>
             </div>
             <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
+            <div class="text-right" id="download_shapefile" style="display: none; margin-bottom:10px; margin-right:15px">
+                <a onclick="getShapefiles('Presas')" id="button_download_shapefile" class="btn btn-gob" style="color: white;">Descargar Capas</a>
+            </div>
             <!--Resultado-->
             <div class="col-sm" id="pantalla">
                 <div class="col-sm" id="tabla">
@@ -76,8 +79,8 @@ $filtros = $registros->getPresas();
                     </ul>
                 </div>
                 <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
-
             </div>
+            <div id="geoJSON" style="display: none;"></div>
         </main>
     </div>
 </div>
@@ -124,6 +127,7 @@ $filtros = $registros->getPresas();
 <script src="gpresa.js"></script>
 <script src="presa.js"></script>
 <script src="/sig/capas.js"></script>
+<script defer src="/aplicacion/vista/getShapefiles.js"></script>
 <script>
     $('#referencias').hide();
 </script>

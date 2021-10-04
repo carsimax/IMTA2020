@@ -215,7 +215,7 @@ async function Tenencias() {
 }
 
 async function Cultivos() {
-    // isFormCompleted('#Cultivos');
+    isFormCompleted('#Cultivos');
 }
 
 /**
@@ -226,6 +226,7 @@ async function Cultivos() {
  */
 async function Consultar() {
     alertaCargando("Por favor espere", "Realizando la consulta");
+    document.getElementById("geoJSON").innerHTML="";
     $('#nav-tab-acu a[href="#nav-01"]').tab("show");
     /**
      * Llmamos a deshabilitar y a limpiar los Distritos
@@ -242,7 +243,7 @@ async function Consultar() {
     /**
      * Se verifica que el query de Organismos ese vacio
      */
-    // if (OC !== "" && Est !== "" && DR !== "" && Mod !== "" && Ciclo !== "" && Cultivo !== "" && Anio !== "") {
+    if (OC !== "" && Est !== "" && DR !== "" && Mod !== "" && Ciclo !== "" && Cultivo !== "" && Anio !== "" && Cultivo !== "") {
     data = "Accion=ConsultaAgricola&modulo_id=3&anios=" + Anio;
     citas = construirReferencias(data, true);
     query = "(" + OC + ") AND (" + Est + ") AND (" + DR + ") AND (" + Anio + ") AND (" + Mod + ") AND (" + Ciclo + ") AND (" + Tenencia + ") AND (" + Cultivo + ")";
@@ -254,6 +255,7 @@ async function Consultar() {
             //Recargamos el mapa
             var callBack = async function () {
                 document.getElementById("map").style.display = "block";
+                document.getElementById("download_shapefile").style.display = "block";
                 setTimeout(function () {
                     map.invalidateSize();
                 }, 100);
@@ -264,14 +266,7 @@ async function Consultar() {
     }
     await habilitar();
     await Historial();
-    // } else {
-    //     await habilitar();
-    //     $("#pantalla").hide();
-    //     $("#divPrioridad").hide();
-    //     $("#botonMapa").hide();
-    //     $("#referencias").hide();
-    //     await Swal.close();
-    // }
+    }
 }
 
 /**
@@ -3328,3 +3323,7 @@ async function mostrarG1() {
         await grafica8(query8);
     }
 }
+
+
+
+

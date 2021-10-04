@@ -42,6 +42,9 @@ require_once(__DIR__ . "/../plantillas/header.php");
             </div>
             <hr>
             <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
+            <div class="text-right" id="download_shapefile" style="display: none; margin-bottom:10px; margin-right:15px">
+                <a onclick="getShapefiles('Estaciones_Climatológicas')" id="button_download_shapefile" class="btn btn-gob" style="color: white;">Descargar Capas</a>
+            </div>
             <!--Resultado-->
             <div class="col-sm" id="pantalla">
                 <div class="row" id='tabla'>
@@ -54,6 +57,7 @@ require_once(__DIR__ . "/../plantillas/header.php");
                 </div>
             </div>
             <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
+            <div id="geoJSON" style="display: none;"></div>
         </main>
     </div>
 </div>
@@ -87,3 +91,4 @@ require_once(__DIR__ . "/../plantillas/header.php");
 <script>
     $('#referencias').hide();
 </script>
+<script defer src="/aplicacion/vista/getShapefiles.js"></script>

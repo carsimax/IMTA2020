@@ -63,11 +63,15 @@ $filtros = $registros->getFiltrosInventario(); ?>
                 </div>
             </div>
             <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
+            <div class="text-right" id="download_shapefile" style="display: none; margin-bottom:10px; margin-right:15px">
+                <a onclick="getShapefiles('Inventario_de_Obras')" id="button_download_shapefile" class="btn btn-gob" style="color: white;">Descargar Capas</a>
+            </div>
             <!--Resultado-->
             <div class="col-sm" id="pantalla">
 
             </div>
             <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
+            <div id="geoJSON" style="display: none;"></div>
         </main>
     </div>
 </div>
@@ -96,3 +100,4 @@ $filtros = $registros->getFiltrosInventario(); ?>
 <!--Script de chartJS-->
 <script src="inventario.js"></script>
 <script defer src="/sig/capas.js"></script>
+<script defer src="/aplicacion/vista/getShapefiles.js"></script>

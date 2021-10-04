@@ -18,6 +18,7 @@ $(document).ready(async function () {
     $("#botonMapa").hide();
     $("#divPrioridad").hide();
     $("#referencias").hide();
+    $("#download_shapefile").hide();
     crearMapa();
 });
 
@@ -52,12 +53,11 @@ $(document).on("change", "input[type=radio]", async function () {
     await $("#divPrioridad").hide();
     await $("#botonMapa").hide();
     await $("#referencias").hide();
+    await $("#download_shapefile").hide();
     await Swal.close();
 });
 
-async function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
+async function sleep(ms) {return new Promise((resolve) => setTimeout(resolve, ms));}
 /**
  *
  * @returns {undefined}
@@ -69,6 +69,7 @@ async function deshabilitar() {
     $("#botonMapa").hide();
     $("#divPrioridad").hide();
     $("#referencias").hide();
+    $("#download_shapefile").hide();
 }
 
 /**
@@ -88,6 +89,7 @@ $('#Prioridad').change(async function () {
     var x = $(this).prop('checked');
     if (x) {
         //El mapa del modal al auxiliar
+        document.getElementById("download_shapefile").style.display = "none";
         $('#map').detach().appendTo('#SeccionModal');
         $('#tabla').detach().appendTo('#pantalla');
         //Cambiamos el titulo del modal
@@ -95,10 +97,12 @@ $('#Prioridad').change(async function () {
         $("#exampleModalLabel").append('Mapa Geoespacial');
         document.getElementById("botonMapa").innerHTML = "";
         $("#botonMapa").append('<i class="fa fa-map my-float"></i><b> Ver Mapa</b>');
+        
     } else {
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#pantalla');
         $('#tabla').detach().appendTo('#SeccionModal');
+        document.getElementById("download_shapefile").style.display = "block";
         //Recargamos el mapa
         var callBack = async function () {
             document.getElementById("map").style.display = "block";

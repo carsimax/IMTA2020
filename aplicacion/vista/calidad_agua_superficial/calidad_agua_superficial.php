@@ -57,8 +57,12 @@ $filtros = $registros->getCalidadAguaSuperficial(); ?>
                 </div>
             </div>
             <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
+            <div class="text-right" id="download_shapefile" style="display: none; margin-bottom:10px; margin-right:15px">
+                <a onclick="getShapefiles('Calidad_del_Agua')" id="button_download_shapefile" class="btn btn-gob" style="color: white;">Descargar Capas</a>
+            </div>
             <div class="col-sm" id="pantalla">
             </div>
+            <div id="geoJSON" style="display: none;"></div>
             <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
         </main>
     </div>
@@ -88,6 +92,6 @@ $filtros = $registros->getCalidadAguaSuperficial(); ?>
 <div id="divAux">
 </div>
 <?php require_once(__DIR__ . "/../plantillas/footer.php"); ?>
-<!--Script de chartJS-->
 <script src="calidad_agua_superficial.js"></script>
 <script defer src="/sig/capas.js"></script>
+<script defer src="/aplicacion/vista/getShapefiles.js"></script>

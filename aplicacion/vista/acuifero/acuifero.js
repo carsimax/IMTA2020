@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2019.
  * Universidad Politécnica del Estado de Morelos.
@@ -19,6 +20,7 @@ $(document).ready(async function () {
   $("#pantalla2").hide();
   $("#divPrioridad").hide();
   $("#botonMapa").hide();
+  $("#download_shapefile").hide();
   crearMapa();
 });
 /**
@@ -65,6 +67,7 @@ $(document).on("change", "input[type=radio]", async function () {
   await $("#pantalla").hide();
   await $("#pantalla2").hide();
   await $("#divPrioridad").hide();
+  await $("#download_shapefile").hide();
   await Swal.close();
 });
 /**
@@ -83,6 +86,7 @@ async function deshabilitar() {
   $("#consultar").prop("disabled", true);
   $("#pantalla").hide();
   $("#botonMapa").hide();
+  $("#download_shapefile").hide();
 }
 
 /**
@@ -1246,6 +1250,7 @@ $('#Prioridad').change(async function () {
   var x = $(this).prop('checked');
   if (x) {
     //El mapa del modal al auxiliar
+    document.getElementById("download_shapefile").style.display = "none";
     $('#map').detach().appendTo('#SeccionModal');
     $('#tabla').detach().appendTo('#pantalla');
     //Cambiamos el titulo del modal
@@ -1257,6 +1262,7 @@ $('#Prioridad').change(async function () {
     //El mapa del modal al auxiliar
     $('#map').detach().appendTo('#pantalla');
     $('#tabla').detach().appendTo('#SeccionModal');
+    document.getElementById("download_shapefile").style.display = "block";
     //Recargamos el mapa
     var callBack = async function () {
       document.getElementById("map").style.display = "block";

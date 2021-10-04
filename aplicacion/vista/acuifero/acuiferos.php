@@ -30,6 +30,7 @@ if (!defined(__DIR__ . "/../plantillas/header.php")) {
  */
 $registros = new FiltroAcu();
 $filtros = $registros->getTodos();
+
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -67,6 +68,10 @@ $filtros = $registros->getTodos();
             </div>
             <!--Resultado-->
             <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
+            <div class="text-right" id="download_shapefile" style="display: none; margin-bottom:10px; margin-right:15px">
+                <a onclick="getShapefiles('Acuiferos')" id="button_download_shapefile" class="btn btn-gob" style="color: white;">Descargar Capas</a>
+            </div>
+            <div id="geoJSON" style="display: none;"></div>
             <div class="col-sm" id="pantalla">
                 <div class="row" id="tablaDesglose"></div>
             </div>
@@ -148,3 +153,4 @@ if (!defined(__DIR__ . "/../plantillas/footer.php")) {
 <script src="acuifero.js"></script>
 <script src="/sig/capas.js"></script>
 <script src="graficaacu.js"></script>
+<script defer src="/aplicacion/vista/getShapefiles.js"></script>

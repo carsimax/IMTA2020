@@ -12,6 +12,7 @@ $(document).ready(async function () {
     await $("#botonMapa").hide();
     await $("#divPrioridad").hide();
     await $("#referencias").hide();
+    $("#download_shapefile").hide();
     /**
      * @type {jQuery}
      * Cargamo la tabla por defecto
@@ -38,6 +39,7 @@ table = $("#tablaPresa").DataTable({
 $('#Prioridad').change(async function () {
     var x = $(this).prop('checked');
     if (x) {
+        document.getElementById("download_shapefile").style.display = "none";
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#SeccionModal');
         $('#tabla').detach().appendTo('#pantalla');
@@ -50,6 +52,7 @@ $('#Prioridad').change(async function () {
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#pantalla');
         $('#tabla').detach().appendTo('#SeccionModal');
+        document.getElementById("download_shapefile").style.display = "block";
         //Recargamos el mapa
         var callBack = async function () {
             document.getElementById("map").style.display = "block";

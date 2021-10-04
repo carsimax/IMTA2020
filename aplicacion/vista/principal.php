@@ -42,43 +42,6 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 my-3">
-                        <div class="card h-100">
-                            <div class="card-header py-3">
-                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/presa/presas.php">Presas</a></h5>
-                            </div>
-                            <a href="/aplicacion/vista/presa/presas.php"><img class="img-fluid" src="/imagenes/presa.png" alt="Principales presas" title="Principales presas"></a>
-                            <div class="card-body text-justify d-flex justify-content-between flex-column">
-                                <p class="font-weight-normal">Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
-                                <a href="/aplicacion/vista/presa/presas.php" class="btn btn-block btn-primary">Consultar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 my-3">
-                        <div class="card h-100">
-                            <div class="card-header py-3">
-                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a></h5>
-                            </div>
-                            <a href="/aplicacion/vista/pozo/pozos.php"><img class="img-fluid" src="/imagenes/pozo.png" alt="Títulos de conseción" title="Pozos"></a>
-                            <div class="card-body text-justify d-flex justify-content-between flex-column">
-                                <p class="font-weight-normal">Consulta los Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
-                                <a href="/aplicacion/vista/pozo/pozos.php" class="btn btn-block btn-primary">Consultar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 my-3">
-                        <div class="card h-100">
-                            <div class="card-header py-3">
-                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/agricola/agricola.php">Estadística Agrícola</a></h5>
-                            </div>
-                            <a href="/aplicacion/vista/agricola/agricola.php"><img class="img-fluid" src="/imagenes/agricultura.png" alt="Estadística agrícola" title="Estadística agrícola"></a>
-                            <div class="card-body text-justify d-flex justify-content-between flex-column">
-                                <p class="font-weight-normal">Consulta los Informes Estadísticos de Producción Agrícola, Superficies Regadas y Volúmenes de Agua Distribuidos en los Distritos de Riego y Temporal Tecnificado, así como sus históricos.</p>
-                                <a href="/aplicacion/vista/agricola/agricola.php" class="btn btn-block btn-primary">Consultar</a>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 my-3">
                         <div class="card h-100">
                             <div class="card-header py-3">
@@ -88,6 +51,18 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                             <div class="card-body text-justify d-flex justify-content-between flex-column">
                                 <p class="font-weight-normal">Consulta los diferentes indicadores de la calidad del agua como lo son: Demanda Bioquímica de Oxígeno a cinco días (DBO5), Demanda Química de Oxígeno (DQO), Sólidos Suspendidos Totales (SST), Coliformes Fecales (CF) recabados por los sitios de monitoreo operados por la Conagua en todo el país.</p>
                                 <a href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php" class="btn btn-block btn-primary">Consultar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 my-3">
+                        <div class="card h-100">
+                            <div class="card-header py-3">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones Climatológicas</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php"><img class="img-fluid" src="/imagenes/climatologica.png" alt="Estaciones climatológicas" title="Estaciones Climatológicas"></a>
+                            <div class="card-body text-justify d-flex justify-content-between flex-column">
+                                <p class="font-weight-normal">Consulta las diferentes estaciones climatológicas distribuidas en todo el país.</p>
+                                <a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php" class="btn btn-block btn-primary">Consultar</a>
                             </div>
                         </div>
                     </div>
@@ -106,12 +81,12 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 my-3">
                         <div class="card h-100">
                             <div class="card-header py-3">
-                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones Climatológicas</a></h5>
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/agricola/agricola.php">Estadística Agrícola</a></h5>
                             </div>
-                            <a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php"><img class="img-fluid" src="/imagenes/climatologica.png" alt="Estaciones climatológicas" title="Estaciones Climatológicas"></a>
+                            <a href="/aplicacion/vista/agricola/agricola.php"><img class="img-fluid" src="/imagenes/agricultura.png" alt="Estadística agrícola" title="Estadística agrícola"></a>
                             <div class="card-body text-justify d-flex justify-content-between flex-column">
-                                <p class="font-weight-normal">Consulta las diferentes estaciones climatológicas distribuidas en todo el país.</p>
-                                <a href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php" class="btn btn-block btn-primary">Consultar</a>
+                                <p class="font-weight-normal">Consulta los Informes Estadísticos de Producción Agrícola, Superficies Regadas y Volúmenes de Agua Distribuidos en los Distritos de Riego y Temporal Tecnificado, así como sus históricos.</p>
+                                <a href="/aplicacion/vista/agricola/agricola.php" class="btn btn-block btn-primary">Consultar</a>
                             </div>
                         </div>
                     </div>
@@ -148,7 +123,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 my-3">
                         <div class="card h-100">
                             <div class="card-header py-3">
-                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">Consulta en mapas interactivos</a></h5>
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">Mapas interactivos</a></h5>
                             </div>
                             <div class="img-container">
                                 <a href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">
@@ -161,6 +136,34 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 my-3">
+                        <div class="card h-100">
+                            <div class="card-header py-3">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/presa/presas.php">Presas</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/presa/presas.php"><img class="img-fluid" src="/imagenes/presa.png" alt="Principales presas" title="Principales presas"></a>
+                            <div class="card-body text-justify d-flex justify-content-between flex-column">
+                                <p class="font-weight-normal">Consulta los Volúmenes de Almacenamiento y los Niveles de Aguas Máximas Ordinarias (NAMO) y Extraordniarias (NAME) las principales presas de la República Mexicana.</p>
+                                <a href="/aplicacion/vista/presa/presas.php" class="btn btn-block btn-primary">Consultar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 my-3">
+                        <div class="card h-100">
+                            <div class="card-header py-3">
+                                <h5 class="my-0 font-weight-normal text-center"><a href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a></h5>
+                            </div>
+                            <a href="/aplicacion/vista/pozo/pozos.php"><img class="img-fluid" src="/imagenes/pozo.png" alt="Títulos de conseción" title="Pozos"></a>
+                            <div class="card-body text-justify d-flex justify-content-between flex-column">
+                                <p class="font-weight-normal">Consulta los Títulos de Concesión para conocer los Volúmenes de Extracción de Aguas Nacionales, Número de Anexos de Aguas Subterráneas y demás información de cada uno de los Estados y Municipios de la República Mexicana.</p>
+                                <a href="/aplicacion/vista/pozo/pozos.php" class="btn btn-block btn-primary">Consultar</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
             </div>
     </div>

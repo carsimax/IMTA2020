@@ -35,7 +35,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                     <hr>
                     <strong>Fondo SADER - CONACYT</strong> <br>
                     <em>Fondo Sectorial de Investigación en Materias Agrícola, Pecuaria, Acuacultura, Agrobiotecnología y Recursos Fitogenéticos.</em><br> <br>
-                    <strong>Proyecto 2017-02-291372 “Plataforma Web Informativa sobre Usos del Agua en la Agricultura Nacional”</strong>
+                    <strong>Proyecto 2017-02-291372 "Plataforma Web Informativa sobre Usos del Agua en la Agricultura Nacional"</strong>
                     <hr>
                     Este producto está protegido por las leyes de derechos de autor y otros tratados internacionales. La reproducción y distribución no autorizada del código, está penada severamente por la ley. <br><br>
                     Para cualquier informe sobre este favor de contactar a:<br>
@@ -50,7 +50,14 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                     (777) 3 29 36 00 Ext. 115 <br><br>
 
                     <strong>Última actualización: </strong><br>
-                    ► diciembre 2020
+                    ► octubre 2021
+                    <hr>
+                    <strong>Instituciones colaboradoras:</strong><br>
+                    Universidad Autónoma Chapingo <br>
+                    Responsable: Dr. Víctor Manuel Olmedo Vázquez<br><br>
+
+                    Instituto Nacional de Investigaciones Forestales, Agrícolas y Pecuarias<br>
+                    Responsable: Dr. Ernesto Sifuentes Ibarra<br>
                     <hr>
                     <strong>Programadores:</strong><br>
                     ► Alberto González Sánchez, <br>
@@ -61,10 +68,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                 </div>
 
                 <div id="logos3" class="col-sm-12 col-md-6" style="background-color:#778899">
-                    <center>
-                        <br>
-                        <img src="/imagenes/Logos.png" width="60%" />
-                    </center>
+                    <img src="/imagenes/Logos.png" width="60%" />
                 </div>
             </div>
         </main>

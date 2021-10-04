@@ -12,6 +12,7 @@ $(document).ready(async function () {
     await $("#pantalla2").hide();
     await $("#divPrioridad").hide();
     await $("#botonMapa").hide();
+    $("#download_shapefile").hide();
     crearMapa();
     await $("#divFiltro").load("presa(estado)/presa(estado).php");
     await Swal.close();
@@ -291,6 +292,7 @@ function cambio() {
     map.remove();
     document.getElementById("divFiltro").innerHTML = "";
     $("#referencias").hide();
+    $("#download_shapefile").hide();
     document.getElementById("lista").innerHTML = "";
     $("#divFiltro").load($val + "/" + $val + ".php");
     crearMapa();
@@ -462,6 +464,7 @@ $("#tablaVolumen").on("click", "button", function () {
 $('#Prioridad').change(async function () {
     var x = $(this).prop('checked');
     if (x) {
+        document.getElementById("download_shapefile").style.display = "none";
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#SeccionModal');
         $('#tabla').detach().appendTo('#pantalla');
@@ -474,6 +477,7 @@ $('#Prioridad').change(async function () {
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#pantalla');
         $('#tabla').detach().appendTo('#SeccionModal');
+        document.getElementById("download_shapefile").style.display = "block";
         //Recargamos el mapa
         var callBack = async function () {
             document.getElementById("map").style.display = "block";

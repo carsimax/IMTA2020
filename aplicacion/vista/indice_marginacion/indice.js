@@ -11,6 +11,7 @@ $(document).ready(async function () {
   $("#botonMapa").hide();
   $("#referencias").hide();
   $("#divglosario").hide();
+  $("#download_shapefile").hide();
   crearMapa();
   table = $("#tablaIndiceMarginacion").DataTable({
     columnDefs: [{ className: 'dt-body-right', targets: [10] }],
@@ -90,11 +91,13 @@ $(document).on("change", "input[type=radio]", async function () {
   await $("#botonMapa").hide();
   await $("#referencias").hide();
   await Swal.close();
+  $("#download_shapefile").hide();
 });
 
 $('#Prioridad').change(async function () {
   var x = $(this).prop('checked');
   if (x) {
+    document.getElementById("download_shapefile").style.display = "none";
     //El mapa del modal al auxiliar
     $('#map').detach().appendTo('#SeccionModal');
     $('#tabla').detach().appendTo('#pantalla');
@@ -104,6 +107,7 @@ $('#Prioridad').change(async function () {
     document.getElementById("botonMapa").innerHTML = "";
     $("#botonMapa").append('<i class="fa fa-map my-float"></i><b> Ver Mapa</b>');
   } else {
+    document.getElementById("download_shapefile").style.display = "block";
     //El mapa del modal al auxiliar
     $('#map').detach().appendTo('#pantalla');
     $('#tabla').detach().appendTo('#SeccionModal');
@@ -136,6 +140,7 @@ async function deshabilitar() {
   $("#pantalla").hide();
   $("#divPrioridad").hide();
   $("#botonMapa").hide();
+  $("#download_shapefile").hide();
 }
 
 /**
