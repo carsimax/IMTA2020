@@ -16,47 +16,43 @@ error_reporting(E_ALL);
 /**
  * Para que el controlador funcione de forma correcta, es necesario la llamada a los modelos necesarios en el mismo.
  */
-if (!defined(__DIR__ . "/../modelo/acuiferohidro.php"))
-{
+if (!defined(__DIR__ . "/../modelo/acuiferohidro.php")) {
     require(__DIR__ . "/../modelo/acuiferohidro.php");
     define(__DIR__ . "/../modelo/acuiferohidro.php", 1);
 }
-if (!defined(__DIR__ . "/../modelo/acuiferomun.php"))
-{
+if (!defined(__DIR__ . "/../modelo/acuiferomun.php")) {
     require(__DIR__ . "/../modelo/acuiferomun.php");
     define(__DIR__ . "/../modelo/acuiferomun.php", 1);
 }
-if (!defined(__DIR__ . "/../modelo/acuiferopob.php"))
-{
+if (!defined(__DIR__ . "/../modelo/acuiferopob.php")) {
     require(__DIR__ . "/../modelo/acuiferopob.php");
     define(__DIR__ . "/../modelo/acuiferopob.php", 1);
 }
-if (!defined(__DIR__ . "/../modelo/acuiferocuenca.php"))
-{
+if (!defined(__DIR__ . "/../modelo/acuiferocuenca.php")) {
     require(__DIR__ . "/../modelo/acuiferocuenca.php");
     define(__DIR__ . "/../modelo/acuiferocuenca.php", 1);
 }
-if (!defined(__DIR__ . "/../modelo/acuiferototal.php"))
-{
+if (!defined(__DIR__ . "/../modelo/acuiferototal.php")) {
     require(__DIR__ . "/../modelo/acuiferototal.php");
     define(__DIR__ . "/../modelo/acuiferototal.php", 1);
 }
-if (!defined(__DIR__ . "/../modelo/estado.php"))
-{
+if (!defined(__DIR__ . "/../modelo/estado.php")) {
     require(__DIR__ . "/../modelo/estado.php");
     define(__DIR__ . "/../modelo/estado.php", 1);
 }
 
-if (!defined(__DIR__ . "/../modelo/acuifero.php"))
-{
+if (!defined(__DIR__ . "/../modelo/acuifero.php")) {
     require(__DIR__ . "/../modelo/acuifero.php");
     define(__DIR__ . "/../modelo/acuifero.php", 1);
 }
 
-if (!defined(__DIR__ . "/../modelo/acuiferodisp.php"))
-{
+if (!defined(__DIR__ . "/../modelo/acuiferodisp.php")) {
     require(__DIR__ . "/../modelo/acuiferodisp.php");
     define(__DIR__ . "/../modelo/acuiferodisp.php", 1);
+}
+if (!defined(__DIR__ . "/../modelo/organismoestado.php")) {
+    require(__DIR__ . "/../modelo/organismoestado.php");
+    define(__DIR__ . "/../modelo/organismoestado.php", 1);
 }
 
 /**
@@ -65,8 +61,7 @@ if (!defined(__DIR__ . "/../modelo/acuiferodisp.php"))
 $accion = filter_input(INPUT_POST, "Accion");
 
 //Si no se recibió nada por post, intentara recibirlo por get.
-if (filter_input(INPUT_POST, "Accion") == NULL)
-{
+if (filter_input(INPUT_POST, "Accion") == NULL) {
     $accion = filter_input(INPUT_GET, "Accion");
 }
 
@@ -74,9 +69,8 @@ if (filter_input(INPUT_POST, "Accion") == NULL)
  * Este switch es la controladora de las funciones que contiene el controlador,
  * Desde aquí se determina a que función del controlador llamar.
  */
-switch ($accion)
-{
-    //Si es el caso de actualizar un registro.
+switch ($accion) {
+        //Si es el caso de actualizar un registro.
     case 'Update':
         try {
             update();
@@ -84,7 +78,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //Si es el caso de actualizar la disponibilidad de un acuífero
+        //Si es el caso de actualizar la disponibilidad de un acuífero
     case 'UpdateDisponibilidad':
         try {
             UpdateDisponibilidad();
@@ -92,7 +86,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //Si es el caso de actualizar la Información hidrogeológica  de un acuífero .
+        //Si es el caso de actualizar la Información hidrogeológica  de un acuífero .
     case 'UpdateHidro':
         try {
             UpdateHidro();
@@ -100,7 +94,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //Esta es la opcion para realizar la actualizacion de un municipio del acuifero.
+        //Esta es la opcion para realizar la actualizacion de un municipio del acuifero.
     case 'UpdateMun':
         try {
             UpdateMun();
@@ -108,7 +102,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //Esta es la opcion para realizar la actualizacion de la informacion poblacional del acuifero.
+        //Esta es la opcion para realizar la actualizacion de la informacion poblacional del acuifero.
     case 'UpdatePoblacion':
         try {
             UpdatePoblacion();
@@ -116,7 +110,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //Esta es la opcion para actualizar la informacion de la cuenca del acuifero.
+        //Esta es la opcion para actualizar la informacion de la cuenca del acuifero.
     case 'UpdateCuenca':
         try {
             UpdateCuenca();
@@ -124,7 +118,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //Esta es la opcion para actualizar la informacion de los usuarios totales que utilizan el acuifero.
+        //Esta es la opcion para actualizar la informacion de los usuarios totales que utilizan el acuifero.
     case 'UpdateTotal':
         try {
             UpdateTotal();
@@ -132,7 +126,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //Esta es la opcion para realizar un nuevo registro en acuiferos
+        //Esta es la opcion para realizar un nuevo registro en acuiferos
     case 'Nuevo':
         try {
             Nuevo();
@@ -140,7 +134,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //esta es la opcion para crear una relacion entre un municipio y un acuifero.
+        //esta es la opcion para crear una relacion entre un municipio y un acuifero.
     case 'NuevoMun':
         try {
             NuevoMun();
@@ -148,7 +142,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //Esta es la opcion para realizar la eliminacion de un acuifero en la base de datos
+        //Esta es la opcion para realizar la eliminacion de un acuifero en la base de datos
     case 'DeleteACU':
         try {
             DeleteACU();
@@ -156,7 +150,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //Esta es la opcion para eliminar una relacion entre un municipio y un acuifero
+        //Esta es la opcion para eliminar una relacion entre un municipio y un acuifero
     case 'DeleteMUN':
         try {
             DeleteMUN();
@@ -164,7 +158,7 @@ switch ($accion)
             echo $exc->getTraceAsString();
         }
         break;
-    //si se quiere subir desde excel
+        //si se quiere subir desde excel
     case 'Excel':
         try {
             Excel();
@@ -189,6 +183,13 @@ switch ($accion)
     case 'Acuifero':
         try {
             getAcuifero();
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+        break;
+    case 'getCountOC':
+        try {
+            getCountOC();
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
@@ -467,8 +468,7 @@ function Nuevo()
     /**
      * Si se realizo la insercion del acuifero correctamente se continua con el resto de tablas
      */
-    if ($NAcuifero->Insert() == 1)
-    {
+    if ($NAcuifero->Insert() == 1) {
         /**
          * Colocamos los datos de la disponibilidad del acuifero recibidos por el
          * GET por medio de los metodos SET del objeto.
@@ -485,8 +485,7 @@ function Nuevo()
         /**
          * Se manda a llamar la funcion insertar.
          */
-        if ($NDisp->Insert() == 1)
-        {
+        if ($NDisp->Insert() == 1) {
             /**
              * Colocamos los datos hidrogeologicos del acuifero recibidos por el
              * GET por medio de los metodos SET del objeto.
@@ -499,8 +498,7 @@ function Nuevo()
             /**
              * Se manda a llamar a la funcion insertar
              */
-            if ($NHidro->Insert() == 1)
-            {
+            if ($NHidro->Insert() == 1) {
                 /**
                  * Colocamos los datos de la poblacion del acuifero recibidos por el
                  * GET por medio de los metodos SET del objeto.
@@ -512,8 +510,7 @@ function Nuevo()
                 /**
                  * Se llama a la funcion insertar
                  */
-                if ($NPoblacion->Insert() == 1)
-                {
+                if ($NPoblacion->Insert() == 1) {
                     /**
                      * Colocamos los datos dela cuenca del acuifero recibidos por el
                      * GET por medio de los metodos SET del objeto.
@@ -524,8 +521,7 @@ function Nuevo()
                     /**
                      * Se manda a llamar a la funcion insertar
                      */
-                    if ($NCuenca->Insert() == 1)
-                    {
+                    if ($NCuenca->Insert() == 1) {
                         /**
                          * Colocamos los datos del total de usuarios del Acuifero recibidos por el
                          * GET por medio de los metodos SET del objeto.
@@ -538,43 +534,30 @@ function Nuevo()
                         /**
                          * se manda a llamar a la funcion inertar
                          */
-                        if ($Ntotal->Insert() == 1)
-                        {
+                        if ($Ntotal->Insert() == 1) {
                             //Se retorna un mensaje del estatus de la operacion
                             echo 'OK';
-                        }
-                        else
-                        {
+                        } else {
                             $NAcuifero->delete();
                             echo 'Verifica los datos de la información de total';
                         }
-                    }
-                    else
-                    {
+                    } else {
                         $NAcuifero->delete();
                         echo 'Verifica los datos de la información de cuenca';
                     }
-                }
-                else
-                {
+                } else {
                     $NAcuifero->delete();
                     echo 'Verifica los datos de la información de población';
                 }
-            }
-            else
-            {
+            } else {
                 $NAcuifero->delete();
                 echo 'Verifica los datos de la información hidrogeológica';
             }
-        }
-        else
-        {
+        } else {
             $NAcuifero->delete();
             echo 'Verifica los datos de disponibilidad';
         }
-    }
-    else
-    {
+    } else {
         //Si el acuifero ya esta registrado, se retorna un mensaje de error.
         echo 'Ya se encuentra en la Base de Datos';
     }
@@ -624,4 +607,12 @@ function getMunicipios()
      * Regresa los registros de los acuiferos
      */
     echo json_encode($Acuifero->getTodos(filter_input(INPUT_POST, "ID")));
+}
+function getCountOC()
+{
+    $Count = new OrganismoEstado();
+    /**
+     * Regresa los registros de los acuiferos
+     */
+    echo json_encode($Count->getCount(filter_input(INPUT_POST, "query")));
 }

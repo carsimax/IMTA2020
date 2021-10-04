@@ -84,7 +84,7 @@ class FiltroAcu {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $select = $db->prepare('SELECT * FROM filtro where filtro like \'%Pozos%\';');
+            $select = $db->prepare('SELECT * FROM filtro where id_filtro like \'%pozo%\';');
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
             return $registros;

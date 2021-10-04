@@ -322,7 +322,8 @@ function Registrar()
          */
         $Contra->setUsuarioID($resp);
         $Contra->setContra($pass);
-        $link = 'window.location.href ="/?email=' . $usuario->getCorreo() . '&token=' . $usuario->getToken() . '"';
+        //$link = 'window.location.href ="/?email=' . $usuario->getCorreo() . '&token=' . $usuario->getToken() . '"';
+        $link = 'window.location.href ="/"';
         /**
          * Se manda a llamar a la funcion de insertar
          */
@@ -442,14 +443,13 @@ function login($usu, $contra)
                 /**
                  * Se retorna el estado de la operacion
                  */
-                if ($resp->getVerificar() == 0) {
+                if ($resp->getVerificar() == 0 || $resp->getVerificar() == 1) {
                 
                     /**
                      * Se utiliza la funcion destruir la sesion.
                      */
-                    session_destroy();
-                    echo 'No verificado';
-                } else {
+                    //session_destroy();
+                    //echo 'No verificado';
                     echo 1;
                 }
             } else {

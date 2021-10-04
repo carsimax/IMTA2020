@@ -22,7 +22,8 @@ require_once("dbconnection.php");
 /**
  * Class OrganismoEstado
  */
-class OrganismoEstado {
+class OrganismoEstado
+{
 
     /**
      * @var
@@ -35,7 +36,6 @@ class OrganismoEstado {
      */
     public function __construct()
     {
-        
     }
 
     /**
@@ -80,7 +80,25 @@ class OrganismoEstado {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $sql = 'SELECT * FROM vorg_est WHERE ' . $query . 'GROUP BY id_estado';   
+            $sql = 'SELECT * FROM vorg_est WHERE ' . $query . 'GROUP BY id_estado';
+            $select = $db->prepare($sql);
+            $select->execute();
+            $registros = $select->fetchAll(PDO::FETCH_ASSOC);
+            return $registros;
+        } catch (PDOException $exc) {
+            $db->rollback();
+            $db = null;
+            echo $exc->getMessage();
+            return null;
+        }
+    }
+    public function getCount($query)
+    {
+        $pdo = new DBConnection();
+        $db = $pdo->DBConnect();
+        try {
+            $db->beginTransaction();
+            $sql = 'SELECT COUNT(*) as cont FROM organismo_estado WHERE' . $query;
             $select = $db->prepare($sql);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -110,7 +128,7 @@ class OrganismoEstado {
             estado.nombre AS Estado 
             FROM distrito_temporal_tecnificado
             INNER JOIN organismo on organismo.id_organismo=distrito_temporal_tecnificado.organismo_id
-            INNER JOIN estado on estado.id_estado=distrito_temporal_tecnificado.estado_id WHERE ' . $query . ' GROUP BY id_estado';   
+            INNER JOIN estado on estado.id_estado=distrito_temporal_tecnificado.estado_id WHERE ' . $query . ' GROUP BY id_estado';
             $select = $db->prepare($sql);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -122,5 +140,4 @@ class OrganismoEstado {
             return null;
         }
     }
-
 }

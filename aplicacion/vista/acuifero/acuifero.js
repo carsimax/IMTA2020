@@ -496,7 +496,7 @@ async function mostrarDEstado() {
        * Se crea la variable que contiene todas las opciones de la consulta seleccionadas.
        */
       const query =
-        OC +
+      "("+ OC +")" +
         " AND (" +
         Est +
         ") AND (" +
@@ -751,7 +751,7 @@ async function mostrarDAcuifero() {
     const Acu = await obtenerAcuifero();
     if (Acu !== "" && OC !== "" && Est !== "") {
       const query =
-        OC +
+      "("+ OC +")" +
         " AND (" +
         Est +
         ") AND (" +
@@ -998,7 +998,7 @@ async function mostrarMunicipio() {
      */
     if (Acu !== "" && OC !== "" && Est !== "" && Mun !== "") {
       query =
-        OC +
+      "("+ OC +")" +
         " AND (" +
         Est +
         ") AND (" +

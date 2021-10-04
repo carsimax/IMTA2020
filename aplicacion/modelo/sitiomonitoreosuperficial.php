@@ -417,7 +417,7 @@ class SitioMonitoreoSuperficial
             INNER JOIN estado on estado.id_estado=sitio_superficiales.estado_id
             INNER JOIN monitoreo_superficial on monitoreo_superficial.sitio_id=sitio_superficiales.id_sitio
             INNER JOIN anio on anio.id_anio=monitoreo_superficial.anio_id
-            where anio NOT IN("2019") AND anio NOT IN("2018")
+            where anio NOT IN("2019")
             GROUP BY anio ORDER BY anio desc');
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);

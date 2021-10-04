@@ -133,7 +133,7 @@ async function Consultar() {
          * Se crea la variable que contiene todas las opciones de la consulta seleccionadas.
          */
         const query =
-            OC +
+            "("+ OC +")" +
             " AND (" +
             Est +
             ") AND (" +
@@ -146,6 +146,7 @@ async function Consultar() {
          * Se crea la variable que contiene la acción que va hacia el controlador y la variable antes creada
          */
         var cadena = "query=" + query + "&Accion=Acuiferos";
+        console.log(cadena);
         /**
          *
          * @type Array

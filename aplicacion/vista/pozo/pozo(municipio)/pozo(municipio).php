@@ -48,8 +48,7 @@ $Usos = $registros->getTodos();
     <div class="col-sm">
         <!--Select del organismo de cuenca-->
         <label>Organismo de Cuenca:</label>
-        <select class="form-control" onchange="Organismos()" id="Organismos">
-            <option disabled selected value> -- Seleccione una opción -- </option>
+        <select class="form-control" onchange="Organismos()" multiple id="Organismos" name="Organismos[]">
             <?php
             foreach ($Organismos as $Organismo) {
             ?>
@@ -62,8 +61,7 @@ $Usos = $registros->getTodos();
     <!--Select del Estados-->
     <div class="col-sm" id="divEstado">
         <label>Estado:</label>
-        <select class="form-control" onchange="Estados()" id="Estados">
-            <option disabled selected value> -- Seleccione una opción -- </option>
+        <select class="form-control" onchange="Estados()" multiple id="Estados" name="Estados[]">
         </select>
     </div>
     <!--Fin del Select de los Estados-->
@@ -71,7 +69,7 @@ $Usos = $registros->getTodos();
     <!--Select del Municipios-->
     <div class="col-sm" id="divMuni">
         <label>Municipio:</label>
-        <select class="form-control" onchange="Municipios()" id="Municipios">
+        <select class="form-control" onchange="Municipios()" multiple id="Municipios" name="Municipios[]">
             <option disabled selected value> -- Seleccione una opción -- </option>
         </select>
     </div>
@@ -79,17 +77,12 @@ $Usos = $registros->getTodos();
 
     <div class="col-sm" id="divAcuifero">
         <label>Acuífero:</label>
-        <select onchange="limpiarAcuifero()" name="Acuiferos[]" multiple id="Acuiferos">
+        <select onchange="limpiarAcuifero2()" name="Acuiferos[]" multiple id="Acuiferos">
         </select>
     </div>
     <div class="col-sm">
         <label>Uso del Título:</label>
         <select onchange="getTitulo()" name="Usos[]" multiple id="Usos">
-            <?php
-            foreach ($Usos as $Uso) {
-            ?>
-                <option value="<?php echo $Uso['id_uso']; ?>"><?php echo $Uso['uso']; ?></option>
-            <?php } ?>
         </select>
     </div>
     <!--Select del Titulos-->
