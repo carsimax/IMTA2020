@@ -128,7 +128,10 @@ async function Estados() {
                 $("#Acuiferos").multiselect("reload");
             },
         }).always(function () {
-            getUsos();
+            $val = $("#Tipos").val();
+            if ($val != 1) {
+                getUsos();
+            }
             Swal.close();
         });
     } else {
@@ -191,6 +194,7 @@ async function limpiarAcuifero() {
      * Se limpia la tabla de acuiferos
      */
 }
+
 async function limpiarAcuifero2() {
     //Se valida para asignarle el la clase green
     if ($('#Acuiferos').val() === null) {

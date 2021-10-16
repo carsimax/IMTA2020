@@ -1272,7 +1272,7 @@ async function desgloce3() {
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(PROD).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(VAL).format("0,0.00") + "</b></td>" +
                                     '<td style="background-color:#CCD1D1" align="right" ><b>' + numeral(truncar(PROD / COS)).format("0,0.00") + "</b></td>" +
-                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeraltruncar(VAL / PROD).format("0,0.00") + "</b></td>" +
+                                    '<td style="background-color:#CCD1D1" align="right"><b>' + numeral(truncar(VAL / PROD)).format("0,0.00") + "</b></td>" +
                                     "</tr></tfoot></table>" +
                                     '</div>'
                                 );
@@ -2585,6 +2585,7 @@ async function grafica4(query2) {
         data: cadena,
         //Si el controlador devuelve una respuesta
         success: function (resp) {
+            console.log(resp);
             var Cosechada = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             var Prod = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             $.each(JSON.parse(resp), function (index, item) {
@@ -2625,14 +2626,6 @@ async function grafica4(query2) {
                 "XII",
                 "XIII",
             ];
-            /**
-             * Quitamos Cosechas en 0
-             */
-            while (Cosechada.includes(0)) {
-                var posicion = Cosechada.indexOf(0);
-                Cosechada.splice(posicion, 1);
-                etiquetas.splice(posicion, 1);
-            }
             var element = "G-4";
             new Chart(document.getElementById(element), {
                 type: "horizontalBar",
@@ -2665,15 +2658,6 @@ async function grafica4(query2) {
                     },
                 },
             });
-            /**
-             * Quitamos Produccion en ceros
-             * @type {string}
-             */
-            while (Prod.includes(0)) {
-                var posicion = Prod.indexOf(0);
-                Prod.splice(posicion, 1);
-                etiquetas2.splice(posicion, 1);
-            }
             var element = "G-4-1";
             new Chart(document.getElementById(element), {
                 type: "horizontalBar",

@@ -178,20 +178,15 @@ if (!isset($_SESSION)) {
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad del agua superficial</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones Climatológicas</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones Hidrométricas</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/agricola/agricola.php">Estadística Agrícola</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad
-                                    del agua superficial</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones
-                                    Climatológicas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones
-                                    Hidrométricas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de
-                                    Marginación</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario
-                                    de Obras de los Distritos de Riego</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">Consulta en mapas interactivos</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de Marginación</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario de Obras de los Distritos de Riego</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">Mapas interactivos</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a>                                
                             </div>
                         </li>
                         <li class="nav-item">
@@ -208,22 +203,16 @@ if (!isset($_SESSION)) {
                                 Consulta
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
+                            <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad del agua superficial</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones Climatológicas</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones Hidrométricas</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/agricola/agricola.php">Estadística Agrícola</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de Marginación</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario de Obras de los Distritos de Riego</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">Mapas interactivos</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/agricola/agricola.php">Estadística
-                                    Agrícola</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad
-                                    del agua superficial</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones
-                                    Climatológicas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones
-                                    Hidrométricas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/indice_marginacion/indice_marginacion.php">Índice de
-                                    Marginación</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario
-                                    de Obras de los Distritos de Riego</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">Consulta en mapas interactivos</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a>  
                             </div>
                         </li>
                         <li class="nav-item">
