@@ -180,7 +180,9 @@ async function Municipios() {
                 $("#Acuiferos").multiselect("loadOptions", data);
             },
         }).always(function () {
-            getUsos();
+            if ($val != 1) {
+                getUsos();
+            }
             Swal.close();
         });
     } else {

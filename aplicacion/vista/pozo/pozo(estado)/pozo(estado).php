@@ -64,7 +64,7 @@ $Usos = $registros->getTodos();
     <!--Select del Acuiferos-->
     <div class="col-sm" id="divAcuifero">
         <label>Acuífero:</label>
-        <select class="form-control" onchange="limpiarAcuifero()" id="Acuiferos">
+        <select class="form-control" onchange="limpiarAcuifero2()" id="Acuiferos">
             <option disabled selected value="0"> -- Seleccione una opción -- </option>
         </select>
     </div>
