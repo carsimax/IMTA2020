@@ -50,7 +50,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                     (777) 3 29 36 00 Ext. 115 <br><br>
 
                     <strong>Última actualización: </strong><br>
-                    ► octubre 2021
+                    ► Octubre 2021
                     <hr>
                     <strong>Instituciones colaboradoras:</strong><br>
                     Universidad Autónoma Chapingo <br>
@@ -60,8 +60,8 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
                     Responsable: Dr. Ernesto Sifuentes Ibarra<br>
                     <hr>
                     <strong>Programadores:</strong><br>
-                    ► Alberto González Sánchez, <br>
-                    ► Maximiliano Carsi Castrejon,<br>
+                    ► Alberto González Sánchez.<br>
+                    ► Maximiliano Carsi Castrejon.<br>
                     ► Jorge Calderón Peralta. <br> <br>
                     <strong>Apoyo Técnico y Diseño:</strong><br>
                     ► Juan Bahena Sánchez. <br>

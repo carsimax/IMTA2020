@@ -13,6 +13,7 @@ const getShapefiles = (module) => {
 
   document.getElementById("button_download_shapefile").disabled = true;
   document.getElementById("button_download_shapefile").style.opacity = "0.7";
+  document.getElementById("button_download_shapefile").textContent = "Generando capas";
 
   const data = {
     module,
@@ -28,11 +29,12 @@ const getShapefiles = (module) => {
     body: JSON.stringify(data)
   };
 
-  fetch("http://localhost:3000/", requestOptions)
+  fetch("http://sisuar.imta.mx/api", requestOptions)
     .then(response => response.json())
     .then(result => {
       document.getElementById("button_download_shapefile").disabled = false;
       document.getElementById("button_download_shapefile").style.opacity = "1";
+      document.getElementById("button_download_shapefile").textContent = "Descargar capas";
       console.log(result)
       const link = document.createElement("a");
       link.href = result.src;

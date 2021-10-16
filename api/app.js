@@ -13,21 +13,21 @@ app.use(express.urlencoded({ extended: false }));
 app.post('/', async function (req, res) {
   try {
     // const shapes = req.body;
-    const {module,shapes} = req.body;
-    
+    const { module, shapes } = req.body;
+
     const file_name = `SISUAR_${module}_${Date.now()}`;
     console.log(file_name);
-    const folder_dir = `./src/${file_name}`;
-    const zip_dir = `./src/${file_name}.tar`;
-    const src = `/api/src/${file_name}.tar`;
-    
+    const folder_dir = `../temp/${file_name}`;
+    const zip_dir = `../temp/${file_name}.tar`;
+    const src = `/temp/${file_name}.tar`;
+
     fs.mkdirSync(folder_dir);
     for (const shape of shapes) {
       const path = `${folder_dir}/${shape.id}.zip`;
       await convert(JSON.parse(shape.geoJSON), path)
     }
-    await compressing.zip.compressDir(folder_dir,zip_dir)
-    
+    await compressing.zip.compressDir(folder_dir, zip_dir)
+
     res.json({ ok: true, message: 'se ha construido el shape', src })
     setTimeout(() => {
       fs.rmSync(folder_dir, { recursive: true });
@@ -39,13 +39,20 @@ app.post('/', async function (req, res) {
   }
 });
 
+var os = require('os');
 
-
-
-const getFormattedDate = () => {
-  const d = new Date();
-  return `${d.getDate()}-${d.getUTCMonth() + 1}-${d.getFullYear()}`;
+var interfaces = os.networkInterfaces();
+var addresses = [];
+for (var k in interfaces) {
+  for (var k2 in interfaces[k]) {
+    var address = interfaces[k][k2];
+    if (address.family === 'IPv4' && !address.internal) {
+      addresses.push(address.address);
+    }
+  }
 }
+
+console.log(addresses);
 
 
 
@@ -54,8 +61,8 @@ app.get('/', function (req, res) {
 });
 
 
-app.listen(3000, () => {
-  console.log("Started on PORT 3000");
+app.listen(8000, () => {
+  console.log("Started on PORT 8000");
 })
 
 
