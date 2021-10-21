@@ -1929,9 +1929,7 @@ function crearMapa() {
 const saveLayers = (id, data) => {
     const div = document.createElement("div");
     div.id = id;
-
     var newContent = document.createTextNode(JSON.stringify(data));
     div.appendChild(newContent);
-    const d = document.getElementById("geoJSON");
     document.getElementById("geoJSON").appendChild(div);
 }

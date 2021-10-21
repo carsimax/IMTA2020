@@ -89,6 +89,7 @@ $filtros = $registros->getPozos();
                 <hr>
                 <?php require_once(__DIR__ . "/../plantillas/referencias.html"); ?>
             </div>
+            <div id="geoJSON" style="display: none;"></div>
         </main>
     </div>
 </div>

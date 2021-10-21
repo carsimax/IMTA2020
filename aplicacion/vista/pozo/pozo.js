@@ -1875,7 +1875,6 @@ async function getUsos() {
          * Si el controlador devuelve la consulta se procederá con el proceso de interpretación de los datos
          */
         success: function (resp) {
-            console.log(resp);
             /**
              * Primero se recorre el array con todos los estados devueltos por el controlador.
              */
