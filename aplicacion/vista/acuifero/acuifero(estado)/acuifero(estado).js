@@ -140,13 +140,15 @@ async function Consultar() {
             Acu +
             ") GROUP by id_organismo,id_estado,id_acuifero";
 
+            // console.log(query)
+
         /**
          *
          * @type String
          * Se crea la variable que contiene la acción que va hacia el controlador y la variable antes creada
          */
         var cadena = "query=" + query + "&Accion=Acuiferos";
-        console.log(cadena);
+        // console.log(cadena);
         /**
          *
          * @type Array

@@ -138,10 +138,9 @@ function getOC_SIG(callback) {
         /**
          * Una vez construido el JSON se manda este al MAPA de Leaflet
          */
-        // alert("Aqui se tiene el GeoJSON del OC");
         // Se almacena la informacion en div oculto para exportarlo despues
-        saveLayers('organismos_cuenca', OCSHP.features)
-        //document.getElementById("geoJSON").appendChild = `<div id="organismo_cuenca">${JSON.stringify(OCSHP.features)}</div>`;
+        const data = "SELECT organismo_json as json FROM sig_organismo WHERE " + OC;
+        saveLayers('organismos_cuenca', data)
 
         OCSelect = L.geoJson(OCSHP, {
 
@@ -262,7 +261,9 @@ function getRegionesHidrologicas_SIG(callback) {
             });
         },
     }).always(function () {
-        saveLayers('estados', RegHidroJSON.features)
+        
+        const data = "SELECT region_hidrologica_json as json FROM sig_region_hidrologica WHERE " + RH;
+        saveLayers('regiones_hidrologicas', data);
         /**
          * Una vez construido el JSON se manda este al MAPA de Leaflet
          */
@@ -374,7 +375,9 @@ function getEst_SIG(callback) {
     }).always(function () {
         
         // alert("Aqui se tiene el GeoJSON del ESTADO");
-        saveLayers('estados', EstadosSHP.features)
+        const data = "SELECT estado_json json FROM sig_estado WHERE " + Est;
+        saveLayers('estados', data)
+
         EstSelect = L.geoJson(EstadosSHP, {
             style: colorEstado,
             onEachFeature: function popUp(f, l) {
@@ -452,7 +455,10 @@ function getMuni_SIG(callback) {
             });
         },
     }).always(function () {
-        saveLayers('municipios', municipioSHP.features)
+        // saveLayers('municipios', municipioSHP.features)
+        const data = "SELECT municipio_json as json FROM sig_municipio WHERE " + Mun;
+        saveLayers('municipios', data);
+
         MunSelect = L.geoJson(municipioSHP, {
             style: colorMuni,
             onEachFeature: function popUp(f, l) {
@@ -535,7 +541,9 @@ function getAcu_SIG(callback) {
             });
         },
     }).always(function () {
-        saveLayers('acuiferos', AcuiferoSHP.features)
+        const data = "SELECT acuifero_json as json FROM sig_acuifero WHERE " + Acu;
+        saveLayers('acuiferos', data)
+
         AcuSelect = L.geoJson(AcuiferoSHP, {
             onEachFeature: function popUp(f, l) {
                 var dispo = '';
@@ -653,7 +661,9 @@ function getPresa_SIG(callback) {
             });
         },
     }).always(function () {
-        saveLayers('presas', presasSHP.features)
+        const data = "SELECT presa_json as json FROM sig_presa WHERE " + Estado;
+        saveLayers('presas', data);
+        
         PresaSelect = L.geoJson(presasSHP, {
             onEachFeature: function popUp(f, l) {
                 if (f.properties) {
@@ -722,8 +732,9 @@ function getDR_SIG(callback) {
             });
         }
     }).always(function () {
-        saveLayers('distritos_riego', distritoSHP.features)
-
+        const data = "SELECT distrito_riego_json as json FROM sig_distrito_riego WHERE  " + DR;
+        saveLayers('distritos_riego', data);
+        
         DRSelect = L.geoJson(distritoSHP, {
             style: colorMuni,
             onEachFeature: function popUp(f, l) {
@@ -806,7 +817,10 @@ function getDTT_SIG(callback) {
             });
         }
     }).always(function () {
-        saveLayers('distritos_temporal', distritoSHP.features)
+        
+        const data = "SELECT dtt_json as json FROM sig_dtt WHERE " + DR;
+        saveLayers('distritos_temporal', data);
+
         DRSelect = L.geoJson(distritoSHP, {
             style: colorMuni,
             onEachFeature: function popUp(f, l) {
@@ -943,10 +957,10 @@ function getPozo_SIG(callback) {
             });
         }
     }).always(function () {
-        /**
-         * Aqui se encarga de mandar el JSON al MAPA de Leaflet
-         */
-        saveLayers('pozos', pozosSHP.features)
+        
+
+        const data = "SELECT dtt_json as json FROM sig_dtt WHERE " + concesiones;
+        saveLayers('pozos', data);
         pozosL = L.geoJson(pozosSHP, {
             /**
              *
@@ -1708,7 +1722,10 @@ function getEstadoMarginacion_SIG(callback) {
             });
         }
     }).always(function () {
-        saveLayers('estados_marginacion', EstadosSHP.features)
+        
+        const data = "SELECT estado_json json FROM sig_estado WHERE " + Est;
+        saveLayers('estados_marginacion', data);
+
         EstSelect = L.geoJson(EstadosSHP, {
             onEachFeature: function popUp(f, l) {
                 if (f.properties) {
@@ -1785,7 +1802,9 @@ function getMunicipioMarginacion_SIG(callback) {
             });
         },
     }).always(function () {
-        saveLayers('municipio_marginacion', municipioSHP.features);
+        const data = "SELECT municipio_json as json FROM sig_municipio WHERE " + Mun;
+        saveLayers('municipio_marginacion', data);
+
         MunSelect = L.geoJson(municipioSHP, {
             style: colorMuni,
             onEachFeature: function popUp(f, l) {
@@ -1929,7 +1948,7 @@ function crearMapa() {
 const saveLayers = (id, data) => {
     const div = document.createElement("div");
     div.id = id;
-    var newContent = document.createTextNode(JSON.stringify(data));
+    var newContent = document.createTextNode(data);
     div.appendChild(newContent);
     document.getElementById("geoJSON").appendChild(div);
 }
