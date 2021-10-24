@@ -34,6 +34,7 @@ const query = (query) => {
 
 app.post('/', async function (req, res) {
   try {
+    const points = ['pozos', 'estaciones_climatologicas', 'estaciones_hidrologicas', 'sitio_db05', 'sitios_dqo', 'sitios_sst', 'sitios_cf'];
     const { querys, module } = req.body;
     // SE OBTIENEN LOS PATHS A UTILZAR
     const file_name = `SISUAR_${module}_${Date.now()}`;
@@ -44,13 +45,22 @@ app.post('/', async function (req, res) {
 
     // SE REALIZAN LAS CONSULTAS
     for (const consulta of querys) {
-      const features = [];
-      //SE CONSULTA A LA BASE DE DATOS
-      const rows = await query(consulta.query);
-      rows.forEach((row) => features.push(JSON.parse(row.json)));
+      let features = [];
+      //SE CONSULTA A LA BASE DE DATOS GEOESPACIAL
+      
       const path = `${folder_dir}/${consulta.id}.zip`;
-      // SE REALIZA LA CONV DEL SHAPE
+      const isPoint = points.some((element) => element === consulta.id);
+      if (isPoint) {
+        const parsedInformation = JSON.parse(consulta.query);
+        features = [...parsedInformation]
+      }else{
+        const rows = await query(consulta.query);
+        rows.forEach((row) => features.push(JSON.parse(row.json)));
+        // SE REALIZA LA CONV DEL SHAPE
+        
+      }
       await convert(features, path)
+      
     }
 
     // SE COMPRIMEN TODOS LOS SHAPES EN UNA SOLA CARPETA
@@ -68,6 +78,17 @@ app.post('/', async function (req, res) {
 
   }
 });
+
+
+app.get('/', function (req, res) {
+  res.send('Hola mundo')
+});
+
+
+app.listen(8000, () => {
+  console.log("Started on PORT 8000");
+});
+
 
 
 // app.post('/', async function (req, res) {
@@ -99,12 +120,3 @@ app.post('/', async function (req, res) {
 //     res.json({ ok: false, message: 'no se ha podido construir el shape' })
 //   }
 // });
-
-app.get('/', function (req, res) {
-  res.send('Hola mundo')
-});
-
-
-app.listen(8000, () => {
-  console.log("Started on PORT 8000");
-});

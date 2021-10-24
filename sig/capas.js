@@ -959,8 +959,9 @@ function getPozo_SIG(callback) {
     }).always(function () {
         
 
-        const data = "SELECT dtt_json as json FROM sig_dtt WHERE " + concesiones;
-        saveLayers('pozos', data);
+        // const data = "SELECT dtt_json as json FROM sig_dtt WHERE " + concesiones;
+        // saveLayers('pozos', data);
+        saveLayers('pozos', JSON.stringify(pozosSHP.features))
         pozosL = L.geoJson(pozosSHP, {
             /**
              *
@@ -1055,7 +1056,7 @@ function getEstacionesSIG(callback) {
                 });
             }
         }).always(function () {
-            saveLayers('estaciones_climatologicas', estacionesCJSON.features)
+            saveLayers('estaciones_climatologicas', JSON.stringify(estacionesCJSON.features))
             //Aqui se encarga de mandar el JSON al MAPA de Leaflet
             estacionesCLayer = L.geoJson(estacionesCJSON, {
                 pointToLayer: function (feature, latlng) {
@@ -1169,7 +1170,7 @@ function getEstacionesHidroSIG(callback) {
                 });
             }
         }).always(function () {
-            saveLayers('estaciones_hidrologicas', estacionesHJSON.features)
+            saveLayers('estaciones_hidrologicas', JSON.stringify(estacionesHJSON.features))
             //Aqui se encarga de mandar el JSON al MAPA de Leaflet
             estacionesHLayer = L.geoJson(estacionesHJSON, {
                 pointToLayer: function (feature, latlng) {
@@ -1297,7 +1298,7 @@ function getSitioDBO5_SIG(callback) {
                 });
             },
         }).always(function () {
-            saveLayers('sitio_db05', SitiosSHP.features)
+            saveLayers('sitio_db05', JSON.stringify(SitiosSHP.features))
             sitiosL = L.geoJson(SitiosSHP, {
                 pointToLayer: function (feature, latlng) {
                     return L.circleMarker(
@@ -1413,7 +1414,7 @@ function getSitioDQO_SIG(callback) {
                 });
             },
         }).always(function () {
-            saveLayers('sitios_dqo', SitiosSHP.features)
+            saveLayers('sitios_dqo', JSON.stringify(SitiosSHP.features))
             sitiosL = L.geoJson(SitiosSHP, {
                 pointToLayer: function (feature, latlng) {
                     return L.circleMarker(
@@ -1529,7 +1530,7 @@ function getSitioSST_SIG(callback) {
                 });
             },
         }).always(function () {
-            saveLayers('sitios_sst', SitiosSHP.features)
+            saveLayers('sitios_sst', JSON.stringify(SitiosSHP.features))
             sitiosL = L.geoJson(SitiosSHP, {
                 pointToLayer: function (feature, latlng) {
                     return L.circleMarker(
@@ -1646,7 +1647,7 @@ function getSitioCF_SIG(callback) {
             },
         }).always(function () {
 
-            saveLayers('sitios_cf', SitiosSHP.features)
+            saveLayers('sitios_cf', JSON.stringify(SitiosSHP.features))
             sitiosL = L.geoJson(SitiosSHP, {
                 pointToLayer: function (feature, latlng) {
                     return L.circleMarker(

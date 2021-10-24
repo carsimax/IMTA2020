@@ -1,3 +1,9 @@
+var sesion = document.getElementById("sesionStatus").value;
+console.log(sesion);
+if (sesion !== "1") {
+  document.getElementById("button_download_shapefile").style.opacity = "0";
+}
+
 /**
  * llama al api para construir archivos Shapefiles de GEOJSON 
  * @param {string} module nombre del modulo de consulta
