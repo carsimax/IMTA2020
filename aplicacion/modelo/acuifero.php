@@ -393,29 +393,29 @@ class Acuifero {
             $sql = '
             SELECT
             organismo.id_organismo,
-            CONCAT(organismo.numero, \'-\', organismo.nombre)as Organismo,
+            CONCAT(organismo.numero, \'-\', organismo.nombre) as Organismo,
             estado.id_estado,
             estado.nombre as Estado,
             municipio.id_municipio,
             municipio.nombre as Municipio,
             acuifero.id_acuifero,
             CONCAT(acuifero.id_acuifero, \'-\', acuifero.nombre) as Acuifero,
-            TRUNCATE((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.r,2) as R,
-            TRUNCATE((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.dnc,2) as DNC,
-            TRUNCATE((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas,2) as VCAS,
-            TRUNCATE((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala,2) as VEALA,
-            TRUNCATE((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr,2) as VAPTYR,
-            TRUNCATE((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaprh,2) as VAPRH,
-            TRUNCATE((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.dma,2) as DMA,
-            TRUNCATE(((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas)+((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala)+((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr)+((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr),2) as VEAS,
-            TRUNCATE((1-((((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas)+((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala)+((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr)+((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr))/((SUM(DISTINCT acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.r)))*100,2) as Disp
+            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.r,2) as R,
+            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.dnc,2) as DNC,
+            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas,2) as VCAS,
+            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala,2) as VEALA,
+            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr,2) as VAPTYR,
+            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaprh,2) as VAPRH,
+            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.dma,2) as DMA,
+            TRUNCATE(((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr),2) as VEAS,
+            TRUNCATE((1-((((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr))/((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.r)))*100,2) as Disp
             from acuifero_municipio
-            LEFT JOIN acuifero on acuifero.id_acuifero=acuifero_municipio.acuifero_id
+            LEFT JOIN acuifero on acuifero.id_acuifero=acuifero_municipio.acuifero_id 
             LEFT JOIN acuifero_disponibilidad on acuifero_disponibilidad.acuifero_id=acuifero.id_acuifero
             LEFT JOIN estado on estado.id_estado=acuifero_municipio.estado_id
-            LEFT JOIN municipio on municipio.id_municipio=acuifero_municipio.municipio_id
-            LEFT JOIN organismo_estado on organismo_estado.estado_id=estado.id_estado
-            LEFT JOIN organismo on organismo.id_organismo=organismo_estado.organismo_id
+            LEFT JOIN municipio on municipio.id_municipio=acuifero_municipio.municipio_id 
+            LEFT JOIN organismo_estado on organismo_estado.estado_id=estado.id_estado and organismo_estado.organismo_id=municipio.organismo_id
+            LEFT JOIN organismo on organismo.id_organismo=municipio.organismo_id
             WHERE ' . $query;
             $select = $db->prepare($sql);
             $select->execute();
