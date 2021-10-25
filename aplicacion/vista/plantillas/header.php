@@ -2,6 +2,8 @@
 <?php
 if (!isset($_SESSION)) {
     session_start();
+    header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+    header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 }
 ?>
 <html lang="es">
@@ -12,6 +14,10 @@ if (!isset($_SESSION)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <!--JAVASCRIPT-->
     <script src=" https://code.jquery.com/jquery-3.5.1.js"></script>
     <!--CARGA DE LOS ARCHIVOS DE GOB MX-->
@@ -186,7 +192,7 @@ if (!isset($_SESSION)) {
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario de Obras de los Distritos de Riego</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">Mapas interactivos</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a>                                
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -203,7 +209,7 @@ if (!isset($_SESSION)) {
                                 Consulta
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/acuifero/acuiferos.php">Acuíferos</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/calidad_agua_superficial/calidad_agua_superficial.php">Calidad del agua superficial</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_climatologicas/estaciones_climatologicas.php">Estaciones Climatológicas</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/estaciones_hidrometricas/estaciones_hidrometricas.php">Estaciones Hidrométricas</a>
@@ -212,7 +218,7 @@ if (!isset($_SESSION)) {
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/inventario/inventario.php">Inventario de Obras de los Distritos de Riego</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/mapas_interactivos/mapas_interactivos.php">Mapas interactivos</a>
                                 <a class="dropdown-item-gob" href="/aplicacion/vista/presa/presas.php">Presas</a>
-                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a>  
+                                <a class="dropdown-item-gob" href="/aplicacion/vista/pozo/pozos.php">Títulos de concesión</a>
                             </div>
                         </li>
                         <li class="nav-item">
