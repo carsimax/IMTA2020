@@ -116,7 +116,7 @@ async function Estados() {
                         '<option value="' +
                         item.id_municipio +
                         '">' +
-                        item.nombre +
+                        item.nombre_mun+' - '+item.nombre_est +
                         "</option>"
                     );
                 });

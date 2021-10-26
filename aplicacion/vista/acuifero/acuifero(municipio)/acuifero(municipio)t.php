@@ -2,9 +2,9 @@
     <nav>
         <div class="nav nav-tabs" id="nav-tab-acu" role="tablist">
             <a class="nav-item nav-link active" id="nav-OC-tab" data-toggle="tab" href="#nav-OC" role="tab" aria-controls="nav-OC" aria-selected="true">Organismo Cuenca</a>
-            <a class="nav-item nav-link" id="nav-EST-tab" data-toggle="tab" href="#nav-EST" role="tab" aria-controls="nav-EST" aria-selected="true" onclick="mostrarDEstado()">Estado</a>
-            <a class="nav-item nav-link" id="nav-MUNI-tab" data-toggle="tab" href="#nav-MUNI" role="tab" aria-controls="nav-MUNI" aria-selected="true" onclick="mostrarMunicipio()">Municipio</a>
-            <a class="nav-item nav-link" id="nav-ACU-tab" data-toggle="tab" href="#nav-ACU" role="tab" aria-controls="nav-EST" aria-selected="true" onclick=" mostrarDAcuifero()">Acuífero</a>
+            <a class="nav-item nav-link" id="nav-EST-tab" data-toggle="tab" href="#nav-EST" role="tab" aria-controls="nav-EST" aria-selected="true" onclick="mostrarDEstado2()">Estado</a>
+            <a class="nav-item nav-link" id="nav-MUNI-tab" data-toggle="tab" href="#nav-MUNI" role="tab" aria-controls="nav-MUNI" aria-selected="true" onclick="mostrarMunicipio2()">Municipio</a>
+            <a class="nav-item nav-link" id="nav-ACU-tab" data-toggle="tab" href="#nav-ACU" role="tab" aria-controls="nav-EST" aria-selected="true" onclick=" mostrarDAcuifero2()">Acuífero</a>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">

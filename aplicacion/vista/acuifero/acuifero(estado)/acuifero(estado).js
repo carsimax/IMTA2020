@@ -133,14 +133,14 @@ async function Consultar() {
          * Se crea la variable que contiene todas las opciones de la consulta seleccionadas.
          */
         const query =
-            "("+ OC +")" +
+            "(" + OC + ")" +
             " AND (" +
             Est +
             ") AND (" +
             Acu +
             ") GROUP by id_organismo,id_estado,id_acuifero";
 
-            // console.log(query)
+        // console.log(query)
 
         /**
          *
@@ -339,3 +339,499 @@ async function limpiarAcuifero() {
     $("#divPrioridad").hide();
     $("#botonMapa").hide();
 }
+
+
+
+async function mostrarDEstado() {
+    if (!tablaEst.data().any()) {
+        alertaCargando("Por favor espere", "Generando tabla");
+        const OC = await obtenerOrganismo();
+        const Est = await obtenerEstado();
+        const Acu = await obtenerAcuifero();
+        if (Acu !== "" && OC !== "" && Est !== "") {
+            /**
+             *
+             * @type String
+             * Se crea la variable que contiene todas las opciones de la consulta seleccionadas.
+             */
+            const query =
+                "(" + OC + ")" +
+                " AND (" +
+                Est +
+                ") AND (" +
+                Acu +
+                ") GROUP by id_organismo,id_estado,id_acuifero";
+
+            /**
+             *
+             * @type String
+             * Se crea la variable que contiene la acción que va hacia el controlador y la variable antes creada
+             */
+            var cadena = "query=" + query + "&Accion=Acuiferos";
+            /**
+             *
+             * @type Array
+             * Array de datos
+             */
+            data = [];
+            /**
+             *
+             * @param {type} resp
+             * @returns {undefined}
+             * Se manda a llamar a una función Ajax que realiza la consulta de los datos a la base de datos.
+             */
+            $.ajax({
+                type: "POST",
+                url: "/aplicacion/controlador/mapa.php",
+                data: cadena,
+                //Si el controlador devuelve una respuesta
+                success: function (resp) {
+                    /**
+                     *
+                     * @param {type} miarray
+                     * @param {type} prop
+                     * @returns {unresolved}
+                     * Primero se crea una variable que se encarga de agrupar los datos dependiedo el pararametro recibido
+                     */
+                    var groupBy = function (miarray, prop) {
+                        return miarray.reduce(function (groups, item) {
+                            var val = item[prop];
+                            groups[val] = groups[val] || {
+                                id_organismo: item.id_organismo,
+                                id_estado: item.id_estado,
+                                id_acuifero: item.id_acuifero,
+                                Organismo: item.Organismo,
+                                Estado: item.Estado,
+                                Acuifero: item.Acuifero,
+                                R: 0,
+                                DNC: 0,
+                                VCAS: 0,
+                                VEALA: 0,
+                                VAPTYR: 0,
+                                VAPRH: 0,
+                                DMA: 0,
+                                VEAS: 0,
+                                Disp: 0,
+                            };
+                            groups[val].R += parseFloat(item.R);
+                            groups[val].DNC += parseFloat(item.DNC);
+                            groups[val].VCAS += parseFloat(item.VCAS);
+                            groups[val].VEALA += parseFloat(item.VEALA);
+                            groups[val].VAPTYR += parseFloat(item.VAPTYR);
+                            groups[val].VAPRH += parseFloat(item.VAPRH);
+                            groups[val].DMA += parseFloat(item.DMA);
+                            groups[val].VEAS += parseFloat(item.VEAS);
+                            groups[val].Disp += parseFloat(item.Disp);
+                            return groups;
+                        }, {});
+                    };
+                    /**
+                     *
+                     * @type Array
+                     * Se crea el array con todos los estados de cuenca seleccionados
+                     */
+                    var Estados = Object.values(groupBy(JSON.parse(resp), "id_estado"));
+                    /**
+                     * Se filtran por cada estado
+                     */
+                    $.each(Estados, function (index, item) {
+                        data.push([
+                            item,
+                            item.Estado,
+                            numeral(Number.parseFloat(item.R)).format("0,0.00"),
+                            numeral(Number.parseFloat(item.DNC)).format("0,0.00"),
+                            numeral(Number.parseFloat(item.VCAS)).format("0,0.00"),
+                            numeral(Number.parseFloat(item.VEALA)).format("0,0.00"),
+                            numeral(Number.parseFloat(item.VAPTYR)).format("0,0.00"),
+                            numeral(Number.parseFloat(item.VAPRH)).format("0,0.00"),
+                            numeral(Number.parseFloat(item.DMA)).format("0,0.00"),
+                        ]);
+                    });
+                    tablaEst = $("#Est").DataTable({
+                        "order": [[1, "asc"]],
+                        data: data,
+                        columnDefs: [
+                            { className: 'dt-body-right', targets: [2, 3, 4, 5, 6, 7, 8] },
+                            {
+                                targets: 0,
+                                data: null,
+                                defaultContent:
+                                    '<button data-toggle="modal" data-target="#graficaModal" class="btn btn-gob btn-fill  btn-block"><i class="far fa-chart-bar"></i></button>',
+                            },
+                        ],
+                        dom: "Bfrtip",
+                        columns: [
+                            {
+                                title: "Gráfica",
+                            },
+                            {
+                                title: "Estado",
+                            },
+                            {
+                                title: "R (hm³)",
+                            },
+                            {
+                                title: "DNC (hm³)",
+                            },
+                            {
+                                title: "VCAS (hm³)",
+                            },
+                            {
+                                title: "VEALA (hm³)",
+                            },
+                            {
+                                title: "VAPTYR (hm³)",
+                            },
+                            {
+                                title: "VAPRH (hm³)",
+                            },
+                            {
+                                title: "DMA (hm³)",
+                            },
+                        ],
+                        buttons: [
+                            {
+                                extend: "excelHtml5",
+                                title: "Disponibilidad de acuíferos por Estado",
+                                className: estiloboton,
+                                text: "Exportar Excel",
+                                exportOptions: {
+                                    columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                                },
+                            },
+                            {
+                                extend: "pdfHtml5",
+                                title: "Disponibilidad de acuíferos por Estado",
+                                className: estiloboton,
+                                text: "Exportar PDF",
+                                messageBottom: citas,
+                                orientation: "portrait",
+                                pageSize: "A4",
+                                exportOptions: {
+                                    columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                                },
+                                customize: function (doc) {
+                                    //Remove the title created by datatTables
+                                    doc.content.splice(0, 1);
+                                    //Create a date string that we use in the footer. Format is dd-mm-yyyy
+                                    var now = new Date();
+                                    var jsDate =
+                                        now.getDate() +
+                                        "-" +
+                                        (now.getMonth() + 1) +
+                                        "-" +
+                                        now.getFullYear();
+                                    // It's important to create enough space at the top for a header !!!
+                                    doc.pageMargins = [20, 70, 20, 50];
+                                    // Set the font size fot the entire document
+                                    doc.defaultStyle.fontSize = 10;
+                                    // Set the fontsize for the table header
+                                    doc.styles.tableHeader.fontSize = 10;
+                                    doc["header"] = function () {
+                                        return {
+                                            columns: [
+                                                {
+                                                    image: logo,
+                                                    width: 200,
+                                                },
+                                                {
+                                                    alignment: "left",
+                                                    //italics: true,
+                                                    text: "Disponibilidad de acuíferos por Estado",
+                                                    fontSize: 12.5,
+                                                    margin: [10, 5],
+                                                },
+                                                {
+                                                    alignment: "right",
+                                                    fontSize: 10,
+                                                    text: jsDate.toString(),
+                                                },
+                                            ],
+                                            margin: 20,
+                                        };
+                                    };
+                                    doc["footer"] = function (page, pages) {
+                                        return {
+                                            columns: [
+                                                {
+                                                    // This is the right column
+                                                    alignment: "center",
+                                                    text: [
+                                                        "Página ",
+                                                        { text: page.toString() },
+                                                        " de ",
+                                                        { text: pages.toString() },
+                                                    ],
+                                                },
+                                            ],
+                                            margin: [50, 0],
+                                        };
+                                    };
+                                    var objLayout = {};
+                                    objLayout["hLineWidth"] = function (i) {
+                                        return 0.5;
+                                    };
+                                    objLayout["vLineWidth"] = function (i) {
+                                        return 0.5;
+                                    };
+                                    objLayout["hLineColor"] = function (i) {
+                                        return "#aaaaaa";
+                                    };
+                                    objLayout["vLineColor"] = function (i) {
+                                        return "#aaaaaa";
+                                    };
+                                    objLayout["paddingLeft"] = function (i) {
+                                        return 4;
+                                    };
+                                    objLayout["paddingRight"] = function (i) {
+                                        return 4;
+                                    };
+                                    doc.content[0].layout = objLayout;
+                                },
+                            },
+                        ],
+                        language: {
+                            url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+                        },
+                    });
+                },
+            }).always(async function () {
+                await Swal.close();
+            });
+        }
+    }
+}
+
+async function mostrarDAcuifero() {
+    if (!tablaAcu.data().any()) {
+      alertaCargando("Por favor espere", "Generando tabla");
+      const OC = await obtenerOrganismo();
+      const Est = await obtenerEstado();
+      const Acu = await obtenerAcuifero();
+      if (Acu !== "" && OC !== "" && Est !== "") {
+        const query =
+        "("+ OC +")" +
+        " AND (" +
+        Est +
+        ") AND (" +
+        Acu +
+        ") GROUP by id_organismo,id_estado,id_acuifero";
+        var cadena = "query=" + query + "&Accion=Acuiferos";
+        var data = [];
+        $.ajax({
+          type: "POST",
+          url: "/aplicacion/controlador/mapa.php",
+          data: cadena,
+          success: async function (resp) {
+            var groupBy = function (miarray, prop) {
+              return miarray.reduce(function (groups, item) {
+                var val = item[prop];
+                groups[val] = groups[val] || {
+                  id_organismo: item.id_organismo,
+                  id_estado: item.id_estado,
+                  id_acuifero: item.id_acuifero,
+                  Organismo: item.Organismo,
+                  Estado: item.Estado,
+                  Acuifero: item.Acuifero,
+                  R: 0,
+                  DNC: 0,
+                  VCAS: 0,
+                  VEALA: 0,
+                  VAPTYR: 0,
+                  VAPRH: 0,
+                  DMA: 0,
+                  VEAS: 0,
+                  Disp: 0,
+                };
+                groups[val].R += parseFloat(item.R);
+                groups[val].DNC += parseFloat(item.DNC);
+                groups[val].VCAS += parseFloat(item.VCAS);
+                groups[val].VEALA += parseFloat(item.VEALA);
+                groups[val].VAPTYR += parseFloat(item.VAPTYR);
+                groups[val].VAPRH += parseFloat(item.VAPRH);
+                groups[val].DMA += parseFloat(item.DMA);
+                groups[val].VEAS += parseFloat(item.VEAS);
+                groups[val].Disp += parseFloat(item.Disp);
+                return groups;
+              }, {});
+            };
+            /**
+             *
+             * @type Array
+             * Se crea el array con todos los Acuiferos
+             */
+            var Acuiferos = Object.values(
+              groupBy(JSON.parse(resp), "id_acuifero")
+            );
+            $.each(Acuiferos, function (index, item) {
+              data.push([
+                item,
+                item.Estado,
+                item.Acuifero,
+                numeral(Number.parseFloat(item.R)).format("0,0.00"),
+                numeral(Number.parseFloat(item.DNC)).format("0,0.00"),
+                numeral(Number.parseFloat(item.VCAS)).format("0,0.00"),
+                numeral(Number.parseFloat(item.VEALA)).format("0,0.00"),
+                numeral(Number.parseFloat(item.VAPTYR)).format("0,0.00"),
+                numeral(Number.parseFloat(item.VAPRH)).format("0,0.00"),
+                numeral(Number.parseFloat(item.DMA)).format("0,0.00")
+              ]);
+            });
+            tablaAcu = $("#Acu").DataTable({
+              "order": [[1, "asc"], [2, "asc"]],
+              data: data,
+              columnDefs: [
+                { className: 'dt-body-right', targets: [3, 4, 5, 6, 7, 8, 9] },
+                {
+                  targets: 0,
+                  data: null,
+                  defaultContent:
+                    '<button data-toggle="modal" data-target="#graficaModal" class="btn btn-gob btn-fill  btn-block"><i class="far fa-chart-bar"></i></button>',
+                },
+              ],
+              dom: "Bfrtip",
+              columns: [
+                {
+                  title: "Gráfica",
+                },
+                {
+                  title: "Estado",
+                },
+                {
+                  title: "Acuífero",
+                },
+                {
+                  title: "R (hm³)",
+                },
+                {
+                  title: "DNC (hm³)",
+                },
+                {
+                  title: "VCAS (hm³)",
+                },
+                {
+                  title: "VEALA (hm³)",
+                },
+                {
+                  title: "VAPTYR (hm³)",
+                },
+                {
+                  title: "VAPRH (hm³)",
+                },
+                {
+                  title: "DMA (hm³)",
+                },
+              ],
+              buttons: [
+                {
+                  extend: "excelHtml5",
+                  title: "Disponibilidad de acuíferos",
+                  className: estiloboton,
+                  text: "Exportar Excel",
+                  exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+                  },
+                },
+                {
+                  extend: "pdfHtml5",
+                  title: "Disponibilidad de acuíferos",
+                  className: estiloboton,
+                  text: "Exportar PDF",
+                  messageBottom: citas,
+                  orientation: "portrait",
+                  pageSize: "A4",
+                  exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+                  },
+                  customize: function (doc) {
+                    //Remove the title created by datatTables
+                    doc.content.splice(0, 1);
+                    //Create a date string that we use in the footer. Format is dd-mm-yyyy
+                    var now = new Date();
+                    var jsDate =
+                      now.getDate() +
+                      "-" +
+                      (now.getMonth() + 1) +
+                      "-" +
+                      now.getFullYear();
+  
+                    // It's important to create enough space at the top for a header !!!
+                    doc.pageMargins = [20, 70, 20, 50];
+                    // Set the font size fot the entire document
+                    doc.defaultStyle.fontSize = 10;
+                    // Set the fontsize for the table header
+                    doc.styles.tableHeader.fontSize = 10;
+                    doc["header"] = function () {
+                      return {
+                        columns: [
+                          {
+                            image: logo,
+                            width: 200,
+                          },
+                          {
+                            alignment: "left",
+                            //italics: true,
+                            text: "Disponibilidad de acuíferos",
+                            fontSize: 12.5,
+                            margin: [10, 5],
+                          },
+                          {
+                            alignment: "right",
+                            fontSize: 10,
+                            text: jsDate.toString(),
+                          },
+                        ],
+                        margin: 20,
+                      };
+                    };
+                    doc["footer"] = function (page, pages) {
+                      return {
+                        columns: [
+                          {
+                            // This is the right column
+                            alignment: "center",
+                            text: [
+                              "Página ",
+                              { text: page.toString() },
+                              " de ",
+                              { text: pages.toString() },
+                            ],
+                          },
+                        ],
+                        margin: [50, 0],
+                      };
+                    };
+                    var objLayout = {};
+                    objLayout["hLineWidth"] = function (i) {
+                      return 0.5;
+                    };
+                    objLayout["vLineWidth"] = function (i) {
+                      return 0.5;
+                    };
+                    objLayout["hLineColor"] = function (i) {
+                      return "#aaaaaa";
+                    };
+                    objLayout["vLineColor"] = function (i) {
+                      return "#aaaaaa";
+                    };
+                    objLayout["paddingLeft"] = function (i) {
+                      return 4;
+                    };
+                    objLayout["paddingRight"] = function (i) {
+                      return 4;
+                    };
+                    doc.content[0].layout = objLayout;
+                  },
+                },
+              ],
+              language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+              },
+            });
+          },
+        }).always(async function () {
+          await Swal.close();
+        });
+      }
+    }
+  }

@@ -199,7 +199,7 @@ class Municipio {
         $db = $pdo->DBConnect();
         try {
             $db->beginTransaction();
-            $sql = 'SELECT * FROM municipio WHERE ' . $query. 'ORDER BY nombre ASC';
+            $sql = 'SELECT municipio.id_municipio,municipio.nombre as nombre_mun,estado.nombre as nombre_est FROM municipio  INNER JOIN estado on estado.id_estado=municipio.estado_id WHERE ' . $query. 'ORDER BY nombre_mun ASC';
             $select = $db->prepare($sql);
             $select->execute();
             $registros = $select->fetchAll(PDO::FETCH_ASSOC);
