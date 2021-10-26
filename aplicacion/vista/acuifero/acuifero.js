@@ -501,7 +501,7 @@ async function mostrarDEstado() {
         Est +
         ") AND (" +
         Acu +
-        ") GROUP by id_organismo,id_estado,id_acuifero";
+        ") GROUP by id_organismo,id_estado";
 
       /**
        *
