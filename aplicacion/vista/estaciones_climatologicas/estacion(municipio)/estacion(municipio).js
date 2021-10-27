@@ -46,7 +46,7 @@ async function Estados() {
                 //Se vacia el select de municipios
                 $("#Municipios").empty();
                 $.each(JSON.parse(resp), function (index, item) {
-                    data.push('<option value="' + item.id_municipio + '">' + item.nombre + "</option>");
+                    data.push('<option value="' + item.id_municipio + '">' + item.nombre_mun+ ' - '+item.nombre_est + "</option>");
                 });
             }
         }).always(function () {
