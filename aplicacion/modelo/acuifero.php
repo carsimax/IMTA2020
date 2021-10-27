@@ -400,15 +400,15 @@ class Acuifero {
             municipio.nombre as Municipio,
             acuifero.id_acuifero,
             CONCAT(acuifero.id_acuifero, \'-\', acuifero.nombre) as Acuifero,
-            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.r,2) as R,
-            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.dnc,2) as DNC,
-            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas,2) as VCAS,
-            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala,2) as VEALA,
-            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr,2) as VAPTYR,
-            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaprh,2) as VAPRH,
-            TRUNCATE((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.dma,2) as DMA,
-            TRUNCATE(((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr),2) as VEAS,
-            TRUNCATE((1-((((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr))/((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.r)))*100,2) as Disp
+            ROUND((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.r,2) as R,
+            ROUND((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.dnc,2) as DNC,
+            ROUND((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas,2) as VCAS,
+            ROUND((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala,2) as VEALA,
+            ROUND((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr,2) as VAPTYR,
+            ROUND((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaprh,2) as VAPRH,
+            ROUND((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.dma,2) as DMA,
+            ROUND(((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr),2) as VEAS,
+            ROUND((1-((((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vcas)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.veala)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr)+((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.vaptyr))/((SUM(acuifero_municipio.area)/acuifero.area)*acuifero_disponibilidad.r)))*100,2) as Disp
             from acuifero_municipio
             LEFT JOIN acuifero on acuifero.id_acuifero=acuifero_municipio.acuifero_id 
             LEFT JOIN acuifero_disponibilidad on acuifero_disponibilidad.acuifero_id=acuifero.id_acuifero

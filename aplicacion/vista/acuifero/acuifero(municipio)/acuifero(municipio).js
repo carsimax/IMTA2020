@@ -215,7 +215,7 @@ async function Consultar() {
     if (OC !== "" && Est !== "" && Mun !== "" && Acu !== "") {
         await sleep(1000);
         query =
-            OC +
+        "(" + OC + ")" +
             " AND (" +
             Est +
             ") AND (" +
