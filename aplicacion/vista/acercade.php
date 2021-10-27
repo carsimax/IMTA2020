@@ -41,7 +41,7 @@ if (!defined(__DIR__ . '/plantillas/header.php')) {
           Para cualquier informe sobre este favor de contactar a:<br>
           <strong>Dr. Alberto González Sánchez (alberto_gonzalez@tlaloc.imta.mx)</strong><br>
           Jefe de proyecto (IMTA) <br><br>
-          <strong>Dr. Ronald Ontiveros Capurata (ronald.ontiveros@tlaloc.imta.mx)</strong><br>
+          <strong>Dr. Ronald Ernesto Ontiveros Capurata (ronald.ontiveros@tlaloc.imta.mx)</strong><br>
           Cátedra CONACyT-IMTA <br><br>
 
           <strong>Instituto Mexicano de Tecnología del Agua (IMTA)</strong><br>
