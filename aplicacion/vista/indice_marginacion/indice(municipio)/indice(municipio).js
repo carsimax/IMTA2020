@@ -65,18 +65,18 @@ async function limpiarMunicipio() {
 }
 
 async function Consultar() {
-    Swal.fire({
-        title: "Por favor espere",
-        html: "Realizando consulta", // add html attribute if you want or remove
-        allowEscapeKey: false,
-    allowOutsideClick: false,
-        onBeforeOpen: () => {
-            Swal.showLoading();
-        }
-    });
     var valores = "(" + concatValoresSelect('#Municipios', 'municipio_id=') + ") AND (" + concatValoresSelect('#Anios', 'anio_id=') + ")";
     //Busqueda tabular
     if (valores !== "") {
+        Swal.fire({
+            title: "Por favor espere",
+            html: "Realizando consulta", // add html attribute if you want or remove
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+                Swal.showLoading();
+            }
+        });
         data = "Accion=ConsultaIndiceMarginacion&Filtro=Municipio&Anio=" + $("#Anios option:selected").val() + "&modulo_id=7";
         citas = construirReferencias(data, true);
         crearGlosario();
@@ -129,7 +129,7 @@ async function Consultar() {
 
 
     } else {
-        swal("¡Cuidado!", "Todos los filtros tienen que tener al menos un elemento seleccionado");
+        advertencia("Todos los filtros tienen que tener al menos un elemento seleccionado")
         await habilitar();
         $("#pantalla").hide();
         $("#botonMapa").hide();

@@ -121,11 +121,11 @@ function valiFormNuevo(url, data, tablaP) {
 
 //Muestra mensaje de error en la realización de una acción
 function algoAndaMal(response) {
-    Swal.fire({ title: "¡Algo anda mal!", text: response, icon: "error", confirmButtonColor: '#621132', confirmButtonText: 'OK' });
+    Swal.fire({ title: "¡Algo anda mal!", html: response, icon: "error", confirmButtonColor: '#621132', confirmButtonText: 'OK' });
 }
 //Muestra un warning al usuario
 function advertencia(response) {
-    Swal.fire({ title: "¡Cuidado!", text: response, icon: "warning", confirmButtonColor: '#621132', confirmButtonText: 'OK' });
+    Swal.fire({ title: "¡Cuidado!", html: response, icon: "warning", confirmButtonColor: '#621132', confirmButtonText: 'OK' });
 }
 //Muestra una ventana emerjente de éxito que redirecciona a una página
 function buenTrabajoNuevo(tablaP) {

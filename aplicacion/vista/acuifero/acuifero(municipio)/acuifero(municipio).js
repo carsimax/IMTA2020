@@ -57,7 +57,7 @@ async function Estados() {
                      * Por medio del plugin de multiselect, podemos agregar los objetos del array al select de acuiferos
                      */
                     data.push({
-                        name: item.nombre_mun + ' - '+ item.nombre_est,
+                        name: item.nombre_mun + ' - ' + item.nombre_est,
                         value: item.id_municipio,
                         checked: false,
                     });
@@ -163,7 +163,6 @@ async function loadShape() {
  * @constructor
  */
 async function Consultar() {
-    alertaCargando("Por favor espere", "Realizando consulta");
     $("#referencias").show();
     $('#nav-tab-acu a[href="#nav-OC"]').tab("show");
     /**
@@ -211,11 +210,11 @@ async function Consultar() {
         .always(async function () {
             Acu = Acu.slice(0, -3);
         });
-
-    if (OC !== "" && Est !== "" && Mun !== "" && Acu !== "") {
+    if (Acu !== "") {
+        alertaCargando("Por favor espere", "Realizando consulta");
         await sleep(1000);
         query =
-        "(" + OC + ")" +
+            "(" + OC + ")" +
             " AND (" +
             Est +
             ") AND (" +
@@ -334,19 +333,8 @@ async function Consultar() {
             });
         });
     } else {
-        swal(
-            "Algo está mal.",
-            "Todos los filtros tienen que tener al menos un elemento seleccionado"
-        );
-        await habilitar();
-        await habilitar();
-        $("#pantalla").hide();
-        $("#pantalla2").hide();
-        $("#divPrioridad").hide();
-        $("#botonMapa").hide();
-        await Swal.close();
+        advertencia("Todos los filtros tienen que tener al menos un elemento seleccionado");
     }
-    await Historial();
 }
 
 /**

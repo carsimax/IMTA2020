@@ -325,7 +325,7 @@ async function getPuntosMonitoreo() {
 
 
 async function Consultar() {
-  alertaCargando("Por favor espere", "Realizando la consulta");
+  
   $('#nav-tab-acu a[href="#nav-01"]').tab("show");
   document.getElementById("nav-01").innerHTML = "";
   document.getElementById("nav-02").innerHTML = "";
@@ -359,6 +359,7 @@ async function Consultar() {
   const Anio = await selectAnio();
   const Clave = await selectClave();
   if (OC !== "" && Est !== "" && Mun !== "" && Anio !== "" && Clave !== "") {
+    alertaCargando("Por favor espere", "Realizando la consulta");
     //Se obtiene la cita con la información de calidad del agua
     data = "Accion=getCitaConsultaAnio&modulo_id=10&anios=anio_id=" + $("#Anios").val();
     citas = construirReferencias(data, false);

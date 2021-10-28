@@ -80,7 +80,6 @@ async function loadShape() {
  * @constructor
  */
 async function Consultar() {
-    alertaCargando("Por favor espere", "Realizando consulta");
     $('#nav-tab-acu a[href="#nav-OC"]').tab("show");
     $("#referencias").show();
     /**
@@ -127,6 +126,7 @@ async function Consultar() {
         });
 
     if (Acu !== "" && OC !== "" && Est !== "") {
+      alertaCargando("Por favor espere", "Realizando consulta");
         /**
          *
          * @type String
@@ -274,29 +274,8 @@ async function Consultar() {
             });
         });
     } else {
-        /**
-         *
-         * @returns {Promise<void>}
-         * En caso de algun error, se notificara al usuario.
-         */
-
-        swal(
-            "Algo está mal.",
-            "Todos los filtros tienen que tener al menos un elemento seleccionado."
-        );
-        await habilitar();
-        $("#pantalla").hide();
-        $("#pantalla2").hide();
-        $("#divPrioridad").hide();
-        $("#botonMapa").hide();
-        await Swal.close();
+      advertencia("Todos los filtros tienen que tener al menos un elemento seleccionado");
     }
-    /**
-     *
-     * @returns {Promise<void>}
-     * Se aniade al historial la consulta realizada
-     */
-    await Historial();
 }
 
 /**
