@@ -501,6 +501,7 @@ async function cargarMapa() {
     var x = $('#Prioridad').prop('checked');
     if (x == true) {
         if (!map.hasLayer(OCSelect)) {
+            document.getElementById("download_shapefile").style.display = "block";
             await loadShape();
             var callBack = async function () {
                 document.getElementById("exampleModal").style.display = "block";

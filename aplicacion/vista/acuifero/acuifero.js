@@ -471,6 +471,7 @@ async function Acuiferos() {
 async function cargarMapa() {
   var x = $('#Prioridad').prop('checked');
   if (x == true) {
+    document.getElementById("download_shapefile").style.display = "block";
     if (!map.hasLayer(OCSelect)) {
       await loadShape();
       var callBack = async function () {
@@ -485,7 +486,8 @@ async function cargarMapa() {
 }
 
 $('#Prioridad').change(async function () {
-  var x = $(this).prop('checked');
+var x = $(this).prop('checked');
+
   if (x) {
     //El mapa del modal al auxiliar
     document.getElementById("download_shapefile").style.display = "none";

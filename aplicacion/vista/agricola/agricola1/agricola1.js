@@ -253,6 +253,7 @@ async function Consultar() {
     if (x == false) {
         if (!map.hasLayer(OCSelect)) {
             //Recargamos el mapa
+            document.getElementById("download_shapefile").style.display = "block";
             var callBack = async function () {
                 document.getElementById("map").style.display = "block";
                 document.getElementById("download_shapefile").style.display = "block";

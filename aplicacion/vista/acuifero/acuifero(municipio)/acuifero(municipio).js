@@ -318,6 +318,7 @@ async function Consultar() {
                 var x = $('#Prioridad').prop('checked');
                 if (x == false) {
                     if (!map.hasLayer(OCSelect)) {
+                        document.getElementById("download_shapefile").style.display = "block";
                         //Recargamos el mapa
                         var callBack = async function () {
                             document.getElementById("map").style.display = "block";
@@ -389,6 +390,7 @@ async function limpiarAcuifero() {
     $("#pantalla2").hide();
     $("#divPrioridad").hide();
     $("#botonMapa").hide();
+    document.getElementById("download_shapefile").style.display = "none";
 }
 
 

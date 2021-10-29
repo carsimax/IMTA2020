@@ -48,5 +48,10 @@ const getShapefiles = (module) => {
       link.href = result.src;
       link.click();
     })
-    .catch(error => console.log('error', error));
+    .catch(error => {
+      document.getElementById("button_download_shapefile").disabled = false;
+      document.getElementById("button_download_shapefile").style.opacity = "1";
+      document.getElementById("button_download_shapefile").textContent = "Descargar capas";
+      console.log('error', error)
+    });
 }

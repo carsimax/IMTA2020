@@ -80,6 +80,7 @@ async function loadShape() {
  * @constructor
  */
 async function Consultar() {
+  
     $('#nav-tab-acu a[href="#nav-OC"]').tab("show");
     $("#referencias").show();
     /**
@@ -254,6 +255,7 @@ async function Consultar() {
                     var x = $('#Prioridad').prop('checked');
                     if (x == false) {
                         if (!map.hasLayer(OCSelect)) {
+                          document.getElementById("download_shapefile").style.display = "block";
                             //Recargamos el mapa
                             var callBack = async function () {
                                 document.getElementById("map").style.display = "block";
@@ -317,11 +319,14 @@ async function limpiarAcuifero() {
     $("#pantalla2").hide();
     $("#divPrioridad").hide();
     $("#botonMapa").hide();
+
+  document.getElementById("download_shapefile").style.display = "none";
 }
 
 
 
 async function mostrarDEstado() {
+  
     if (!tablaEst.data().any()) {
         alertaCargando("Por favor espere", "Generando tabla");
         const OC = await obtenerOrganismo();
@@ -359,12 +364,14 @@ async function mostrarDEstado() {
              * @returns {undefined}
              * Se manda a llamar a una función Ajax que realiza la consulta de los datos a la base de datos.
              */
+          
             $.ajax({
                 type: "POST",
                 url: "/aplicacion/controlador/mapa.php",
                 data: cadena,
                 //Si el controlador devuelve una respuesta
                 success: function (resp) {
+                  
                     /**
                      *
                      * @param {type} miarray
@@ -426,6 +433,7 @@ async function mostrarDEstado() {
                             numeral(Number.parseFloat(item.DMA)).format("0,0.00"),
                         ]);
                     });
+                  
                     tablaEst = $("#Est").DataTable({
                         "order": [[1, "asc"]],
                         data: data,
@@ -573,6 +581,7 @@ async function mostrarDEstado() {
                             url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
                         },
                     });
+                  console.log($("#Est"))
                 },
             }).always(async function () {
                 await Swal.close();
@@ -582,6 +591,7 @@ async function mostrarDEstado() {
 }
 
 async function mostrarDAcuifero() {
+  
     if (!tablaAcu.data().any()) {
       alertaCargando("Por favor espere", "Generando tabla");
       const OC = await obtenerOrganismo();
