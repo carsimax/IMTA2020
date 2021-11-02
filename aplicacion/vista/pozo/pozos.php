@@ -63,6 +63,9 @@ $filtros = $registros->getPozos();
                 <div id="divFiltro"></div>
             </div>
             <?php require_once(__DIR__ . "/../plantillas/switchVisualizacion.html"); ?>
+            <div class="text-right" id="download_shapefile" style="display: none; margin-bottom:10px; margin-right:15px">
+                <a onclick="getShapefiles('Acuiferos')" id="button_download_shapefile" class="btn btn-gob" style="color: white;">Descargar Capas</a>
+            </div>
             <div class="col-sm" id="pantalla">
                 <div class="col-sm" id="tabla">
                     <div class="row">
@@ -121,3 +124,4 @@ $filtros = $registros->getPozos();
 <script>
     $('#referencias').hide();
 </script>
+<script defer src="/aplicacion/vista/getShapefiles.js"></script>

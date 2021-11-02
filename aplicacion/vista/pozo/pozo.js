@@ -330,6 +330,7 @@ $(document).ready(async function () {
     $("#pantalla2").hide();
     $("#divPrioridad").hide();
     $("#botonMapa").hide();
+    $("#download_shapefile").hide();
     crearMapa();
 });
 /**
@@ -1928,6 +1929,7 @@ $('#Prioridad').change(async function () {
     var tipo = $("#Tipos option:selected").val();
     var x = $(this).prop('checked');
     if (x) {
+        document.getElementById("download_shapefile").style.display = "none";
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#SeccionModal');
         $('#tabla').detach().appendTo('#pantalla');
@@ -1940,6 +1942,7 @@ $('#Prioridad').change(async function () {
         //El mapa del modal al auxiliar
         $('#map').detach().appendTo('#pantalla');
         $('#tabla').detach().appendTo('#SeccionModal');
+        document.getElementById("download_shapefile").style.display = "block";
         //Recargamos el mapa
         var callBack = async function () {
             document.getElementById("map").style.display = "block";
