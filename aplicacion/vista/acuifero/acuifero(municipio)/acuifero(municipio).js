@@ -479,6 +479,11 @@ async function mostrarMunicipio2() {
                             numeral(Number.parseFloat(item.DMA)).format("0,0.00"),
                         ]);
                     });
+                    const tableMuni = document.querySelector("#Mun");
+                    if (!tableMuni) {
+                        console.log("No esta la tabla, creando...")
+                        document.getElementById("nav-MUNI").innerHTML = `<br><table id="Mun" class="table table-bordered responsive nowrap" style="width:100%"></table>`;
+                    }
                     tablaMun = $("#Mun").DataTable({
                         "order": [[1, "asc"], [2, "asc"]],
                         data: data,
@@ -737,6 +742,11 @@ async function mostrarDEstado2() {
                             numeral(Number.parseFloat(item.DMA)).format("0,0.00"),
                         ]);
                     });
+                    const tableEstado = document.querySelector("#Est");
+                    if (!tableEstado) {
+                        console.log("No esta la tabla, creando...")
+                        document.getElementById("nav-EST").innerHTML = `<br><table id="Est" class="table table-bordered responsive nowrap" style="width:100%"></table>`;
+                    }
                     tablaEst = $("#Est").DataTable({
                         "order": [[1, "asc"]],
                         data: data,
@@ -973,6 +983,11 @@ async function mostrarDAcuifero2() {
                             numeral(Number.parseFloat(item.DMA)).format("0,0.00")
                         ]);
                     });
+                    const tableAcuifero = document.querySelector("#Acu");
+                    if (!tableAcuifero) {
+                        console.log("No esta la tabla, creando...")
+                        document.getElementById("nav-ACU").innerHTML = `<br><table id="Acu" class="table table-bordered responsive nowrap" style="width:100%"></table>`;
+                    }
                     tablaAcu = $("#Acu").DataTable({
                         "order": [[1, "asc"], [2, "asc"]],
                         data: data,
